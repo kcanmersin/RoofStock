@@ -1,4 +1,4 @@
-﻿using Core.Data.Entity.EntityBase;
+﻿using Core.Data.Entity.EntityBases;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Data.Entity.User
 {
-    internal class AppUser : IdentityUser<Guid>, IEntityBase
+    public class AppUser : IdentityUser<Guid>, IEntityBase
     {
         public override string UserName { get; set; }
         public string FirstName { get; set; }

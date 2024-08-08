@@ -1,10 +1,10 @@
-﻿using Core.Data.Entity.EntityBase;
+﻿using Core.Data.Entity;
+using Core.Data.Entity.EntityBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Core.Data.Entity
 {
     /* 
@@ -15,10 +15,13 @@ namespace Core.Data.Entity
   quantity int
   targetPrice decimal
  */
-    internal class Order : IEntityBase
+    public class Order : EntityBase
     {
         public string StockSymbol { get; set; }
         public int Quantity { get; set; }
         public decimal TargetPrice { get; set; }
+
     }
+
+
 }

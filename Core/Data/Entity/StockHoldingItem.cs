@@ -1,4 +1,4 @@
-﻿using Core.Data.Entity.EntityBase;
+﻿using Core.Data.Entity.EntityBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace Core.Data.Entity
   orderProcessId   uuid [ref: > orderProccess.id]
 }
      */
-    internal class StockHoldingItem : IEntityBase
+    public class StockHoldingItem : EntityBase
     {
 
         public string StockSymbol { get; set; }

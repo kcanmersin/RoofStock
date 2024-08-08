@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Data.Entity.EntityBase
+namespace Core.Data.Entity.EntityBases
 {
-    internal abstract class EntityBase : IEntityBase
+  public abstract class EntityBase : IEntityBase
     {
         public virtual Guid Id { get; set; } = Guid.NewGuid();
 
@@ -14,9 +14,12 @@ namespace Core.Data.Entity.EntityBase
         public virtual string? ModifiedBy { get; set; }
         public virtual string? DeletedBy { get; set; }
 
-        public virtual DateTime CreatedDate { get; set; } = DateTime.UtcNow; // for postgre         
+        public virtual DateTime CreatedDate { get; set; } = DateTime.UtcNow;          // = DateTime.Now;
         public virtual DateTime? ModifiedDate { get; set; }
         public virtual DateTime? DeletedDate { get; set; }
         public virtual bool IsDeleted { get; set; } = false;
+
+
+
     }
 }

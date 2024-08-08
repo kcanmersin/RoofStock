@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Data.Entity.EntityBase;
+using Core.Data.Entity.EntityBases;
 namespace Core.Data.Entity
 {
     /*
@@ -13,7 +13,7 @@ namespace Core.Data.Entity
     result bool
 }
      */
-    internal class OrderProcess : IEntityBase
+    public class OrderProcess : EntityBase
     {
         public Guid OrderId { get; set; }
         public Order Order { get; set; }

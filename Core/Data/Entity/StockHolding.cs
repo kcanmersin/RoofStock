@@ -1,4 +1,4 @@
-﻿using Core.Data.Entity.EntityBase;
+﻿using Core.Data.Entity.EntityBases;
 using Core.Data.Entity.User;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Core.Data.Entity
   quantity int
   total_purchase_price decimal
 }*/
-    internal class StockHolding : IEntityBase
+    public class StockHolding : EntityBase
     {
         public Guid UserId { get; set; }
         public virtual AppUser User { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Data.Entity.EntityBase;
+using Core.Data.Entity.EntityBases;
 using Core.Data.Entity.User;
 namespace Core.Data.Entity
 {
@@ -19,7 +19,7 @@ Table transactions {
   //ref ekle stockholdinge
 }
      */
-    internal class Transaction : IEntityBase
+    public class Transaction : EntityBase
     {
         public Guid UserId { get; set; }
         public virtual AppUser User { get; set; }

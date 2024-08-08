@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Data.Entity.EntityBase
+namespace Core.Data.Entity.EntityBases
 {
-    internal interface IEntityBase
+    public interface IEntityBase
     {
     }
 }
