@@ -15,7 +15,7 @@ namespace Core.Data.Entity.User
         public string LastName { get; set; }
         public override string Email { get; set; }
         public decimal Balance { get; set; } = 0; //USD
-        public string ImagePath { get; set; } ="/API/deflogo.jpg";
+        public string ImagePath { get; set; } ="/API/defaultlogo.jpg";
 
         //navigation properties
         public virtual ICollection<StockHolding> StockHoldings { get; set; }

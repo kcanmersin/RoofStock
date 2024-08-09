@@ -11,10 +11,8 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load core services and configurations
 builder.Services.LoadCoreLayerExtension(builder.Configuration);
 
-// Configure Identity
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 {
     opt.Password.RequireNonAlphanumeric = false;
@@ -29,7 +27,6 @@ builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
-// Add Controllers and Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

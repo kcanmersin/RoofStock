@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Features.User.Login;
 using Core.Features.User.Register;
+using Core.Features.User.Update;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,19 @@ namespace API.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             var command = request.Adapt<RegisterCommand>();
+            var result = await _sender.Send(command);
+
+            if (result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            return Ok(result.Value);
+        }
+         [HttpPut("update")]
+        public async Task<IActionResult> Update([FromBody] UserUpdateRequest request)
+        {
+            var command = request.Adapt<UserUpdateCommand>();
             var result = await _sender.Send(command);
 
             if (result.IsFailure)
