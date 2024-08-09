@@ -24,10 +24,14 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
-                return Ok(result);
+                return Ok(result.Value);
             }
 
-            return BadRequest(result);
+            return BadRequest(new
+            {
+                code = result.Error.Code,
+                message = result.Error.Message
+            });
         }
     }
 }

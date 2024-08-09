@@ -24,8 +24,8 @@ namespace Core.Data.Entity
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; } //USD
         public StockHoldingItemType Type { get; set; }// buy sell
-        public Guid OrderProcessId { get; set; }
-        public OrderProcess OrderProcess { get; set; }
+        public Guid? OrderProcessId { get; set; }
+        public OrderProcess? OrderProcess { get; set; }
     }
 
     public enum StockHoldingItemType

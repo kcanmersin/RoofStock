@@ -4,7 +4,7 @@ namespace Core.Features.Deposit
 {
     public class DepositRequest
     {
-        [DefaultValue("657c6705-0728-4dfc-8019-ea59c42f984f")]
+        [DefaultValue("3aa42229-1c0f-4630-8c1a-db879ecd0427")]
         public Guid UserId { get; set; }
         
         [DefaultValue(100.00)]

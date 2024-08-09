@@ -27,7 +27,7 @@ Table transactions {
         public decimal Amount { get; set; }
         //buradaki tip userın uygulamadan para çekip para yatırması. satın al sat işlemindeki para kullanıcının hesabındaki balanca eklenip düşecek
 
-        public TransActionType Type { get; set; }//type da mı nullable olmalı?
+        public TransActionType Type { get; set; }
 
         public string Description { get; set; }
 

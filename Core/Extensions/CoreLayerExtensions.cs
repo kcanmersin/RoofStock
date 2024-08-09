@@ -6,6 +6,7 @@ using Core.Service.JWT;
 using MediatR;
 using System.Reflection;
 using FluentValidation;
+using Core.Service.StockApi;
 
 namespace Core.Extensions
 {
@@ -27,6 +28,14 @@ namespace Core.Extensions
             services.AddHttpClient<CurrencyConversionService>();
             //add validators from assembly
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            //add stockApi Istockapise4rvice stockapiservicve
+            services.AddScoped<IStockApiService, StockApiService>();
+            services.AddHttpClient<IStockApiService, StockApiService>(client =>
+            {
+                client.BaseAddress = new Uri("https://finnhub.io/api/v1/");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
 
 
 
