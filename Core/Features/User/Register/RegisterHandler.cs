@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Core.Shared;
-using System.Linq;
 using Core.Data.Entity.User;
 using Core.Service.JWT;
+using FluentValidation;
 
 namespace Core.Features.User.Register
 {
@@ -13,17 +13,26 @@ namespace Core.Features.User.Register
         private readonly RoleManager<AppRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IJwtService _jwtService;
+        private readonly IValidator<RegisterCommand> _validator;
 
-        public RegisterHandler(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager, IJwtService jwtService)
+        public RegisterHandler(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager, IJwtService jwtService, IValidator<RegisterCommand> validator)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _jwtService = jwtService;
+            _validator = validator;
         }
 
         public async Task<Result<RegisterResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
+            // Validate the request
+            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+            if (!validationResult.IsValid)
+            {
+                return Result.Failure<RegisterResponse>(new Error("ValidationFailed", validationResult.Errors.First().ErrorMessage));
+            }
+
             var user = new AppUser
             {
                 UserName = request.Email,

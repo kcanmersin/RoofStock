@@ -1,10 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Core.Data.Entity.User;
 using Core.Shared;
 using MediatR;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 
 namespace Core.Features.User.Update
@@ -12,14 +13,23 @@ namespace Core.Features.User.Update
     public class UserUpdateHandler : IRequestHandler<UserUpdateCommand, Result<UserUpdateResponse>>
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly IValidator<UserUpdateCommand> _validator;
 
-        public UserUpdateHandler(UserManager<AppUser> userManager)
+        public UserUpdateHandler(UserManager<AppUser> userManager, IValidator<UserUpdateCommand> validator)
         {
             _userManager = userManager;
+            _validator = validator;
         }
 
         public async Task<Result<UserUpdateResponse>> Handle(UserUpdateCommand request, CancellationToken cancellationToken)
         {
+            // Validate the request
+            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+            if (!validationResult.IsValid)
+            {
+                return Result.Failure<UserUpdateResponse>(new Error("ValidationFailed", validationResult.Errors.First().ErrorMessage));
+            }
+
             var user = await _userManager.FindByIdAsync(request.UserId.ToString());
             if (user == null)
             {

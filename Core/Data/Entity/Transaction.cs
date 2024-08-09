@@ -37,11 +37,14 @@ Table transactions {
 
     }
 
-    //transaction type enum
+    //hisse sattığımızda balaance artacağı  için transaction postive olacak
+    //hisse aldığımızda balance azalacağı için transaction negative olacak
+    //deposit yaptığımızda balance artacağı için transaction postive olacak
+    //withdrawal yaptığımızda balance azalacağı için transaction negative olacak
     public enum TransActionType
     {
-        Deposit,
-        Withdrawal
+        Positive,
+        Negative
     }
   
 }

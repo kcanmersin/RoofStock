@@ -5,6 +5,7 @@ using Core.Data;
 using Core.Service.JWT;
 using MediatR;
 using System.Reflection;
+using FluentValidation;
 
 namespace Core.Extensions
 {
@@ -21,6 +22,12 @@ namespace Core.Extensions
             
             //add mediatr
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            //add currency
+            // Add CurrencyConversionService
+            services.AddHttpClient<CurrencyConversionService>();
+            //add validators from assembly
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
 
 
             return services;

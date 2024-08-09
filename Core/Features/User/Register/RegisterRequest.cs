@@ -4,7 +4,7 @@ namespace Core.Features.User.Register
 {
     public class RegisterRequest
     {
-        [DefaultValue("can@gmail.com")]
+        [DefaultValue("kerimcanmersin@gmail.com")]
         public string Email { get; set; } 
         [DefaultValue("19071907")]
         public string Password { get; set; } 
