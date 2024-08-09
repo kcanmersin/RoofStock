@@ -47,7 +47,6 @@ namespace Core.Data.Configuration
                    .WithOne(t => t.User)
                    .HasForeignKey(t => t.UserId);
 
-            // Maps to the AppUsers table
 
             var superadmin = new AppUser
             {

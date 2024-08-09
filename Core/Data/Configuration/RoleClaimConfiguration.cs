@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Core.Data.Configuration
 {
-    public class RoleClaimMap : IEntityTypeConfiguration<AppRoleClaim>
+    public class RoleClaimConfiguration : IEntityTypeConfiguration<AppRoleClaim>
     {
         public void Configure(EntityTypeBuilder<AppRoleClaim> builder)
         {

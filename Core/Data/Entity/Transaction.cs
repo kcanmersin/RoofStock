@@ -24,9 +24,11 @@ Table transactions {
         public Guid UserId { get; set; }
         public virtual AppUser User { get; set; }
 
-
         public decimal Amount { get; set; }
-        public TransActionType Type { get; set; }
+        //buradaki tip userın uygulamadan para çekip para yatırması. satın al sat işlemindeki para kullanıcının hesabındaki balanca eklenip düşecek
+
+        public TransActionType Type { get; set; }//type da mı nullable olmalı?
+
         public string Description { get; set; }
 
         //stockholding item might be null
@@ -36,7 +38,6 @@ Table transactions {
     }
 
     //transaction type enum
-    //buradaki tip userın uygulamadan para çekip para yatırması. satın al sat işlemindeki para kullanıcının hesabındaki balanca eklenip düşecek
     public enum TransActionType
     {
         Deposit,

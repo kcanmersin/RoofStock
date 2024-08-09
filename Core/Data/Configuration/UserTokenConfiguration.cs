@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace  Core.Data.Configuration
 {
-    public class UserTokenMap : IEntityTypeConfiguration<AppUserToken>
+    public class UserTokenConfiguration : IEntityTypeConfiguration<AppUserToken>
     {
         public void Configure(EntityTypeBuilder<AppUserToken> builder)
         {

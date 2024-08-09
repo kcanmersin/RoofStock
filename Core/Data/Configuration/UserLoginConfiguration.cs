@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//isimlendirmeler config ve internal yap
 namespace Core.Data.Configuration
 {
-    public class UserLoginMap : IEntityTypeConfiguration<AppUserLogin>
+    public class UserLoginConfiguration : IEntityTypeConfiguration<AppUserLogin>
     {
         public void Configure(EntityTypeBuilder<AppUserLogin> builder)
         {

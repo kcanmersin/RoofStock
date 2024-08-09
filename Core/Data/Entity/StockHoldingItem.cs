@@ -23,7 +23,7 @@ namespace Core.Data.Entity
         public string StockSymbol { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; } //USD
-        public StockHoldingItemType Type { get; set; }
+        public StockHoldingItemType Type { get; set; }// buy sell
         public Guid OrderProcessId { get; set; }
         public OrderProcess OrderProcess { get; set; }
     }

@@ -2,6 +2,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Core.Data;
+using Core.Service.JWT;
+using MediatR;
+using System.Reflection;
 
 namespace Core.Extensions
 {
@@ -9,11 +12,16 @@ namespace Core.Extensions
     {
         public static IServiceCollection LoadCoreLayerExtension(this IServiceCollection services, IConfiguration configuration)
         {
-            // Configure DbContext with PostgreSQL
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-            // You can also register other core-related services here
+            services.AddScoped<IJwtService, JwtService>();
+            var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
+            services.AddSingleton(jwtSettings);
+            
+            //add mediatr
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+
 
             return services;
         }
