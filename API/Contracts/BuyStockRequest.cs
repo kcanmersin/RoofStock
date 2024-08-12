@@ -13,6 +13,7 @@ namespace Core.Features.BuyStock
         public Guid UserId { get; set; }
         [DefaultValue("AAPL")]
         public string StockSymbol { get; set; }
+
         [DefaultValue(1)]
         public int Quantity { get; set; }
     }

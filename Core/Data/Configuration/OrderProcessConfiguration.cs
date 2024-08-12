@@ -12,10 +12,14 @@ namespace Core.Data.Configuration
 
             builder.HasOne(op => op.Order)
                    .WithMany()
-                   .HasForeignKey(op => op.OrderId);
+                   .HasForeignKey(op => op.OrderId)
+                   .OnDelete(DeleteBehavior.Cascade); 
 
-            builder.Property(op => op.Result)
-                   .IsRequired();
+            builder.Property(op => op.Status)
+                   .HasConversion<int>()  
+                   .HasDefaultValue(OrderProcessStatus.Pending); 
+
+            builder.HasIndex(op => op.OrderId);
 
             builder.ToTable("OrderProcesses");
         }

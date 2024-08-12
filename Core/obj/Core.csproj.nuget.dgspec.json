@@ -62,6 +62,18 @@
               "target": "Package",
               "version": "[11.1.0, )"
             },
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.8.14, )"
+            },
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.8.14, )"
+            },
+            "Hangfire.PostgreSql": {
+              "target": "Package",
+              "version": "[1.20.9, )"
+            },
             "Mapster": {
               "target": "Package",
               "version": "[7.4.0, )"

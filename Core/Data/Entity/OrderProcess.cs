@@ -17,6 +17,17 @@ namespace Core.Data.Entity
     {
         public Guid OrderId { get; set; }
         public Order Order { get; set; }
-        public bool Result { get; set; }
+        // public bool Result { get; set; }
+        //status enum
+        public OrderProcessStatus Status { get; set; }
+    }
+
+    public enum OrderProcessStatus
+    {
+    Pending,
+    Completed,
+    Failed,
+    Canceled,
+    InProgress
     }
 }

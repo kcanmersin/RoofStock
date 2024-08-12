@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Core.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240809113131_f")]
-    partial class f
+    [Migration("20240812071249_X")]
+    partial class X
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,6 +51,9 @@ namespace Core.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("OrderType")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
@@ -62,7 +65,12 @@ namespace Core.Migrations
                     b.Property<decimal>("TargetPrice")
                         .HasColumnType("numeric(18,2)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders", (string)null);
                 });
@@ -97,8 +105,10 @@ namespace Core.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
-                    b.Property<bool>("Result")
-                        .HasColumnType("boolean");
+                    b.Property<int>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0);
 
                     b.HasKey("Id");
 
@@ -289,21 +299,21 @@ namespace Core.Migrations
                         new
                         {
                             Id = new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"),
-                            ConcurrencyStamp = "e39359c9-7c81-4b65-8ba2-835a58e4ba59",
+                            ConcurrencyStamp = "13e0e21d-73b0-4501-af38-f20fa0c02fd2",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"),
-                            ConcurrencyStamp = "fd5e8484-4e26-4b4f-8fd5-c37d9e151cc3",
+                            ConcurrencyStamp = "4bf704e1-09c9-4c56-ad09-3bb86985062a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"),
-                            ConcurrencyStamp = "04bf9dfd-ee07-493a-8411-510cc5ddc0a4",
+                            ConcurrencyStamp = "2cb33821-ea5f-400b-a7ba-99d66cf3a790",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -424,7 +434,7 @@ namespace Core.Migrations
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
                             Balance = 0m,
-                            ConcurrencyStamp = "7ada36fd-bf81-4477-9e5f-eeb4ec79e158",
+                            ConcurrencyStamp = "4288a624-bb88-4fe5-96b7-88e8c77ca12c",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Can",
@@ -433,10 +443,10 @@ namespace Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPTjAA7hf7+Uzal/pe2cl7tu4P5KYdzABYFJmXeZ+A/Wp8qFLXbdGFPzkyStACbYaw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGoEcYeY25/2d2SDatW5DFaxv1YeoaV1sk8jhReIDLikra40p7SQAQZ3Ni/RUp1V7A==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "443110d3-64e5-4f9b-ad50-a83ea79afafe",
+                            SecurityStamp = "966b57ea-8726-404e-98ac-2822b5957cd4",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -445,7 +455,7 @@ namespace Core.Migrations
                             Id = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             AccessFailedCount = 0,
                             Balance = 0m,
-                            ConcurrencyStamp = "37189b6a-3201-4599-8f5c-dd5036f76f0f",
+                            ConcurrencyStamp = "1c0b3fdc-2136-4975-85c3-c04202d534b4",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -454,10 +464,10 @@ namespace Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAkq4nk2x7FT0UwVSd9HvSkOq7jb3LYwS4UmDUnrVaxmCwlmA5EuC6wjfa1g7dU+Zw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO1FiqbYluCEZ0PV4ZmgKyEy+EbsYQvCOUFaMH5gRyX6C2344QekWwFveLBs7xuHeQ==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f84f3c87-8de7-4418-aad6-26f8278ef903",
+                            SecurityStamp = "cda342bc-45bc-4fb2-91bc-b471e0d624be",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -554,6 +564,17 @@ namespace Core.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Core.Data.Entity.Order", b =>
+                {
+                    b.HasOne("Core.Data.Entity.User.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Core.Data.Entity.OrderProcess", b =>

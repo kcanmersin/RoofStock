@@ -60,3 +60,9 @@ C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\MediatR.Extensions.Micro
 C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Dapper.dll
+C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Hangfire.AspNetCore.dll
+C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Hangfire.Core.dll
+C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Hangfire.NetCore.dll
+C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Hangfire.PostgreSql.dll
+C:\Users\KC\source\repos\StockFlow\API\bin\Debug\net6.0\Hangfire.SqlServer.dll

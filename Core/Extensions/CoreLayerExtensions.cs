@@ -7,6 +7,8 @@ using MediatR;
 using System.Reflection;
 using FluentValidation;
 using Core.Service.StockApi;
+using Hangfire;
+using Hangfire.PostgreSql;
 
 namespace Core.Extensions
 {
@@ -35,7 +37,10 @@ namespace Core.Extensions
                 client.BaseAddress = new Uri("https://finnhub.io/api/v1/");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
-
+            // Hangfire configuration
+            services.AddHangfire(config =>
+                config.UsePostgreSqlStorage(configuration.GetConnectionString("DefaultConnection")));
+            services.AddHangfireServer();
 
 
 

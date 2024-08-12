@@ -73,23 +73,12 @@ namespace Core.Features.BuyStock
                 stockHolding.TotalPurchasePrice += totalCost;
             }
 
-            var stockHoldingItem = new StockHoldingItem
-            {
-                StockSymbol = request.StockSymbol,
-                Quantity = request.Quantity,
-                UnitPrice = currentPrice,
-                Type = StockHoldingItemType.Purchase,
-//                OrderProcessId = Guid.NewGuid() 
-            };
-            _context.StockHoldingItems.Add(stockHoldingItem);
-
             var transaction = new Transaction
             {
                 UserId = user.Id,
-                Amount = -totalCost,
+                Amount = -totalCost, 
                 Type = TransActionType.Negative,
-                Description = $"Purchase of {request.Quantity} shares of {request.StockSymbol} at {currentPrice} per share",
-                StockHoldingItem = stockHoldingItem 
+                Description = $"Purchase of {request.Quantity} shares of {request.StockSymbol} at {currentPrice} per share"
             };
             _context.Transactions.Add(transaction);
 
@@ -101,8 +90,7 @@ namespace Core.Features.BuyStock
                 NewBalance = user.Balance,
                 Message = $"Successfully purchased {request.Quantity} shares of {request.StockSymbol} at {currentPrice} per share.",
                 StockSymbol = request.StockSymbol,
-                Quantity = request.Quantity,
-                TotalPrice = totalCost
+                Quantity = request.Quantity
             });
         }
     }

@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Hangfire;
+using Core.Service.OrderBackgroundService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,5 +42,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+
+// Use Hangfire Dashboard
+app.UseHangfireDashboard();
+app.UseHangfireServer();
+
+
+RecurringJob.AddOrUpdate<OrderBackgroundService>(
+    "CheckAndProcessOrders", // İşin adı
+    x => x.CheckAndProcessOrders(), // Çalıştırılacak metod
+    Cron.Minutely // Her dakika çalıştır
+);
+
 app.MapControllers();
 app.Run();
