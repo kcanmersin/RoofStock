@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Hangfire;
 using Core.Service.OrderBackgroundService;
+using API.Hubs;
+using API.Notification.StockPriceAlert;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,10 +30,14 @@ builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 .AddDefaultTokenProviders();
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-
+builder.Services.AddSignalR();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Servisleri kaydet
+builder.Services.AddScoped<StockPriceMonitorService>();
+builder.Services.AddScoped<StockPriceAlertService>();
 
 var app = builder.Build();
 
@@ -47,12 +53,20 @@ app.UseAuthorization();
 app.UseHangfireDashboard();
 app.UseHangfireServer();
 
-
+// Hangfire job'u tanımlama
 RecurringJob.AddOrUpdate<OrderBackgroundService>(
-    "CheckAndProcessOrders", // İşin adı
-    x => x.CheckAndProcessOrders(), // Çalıştırılacak metod
-    Cron.Minutely // Her dakika çalıştır
+    "CheckAndProcessOrders", 
+    x => x.CheckAndProcessOrders(), 
+    Cron.Minutely 
+);
+
+RecurringJob.AddOrUpdate<StockPriceAlertService>(
+    "CheckAndTriggerStockPriceAlerts",
+    x => x.CheckAndTriggerAlertsAsync(),
+    Cron.Minutely 
 );
 
 app.MapControllers();
+app.MapHub<StockPriceHub>("/stockPriceHub");
+
 app.Run();

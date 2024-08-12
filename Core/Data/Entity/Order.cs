@@ -13,6 +13,8 @@ namespace Core.Data.Entity
         public Guid UserId { get; set; }
         public virtual AppUser User { get; set; }
 
+              
+        public virtual OrderProcess OrderProcess { get; set; }
         // Buy or Sell order type
         public OrderType OrderType { get; set; } 
     }

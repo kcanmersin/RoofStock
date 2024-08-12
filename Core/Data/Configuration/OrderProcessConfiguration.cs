@@ -11,15 +11,13 @@ namespace Core.Data.Configuration
             builder.HasKey(op => op.Id);
 
             builder.HasOne(op => op.Order)
-                   .WithMany()
-                   .HasForeignKey(op => op.OrderId)
-                   .OnDelete(DeleteBehavior.Cascade); 
+                   .WithOne(o => o.OrderProcess) 
+                   .HasForeignKey<OrderProcess>(op => op.OrderId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(op => op.Status)
-                   .HasConversion<int>()  
-                   .HasDefaultValue(OrderProcessStatus.Pending); 
-
-            builder.HasIndex(op => op.OrderId);
+                   .HasConversion<int>()
+                   .HasDefaultValue(OrderProcessStatus.Pending);
 
             builder.ToTable("OrderProcesses");
         }

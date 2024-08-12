@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Core.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240812071249_X")]
+    [Migration("20240812111049_X")]
     partial class X
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,11 +59,10 @@ namespace Core.Migrations
 
                     b.Property<string>("StockSymbol")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .HasColumnType("text");
 
                     b.Property<decimal>("TargetPrice")
-                        .HasColumnType("numeric(18,2)");
+                        .HasColumnType("numeric");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -112,7 +111,8 @@ namespace Core.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("OrderId")
+                        .IsUnique();
 
                     b.ToTable("OrderProcesses", (string)null);
                 });
@@ -216,6 +216,56 @@ namespace Core.Migrations
                     b.ToTable("StockHoldingItems", (string)null);
                 });
 
+            modelBuilder.Entity("Core.Data.Entity.StockPriceAlert", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsTriggered")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("StockSymbol")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("TargetPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("TriggeredDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("StockPriceAlerts");
+                });
+
             modelBuilder.Entity("Core.Data.Entity.Transaction", b =>
                 {
                     b.Property<Guid>("Id")
@@ -299,21 +349,21 @@ namespace Core.Migrations
                         new
                         {
                             Id = new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"),
-                            ConcurrencyStamp = "13e0e21d-73b0-4501-af38-f20fa0c02fd2",
+                            ConcurrencyStamp = "0974d701-2ec8-40d6-80ab-2c0b01e91ec5",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"),
-                            ConcurrencyStamp = "4bf704e1-09c9-4c56-ad09-3bb86985062a",
+                            ConcurrencyStamp = "6fa35fb2-57de-4ad7-ae51-86b69f97adfd",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"),
-                            ConcurrencyStamp = "2cb33821-ea5f-400b-a7ba-99d66cf3a790",
+                            ConcurrencyStamp = "5ae19699-324e-4488-ae44-c962bf824fb5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -434,7 +484,7 @@ namespace Core.Migrations
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
                             Balance = 0m,
-                            ConcurrencyStamp = "4288a624-bb88-4fe5-96b7-88e8c77ca12c",
+                            ConcurrencyStamp = "579d97f2-07ee-4eea-b65e-edf39d8ad7a6",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Can",
@@ -443,10 +493,10 @@ namespace Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGoEcYeY25/2d2SDatW5DFaxv1YeoaV1sk8jhReIDLikra40p7SQAQZ3Ni/RUp1V7A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC+/dtyDhpxcgEZWtLXnrUDCMeLxutJ/KZYk/KmQMqlH/2/7IO9xQlketyyl8wAQFA==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "966b57ea-8726-404e-98ac-2822b5957cd4",
+                            SecurityStamp = "0c09618a-4f7f-48fc-b39d-c184d615904c",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -455,7 +505,7 @@ namespace Core.Migrations
                             Id = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             AccessFailedCount = 0,
                             Balance = 0m,
-                            ConcurrencyStamp = "1c0b3fdc-2136-4975-85c3-c04202d534b4",
+                            ConcurrencyStamp = "3ec90498-4d57-43c1-949e-47b556fbd50c",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -464,10 +514,10 @@ namespace Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO1FiqbYluCEZ0PV4ZmgKyEy+EbsYQvCOUFaMH5gRyX6C2344QekWwFveLBs7xuHeQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBmOvj6gJHnmAqdJFXCFn2BOFIixq5AAQEu1UF+Whg2TbbNw+KVcK0loMh0umL3yVQ==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cda342bc-45bc-4fb2-91bc-b471e0d624be",
+                            SecurityStamp = "a0d813d8-7c5b-4795-a396-ddf1c87c52fd",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -580,8 +630,8 @@ namespace Core.Migrations
             modelBuilder.Entity("Core.Data.Entity.OrderProcess", b =>
                 {
                     b.HasOne("Core.Data.Entity.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
+                        .WithOne("OrderProcess")
+                        .HasForeignKey("Core.Data.Entity.OrderProcess", "OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -606,6 +656,17 @@ namespace Core.Migrations
                         .HasForeignKey("OrderProcessId");
 
                     b.Navigation("OrderProcess");
+                });
+
+            modelBuilder.Entity("Core.Data.Entity.StockPriceAlert", b =>
+                {
+                    b.HasOne("Core.Data.Entity.User.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Core.Data.Entity.Transaction", b =>
@@ -673,6 +734,12 @@ namespace Core.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Core.Data.Entity.Order", b =>
+                {
+                    b.Navigation("OrderProcess")
                         .IsRequired();
                 });
 

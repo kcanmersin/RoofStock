@@ -21,6 +21,7 @@ namespace Core.Data
         public DbSet<OrderProcess> OrderProcesses { get; set; }
         public DbSet<StockHolding> StockHoldings { get; set; }
         public DbSet<StockHoldingItem> StockHoldingItems { get; set; }
+        public DbSet<StockPriceAlert> StockPriceAlerts { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

@@ -1,3 +1,5 @@
+using API.Contracts;
+using Core.Features.CancelOrder;
 using Core.Features.GiveOrder;
 using Core.Shared;
 using Mapster;
@@ -15,6 +17,24 @@ namespace API.Controllers
         public OrderController(ISender sender)
         {
             _sender = sender;
+        }
+        [HttpPost("cancel")]
+        public async Task<IActionResult> CancelOrder([FromBody] CancelOrderRequest request)
+        {
+            var command = new CancelOrderCommand
+            {
+                OrderId = request.OrderId,
+                UserId = request.UserId
+            };
+
+            var result = await _sender.Send(command);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result.Value);
+            }
+
+            return BadRequest(result.Error);
         }
 
         [HttpPost("place")]

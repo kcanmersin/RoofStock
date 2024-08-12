@@ -8,14 +8,11 @@ namespace Core.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.HasKey(o => o.Id);
+        builder.HasKey(o => o.Id);
 
-            builder.Property(o => o.StockSymbol)
-                   .IsRequired()
-                   .HasMaxLength(10);
-
-            builder.Property(o => o.TargetPrice)
-                   .HasColumnType("decimal(18,2)");
+            builder.HasOne(o => o.OrderProcess)
+                   .WithOne(op => op.Order)
+                   .HasForeignKey<OrderProcess>(op => op.OrderId);
 
             builder.ToTable("Orders");
         }

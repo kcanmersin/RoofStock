@@ -29,6 +29,7 @@ namespace Core.Service.OrderBackgroundService
 
             foreach (var orderProcess in pendingOrders)
             {
+
                 var currentPrice = await _stockApiService.GetStockPriceAsync(orderProcess.Order.StockSymbol);
 
                 if (orderProcess.Order.OrderType == OrderType.Buy && currentPrice <= orderProcess.Order.TargetPrice)
@@ -53,7 +54,6 @@ namespace Core.Service.OrderBackgroundService
             }
             else
             {
-                // Bakiyeden toplam fiyat düşülüyor
                 user.Balance -= totalPrice;
 
                 var stockHolding = await _context.StockHoldings
@@ -117,7 +117,6 @@ namespace Core.Service.OrderBackgroundService
             {
                 var totalPrice = currentPrice * orderProcess.Order.Quantity;
 
-                // Hisselerden istenilen miktar düşürülüyor
                 stockHolding.Quantity -= orderProcess.Order.Quantity;
 
                 if (stockHolding.Quantity == 0)
@@ -125,7 +124,6 @@ namespace Core.Service.OrderBackgroundService
                     _context.StockHoldings.Remove(stockHolding);
                 }
 
-                // Satıştan elde edilen gelir bakiyeye ekleniyor
                 user.Balance += totalPrice;
 
                 var stockHoldingItem = new StockHoldingItem

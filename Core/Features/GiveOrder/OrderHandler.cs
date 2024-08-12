@@ -40,6 +40,16 @@ namespace Core.Features.GiveOrder
                 return Result.Failure<OrderResponse>(new Error("UserNotFound", "User not found."));
             }
 
+            // Alış emri verirken kullanıcının bakiyesinin yeterli olup olmadığını kontrol et
+            if (request.OrderType == OrderType.Buy)
+            {
+                var totalPrice = request.TargetPrice * request.Quantity;
+                if (user.Balance < totalPrice)
+                {
+                    return Result.Failure<OrderResponse>(new Error("InsufficientFunds", "Insufficient funds: You need at least " + totalPrice.ToString("C") + " to place this buy order."));
+                }
+            }
+
             // Aktif satış emirleri ve kullanıcı hisse miktarı kontrolü
             if (request.OrderType == OrderType.Sell)
             {
@@ -48,7 +58,7 @@ namespace Core.Features.GiveOrder
 
                 if (stockHolding == null || stockHolding.Quantity < request.Quantity)
                 {
-                    return Result.Failure<OrderResponse>(new Error("InsufficientHoldings", "User does not have enough stock holdings to sell."));
+                    return Result.Failure<OrderResponse>(new Error("InsufficientHoldings", "Insufficient holdings: You do not have enough shares to place this sell order."));
                 }
 
                 // Aktif satış emirleri kontrolü
@@ -83,38 +93,38 @@ namespace Core.Features.GiveOrder
                 Status = OrderProcessStatus.Pending
             };
             _context.OrderProcesses.Add(orderProcess);
-            await _context.SaveChangesAsync(cancellationToken); 
+            await _context.SaveChangesAsync(cancellationToken);
 
             // Get the current stock price
             var stockPrice = await _stockApiService.GetStockPriceAsync(request.StockSymbol);
 
-            // Check if the conditions are already met
+            string message;
             if (request.OrderType == OrderType.Buy && stockPrice <= request.TargetPrice)
             {
-                // Buy the stock immediately
                 var result = await ExecuteBuyOrder(user, order, stockPrice, orderProcess.Id);
                 if (!result.IsSuccess)
                 {
                     return Result.Failure<OrderResponse>(result.Error);
                 }
-
                 orderProcess.Status = OrderProcessStatus.Completed;
+                message = $"Buy order completed: Purchased {order.Quantity} shares of {order.StockSymbol} at {stockPrice:C} per share.";
             }
             else if (request.OrderType == OrderType.Sell && stockPrice >= request.TargetPrice)
             {
-                // Sell the stock immediately
                 var result = await ExecuteSellOrder(user, order, stockPrice, orderProcess.Id);
                 if (!result.IsSuccess)
                 {
                     return Result.Failure<OrderResponse>(result.Error);
                 }
-
                 orderProcess.Status = OrderProcessStatus.Completed;
+                message = $"Sell order completed: Sold {order.Quantity} shares of {order.StockSymbol} at {stockPrice:C} per share.";
             }
             else
             {
-                // Koşullar sağlanmadı, emir sadece pending olarak kalacak
-                await _context.SaveChangesAsync(cancellationToken);
+                // message = $"Order placed successfully and is pending: {order.Quantity} shares of {order.StockSymbol} at a target price of {order.TargetPrice:C}.";
+                //add ordertype to message
+                message = $"Order placed successfully and is pending: {order.OrderType} {order.Quantity} shares of {order.StockSymbol} at a target price of {order.TargetPrice:C}.";
+            
             }
 
             await _context.SaveChangesAsync(cancellationToken);
@@ -122,7 +132,7 @@ namespace Core.Features.GiveOrder
             return Result.Success(new OrderResponse
             {
                 IsSuccess = true,
-                Message = "Order placed successfully.",
+                Message = message,
                 OrderId = order.Id
             });
         }
@@ -135,7 +145,6 @@ namespace Core.Features.GiveOrder
                 return Result.Failure(new Error("InsufficientFunds", "User does not have sufficient balance."));
             }
 
-            // Bakiyeden hisse fiyatı düşürülüyor
             user.Balance -= totalPrice;
 
             var stockHolding = await _context.StockHoldings
@@ -164,7 +173,7 @@ namespace Core.Features.GiveOrder
                 Quantity = order.Quantity,
                 UnitPrice = stockPrice,
                 Type = StockHoldingItemType.Purchase,
-                OrderProcessId = orderProcessId // OrderProcess Id'si doğru şekilde atanıyor
+                OrderProcessId = orderProcessId
             };
             _context.StockHoldingItems.Add(stockHoldingItem);
 
@@ -196,15 +205,17 @@ namespace Core.Features.GiveOrder
                 return Result.Failure(new Error("InsufficientHoldings", "User does not have enough stock holdings to sell."));
             }
 
-            // Hisselerden istenilen miktar düşürülüyor
             stockHolding.Quantity -= order.Quantity;
 
             if (stockHolding.Quantity == 0)
             {
                 _context.StockHoldings.Remove(stockHolding);
             }
+            else
+            {
+                stockHolding.TotalPurchasePrice -= totalPrice;
+            }
 
-            // Satıştan elde edilen gelir bakiyeye ekleniyor
             user.Balance += totalPrice;
 
             var stockHoldingItem = new StockHoldingItem
@@ -213,7 +224,7 @@ namespace Core.Features.GiveOrder
                 Quantity = order.Quantity,
                 UnitPrice = stockPrice,
                 Type = StockHoldingItemType.Sale,
-                OrderProcessId = orderProcessId // OrderProcess Id'si doğru şekilde atanıyor
+                OrderProcessId = orderProcessId
             };
             _context.StockHoldingItems.Add(stockHoldingItem);
 
@@ -232,5 +243,6 @@ namespace Core.Features.GiveOrder
 
             return Result.Success();
         }
+
     }
 }

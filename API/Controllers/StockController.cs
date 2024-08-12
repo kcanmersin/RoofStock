@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Contracts;
 using Core.Features.BuyStock;
+using Core.Features.GivePriceAlert;
 using Core.Features.SellStock;
 using Core.Features.ShowPortfolio;
 using Mapster;
@@ -21,6 +23,7 @@ namespace API.Controllers
         {
             _sender = sender;
         }
+
         [HttpGet("portfolio")]
         public async Task<IActionResult> ShowPortfolio([FromQuery] ShowPortfolioRequest request)
         {
@@ -38,6 +41,7 @@ namespace API.Controllers
                 message = result.Error.Message
             });
         }
+
         [HttpPost("sell")]
         public async Task<IActionResult> SellStock([FromBody] SellStockRequest request)
         {
@@ -60,6 +64,24 @@ namespace API.Controllers
         public async Task<IActionResult> BuyStock([FromBody] BuyStockRequest request)
         {
             var command = request.Adapt<BuyStockCommand>();
+            var result = await _sender.Send(command);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result.Value);
+            }
+
+            return BadRequest(new
+            {
+                code = result.Error.Code,
+                message = result.Error.Message
+            });
+        }
+
+        [HttpPost("price-alert")]
+        public async Task<IActionResult> SetPriceAlert([FromBody] SetPriceAlertRequest request)
+        {
+            var command = request.Adapt<SetPriceAlertCommand>();
             var result = await _sender.Send(command);
 
             if (result.IsSuccess)

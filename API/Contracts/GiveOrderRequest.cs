@@ -12,7 +12,7 @@ namespace Core.Features.GiveOrder
         [DefaultValue("AAPL")]
         public string StockSymbol { get; set; }
 
-        [DefaultValue(10)]
+        [DefaultValue(1)]
         public int Quantity { get; set; }
 
         [DefaultValue(150.0)]

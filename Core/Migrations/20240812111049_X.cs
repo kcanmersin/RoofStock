@@ -164,9 +164,9 @@ namespace Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    StockSymbol = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    StockSymbol = table.Column<string>(type: "text", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
-                    TargetPrice = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    TargetPrice = table.Column<decimal>(type: "numeric", nullable: false),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     OrderType = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
@@ -210,6 +210,35 @@ namespace Core.Migrations
                     table.PrimaryKey("PK_StockHoldings", x => x.Id);
                     table.ForeignKey(
                         name: "FK_StockHoldings_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StockPriceAlerts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    StockSymbol = table.Column<string>(type: "text", nullable: false),
+                    TargetPrice = table.Column<decimal>(type: "numeric", nullable: false),
+                    IsTriggered = table.Column<bool>(type: "boolean", nullable: false),
+                    TriggeredDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true),
+                    DeletedBy = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StockPriceAlerts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StockPriceAlerts_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -309,9 +338,9 @@ namespace Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"), "13e0e21d-73b0-4501-af38-f20fa0c02fd2", "Superadmin", "SUPERADMIN" },
-                    { new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"), "4bf704e1-09c9-4c56-ad09-3bb86985062a", "Admin", "ADMIN" },
-                    { new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"), "2cb33821-ea5f-400b-a7ba-99d66cf3a790", "User", "USER" }
+                    { new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"), "0974d701-2ec8-40d6-80ab-2c0b01e91ec5", "Superadmin", "SUPERADMIN" },
+                    { new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"), "6fa35fb2-57de-4ad7-ae51-86b69f97adfd", "Admin", "ADMIN" },
+                    { new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"), "5ae19699-324e-4488-ae44-c962bf824fb5", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -319,8 +348,8 @@ namespace Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"), 0, "1c0b3fdc-2136-4975-85c3-c04202d534b4", "admin@gmail.com", false, "Admin", "API\\deflogo.jpg", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEO1FiqbYluCEZ0PV4ZmgKyEy+EbsYQvCOUFaMH5gRyX6C2344QekWwFveLBs7xuHeQ==", "+905439999988", false, "cda342bc-45bc-4fb2-91bc-b471e0d624be", false, "admin@gmail.com" },
-                    { new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"), 0, "4288a624-bb88-4fe5-96b7-88e8c77ca12c", "superadmin@gmail.com", true, "Can", "API\\deflogo.jpg", "Mersin", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEGoEcYeY25/2d2SDatW5DFaxv1YeoaV1sk8jhReIDLikra40p7SQAQZ3Ni/RUp1V7A==", "+905439999999", true, "966b57ea-8726-404e-98ac-2822b5957cd4", false, "superadmin@gmail.com" }
+                    { new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"), 0, "3ec90498-4d57-43c1-949e-47b556fbd50c", "admin@gmail.com", false, "Admin", "API\\deflogo.jpg", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEBmOvj6gJHnmAqdJFXCFn2BOFIixq5AAQEu1UF+Whg2TbbNw+KVcK0loMh0umL3yVQ==", "+905439999988", false, "a0d813d8-7c5b-4795-a396-ddf1c87c52fd", false, "admin@gmail.com" },
+                    { new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"), 0, "579d97f2-07ee-4eea-b65e-edf39d8ad7a6", "superadmin@gmail.com", true, "Can", "API\\deflogo.jpg", "Mersin", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEC+/dtyDhpxcgEZWtLXnrUDCMeLxutJ/KZYk/KmQMqlH/2/7IO9xQlketyyl8wAQFA==", "+905439999999", true, "0c09618a-4f7f-48fc-b39d-c184d615904c", false, "superadmin@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -372,7 +401,8 @@ namespace Core.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_OrderProcesses_OrderId",
                 table: "OrderProcesses",
-                column: "OrderId");
+                column: "OrderId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
@@ -387,6 +417,11 @@ namespace Core.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_StockHoldings_UserId",
                 table: "StockHoldings",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StockPriceAlerts_UserId",
+                table: "StockPriceAlerts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -419,6 +454,9 @@ namespace Core.Migrations
 
             migrationBuilder.DropTable(
                 name: "StockHoldings");
+
+            migrationBuilder.DropTable(
+                name: "StockPriceAlerts");
 
             migrationBuilder.DropTable(
                 name: "Transactions");
