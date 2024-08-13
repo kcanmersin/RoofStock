@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Data.Entity;
 
 namespace API.Contracts
 {
@@ -14,5 +15,9 @@ namespace API.Contracts
         public string StockSymbol { get; set; } = string.Empty;
         [DefaultValue(100.00)]
         public decimal TargetPrice { get; set; }
+        [DefaultValue("Rise")]
+        public AlertType AlertType { get; set; }
+
+
     }
 }

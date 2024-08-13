@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.AspNetCore.Identity;
 using Core.Data.Entity.User;
+using Microsoft.AspNetCore.Identity;
 using System;
 
 namespace Core.Data.Configuration
@@ -34,6 +34,9 @@ namespace Core.Data.Configuration
                    .IsRequired()
                    .HasMaxLength(50);
 
+            builder.Property(u => u.EmailConfirmationToken)
+                   .IsRequired(false); // Nullable olarak tanýmlandý
+
             builder.HasMany<AppUserClaim>().WithOne().HasForeignKey(uc => uc.UserId).IsRequired();
             builder.HasMany<AppUserLogin>().WithOne().HasForeignKey(ul => ul.UserId).IsRequired();
             builder.HasMany<AppUserToken>().WithOne().HasForeignKey(ut => ut.UserId).IsRequired();
@@ -47,7 +50,7 @@ namespace Core.Data.Configuration
                    .WithOne(t => t.User)
                    .HasForeignKey(t => t.UserId);
 
-
+            // Örnek veriler
             var superadmin = new AppUser
             {
                 Id = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C"),
@@ -61,7 +64,10 @@ namespace Core.Data.Configuration
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                ImagePath = "API\\deflogo.jpg" 
+                ImagePath = "API\\deflogo.jpg",
+                Balance = 1000000,
+                EmailConfirmationToken = Guid.NewGuid().ToString(),
+                EmailConfirmationSentAt = DateTime.UtcNow
             };
             superadmin.PasswordHash = CreatePasswordHash(superadmin, "123456");
 
@@ -78,7 +84,10 @@ namespace Core.Data.Configuration
                 PhoneNumberConfirmed = false,
                 EmailConfirmed = false,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                ImagePath = "API\\deflogo.jpg" 
+                ImagePath = "API\\deflogo.jpg",
+                Balance = 1000000,
+                EmailConfirmationToken = Guid.NewGuid().ToString(),
+                EmailConfirmationSentAt = DateTime.UtcNow
             };
             admin.PasswordHash = CreatePasswordHash(admin, "19071907");
 

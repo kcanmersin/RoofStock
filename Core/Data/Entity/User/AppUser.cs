@@ -17,6 +17,13 @@ namespace Core.Data.Entity.User
         public decimal Balance { get; set; } = 0; //USD
         public string ImagePath { get; set; } ="/API/defaultlogo.jpg";
 
+
+        //for registration
+        public bool IsEmailConfirmed { get; set; } = false; 
+        public string? EmailConfirmationToken { get; set; }
+        public DateTime? EmailConfirmationSentAt { get; set; }
+
+
         //navigation properties
         public virtual ICollection<StockHolding> StockHoldings { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }

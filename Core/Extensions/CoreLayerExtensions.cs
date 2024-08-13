@@ -9,6 +9,7 @@ using FluentValidation;
 using Core.Service.StockApi;
 using Hangfire;
 using Hangfire.PostgreSql;
+using Core.Service.Email;
 
 namespace Core.Extensions
 {
@@ -16,33 +17,47 @@ namespace Core.Extensions
     {
         public static IServiceCollection LoadCoreLayerExtension(this IServiceCollection services, IConfiguration configuration)
         {
+            // Connection string'i environment variable'dan çek
+            var defaultConnectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(defaultConnectionString));
+
+            // JWT ayarlarını environment variable'dan çek
+            var jwtSettings = new JwtSettings
+            {
+                Secret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? configuration["JwtSettings:Secret"],
+                Issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? configuration["JwtSettings:Issuer"],
+                Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? configuration["JwtSettings:Audience"],
+                ExpiryMinutes = int.TryParse(Environment.GetEnvironmentVariable("JWT_EXPIRYMINUTES"), out var expiryMinutes) ? expiryMinutes : int.Parse(configuration["JwtSettings:ExpiryMinutes"])
+            };
+            services.AddSingleton(jwtSettings);
 
             services.AddScoped<IJwtService, JwtService>();
-            var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
-            services.AddSingleton(jwtSettings);
-            
-            //add mediatr
+
+            // MediatR ve EmailService ekle
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            //add currency
-            // Add CurrencyConversionService
+            services.AddScoped<IEmailService, EmailService>();
+
+            // Currency Conversion Service ekle
             services.AddHttpClient<CurrencyConversionService>();
-            //add validators from assembly
+
+            // Assembly içinden validatörleri ekle
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            //add stockApi Istockapise4rvice stockapiservicve
+
+            // StockApiService'i environment variable kullanarak ekle
             services.AddScoped<IStockApiService, StockApiService>();
             services.AddHttpClient<IStockApiService, StockApiService>(client =>
             {
-                client.BaseAddress = new Uri("https://finnhub.io/api/v1/");
+                var stockApiBaseUrl = Environment.GetEnvironmentVariable("STOCKAPI_BASEURL") ?? configuration["StockApiSettings:BaseUrl"];
+                client.BaseAddress = new Uri(stockApiBaseUrl);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
+                client.DefaultRequestHeaders.Add("X-Finnhub-Token", Environment.GetEnvironmentVariable("STOCKAPI_APIKEY") ?? configuration["StockApiSettings:ApiKey"]);
             });
-            // Hangfire configuration
+
+            // Hangfire için Postgres konfigürasyonu
             services.AddHangfire(config =>
-                config.UsePostgreSqlStorage(configuration.GetConnectionString("DefaultConnection")));
+                config.UsePostgreSqlStorage(defaultConnectionString));
             services.AddHangfireServer();
-
-
 
             return services;
         }

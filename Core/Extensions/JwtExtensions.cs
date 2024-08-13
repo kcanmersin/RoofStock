@@ -1,18 +1,24 @@
 ﻿using Core.Service.JWT;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Extensions
 {
     public static class JwtExtensions
     {
-        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, JwtSettings settings)
+        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+            // Environment variables'dan değerleri al
+            var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? configuration["JwtSettings:Secret"];
+            var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? configuration["JwtSettings:Issuer"];
+            var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? configuration["JwtSettings:Audience"];
+
+            // JWT ayarlarını yapılandır
+            var key = Encoding.UTF8.GetBytes(jwtSecret);
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme;
@@ -23,11 +29,11 @@ namespace Core.Extensions
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.Secret)),
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = settings.Issuer,
-                    ValidAudience = settings.Audience,
+                    ValidIssuer = jwtIssuer,
+                    ValidAudience = jwtAudience,
                     ClockSkew = TimeSpan.Zero
                 };
             });

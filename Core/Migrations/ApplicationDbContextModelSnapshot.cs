@@ -220,6 +220,9 @@ namespace Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<int>("AlertType")
+                        .HasColumnType("integer");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("text");
 
@@ -246,10 +249,11 @@ namespace Core.Migrations
 
                     b.Property<string>("StockSymbol")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
 
                     b.Property<decimal>("TargetPrice")
-                        .HasColumnType("numeric");
+                        .HasColumnType("numeric(18,2)");
 
                     b.Property<DateTime?>("TriggeredDate")
                         .HasColumnType("timestamp with time zone");
@@ -261,7 +265,7 @@ namespace Core.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("StockPriceAlerts");
+                    b.ToTable("StockPriceAlerts", (string)null);
                 });
 
             modelBuilder.Entity("Core.Data.Entity.Transaction", b =>
@@ -347,21 +351,21 @@ namespace Core.Migrations
                         new
                         {
                             Id = new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"),
-                            ConcurrencyStamp = "0974d701-2ec8-40d6-80ab-2c0b01e91ec5",
+                            ConcurrencyStamp = "6c88ec6d-2907-4f1e-b852-3e79d49df681",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"),
-                            ConcurrencyStamp = "6fa35fb2-57de-4ad7-ae51-86b69f97adfd",
+                            ConcurrencyStamp = "cb685220-2e4b-4afc-8fad-f33056fe773b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"),
-                            ConcurrencyStamp = "5ae19699-324e-4488-ae44-c962bf824fb5",
+                            ConcurrencyStamp = "ac2e2c9e-2766-47e3-bbaa-06ffc2aeae55",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -414,6 +418,12 @@ namespace Core.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<DateTime?>("EmailConfirmationSentAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("EmailConfirmationToken")
+                        .HasColumnType("text");
+
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
@@ -425,6 +435,9 @@ namespace Core.Migrations
                     b.Property<string>("ImagePath")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsEmailConfirmed")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -481,20 +494,23 @@ namespace Core.Migrations
                         {
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
-                            Balance = 0m,
-                            ConcurrencyStamp = "579d97f2-07ee-4eea-b65e-edf39d8ad7a6",
+                            Balance = 1000000m,
+                            ConcurrencyStamp = "0e9e716f-1bb7-4e66-b84a-6e4a05d10ef1",
                             Email = "superadmin@gmail.com",
+                            EmailConfirmationSentAt = new DateTime(2024, 8, 13, 10, 15, 39, 742, DateTimeKind.Utc).AddTicks(6303),
+                            EmailConfirmationToken = "3b9fef06-ad97-4e9e-9ae0-f8b1915e5d3b",
                             EmailConfirmed = true,
                             FirstName = "Can",
                             ImagePath = "API\\deflogo.jpg",
+                            IsEmailConfirmed = false,
                             LastName = "Mersin",
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC+/dtyDhpxcgEZWtLXnrUDCMeLxutJ/KZYk/KmQMqlH/2/7IO9xQlketyyl8wAQFA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAE0e2u+OAvPa/wvBeTzmAxqrYsJ5Oz3lTSFVZMINLRV1LPaHJTW90X5HPbexOdIrg==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "0c09618a-4f7f-48fc-b39d-c184d615904c",
+                            SecurityStamp = "0654022e-0d0c-4a5f-bce9-0818a68cf972",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -502,20 +518,23 @@ namespace Core.Migrations
                         {
                             Id = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             AccessFailedCount = 0,
-                            Balance = 0m,
-                            ConcurrencyStamp = "3ec90498-4d57-43c1-949e-47b556fbd50c",
+                            Balance = 1000000m,
+                            ConcurrencyStamp = "6a362cab-dedc-4346-8c0b-5aa306e1b662",
                             Email = "admin@gmail.com",
+                            EmailConfirmationSentAt = new DateTime(2024, 8, 13, 10, 15, 39, 748, DateTimeKind.Utc).AddTicks(1284),
+                            EmailConfirmationToken = "902c27f8-df9c-4cdf-861d-6144060a6e1e",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             ImagePath = "API\\deflogo.jpg",
+                            IsEmailConfirmed = false,
                             LastName = "User",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBmOvj6gJHnmAqdJFXCFn2BOFIixq5AAQEu1UF+Whg2TbbNw+KVcK0loMh0umL3yVQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIMiq82V4xKwNJvh2wwaBv/fv5Am3c31OeYVTQeNjwdMKqO8lPz9k5MibJoFhovbZw==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a0d813d8-7c5b-4795-a396-ddf1c87c52fd",
+                            SecurityStamp = "3179d64f-62a2-4c15-a52c-40c2ef991c8b",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });

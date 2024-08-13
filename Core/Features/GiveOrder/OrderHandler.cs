@@ -40,7 +40,6 @@ namespace Core.Features.GiveOrder
                 return Result.Failure<OrderResponse>(new Error("UserNotFound", "User not found."));
             }
 
-            // Alış emri verirken kullanıcının bakiyesinin yeterli olup olmadığını kontrol et
             if (request.OrderType == OrderType.Buy)
             {
                 var totalPrice = request.TargetPrice * request.Quantity;
@@ -50,7 +49,6 @@ namespace Core.Features.GiveOrder
                 }
             }
 
-            // Aktif satış emirleri ve kullanıcı hisse miktarı kontrolü
             if (request.OrderType == OrderType.Sell)
             {
                 var stockHolding = await _context.StockHoldings
@@ -61,7 +59,6 @@ namespace Core.Features.GiveOrder
                     return Result.Failure<OrderResponse>(new Error("InsufficientHoldings", "Insufficient holdings: You do not have enough shares to place this sell order."));
                 }
 
-                // Aktif satış emirleri kontrolü
                 var activeSellOrders = await _context.OrderProcesses
                     .Where(op => op.Order.UserId == user.Id && op.Order.StockSymbol == request.StockSymbol && op.Order.OrderType == OrderType.Sell && op.Status == OrderProcessStatus.Pending)
                     .SumAsync(op => op.Order.Quantity);
@@ -121,8 +118,6 @@ namespace Core.Features.GiveOrder
             }
             else
             {
-                // message = $"Order placed successfully and is pending: {order.Quantity} shares of {order.StockSymbol} at a target price of {order.TargetPrice:C}.";
-                //add ordertype to message
                 message = $"Order placed successfully and is pending: {order.OrderType} {order.Quantity} shares of {order.StockSymbol} at a target price of {order.TargetPrice:C}.";
             
             }

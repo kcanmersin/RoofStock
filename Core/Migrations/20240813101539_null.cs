@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Core.Migrations
 {
-    public partial class X : Migration
+    public partial class @null : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +35,9 @@ namespace Core.Migrations
                     Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Balance = table.Column<decimal>(type: "numeric(18,2)", nullable: false, defaultValue: 0m),
                     ImagePath = table.Column<string>(type: "text", nullable: false),
+                    IsEmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    EmailConfirmationToken = table.Column<string>(type: "text", nullable: true),
+                    EmailConfirmationSentAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
@@ -222,10 +225,11 @@ namespace Core.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    StockSymbol = table.Column<string>(type: "text", nullable: false),
-                    TargetPrice = table.Column<decimal>(type: "numeric", nullable: false),
+                    StockSymbol = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    TargetPrice = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     IsTriggered = table.Column<bool>(type: "boolean", nullable: false),
                     TriggeredDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    AlertType = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     DeletedBy = table.Column<string>(type: "text", nullable: true),
@@ -338,18 +342,18 @@ namespace Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"), "0974d701-2ec8-40d6-80ab-2c0b01e91ec5", "Superadmin", "SUPERADMIN" },
-                    { new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"), "6fa35fb2-57de-4ad7-ae51-86b69f97adfd", "Admin", "ADMIN" },
-                    { new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"), "5ae19699-324e-4488-ae44-c962bf824fb5", "User", "USER" }
+                    { new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"), "6c88ec6d-2907-4f1e-b852-3e79d49df681", "Superadmin", "SUPERADMIN" },
+                    { new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"), "cb685220-2e4b-4afc-8fad-f33056fe773b", "Admin", "ADMIN" },
+                    { new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"), "ac2e2c9e-2766-47e3-bbaa-06ffc2aeae55", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "Balance", "ConcurrencyStamp", "Email", "EmailConfirmationSentAt", "EmailConfirmationToken", "EmailConfirmed", "FirstName", "ImagePath", "IsEmailConfirmed", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"), 0, "3ec90498-4d57-43c1-949e-47b556fbd50c", "admin@gmail.com", false, "Admin", "API\\deflogo.jpg", "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEBmOvj6gJHnmAqdJFXCFn2BOFIixq5AAQEu1UF+Whg2TbbNw+KVcK0loMh0umL3yVQ==", "+905439999988", false, "a0d813d8-7c5b-4795-a396-ddf1c87c52fd", false, "admin@gmail.com" },
-                    { new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"), 0, "579d97f2-07ee-4eea-b65e-edf39d8ad7a6", "superadmin@gmail.com", true, "Can", "API\\deflogo.jpg", "Mersin", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEC+/dtyDhpxcgEZWtLXnrUDCMeLxutJ/KZYk/KmQMqlH/2/7IO9xQlketyyl8wAQFA==", "+905439999999", true, "0c09618a-4f7f-48fc-b39d-c184d615904c", false, "superadmin@gmail.com" }
+                    { new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"), 0, 1000000m, "6a362cab-dedc-4346-8c0b-5aa306e1b662", "admin@gmail.com", new DateTime(2024, 8, 13, 10, 15, 39, 748, DateTimeKind.Utc).AddTicks(1284), "902c27f8-df9c-4cdf-861d-6144060a6e1e", false, "Admin", "API\\deflogo.jpg", false, "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEIMiq82V4xKwNJvh2wwaBv/fv5Am3c31OeYVTQeNjwdMKqO8lPz9k5MibJoFhovbZw==", "+905439999988", false, "3179d64f-62a2-4c15-a52c-40c2ef991c8b", false, "admin@gmail.com" },
+                    { new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"), 0, 1000000m, "0e9e716f-1bb7-4e66-b84a-6e4a05d10ef1", "superadmin@gmail.com", new DateTime(2024, 8, 13, 10, 15, 39, 742, DateTimeKind.Utc).AddTicks(6303), "3b9fef06-ad97-4e9e-9ae0-f8b1915e5d3b", true, "Can", "API\\deflogo.jpg", false, "Mersin", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEAE0e2u+OAvPa/wvBeTzmAxqrYsJ5Oz3lTSFVZMINLRV1LPaHJTW90X5HPbexOdIrg==", "+905439999999", true, "0654022e-0d0c-4a5f-bce9-0818a68cf972", false, "superadmin@gmail.com" }
                 });
 
             migrationBuilder.InsertData(

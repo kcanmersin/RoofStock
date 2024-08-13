@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Core.Data;
 using Core.Service.StockApi;
+using Core.Data.Entity;
+using System.ComponentModel;
 
 namespace API.Notification.StockPriceAlert
 {
@@ -19,6 +21,7 @@ namespace API.Notification.StockPriceAlert
             _stockPriceMonitorService = stockPriceMonitorService;
         }
 
+        [DisplayName("Check and Trigger Stock Price Alerts")]
         public async Task CheckAndTriggerAlertsAsync()
         {
             var pendingAlerts = await _context.StockPriceAlerts
@@ -28,14 +31,28 @@ namespace API.Notification.StockPriceAlert
 
             foreach (var alert in pendingAlerts)
             {
+
+                await Task.Delay(5000);
+
                 var currentPrice = await _stockApiService.GetStockPriceAsync(alert.StockSymbol);
 
-                if (currentPrice >= alert.TargetPrice)
+                bool shouldTrigger = false;
+
+                if (alert.AlertType == AlertType.Rise && currentPrice >= alert.TargetPrice)
+                {
+                    shouldTrigger = true;
+                }
+                else if (alert.AlertType == AlertType.Fall && currentPrice <= alert.TargetPrice)
+                {
+                    shouldTrigger = true;
+                }
+
+                if (shouldTrigger)
                 {
                     alert.IsTriggered = true;
                     alert.TriggeredDate = DateTime.UtcNow;
 
-                    await _stockPriceMonitorService.CheckStockPriceAsync(alert.StockSymbol, alert.TargetPrice);
+                    await _stockPriceMonitorService.SendStockPriceAlertAsync(alert.UserId.ToString(), alert.StockSymbol, currentPrice);
 
                     _context.StockPriceAlerts.Update(alert);
                 }

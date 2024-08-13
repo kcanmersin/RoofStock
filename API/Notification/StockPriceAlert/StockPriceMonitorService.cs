@@ -13,9 +13,9 @@ namespace API.Notification.StockPriceAlert
             _hubContext = hubContext;
         }
 
-        public async Task CheckStockPriceAsync(string stockSymbol, decimal targetPrice)
+        public async Task SendStockPriceAlertAsync(string userId, string stockSymbol, decimal currentPrice)
         {
-            await _hubContext.Clients.All.SendAsync("ReceiveStockPriceAlert", stockSymbol, targetPrice);
+            await _hubContext.Clients.Group(userId).SendAsync("ReceiveStockPriceAlert", stockSymbol, currentPrice);
         }
     }
 }

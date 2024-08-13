@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Core.Service.StockApi;
 using Microsoft.Extensions.Configuration;
 
-
 public class StockApiService : IStockApiService
 {
     private readonly HttpClient _httpClient;
@@ -14,12 +13,15 @@ public class StockApiService : IStockApiService
 
     public StockApiService(HttpClient httpClient, IConfiguration configuration)
     {
+        // Ortam deðiþkeninden veya appsettings'ten API anahtarýný alýyoruz
         _httpClient = httpClient;
-        _apiKey = configuration["StockApiSettings:ApiKey"]; 
+        _apiKey = Environment.GetEnvironmentVariable("STOCKAPI_APIKEY")
+                  ?? configuration["StockApiSettings:ApiKey"];
     }
 
     public async Task<decimal> GetStockPriceAsync(string symbol)
     {
+        // API anahtarýný doðru þekilde request URI'ya yerleþtiriyoruz
         var requestUri = $"quote?symbol={symbol}&token={_apiKey}";
 
         var response = await _httpClient.GetAsync(requestUri);
@@ -30,7 +32,6 @@ public class StockApiService : IStockApiService
 
         return stockData?.c ?? 0;
     }
-    //TO DO: add other methods for calculate the daily profit-loss 
 }
 
 public class StockApiResponse

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Features.User.ConfirmEmail;
 using Core.Features.User.Login;
 using Core.Features.User.Register;
 using Core.Features.User.Update;
@@ -11,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-  [ApiController]
+    [ApiController]
     [Route("api/users")]
     public class UserController : ControllerBase
     {
@@ -21,6 +22,27 @@ namespace API.Controllers
         {
             _sender = sender;
         }
+
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail([FromQuery] string email, [FromQuery] string token)
+        {
+            
+            var command = new ConfirmEmailCommand
+            {
+                Email = email,
+                Token = token
+            };
+
+            var result = await _sender.Send(command);
+
+            if (result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            return Redirect("/welcome.html");
+        }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
@@ -49,7 +71,7 @@ namespace API.Controllers
 
             return Ok(result.Value);
         }
-         [HttpPut("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> Update([FromBody] UserUpdateRequest request)
         {
             var command = request.Adapt<UserUpdateCommand>();

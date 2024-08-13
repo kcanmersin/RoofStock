@@ -17,5 +17,14 @@ namespace Core.Data.Entity
         public bool IsTriggered { get; set; } = false;
         public DateTime? TriggeredDate { get; set; }
 
+        //alert type
+        public AlertType AlertType { get; set; }
+
+
+    }
+    public enum AlertType
+    {
+        Fall,
+        Rise
     }
 }

@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Hangfire;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Spi;
 using Core.Service.OrderBackgroundService;
 using API.Hubs;
 using API.Notification.StockPriceAlert;
@@ -35,7 +38,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Servisleri kaydet
+// Statik dosya middleware'ını ekleyin
 builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 
@@ -49,21 +52,31 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-// Use Hangfire Dashboard
-app.UseHangfireDashboard();
-app.UseHangfireServer();
+// Static files middleware burada kullanılmalı
+app.UseStaticFiles();
 
-// Hangfire job'u tanımlama
+app.UseHangfireDashboard();
+
+var options = new BackgroundJobServerOptions
+{
+    Queues = new[] { "high-priority", "low-priority" },
+    WorkerCount = Environment.ProcessorCount * 5
+};
+
+app.UseHangfireServer(options);
+
 RecurringJob.AddOrUpdate<OrderBackgroundService>(
-    "CheckAndProcessOrders", 
-    x => x.CheckAndProcessOrders(), 
-    Cron.Minutely 
+    "CheckAndProcessOrders",
+    x => x.CheckAndProcessOrders(),
+    Cron.Minutely,
+    queue: "high-priority"
 );
 
 RecurringJob.AddOrUpdate<StockPriceAlertService>(
     "CheckAndTriggerStockPriceAlerts",
     x => x.CheckAndTriggerAlertsAsync(),
-    Cron.Minutely 
+    Cron.Minutely,
+    queue: "low-priority"
 );
 
 app.MapControllers();
