@@ -35,7 +35,7 @@ namespace Core.Data.Configuration
                    .HasMaxLength(50);
 
             builder.Property(u => u.EmailConfirmationToken)
-                   .IsRequired(false); // Nullable olarak tanýmlandý
+                   .IsRequired(false); 
 
             builder.HasMany<AppUserClaim>().WithOne().HasForeignKey(uc => uc.UserId).IsRequired();
             builder.HasMany<AppUserLogin>().WithOne().HasForeignKey(ul => ul.UserId).IsRequired();
@@ -50,7 +50,6 @@ namespace Core.Data.Configuration
                    .WithOne(t => t.User)
                    .HasForeignKey(t => t.UserId);
 
-            // Örnek veriler
             var superadmin = new AppUser
             {
                 Id = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C"),

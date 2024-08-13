@@ -6,7 +6,7 @@ using Core.Service.JWT;
 using System.Security.Claims;
 using System.Web;
 using System.Text;
-using Microsoft.AspNetCore.WebUtilities; // URL decode işlemi için gerekli
+using Microsoft.AspNetCore.WebUtilities; 
 
 namespace Core.Features.User.ConfirmEmail
 {
@@ -23,7 +23,6 @@ namespace Core.Features.User.ConfirmEmail
 
         public async Task<Result<ConfirmEmailResponse>> Handle(ConfirmEmailCommand request, CancellationToken cancellationToken)
         {
-            // Token'ı Base64 formatından çöz
             var decodedToken = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(request.Token));
 
             var principal = _jwtService.ValidateToken(decodedToken);
@@ -45,8 +44,8 @@ namespace Core.Features.User.ConfirmEmail
             }
 
             user.IsEmailConfirmed = true;
-            user.EmailConfirmationToken = null; // Token'ı temizleyin
-            user.EmailConfirmationSentAt = null; // Zaman damgasını temizleyin
+            user.EmailConfirmationToken = null; 
+            user.EmailConfirmationSentAt = null; 
 
             var updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)

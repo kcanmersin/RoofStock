@@ -38,14 +38,12 @@ namespace Core.Features.User.Register
 
         public async Task<Result<RegisterResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            // Validate the request
             var validationResult = await _validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Result.Failure<RegisterResponse>(new Error("ValidationFailed", validationResult.Errors.First().ErrorMessage));
             }
 
-            // Create the user
             var user = new AppUser
             {
                 UserName = request.Email,
@@ -56,7 +54,6 @@ namespace Core.Features.User.Register
                 IsEmailConfirmed = false
             };
 
-            // Kullanıcıyı kaydet
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
@@ -64,15 +61,11 @@ namespace Core.Features.User.Register
                 return Result.Failure<RegisterResponse>(new Error("RegistrationFailed", string.Join(", ", errors)));
             }
 
-            // Kullanıcı kaydedildikten sonra, token oluşturup veritabanına kaydedelim
             var emailConfirmationToken = _jwtService.GenerateToken(user.Email, user.Id);
             user.EmailConfirmationToken = emailConfirmationToken;
             user.EmailConfirmationSentAt = DateTime.UtcNow;
-
-            // Kullanıcıyı güncelleyelim
             await _userManager.UpdateAsync(user);
 
-            // Assign role if specified
             if (!string.IsNullOrEmpty(request.RoleName))
             {
                 if (!await _roleManager.RoleExistsAsync(request.RoleName))
@@ -82,14 +75,12 @@ namespace Core.Features.User.Register
                 await _userManager.AddToRoleAsync(user, request.RoleName);
             }
 
-            // Token'ı Base64 formatında encode et
             var base64EncodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(emailConfirmationToken));
 
-            // Retrieve the confirmation URL base from appsettings.json
-            var confirmationUrlBase = _configuration["AppSettings:ConfirmationUrlBase"];
+            var confirmationUrlBase = Environment.GetEnvironmentVariable("APP_CONFIRMATIONURLBASE")
+                                      ?? _configuration["AppSettings:ConfirmationUrlBase"];
             var confirmationLink = $"{confirmationUrlBase}?email={user.Email}&token={base64EncodedToken}";
 
-            // Send confirmation email
             var emailSubject = "Please confirm your email address";
             var emailMessage = $"Please confirm your account by clicking this link: <a href='{confirmationLink}'>Confirm Email</a>";
 
@@ -102,13 +93,13 @@ namespace Core.Features.User.Register
                 return Result.Failure<RegisterResponse>(new Error("EmailFailed", "Failed to send confirmation email."));
             }
 
-            // Kayıt başarılı olduğunda döndürülen yanıt
             return Result.Success(new RegisterResponse
             {
                 UserId = user.Id.ToString(),
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
-                IsSuccess = true
+                IsSuccess = true,
+                Message = "Registration successful! Please check your email to confirm your account."
             });
         }
     }

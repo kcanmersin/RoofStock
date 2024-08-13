@@ -23,7 +23,6 @@ namespace Core.Features.User.Update
 
         public async Task<Result<UserUpdateResponse>> Handle(UserUpdateCommand request, CancellationToken cancellationToken)
         {
-            // Validate the request
             var validationResult = await _validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {

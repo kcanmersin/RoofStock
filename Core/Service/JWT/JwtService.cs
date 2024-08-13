@@ -55,7 +55,7 @@ namespace Core.Service.JWT
                     ValidateAudience = true,
                     ValidAudience = _jwtSettings.Audience,
                     ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero // Token süresini tam olarak denetler
+                    ClockSkew = TimeSpan.Zero 
                 }, out SecurityToken validatedToken);
 
                 return principal;

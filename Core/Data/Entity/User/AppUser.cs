@@ -27,6 +27,9 @@ namespace Core.Data.Entity.User
         //navigation properties
         public virtual ICollection<StockHolding> StockHoldings { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
+
+        //created date
+        
   
 
 

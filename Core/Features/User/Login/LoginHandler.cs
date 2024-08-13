@@ -38,6 +38,12 @@ namespace Core.Features.User.Login
                 return Result.Failure<LoginResponse>(new Error("LoginFailed", "Invalid email or password."));
             }
 
+            // Check if the user's email is confirmed
+            if (!user.IsEmailConfirmed)
+            {
+                return Result.Failure<LoginResponse>(new Error("LoginFailed", "Email not confirmed. Please confirm your email to log in."));
+            }
+
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, lockoutOnFailure: false);
             if (!result.Succeeded)
             {

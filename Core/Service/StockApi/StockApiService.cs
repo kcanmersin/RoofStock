@@ -13,7 +13,6 @@ public class StockApiService : IStockApiService
 
     public StockApiService(HttpClient httpClient, IConfiguration configuration)
     {
-        // Ortam deðiþkeninden veya appsettings'ten API anahtarýný alýyoruz
         _httpClient = httpClient;
         _apiKey = Environment.GetEnvironmentVariable("STOCKAPI_APIKEY")
                   ?? configuration["StockApiSettings:ApiKey"];
@@ -21,7 +20,6 @@ public class StockApiService : IStockApiService
 
     public async Task<decimal> GetStockPriceAsync(string symbol)
     {
-        // API anahtarýný doðru þekilde request URI'ya yerleþtiriyoruz
         var requestUri = $"quote?symbol={symbol}&token={_apiKey}";
 
         var response = await _httpClient.GetAsync(requestUri);

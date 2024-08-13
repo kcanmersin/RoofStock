@@ -59,6 +59,7 @@ namespace Core.Extensions
                 config.UsePostgreSqlStorage(defaultConnectionString));
             services.AddHangfireServer();
 
+            services.AddQuartzExtension(configuration);
             return services;
         }
     }

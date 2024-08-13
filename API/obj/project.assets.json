@@ -1811,7 +1811,10 @@
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.0"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.0",
+          "Quartz": "3.13.0",
+          "Quartz.Extensions.DependencyInjection": "3.13.0",
+          "Quartz.Extensions.Hosting": "3.13.0"
         },
         "compile": {
           "bin/placeholder/Core.dll": {}
@@ -4786,8 +4789,7 @@
       "Microsoft.AspNetCore.SignalR >= 1.1.0",
       "Microsoft.AspNetCore.SignalR.Client >= 8.0.7",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.0",
-      "Quartz >= 3.13.0",
-      "Quartz.Extensions.Hosting >= 3.13.0",
+      "Quartz.Extensions.DependencyInjection >= 3.13.0",
       "RabbitMQ.Client >= 6.8.1",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
@@ -4867,11 +4869,7 @@
             "target": "Package",
             "version": "[6.0.0, )"
           },
-          "Quartz": {
-            "target": "Package",
-            "version": "[3.13.0, )"
-          },
-          "Quartz.Extensions.Hosting": {
+          "Quartz.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[3.13.0, )"
           },

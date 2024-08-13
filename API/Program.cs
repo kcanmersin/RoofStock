@@ -9,9 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Hangfire;
-using Quartz;
-using Quartz.Impl;
-using Quartz.Spi;
 using Core.Service.OrderBackgroundService;
 using API.Hubs;
 using API.Notification.StockPriceAlert;
@@ -38,7 +35,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Statik dosya middleware'ını ekleyin
 builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 
@@ -52,7 +48,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-// Static files middleware burada kullanılmalı
 app.UseStaticFiles();
 
 app.UseHangfireDashboard();
