@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "pfkvJamr2fPpeq1mmb6ud2N0MX9TAJQHIPv5mOGZx9E=",
+  "Source": "API",
+  "BasePath": "_content/API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "API\\wwwroot",
+      "Source": "API",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\a.png",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "a.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\a.png"
+    },
+    {
+      "Identity": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\defaultlogo.jpg",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "defaultlogo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\defaultlogo.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\welcome.html",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "welcome.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\welcome.html"
+    }
+  ]
+}

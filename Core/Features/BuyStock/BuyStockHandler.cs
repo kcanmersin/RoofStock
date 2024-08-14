@@ -31,7 +31,7 @@ namespace Core.Features.BuyStock
             {
                 return Result.Failure<BuyStockResponse>(new Error("ValidationFailed", validationResult.Errors.First().ErrorMessage));
             }
-
+            //_buystockservice.buy()
             var currentPrice = await _stockApiService.GetStockPriceAsync(request.StockSymbol);
             if (currentPrice <= 0)
             {

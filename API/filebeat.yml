@@ -1,0 +1,12 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - API\Logs\*.log
+    fields:
+      log_type: aspnetcore
+
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+# cd "C:\Program Files\Elastic\Beats\8.15.0\filebeat"
+# .\filebeat.exe -e -c C:\Users\KC\source\repos\StockFlow\API\filebeat.yml

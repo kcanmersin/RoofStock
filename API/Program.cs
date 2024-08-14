@@ -12,8 +12,15 @@ using Hangfire;
 using Core.Service.OrderBackgroundService;
 using API.Hubs;
 using API.Notification.StockPriceAlert;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+//log
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .WriteTo.Console()
+    .WriteTo.File("Logs/logfile.log", rollingInterval: RollingInterval.Day)
+    .ReadFrom.Configuration(context.Configuration));
+
 
 builder.Services.LoadCoreLayerExtension(builder.Configuration);
 
@@ -39,7 +46,8 @@ builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 builder.Services.AddMemoryCache();
 var app = builder.Build();
-
+//log
+app.UseSerilogRequestLogging(); 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
