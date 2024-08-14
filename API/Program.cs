@@ -37,7 +37,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
-
+builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -51,7 +51,7 @@ app.UseAuthorization();
 app.UseStaticFiles();
 
 app.UseHangfireDashboard();
-
+app.UseResponseCaching();
 var options = new BackgroundJobServerOptions
 {
     Queues = new[] { "high-priority", "low-priority" },

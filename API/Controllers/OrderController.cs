@@ -21,11 +21,7 @@ namespace API.Controllers
         [HttpPost("cancel")]
         public async Task<IActionResult> CancelOrder([FromBody] CancelOrderRequest request)
         {
-            var command = new CancelOrderCommand
-            {
-                OrderId = request.OrderId,
-                UserId = request.UserId
-            };
+            var command = request.Adapt<CancelOrderCommand>();
 
             var result = await _sender.Send(command);
 

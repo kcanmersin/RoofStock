@@ -23,7 +23,6 @@ namespace Core.Features.SetPriceAlert
 
         public async Task<Result<SetPriceAlertResponse>> Handle(SetPriceAlertCommand request, CancellationToken cancellationToken)
         {
-            // Retrieve the current stock price
             var currentPrice = await _stockApiService.GetStockPriceAsync(request.StockSymbol);
 
             var alert = new StockPriceAlert
@@ -39,7 +38,6 @@ namespace Core.Features.SetPriceAlert
             _context.StockPriceAlerts.Add(alert);
             await _context.SaveChangesAsync(cancellationToken);
 
-            // Determine the alert type as a string
             string alertTypeDescription = request.AlertType == AlertType.Rise ? "rise" : "fall";
 
             return Result.Success(new SetPriceAlertResponse

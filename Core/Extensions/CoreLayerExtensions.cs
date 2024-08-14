@@ -17,11 +17,15 @@ namespace Core.Extensions
     {
         public static IServiceCollection LoadCoreLayerExtension(this IServiceCollection services, IConfiguration configuration)
         {
+            
             // Connection string'i environment variable'dan çek
             var defaultConnectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
 
+
+            //add imemorycache
+            services.AddMemoryCache();
             // JWT ayarlarını environment variable'dan çek
             var jwtSettings = new JwtSettings
             {
