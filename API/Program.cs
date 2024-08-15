@@ -13,6 +13,7 @@ using Core.Service.OrderBackgroundService;
 using API.Hubs;
 using API.Notification.StockPriceAlert;
 using Serilog;
+using API.Middlewares.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
 //log
@@ -20,7 +21,6 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .WriteTo.Console()
     .WriteTo.File("Logs/logfile.log", rollingInterval: RollingInterval.Day)
     .ReadFrom.Configuration(context.Configuration));
-
 
 builder.Services.LoadCoreLayerExtension(builder.Configuration);
 
@@ -45,6 +45,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 builder.Services.AddMemoryCache();
+//builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 var app = builder.Build();
 //log
 app.UseSerilogRequestLogging(); 
@@ -53,7 +54,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseAuthorization();
 
 app.UseStaticFiles();

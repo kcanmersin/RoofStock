@@ -10,6 +10,7 @@ using Core.Service.StockApi;
 using Hangfire;
 using Hangfire.PostgreSql;
 using Core.Service.Email;
+using Core.Middlewares.ExceptionHandling;
 
 namespace Core.Extensions
 {
@@ -23,7 +24,9 @@ namespace Core.Extensions
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
 
-
+            //add glo
+            // public class GlobalExceptionHandlesr : IExceptionHandler
+            //services.AddExceptionHandler<GlobalExceptionHandler>();
             //add imemorycache
             services.AddMemoryCache();
             // JWT ayarlarını environment variable'dan çek
