@@ -1,15 +1,15 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\a.png",
+      "Id": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\a.png",
       "PackagePath": "staticwebassets\\a.png"
     },
     {
-      "Id": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\defaultlogo.jpg",
+      "Id": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\defaultlogo.jpg",
       "PackagePath": "staticwebassets\\defaultlogo.jpg"
     },
     {
-      "Id": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\welcome.html",
+      "Id": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\welcome.html",
       "PackagePath": "staticwebassets\\welcome.html"
     },
     {

@@ -1,0 +1,615 @@
+2024-08-15 22:37:07.798 +03:00 [INF] Start installing Hangfire SQL objects...
+2024-08-15 22:37:07.885 +03:00 [INF] Hangfire SQL objects installed.
+2024-08-15 22:37:07.899 +03:00 [INF] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: localhost, DB: stockflowDB, Schema: hangfire'
+2024-08-15 22:37:07.900 +03:00 [INF] Using the following options for PostgreSQL job storage:
+2024-08-15 22:37:07.900 +03:00 [INF]     Queue poll interval: 00:00:15.
+2024-08-15 22:37:07.901 +03:00 [INF]     Invisibility timeout: 00:30:00.
+2024-08-15 22:37:07.901 +03:00 [INF]     Use sliding invisibility timeout: False.
+2024-08-15 22:37:07.902 +03:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 60
+    Listening queues: 'high-priority', 'low-priority'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-08-15 22:37:08.050 +03:00 [INF] Server desktop-ihebt3k:4004:99993a77 successfully announced in 124,568 ms
+2024-08-15 22:37:08.055 +03:00 [INF] Server desktop-ihebt3k:4004:99993a77 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-08-15 22:37:08.403 +03:00 [INF] Server desktop-ihebt3k:4004:99993a77 all the dispatchers started
+2024-08-15 22:37:08.438 +03:00 [INF] User profile is available. Using 'C:\Users\KC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-15 22:37:08.472 +03:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2024-08-15 22:37:08.473 +03:00 [INF] Quartz Scheduler created
+2024-08-15 22:37:08.474 +03:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2024-08-15 22:37:08.474 +03:00 [INF] RAMJobStore initialized.
+2024-08-15 22:37:08.475 +03:00 [INF] Quartz Scheduler 3.13.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2024-08-15 22:37:08.476 +03:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2024-08-15 22:37:08.476 +03:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2024-08-15 22:37:08.486 +03:00 [INF] Adding 1 jobs, 1 triggers.
+2024-08-15 22:37:08.489 +03:00 [INF] Adding job: DEFAULT.DeleteUnconfirmedUsersJob
+2024-08-15 22:37:08.534 +03:00 [WRN] The WebRootPath was not found: c:\Users\KC\source\repos\StockFlow\API\bin\Debug\net8.0\wwwroot. Static files may be unavailable.
+2024-08-15 22:37:08.581 +03:00 [INF] Now listening on: http://localhost:5000
+2024-08-15 22:37:08.586 +03:00 [INF] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: localhost, DB: stockflowDB, Schema: hangfire'
+2024-08-15 22:37:08.590 +03:00 [INF] Using the following options for PostgreSQL job storage:
+2024-08-15 22:37:08.590 +03:00 [INF]     Queue poll interval: 00:00:15.
+2024-08-15 22:37:08.591 +03:00 [INF]     Invisibility timeout: 00:30:00.
+2024-08-15 22:37:08.591 +03:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2024-08-15 22:37:08.592 +03:00 [INF]     Use sliding invisibility timeout: False.
+2024-08-15 22:37:08.593 +03:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-08-15 22:37:08.604 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-15 22:37:08.605 +03:00 [INF] Hosting environment: Production
+2024-08-15 22:37:08.606 +03:00 [INF] Content root path: c:\Users\KC\source\repos\StockFlow\API\bin\Debug\net8.0
+2024-08-15 22:37:08.606 +03:00 [INF] Server desktop-ihebt3k:4004:96e1cbcf successfully announced in 2,2641 ms
+2024-08-15 22:37:08.608 +03:00 [INF] Server desktop-ihebt3k:4004:96e1cbcf is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-08-15 22:37:08.750 +03:00 [INF] Server desktop-ihebt3k:4004:96e1cbcf all the dispatchers started
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."CreatedBy", o."CreatedDate", o."DeletedBy", o."DeletedDate", o."IsDeleted", o."ModifiedBy", o."ModifiedDate", o."OrderId", o."Status", o0."Id", o0."CreatedBy", o0."CreatedDate", o0."DeletedBy", o0."DeletedDate", o0."IsDeleted", o0."ModifiedBy", o0."ModifiedDate", o0."OrderType", o0."Quantity", o0."StockSymbol", o0."TargetPrice", o0."UserId"
+FROM "OrderProcesses" AS o
+INNER JOIN "Orders" AS o0 ON o."OrderId" = o0."Id"
+WHERE o."Status" = 0
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."CreatedBy", o."CreatedDate", o."DeletedBy", o."DeletedDate", o."IsDeleted", o."ModifiedBy", o."ModifiedDate", o."OrderId", o."Status", o0."Id", o0."CreatedBy", o0."CreatedDate", o0."DeletedBy", o0."DeletedDate", o0."IsDeleted", o0."ModifiedBy", o0."ModifiedDate", o0."OrderType", o0."Quantity", o0."StockSymbol", o0."TargetPrice", o0."UserId"
+FROM "OrderProcesses" AS o
+INNER JOIN "Orders" AS o0 ON o."OrderId" = o0."Id"
+WHERE o."Status" = 0
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.760 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.877 +03:00 [INF] Executed DbCommand (128ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.877 +03:00 [INF] Executed DbCommand (128ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.877 +03:00 [INF] Executed DbCommand (128ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."CreatedBy", o."CreatedDate", o."DeletedBy", o."DeletedDate", o."IsDeleted", o."ModifiedBy", o."ModifiedDate", o."OrderId", o."Status", o0."Id", o0."CreatedBy", o0."CreatedDate", o0."DeletedBy", o0."DeletedDate", o0."IsDeleted", o0."ModifiedBy", o0."ModifiedDate", o0."OrderType", o0."Quantity", o0."StockSymbol", o0."TargetPrice", o0."UserId"
+FROM "OrderProcesses" AS o
+INNER JOIN "Orders" AS o0 ON o."OrderId" = o0."Id"
+WHERE o."Status" = 0
+2024-08-15 22:37:09.877 +03:00 [INF] Executed DbCommand (128ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:09.879 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:09.879 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:09.885 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:09.888 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:09.888 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:09.889 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:09.892 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:10.371 +03:00 [INF] Received HTTP response headers after 476.5ms - 200
+2024-08-15 22:37:10.371 +03:00 [INF] Received HTTP response headers after 477.5758ms - 200
+2024-08-15 22:37:10.375 +03:00 [INF] End processing HTTP request after 489.6749ms - 200
+2024-08-15 22:37:10.376 +03:00 [INF] End processing HTTP request after 501.3669ms - 200
+2024-08-15 22:37:10.395 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:10.395 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:10.396 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:10.397 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:10.731 +03:00 [INF] Received HTTP response headers after 333.0462ms - 200
+2024-08-15 22:37:10.735 +03:00 [INF] End processing HTTP request after 339.5749ms - 200
+2024-08-15 22:37:10.736 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:10.737 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:10.742 +03:00 [INF] Received HTTP response headers after 343.1329ms - 200
+2024-08-15 22:37:10.743 +03:00 [INF] End processing HTTP request after 347.9651ms - 200
+2024-08-15 22:37:10.744 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:10.745 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.048 +03:00 [INF] Received HTTP response headers after 310.8689ms - 200
+2024-08-15 22:37:11.051 +03:00 [INF] End processing HTTP request after 315.6564ms - 200
+2024-08-15 22:37:11.053 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.054 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.188 +03:00 [INF] Received HTTP response headers after 1298.357ms - 200
+2024-08-15 22:37:11.190 +03:00 [INF] End processing HTTP request after 1316.0416ms - 200
+2024-08-15 22:37:11.192 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.193 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.372 +03:00 [INF] Received HTTP response headers after 317.9145ms - 200
+2024-08-15 22:37:11.375 +03:00 [INF] End processing HTTP request after 321.9051ms - 200
+2024-08-15 22:37:11.376 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.376 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.511 +03:00 [INF] Received HTTP response headers after 316.956ms - 200
+2024-08-15 22:37:11.512 +03:00 [INF] End processing HTTP request after 319.8494ms - 200
+2024-08-15 22:37:11.518 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.519 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.723 +03:00 [INF] Received HTTP response headers after 345.5623ms - 200
+2024-08-15 22:37:11.726 +03:00 [INF] End processing HTTP request after 350.3322ms - 200
+2024-08-15 22:37:11.727 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.728 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.844 +03:00 [INF] Received HTTP response headers after 324.2858ms - 200
+2024-08-15 22:37:11.847 +03:00 [INF] End processing HTTP request after 329.625ms - 200
+2024-08-15 22:37:11.848 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.849 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.959 +03:00 [INF] Received HTTP response headers after 1213.8838ms - 200
+2024-08-15 22:37:11.962 +03:00 [INF] End processing HTTP request after 1218.3707ms - 200
+2024-08-15 22:37:11.963 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:11.964 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.064 +03:00 [INF] Received HTTP response headers after 335.1902ms - 200
+2024-08-15 22:37:12.067 +03:00 [INF] End processing HTTP request after 340.1031ms - 200
+2024-08-15 22:37:12.069 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.069 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.277 +03:00 [INF] Received HTTP response headers after 311.9522ms - 200
+2024-08-15 22:37:12.280 +03:00 [INF] End processing HTTP request after 316.8433ms - 200
+2024-08-15 22:37:12.281 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.282 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.402 +03:00 [INF] Received HTTP response headers after 331.3323ms - 200
+2024-08-15 22:37:12.404 +03:00 [INF] End processing HTTP request after 335.0558ms - 200
+2024-08-15 22:37:12.599 +03:00 [INF] Received HTTP response headers after 315.5557ms - 200
+2024-08-15 22:37:12.602 +03:00 [INF] End processing HTTP request after 320.9692ms - 200
+2024-08-15 22:37:12.603 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.604 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.914 +03:00 [INF] Received HTTP response headers after 308.8505ms - 200
+2024-08-15 22:37:12.916 +03:00 [INF] End processing HTTP request after 313.2165ms - 200
+2024-08-15 22:37:12.917 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:12.919 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:13.026 +03:00 [INF] Received HTTP response headers after 1176.4583ms - 200
+2024-08-15 22:37:13.029 +03:00 [INF] End processing HTTP request after 1180.8941ms - 200
+2024-08-15 22:37:13.030 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:13.031 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:13.231 +03:00 [INF] Received HTTP response headers after 311.5478ms - 200
+2024-08-15 22:37:13.234 +03:00 [INF] End processing HTTP request after 316.7762ms - 200
+2024-08-15 22:37:14.161 +03:00 [INF] Received HTTP response headers after 1129.5013ms - 200
+2024-08-15 22:37:14.163 +03:00 [INF] End processing HTTP request after 1133.6992ms - 200
+2024-08-15 22:37:14.165 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.166 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.880 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.882 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.883 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.888 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.887 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.885 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.890 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.900 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.891 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.911 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.889 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.892 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.890 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.888 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.886 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.895 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:14.934 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:15.193 +03:00 [INF] Received HTTP response headers after 299.4258ms - 200
+2024-08-15 22:37:15.195 +03:00 [INF] End processing HTTP request after 315.0263ms - 200
+2024-08-15 22:37:15.207 +03:00 [INF] Received HTTP response headers after 312.1319ms - 200
+2024-08-15 22:37:15.209 +03:00 [INF] End processing HTTP request after 328.6514ms - 200
+2024-08-15 22:37:15.256 +03:00 [INF] Received HTTP response headers after 355.272ms - 200
+2024-08-15 22:37:15.258 +03:00 [INF] End processing HTTP request after 378.4144ms - 200
+2024-08-15 22:37:15.263 +03:00 [INF] Received HTTP response headers after 366.0675ms - 200
+2024-08-15 22:37:15.264 +03:00 [INF] Received HTTP response headers after 361.8146ms - 200
+2024-08-15 22:37:15.264 +03:00 [INF] End processing HTTP request after 384.1112ms - 200
+2024-08-15 22:37:15.265 +03:00 [INF] End processing HTTP request after 384.8504ms - 200
+2024-08-15 22:37:15.267 +03:00 [INF] Received HTTP response headers after 344.2552ms - 200
+2024-08-15 22:37:15.268 +03:00 [INF] End processing HTTP request after 368.7728ms - 200
+2024-08-15 22:37:15.270 +03:00 [INF] Received HTTP response headers after 357.5675ms - 200
+2024-08-15 22:37:15.271 +03:00 [INF] End processing HTTP request after 390.8209ms - 200
+2024-08-15 22:37:15.275 +03:00 [INF] Received HTTP response headers after 375.862ms - 200
+2024-08-15 22:37:15.276 +03:00 [INF] End processing HTTP request after 396.1651ms - 200
+2024-08-15 22:37:15.284 +03:00 [INF] Received HTTP response headers after 355.2721ms - 200
+2024-08-15 22:37:15.285 +03:00 [INF] End processing HTTP request after 405.2542ms - 200
+2024-08-15 22:37:15.286 +03:00 [INF] Received HTTP response headers after 349.3181ms - 200
+2024-08-15 22:37:15.287 +03:00 [INF] End processing HTTP request after 391.8077ms - 200
+2024-08-15 22:37:15.288 +03:00 [INF] Received HTTP response headers after 356.9653ms - 200
+2024-08-15 22:37:15.289 +03:00 [INF] End processing HTTP request after 408.8514ms - 200
+2024-08-15 22:37:15.295 +03:00 [INF] Received HTTP response headers after 368.5511ms - 200
+2024-08-15 22:37:15.296 +03:00 [INF] End processing HTTP request after 416.3922ms - 200
+2024-08-15 22:37:15.313 +03:00 [INF] Received HTTP response headers after 380.6645ms - 200
+2024-08-15 22:37:15.314 +03:00 [INF] End processing HTTP request after 433.9749ms - 200
+2024-08-15 22:37:15.355 +03:00 [INF] Received HTTP response headers after 1188.5337ms - 200
+2024-08-15 22:37:15.357 +03:00 [INF] End processing HTTP request after 1191.8713ms - 200
+2024-08-15 22:37:15.358 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:15.359 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:15.673 +03:00 [INF] Received HTTP response headers after 312.6042ms - 200
+2024-08-15 22:37:15.676 +03:00 [INF] End processing HTTP request after 317.4789ms - 200
+2024-08-15 22:37:16.106 +03:00 [INF] Received HTTP response headers after 1181.1402ms - 200
+2024-08-15 22:37:16.109 +03:00 [INF] End processing HTTP request after 1229.6225ms - 200
+2024-08-15 22:37:20.200 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.203 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.216 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.218 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.262 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.262 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.263 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.266 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.268 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.270 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.278 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.278 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.278 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.279 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.280 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.280 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.294 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.294 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.294 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.295 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.295 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.296 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.309 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.310 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.326 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.327 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:20.529 +03:00 [INF] Received HTTP response headers after 323.4881ms - 200
+2024-08-15 22:37:20.530 +03:00 [INF] End processing HTTP request after 330.3318ms - 200
+2024-08-15 22:37:20.543 +03:00 [INF] Received HTTP response headers after 324.7121ms - 200
+2024-08-15 22:37:20.544 +03:00 [INF] End processing HTTP request after 328.376ms - 200
+2024-08-15 22:37:20.588 +03:00 [INF] Received HTTP response headers after 316.0019ms - 200
+2024-08-15 22:37:20.588 +03:00 [INF] Received HTTP response headers after 317.7598ms - 200
+2024-08-15 22:37:20.592 +03:00 [INF] End processing HTTP request after 329.9548ms - 200
+2024-08-15 22:37:20.594 +03:00 [INF] End processing HTTP request after 331.7257ms - 200
+2024-08-15 22:37:20.612 +03:00 [INF] Received HTTP response headers after 331.3989ms - 200
+2024-08-15 22:37:20.613 +03:00 [INF] Received HTTP response headers after 312.7233ms - 200
+2024-08-15 22:37:20.615 +03:00 [INF] End processing HTTP request after 321.1498ms - 200
+2024-08-15 22:37:20.613 +03:00 [INF] End processing HTTP request after 335.4591ms - 200
+2024-08-15 22:37:20.619 +03:00 [INF] Received HTTP response headers after 320.8587ms - 200
+2024-08-15 22:37:20.619 +03:00 [INF] Received HTTP response headers after 322.5701ms - 200
+2024-08-15 22:37:20.620 +03:00 [INF] End processing HTTP request after 326.7705ms - 200
+2024-08-15 22:37:20.621 +03:00 [INF] End processing HTTP request after 327.6047ms - 200
+2024-08-15 22:37:20.623 +03:00 [INF] Received HTTP response headers after 349.4122ms - 200
+2024-08-15 22:37:20.623 +03:00 [INF] End processing HTTP request after 360.9554ms - 200
+2024-08-15 22:37:20.652 +03:00 [INF] Received HTTP response headers after 324.0406ms - 200
+2024-08-15 22:37:20.654 +03:00 [INF] End processing HTTP request after 328.2345ms - 200
+2024-08-15 22:37:20.662 +03:00 [INF] Received HTTP response headers after 378.3353ms - 200
+2024-08-15 22:37:20.663 +03:00 [INF] End processing HTTP request after 385.0717ms - 200
+2024-08-15 22:37:20.675 +03:00 [INF] Received HTTP response headers after 363.7878ms - 200
+2024-08-15 22:37:20.675 +03:00 [INF] End processing HTTP request after 366.2144ms - 200
+2024-08-15 22:37:21.123 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:21.126 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:21.434 +03:00 [INF] Received HTTP response headers after 1151.5238ms - 200
+2024-08-15 22:37:21.437 +03:00 [INF] End processing HTTP request after 1158.98ms - 200
+2024-08-15 22:37:21.439 +03:00 [INF] Received HTTP response headers after 312.5508ms - 200
+2024-08-15 22:37:21.441 +03:00 [INF] End processing HTTP request after 317.9159ms - 200
+2024-08-15 22:37:23.785 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:23.786 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:23.786 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:23.791 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:23.786 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:23.804 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:25.537 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.537 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.540 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.542 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.595 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.595 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.598 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.600 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.620 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.620 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.620 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.620 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.620 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.622 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.623 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.626 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.625 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.624 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.648 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.650 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.664 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.665 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.679 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.681 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:25.851 +03:00 [INF] Received HTTP response headers after 308.2434ms - 200
+2024-08-15 22:37:25.853 +03:00 [INF] End processing HTTP request after 316.2668ms - 200
+2024-08-15 22:37:25.855 +03:00 [INF] Received HTTP response headers after 309.7401ms - 200
+2024-08-15 22:37:25.856 +03:00 [INF] End processing HTTP request after 318.4387ms - 200
+2024-08-15 22:37:25.916 +03:00 [INF] Received HTTP response headers after 311.8656ms - 200
+2024-08-15 22:37:25.917 +03:00 [INF] End processing HTTP request after 322.0935ms - 200
+2024-08-15 22:37:25.921 +03:00 [INF] Received HTTP response headers after 318.7665ms - 200
+2024-08-15 22:37:25.922 +03:00 [INF] End processing HTTP request after 327.5173ms - 200
+2024-08-15 22:37:25.936 +03:00 [INF] Received HTTP response headers after 306.32ms - 200
+2024-08-15 22:37:25.937 +03:00 [INF] End processing HTTP request after 316.7602ms - 200
+2024-08-15 22:37:25.943 +03:00 [INF] Received HTTP response headers after 312.1483ms - 429
+2024-08-15 22:37:25.944 +03:00 [INF] End processing HTTP request after 323.7433ms - 429
+2024-08-15 22:37:25.970 +03:00 [INF] Received HTTP response headers after 337.2966ms - 429
+2024-08-15 22:37:25.970 +03:00 [INF] Received HTTP response headers after 319.6486ms - 429
+2024-08-15 22:37:25.982 +03:00 [INF] Received HTTP response headers after 316.5805ms - 429
+2024-08-15 22:37:25.971 +03:00 [INF] End processing HTTP request after 351.131ms - 429
+2024-08-15 22:37:25.996 +03:00 [INF] End processing HTTP request after 347.4936ms - 429
+2024-08-15 22:37:25.997 +03:00 [INF] End processing HTTP request after 333.2478ms - 429
+2024-08-15 22:37:26.009 +03:00 [INF] Received HTTP response headers after 326.7892ms - 429
+2024-08-15 22:37:26.056 +03:00 [INF] End processing HTTP request after 377.0399ms - 429
+2024-08-15 22:37:26.194 +03:00 [WRN] Failed to process the job '943': an exception occurred. Retry attempt 4 of 10 will be performed in 00:03:20.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.194 +03:00 [WRN] Failed to process the job '971': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:24.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.194 +03:00 [WRN] Failed to process the job '905': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:36.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.194 +03:00 [WRN] Failed to process the job '933': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:44.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.194 +03:00 [WRN] Failed to process the job '967': an exception occurred. Retry attempt 3 of 10 will be performed in 00:01:22.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.439 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:26.442 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:26.455 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:26.457 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:26.751 +03:00 [INF] Received HTTP response headers after 308.6117ms - 429
+2024-08-15 22:37:26.754 +03:00 [INF] End processing HTTP request after 315.2268ms - 429
+2024-08-15 22:37:26.796 +03:00 [INF] Received HTTP response headers after 338.8738ms - 429
+2024-08-15 22:37:26.798 +03:00 [INF] End processing HTTP request after 343.2498ms - 429
+2024-08-15 22:37:26.809 +03:00 [INF] Received HTTP response headers after 1182.1885ms - 429
+2024-08-15 22:37:26.810 +03:00 [INF] End processing HTTP request after 1189.4447ms - 429
+2024-08-15 22:37:26.827 +03:00 [WRN] Failed to process the job '889': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:00.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.839 +03:00 [INF] Received HTTP response headers after 1209.9579ms - 429
+2024-08-15 22:37:26.840 +03:00 [INF] End processing HTTP request after 1219.2665ms - 429
+2024-08-15 22:37:26.928 +03:00 [WRN] Failed to process the job '945': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:12.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.929 +03:00 [WRN] Failed to process the job '897': an exception occurred. Retry attempt 4 of 10 will be performed in 00:01:36.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:26.929 +03:00 [WRN] Failed to process the job '915': an exception occurred. Retry attempt 4 of 10 will be performed in 00:03:12.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:28.793 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.793 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.796 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.798 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.800 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.800 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.800 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.803 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.805 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.806 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.804 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:28.811 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:29.114 +03:00 [INF] Received HTTP response headers after 314.4959ms - 429
+2024-08-15 22:37:29.116 +03:00 [INF] End processing HTTP request after 323.9941ms - 429
+2024-08-15 22:37:29.165 +03:00 [WRN] Failed to process the job '947': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:40.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:29.176 +03:00 [INF] Received HTTP response headers after 369.4673ms - 429
+2024-08-15 22:37:29.177 +03:00 [INF] End processing HTTP request after 376.7307ms - 429
+2024-08-15 22:37:29.186 +03:00 [INF] Received HTTP response headers after 376.4415ms - 429
+2024-08-15 22:37:29.186 +03:00 [INF] Received HTTP response headers after 374.2951ms - 429
+2024-08-15 22:37:29.187 +03:00 [INF] End processing HTTP request after 387.3088ms - 429
+2024-08-15 22:37:29.188 +03:00 [INF] End processing HTTP request after 383.719ms - 429
+2024-08-15 22:37:29.195 +03:00 [INF] Received HTTP response headers after 387.2361ms - 429
+2024-08-15 22:37:29.205 +03:00 [INF] End processing HTTP request after 404.933ms - 429
+2024-08-15 22:37:29.314 +03:00 [WRN] Failed to process the job '893': an exception occurred. Retry attempt 4 of 10 will be performed in 00:01:40.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:29.314 +03:00 [WRN] Failed to process the job '883': an exception occurred. Retry attempt 4 of 10 will be performed in 00:03:20.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:29.315 +03:00 [WRN] Failed to process the job '869': an exception occurred. Retry attempt 4 of 10 will be performed in 00:03:16.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:29.315 +03:00 [WRN] Failed to process the job '949': an exception occurred. Retry attempt 4 of 10 will be performed in 00:01:44.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:29.983 +03:00 [INF] Received HTTP response headers after 1181.1877ms - 429
+2024-08-15 22:37:29.985 +03:00 [INF] End processing HTTP request after 1192.4576ms - 429
+2024-08-15 22:37:30.033 +03:00 [WRN] Failed to process the job '939': an exception occurred. Retry attempt 4 of 10 will be performed in 00:01:56.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:30.849 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.849 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.852 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.853 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.919 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.922 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.926 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.927 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.940 +03:00 [INF] Start processing HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:30.941 +03:00 [INF] Sending HTTP request GET https://finnhub.io/api/v1/quote?symbol=TSLA&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg
+2024-08-15 22:37:31.189 +03:00 [INF] Received HTTP response headers after 335.484ms - 429
+2024-08-15 22:37:31.192 +03:00 [INF] End processing HTTP request after 343.0037ms - 429
+2024-08-15 22:37:31.202 +03:00 [INF] Received HTTP response headers after 345.5356ms - 429
+2024-08-15 22:37:31.204 +03:00 [INF] End processing HTTP request after 354.6374ms - 429
+2024-08-15 22:37:31.247 +03:00 [INF] Received HTTP response headers after 324.5174ms - 429
+2024-08-15 22:37:31.257 +03:00 [INF] Received HTTP response headers after 329.794ms - 429
+2024-08-15 22:37:31.269 +03:00 [INF] End processing HTTP request after 349.5466ms - 429
+2024-08-15 22:37:31.270 +03:00 [INF] End processing HTTP request after 343.7357ms - 429
+2024-08-15 22:37:31.287 +03:00 [WRN] Failed to process the job '953': an exception occurred. Retry attempt 4 of 10 will be performed in 00:01:48.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:31.287 +03:00 [WRN] Failed to process the job '951': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:24.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:31.288 +03:00 [INF] Received HTTP response headers after 346.8379ms - 429
+2024-08-15 22:37:31.312 +03:00 [INF] End processing HTTP request after 371.896ms - 429
+2024-08-15 22:37:31.385 +03:00 [WRN] Failed to process the job '969': an exception occurred. Retry attempt 2 of 10 will be performed in 00:01:10.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:31.386 +03:00 [WRN] Failed to process the job '891': an exception occurred. Retry attempt 4 of 10 will be performed in 00:02:40.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:31.387 +03:00 [WRN] Failed to process the job '875': an exception occurred. Retry attempt 4 of 10 will be performed in 00:03:24.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 429 (Too Many Requests).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at StockApiService.GetStockPriceAsync(String symbol) in c:\Users\KC\source\repos\StockFlow\Core\Service\StockApi\StockApiService.cs:line 31
+   at API.Notification.StockPriceAlert.StockPriceAlertService.CheckAndTriggerAlertsAsync() in c:\Users\KC\source\repos\StockFlow\API\Notification\StockPriceAlert\StockPriceAlertService.cs:line 37
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2024-08-15 22:37:38.831 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:38.840 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:38.852 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")
+2024-08-15 22:37:38.862 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."AlertType", s."CreatedBy", s."CreatedDate", s."DeletedBy", s."DeletedDate", s."IsDeleted", s."IsTriggered", s."ModifiedBy", s."ModifiedDate", s."StockSymbol", s."TargetPrice", s."TriggeredDate", s."UserId", a."Id", a."AccessFailedCount", a."Balance", a."ConcurrencyStamp", a."Email", a."EmailConfirmationSentAt", a."EmailConfirmationToken", a."EmailConfirmed", a."FirstName", a."ImagePath", a."IsEmailConfirmed", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "StockPriceAlerts" AS s
+INNER JOIN "AspNetUsers" AS a ON s."UserId" = a."Id"
+WHERE NOT (s."IsTriggered")

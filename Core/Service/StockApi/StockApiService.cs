@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using Core.Service.StockApi;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Polly;
 
 public class StockApiService : IStockApiService
 {
     private readonly HttpClient _httpClient;
     private readonly string _apiKey;
     private readonly IMemoryCache _memoryCache;
+    private readonly IAsyncPolicy<HttpResponseMessage> _circuitBreakerPolicy;
     public StockApiService(HttpClient httpClient, IConfiguration configuration, IMemoryCache memoryCache)
     {
         _httpClient = httpClient;
@@ -20,20 +22,28 @@ public class StockApiService : IStockApiService
                   ?? configuration["StockApiSettings:ApiKey"];
         _memoryCache = memoryCache;
 
+        _circuitBreakerPolicy = Policy
+        .Handle<HttpRequestException>()
+        .OrResult<HttpResponseMessage>(r => !r.IsSuccessStatusCode)
+        .CircuitBreakerAsync(
+         handledEventsAllowedBeforeBreaking: 3,
+         durationOfBreak: TimeSpan.FromMinutes(1));
 
     }
 
     public async Task<decimal> GetStockPriceAsync(string symbol)
     {
-        var requestUri = $"quote?symbol={symbol}&token={_apiKey}";
+        var requestUri = $"api/stockprice?symbol={symbol}";
 
-        var response = await _httpClient.GetAsync(requestUri);
-        response.EnsureSuccessStatusCode();
+        var response = await _circuitBreakerPolicy.ExecuteAsync(() => _httpClient.GetAsync(requestUri));
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception("Failed to fetch stock price.");
+        }
 
         var content = await response.Content.ReadAsStringAsync();
-        var stockData = JsonSerializer.Deserialize<StockApiResponse>(content);
-
-        return stockData?.c ?? 0;
+        return decimal.Parse(content); 
     }
 
 

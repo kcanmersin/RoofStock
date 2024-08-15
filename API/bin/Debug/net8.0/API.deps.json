@@ -34,7 +34,8 @@
           "Serilog.Sinks.File": "6.0.0",
           "Swashbuckle.AspNetCore": "6.7.0",
           "Swashbuckle.AspNetCore.Swagger": "6.7.0",
-          "Swashbuckle.AspNetCore.SwaggerGen": "6.7.0"
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.7.0",
+          "prometheus-net.AspNetCore": "8.2.1"
         },
         "runtime": {
           "API.dll": {}
@@ -277,7 +278,7 @@
           "IdentityModel.OidcClient": "5.2.1",
           "System.IdentityModel.Tokens.Jwt": "8.0.1",
           "YamlDotNet": "13.3.1",
-          "prometheus-net": "8.0.1"
+          "prometheus-net": "8.2.1"
         },
         "runtime": {
           "lib/net7.0/KubernetesClient.dll": {
@@ -1084,7 +1085,26 @@
           }
         }
       },
-      "prometheus-net/8.0.1": {
+      "Polly/8.4.1": {
+        "dependencies": {
+          "Polly.Core": "8.4.1"
+        },
+        "runtime": {
+          "lib/net6.0/Polly.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.1.3582"
+          }
+        }
+      },
+      "Polly.Core/8.4.1": {
+        "runtime": {
+          "lib/net8.0/Polly.Core.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.1.3582"
+          }
+        }
+      },
+      "prometheus-net/8.2.1": {
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
           "Microsoft.Extensions.ObjectPool": "7.0.0"
@@ -1092,7 +1112,18 @@
         "runtime": {
           "lib/net7.0/Prometheus.NetStandard.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1.0"
+            "fileVersion": "8.2.1.0"
+          }
+        }
+      },
+      "prometheus-net.AspNetCore/8.2.1": {
+        "dependencies": {
+          "prometheus-net": "8.2.1"
+        },
+        "runtime": {
+          "lib/net6.0/Prometheus.AspNetCore.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.2.1.0"
           }
         }
       },
@@ -1511,6 +1542,7 @@
           "Microsoft.IdentityModel.JsonWebTokens": "8.0.1",
           "Microsoft.IdentityModel.Tokens": "8.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
+          "Polly": "8.4.1",
           "Quartz": "3.13.0",
           "Quartz.Extensions.DependencyInjection": "3.13.0",
           "Quartz.Extensions.Hosting": "3.13.0",
@@ -2238,12 +2270,33 @@
       "path": "npgsql.entityframeworkcore.postgresql/8.0.4",
       "hashPath": "npgsql.entityframeworkcore.postgresql.8.0.4.nupkg.sha512"
     },
-    "prometheus-net/8.0.1": {
+    "Polly/8.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A9sOtQB2gEhujBxPKw+KcGScBiPvBmy4lYVM5OlETMj4xjVD5r/ixIg52HHg2P0lcImJTpfeWnD0/9tpQsRQTA==",
-      "path": "prometheus-net/8.0.1",
-      "hashPath": "prometheus-net.8.0.1.nupkg.sha512"
+      "sha512": "sha512-kBxql53peR0bjxeEuuY114GD2rmC0tkUwE1xuKUlnd74ULEsGu3OwcLH56KkwxBPUbOysPa7stT9SJ6pKGTzlg==",
+      "path": "polly/8.4.1",
+      "hashPath": "polly.8.4.1.nupkg.sha512"
+    },
+    "Polly.Core/8.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bg4kE7mFwXc6FJ8NLknTgVgLAMlbToWC7vpdqAITv8lPzKpp9v7aWJPc04GRoZQaJhVY/tdr8K2/VW2aTmaA1Q==",
+      "path": "polly.core/8.4.1",
+      "hashPath": "polly.core.8.4.1.nupkg.sha512"
+    },
+    "prometheus-net/8.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3wVgdEPOCBF752s2xps5T+VH+c9mJK8S8GKEDg49084P6JZMumTZI5Te6aJ9MQpX0sx7om6JOnBpIi7ZBmmiDQ==",
+      "path": "prometheus-net/8.2.1",
+      "hashPath": "prometheus-net.8.2.1.nupkg.sha512"
+    },
+    "prometheus-net.AspNetCore/8.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/4TfTvbwIDqpaKTiWvEsjUywiHYF9zZvGZF5sK15avoDsUO/WPQbKsF8TiMaesuphdFQPK2z52P0zk6j26V0rQ==",
+      "path": "prometheus-net.aspnetcore/8.2.1",
+      "hashPath": "prometheus-net.aspnetcore.8.2.1.nupkg.sha512"
     },
     "Quartz/3.13.0": {
       "type": "package",

@@ -19,15 +19,28 @@ using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure Rate Limiting
 builder.Services.AddRateLimiter(options =>
 {
+        options.AddPolicy("fixed", httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: partition => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 10, 
+                Window = TimeSpan.FromSeconds(10), 
+                QueueLimit = 2, 
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                AutoReplenishment = true 
+            })
+    );
     options.AddFixedWindowLimiter(policyName: "default", options =>
     {
-        options.PermitLimit = 3; // Number of requests allowed per window
+        options.PermitLimit = 300; // Number of requests allowed per window
         options.Window = TimeSpan.FromMinutes(1); // Time window duration
         options.QueueLimit = 3; // Max requests that can be queued after limit is reached
         options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst; // Queue processing order
@@ -79,6 +92,7 @@ builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
+app.UseMetricServer();
 
 
 // Log requests
