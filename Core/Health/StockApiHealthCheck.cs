@@ -17,22 +17,24 @@ public class StockApiHealthCheck : IHealthCheck
     {
         _httpClient = httpClient;
         _testSymbol = configuration["StockApiSettings:TestSymbol"] ?? "AAPL";
-        _apiKey = configuration["StockApiSettings:ApiKey"];
-        _baseUrl = configuration["StockApiSettings:BaseUrl"];
-    }
+        _apiKey = Environment.GetEnvironmentVariable("STOCKAPI_APIKEY") ?? configuration["StockApiSettings:ApiKey"];
+        _baseUrl = Environment.GetEnvironmentVariable("STOCKAPI_BASEURL") ?? configuration["StockApiSettings:BaseUrl"];
 
+    }
     public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
     {
+        var requestUrl = $"{_baseUrl.TrimEnd('/')}/quote?symbol={_testSymbol}&token={_apiKey}";
+
         var details = new Dictionary<string, object>
-        {
-            { "Url", $"{_baseUrl}/quote?symbol={_testSymbol}" },
-            { "ApiKey", _apiKey },
-            { "TestSymbol", _testSymbol }
-        };
+    {
+        { "Url", requestUrl },
+        { "ApiKey", _apiKey },
+        { "TestSymbol", _testSymbol }
+    };
 
         try
         {
-            var response = await _httpClient.GetAsync($"quote?symbol={_testSymbol}");
+            var response = await _httpClient.GetAsync(requestUrl, cancellationToken);
 
             if (response.IsSuccessStatusCode)
             {
@@ -56,4 +58,5 @@ public class StockApiHealthCheck : IHealthCheck
             return HealthCheckResult.Unhealthy($"Stock API is not accessible. Exception: {ex.Message}", data: details);
         }
     }
+
 }

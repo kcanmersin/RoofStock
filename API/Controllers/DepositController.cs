@@ -2,6 +2,7 @@
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Core.Features.User.Deposit
 {
@@ -17,6 +18,8 @@ namespace Core.Features.User.Deposit
         }
 
         [HttpPost]
+        //rate limit defaultx
+        [EnableRateLimiting("default")]
         public async Task<IActionResult> Deposit([FromBody] DepositRequest request)
         {
             var command = request.Adapt<DepositCommand>();

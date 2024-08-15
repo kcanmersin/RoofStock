@@ -27,6 +27,8 @@ namespace Core.Extensions
             var defaultConnectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
+            //add stock api health check
+            services.AddHttpClient<StockApiHealthCheck>();
 
             // Health checks configuration
             services.AddHealthChecks()

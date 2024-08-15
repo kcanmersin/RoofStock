@@ -17,22 +17,37 @@ using API.Middlewares.ExceptionHandling;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
+
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddHealthChecks()
-//    .AddNpgSql(
-//        connectionString: builder.Configuration.GetConnectionString("DefaultConnection"), 
-//        name: "PostgreSQL Health Check",
-//        failureStatus: HealthStatus.Unhealthy)
-//    .AddCheck<StockApiHealthCheck>("Stock API Health Check");
+// Configure Rate Limiting
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter(policyName: "default", options =>
+    {
+        options.PermitLimit = 3; // Number of requests allowed per window
+        options.Window = TimeSpan.FromMinutes(1); // Time window duration
+        options.QueueLimit = 3; // Max requests that can be queued after limit is reached
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst; // Queue processing order
+        options.AutoReplenishment = true; // Automatically replenish permits after the window expires
+        options.QueueProcessingOrder = QueueProcessingOrder.NewestFirst; // Can also use OldestFirst based on preference
+    })
+    .RejectionStatusCode = 429; // Status code for rejected requests
 
-// builder.Services.AddHealthChecksUI(setup =>
-// {
-//     setup.SetEvaluationTimeInSeconds(15); // Set the time interval for checking the health status
-//     setup.MaximumHistoryEntriesPerEndpoint(60); // Set the maximum history entries
-// })
-// .AddInMemoryStorage(); // Store history in memory
-// Loglama ayarlar�
+
+    options.AddTokenBucketLimiter(policyName: "apiKeyUsage", options =>
+    {
+        options.TokenLimit = 50; // Number of tokens available
+        options.TokensPerPeriod = 10; // Tokens replenished per period
+        options.ReplenishmentPeriod = TimeSpan.FromMinutes(1); // Replenishment period
+        options.QueueLimit = 5; // Queue limit
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+});
+
+// Logging configuration
 builder.Host.UseSerilog((context, services, configuration) => configuration
     .WriteTo.Console()
     .WriteTo.File("Logs/logfile.log", rollingInterval: RollingInterval.Day)
@@ -61,22 +76,31 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 builder.Services.AddMemoryCache();
-//builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 var app = builder.Build();
 
-// Loglama middleware
+
+
+// Log requests
 app.UseSerilogRequestLogging();
 
+// Enable Swagger in development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Rotalama middleware'i ekleyin
+// Routing middleware
 app.UseRouting();
+// Apply rate limiting middleware before routing
+app.UseRateLimiter();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers().RequireRateLimiting("default");
+});
 
+// Health check endpoints
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHealthChecks("/h", new HealthCheckOptions
@@ -85,6 +109,8 @@ app.UseEndpoints(endpoints =>
     });
     endpoints.MapHealthChecksUI(); // This will add a health checks UI endpoint
 });
+
+// Rate limiting applied globally, but can be overridden by specific controllers or actions
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
