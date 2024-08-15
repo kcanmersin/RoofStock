@@ -14,9 +14,25 @@ using API.Hubs;
 using API.Notification.StockPriceAlert;
 using Serilog;
 using API.Middlewares.ExceptionHandling;
-
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 var builder = WebApplication.CreateBuilder(args);
-//log
+
+//builder.Services.AddHealthChecks()
+//    .AddNpgSql(
+//        connectionString: builder.Configuration.GetConnectionString("DefaultConnection"), 
+//        name: "PostgreSQL Health Check",
+//        failureStatus: HealthStatus.Unhealthy)
+//    .AddCheck<StockApiHealthCheck>("Stock API Health Check");
+
+// builder.Services.AddHealthChecksUI(setup =>
+// {
+//     setup.SetEvaluationTimeInSeconds(15); // Set the time interval for checking the health status
+//     setup.MaximumHistoryEntriesPerEndpoint(60); // Set the maximum history entries
+// })
+// .AddInMemoryStorage(); // Store history in memory
+// Loglama ayarlar�
 builder.Host.UseSerilog((context, services, configuration) => configuration
     .WriteTo.Console()
     .WriteTo.File("Logs/logfile.log", rollingInterval: RollingInterval.Day)
@@ -46,21 +62,39 @@ builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 builder.Services.AddMemoryCache();
 //builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 var app = builder.Build();
-//log
-app.UseSerilogRequestLogging(); 
+
+// Loglama middleware
+app.UseSerilogRequestLogging();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Rotalama middleware'i ekleyin
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHealthChecks("/h", new HealthCheckOptions
+    {
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
+    endpoints.MapHealthChecksUI(); // This will add a health checks UI endpoint
+});
+
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 app.UseAuthorization();
 
 app.UseStaticFiles();
 
 app.UseHangfireDashboard();
 app.UseResponseCaching();
+
 var options = new BackgroundJobServerOptions
 {
     Queues = new[] { "high-priority", "low-priority" },

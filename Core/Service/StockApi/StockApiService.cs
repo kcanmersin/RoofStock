@@ -12,14 +12,14 @@ public class StockApiService : IStockApiService
 {
     private readonly HttpClient _httpClient;
     private readonly string _apiKey;
-private readonly IMemoryCache _memoryCache;
+    private readonly IMemoryCache _memoryCache;
     public StockApiService(HttpClient httpClient, IConfiguration configuration, IMemoryCache memoryCache)
     {
         _httpClient = httpClient;
         _apiKey = Environment.GetEnvironmentVariable("STOCKAPI_APIKEY")
                   ?? configuration["StockApiSettings:ApiKey"];
         _memoryCache = memoryCache;
-        
+
 
     }
 
@@ -37,7 +37,7 @@ private readonly IMemoryCache _memoryCache;
     }
 
 
-      public async Task<List<MarketNewsResponse>> GetMarketNewsAsync(string category, int? minId = null)
+    public async Task<List<MarketNewsResponse>> GetMarketNewsAsync(string category, int? minId = null)
     {
         var cacheKey = $"MarketNews_{category}_{minId}";
 
@@ -61,7 +61,7 @@ private readonly IMemoryCache _memoryCache;
 
         if (newsData != null)
         {
-            _memoryCache.Set(cacheKey, newsData, TimeSpan.FromMinutes(10)); 
+            _memoryCache.Set(cacheKey, newsData, TimeSpan.FromMinutes(10));
         }
 
         return newsData ?? new List<MarketNewsResponse>();
