@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Core.Data;
 using Core.Data.Entity;
 using Core.Data.Entity.User;
+using Core.Features;
 using Core.Service.StockApi;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,11 +14,15 @@ namespace Core.Service.OrderBackgroundService
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;
+        private readonly IBuyService _buyService;
+        private readonly ISellService _sellService;
 
-        public OrderBackgroundService(ApplicationDbContext context, IStockApiService stockApiService)
+        public OrderBackgroundService(ApplicationDbContext context, IStockApiService stockApiService, IBuyService buyService, ISellService sellService)
         {
             _context = context;
             _stockApiService = stockApiService;
+            _buyService = buyService;
+            _sellService = sellService;
         }
 
         public async Task CheckAndProcessOrders()
@@ -29,7 +34,6 @@ namespace Core.Service.OrderBackgroundService
 
             foreach (var orderProcess in pendingOrders)
             {
-
                 var currentPrice = await _stockApiService.GetStockPriceAsync(orderProcess.Order.StockSymbol);
 
                 if (orderProcess.Order.OrderType == OrderType.Buy && currentPrice <= orderProcess.Order.TargetPrice)
@@ -46,58 +50,21 @@ namespace Core.Service.OrderBackgroundService
         private async Task ExecuteBuyOrder(OrderProcess orderProcess, decimal currentPrice)
         {
             var user = await _context.Users.FindAsync(orderProcess.Order.UserId);
-            var totalPrice = currentPrice * orderProcess.Order.Quantity;
-
-            if (user == null || user.Balance < totalPrice)
+            if (user == null)
             {
                 orderProcess.Status = OrderProcessStatus.Failed;
             }
             else
             {
-                user.Balance -= totalPrice;
-
-                var stockHolding = await _context.StockHoldings
-                    .FirstOrDefaultAsync(sh => sh.UserId == user.Id && sh.StockSymbol == orderProcess.Order.StockSymbol);
-
-                if (stockHolding == null)
+                var result = await _buyService.BuyStockAsync(user, orderProcess.Order.StockSymbol, orderProcess.Order.Quantity, currentPrice);
+                if (!result.IsSuccess)
                 {
-                    stockHolding = new StockHolding
-                    {
-                        UserId = orderProcess.Order.UserId,
-                        StockSymbol = orderProcess.Order.StockSymbol,
-                        Quantity = orderProcess.Order.Quantity,
-                        TotalPurchasePrice = totalPrice
-                    };
-                    _context.StockHoldings.Add(stockHolding);
+                    orderProcess.Status = OrderProcessStatus.Failed;
                 }
                 else
                 {
-                    stockHolding.Quantity += orderProcess.Order.Quantity;
-                    stockHolding.TotalPurchasePrice += totalPrice;
+                    orderProcess.Status = OrderProcessStatus.Completed;
                 }
-
-                var stockHoldingItem = new StockHoldingItem
-                {
-                    StockSymbol = orderProcess.Order.StockSymbol,
-                    Quantity = orderProcess.Order.Quantity,
-                    UnitPrice = currentPrice,
-                    Type = StockHoldingItemType.Purchase,
-                    OrderProcessId = orderProcess.Id
-                };
-                _context.StockHoldingItems.Add(stockHoldingItem);
-
-                var transaction = new Transaction
-                {
-                    UserId = user.Id,
-                    Amount = -totalPrice,
-                    Type = TransActionType.Negative,
-                    Description = $"Purchased {orderProcess.Order.Quantity} shares of {orderProcess.Order.StockSymbol} at {currentPrice} per share",
-                    StockHoldingItem = stockHoldingItem,
-                    CreatedDate = DateTime.UtcNow
-                };
-                _context.Transactions.Add(transaction);
-
-                orderProcess.Status = OrderProcessStatus.Completed;
             }
 
             await _context.SaveChangesAsync();
@@ -106,48 +73,21 @@ namespace Core.Service.OrderBackgroundService
         private async Task ExecuteSellOrder(OrderProcess orderProcess, decimal currentPrice)
         {
             var user = await _context.Users.FindAsync(orderProcess.Order.UserId);
-            var stockHolding = await _context.StockHoldings
-                .FirstOrDefaultAsync(sh => sh.UserId == user.Id && sh.StockSymbol == orderProcess.Order.StockSymbol);
-
-            if (user == null || stockHolding == null || stockHolding.Quantity < orderProcess.Order.Quantity)
+            if (user == null)
             {
                 orderProcess.Status = OrderProcessStatus.Failed;
             }
             else
             {
-                var totalPrice = currentPrice * orderProcess.Order.Quantity;
-
-                stockHolding.Quantity -= orderProcess.Order.Quantity;
-
-                if (stockHolding.Quantity == 0)
+                var result = await _sellService.SellStockAsync(user, orderProcess.Order.StockSymbol, orderProcess.Order.Quantity, currentPrice);
+                if (!result.IsSuccess)
                 {
-                    _context.StockHoldings.Remove(stockHolding);
+                    orderProcess.Status = OrderProcessStatus.Failed;
                 }
-
-                user.Balance += totalPrice;
-
-                var stockHoldingItem = new StockHoldingItem
+                else
                 {
-                    StockSymbol = orderProcess.Order.StockSymbol,
-                    Quantity = orderProcess.Order.Quantity,
-                    UnitPrice = currentPrice,
-                    Type = StockHoldingItemType.Sale,
-                    OrderProcessId = orderProcess.Id
-                };
-                _context.StockHoldingItems.Add(stockHoldingItem);
-
-                var transaction = new Transaction
-                {
-                    UserId = user.Id,
-                    Amount = totalPrice,
-                    Type = TransActionType.Positive,
-                    Description = $"Sold {orderProcess.Order.Quantity} shares of {orderProcess.Order.StockSymbol} at {currentPrice} per share",
-                    StockHoldingItem = stockHoldingItem,
-                    CreatedDate = DateTime.UtcNow
-                };
-                _context.Transactions.Add(transaction);
-
-                orderProcess.Status = OrderProcessStatus.Completed;
+                    orderProcess.Status = OrderProcessStatus.Completed;
+                }
             }
 
             await _context.SaveChangesAsync();

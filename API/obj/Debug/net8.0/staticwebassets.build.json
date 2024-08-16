@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Mi1Gf0BCKpxVbDSs8A46A3y9F7/oCvib68z9BwJSXR4=",
+  "Hash": "pfkvJamr2fPpeq1mmb6ud2N0MX9TAJQHIPv5mOGZx9E=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "API\\wwwroot",
       "Source": "API",
-      "ContentRoot": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\a.png",
+      "Identity": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\a.png",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "RelativePath": "a.png",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\a.png"
     },
     {
-      "Identity": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\defaultlogo.jpg",
+      "Identity": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\defaultlogo.jpg",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "RelativePath": "defaultlogo.jpg",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\defaultlogo.jpg"
     },
     {
-      "Identity": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\welcome.html",
+      "Identity": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\welcome.html",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "RelativePath": "welcome.html",
       "AssetKind": "All",

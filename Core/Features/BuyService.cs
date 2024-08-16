@@ -56,7 +56,7 @@ namespace Core.Features
                 Quantity = quantity,
                 UnitPrice = price,
                 Type = StockHoldingItemType.Purchase,
-                OrderProcessId = orderProcessId
+                OrderProcessId = orderProcessId == default ? null : orderProcessId
             };
             _context.StockHoldingItems.Add(stockHoldingItem);
 

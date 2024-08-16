@@ -26,17 +26,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure Rate Limiting
 builder.Services.AddRateLimiter(options =>
 {
-        options.AddPolicy("fixed", httpContext =>
-        RateLimitPartition.GetFixedWindowLimiter(
-            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
-            factory: partition => new FixedWindowRateLimiterOptions
-            {
-                PermitLimit = 10, 
-                Window = TimeSpan.FromSeconds(10), 
-                QueueLimit = 2, 
-                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
-                AutoReplenishment = true 
-            })
+    options.AddPolicy("fixed", httpContext =>
+    RateLimitPartition.GetFixedWindowLimiter(
+        partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+        factory: partition => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 300,
+            Window = TimeSpan.FromSeconds(10),
+            QueueLimit = 2,
+            QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+            AutoReplenishment = true
+        })
     );
     options.AddFixedWindowLimiter(policyName: "default", options =>
     {
@@ -52,7 +52,7 @@ builder.Services.AddRateLimiter(options =>
 
     options.AddTokenBucketLimiter(policyName: "apiKeyUsage", options =>
     {
-        options.TokenLimit = 50; // Number of tokens available
+        options.TokenLimit = 300; // Number of tokens available
         options.TokensPerPeriod = 10; // Tokens replenished per period
         options.ReplenishmentPeriod = TimeSpan.FromMinutes(1); // Replenishment period
         options.QueueLimit = 5; // Queue limit
@@ -66,6 +66,7 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .WriteTo.File("Logs/logfile.log", rollingInterval: RollingInterval.Day)
     .ReadFrom.Configuration(context.Configuration));
 
+// Load Core Layer
 builder.Services.LoadCoreLayerExtension(builder.Configuration);
 
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
@@ -90,10 +91,31 @@ builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 builder.Services.AddMemoryCache();
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
-app.UseMetricServer();
+// Apply migrations at runtime
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<ApplicationDbContext>();
 
+    // Ensure the database is created and migrations are applied
+    dbContext.Database.Migrate();
+}
+
+// Use Prometheus metric server
+app.UseMetricServer();
 
 // Log requests
 app.UseSerilogRequestLogging();
@@ -104,9 +126,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// Enable CORS
+app.UseCors("AllowAllOrigins");
 
 // Routing middleware
 app.UseRouting();
+
 // Apply rate limiting middleware before routing
 app.UseRateLimiter();
 app.UseEndpoints(endpoints =>
@@ -124,14 +152,14 @@ app.UseEndpoints(endpoints =>
     endpoints.MapHealthChecksUI(); // This will add a health checks UI endpoint
 });
 
-// Rate limiting applied globally, but can be overridden by specific controllers or actions
-
+// Apply global exception handling middleware
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthorization();
 
 app.UseStaticFiles();
 
+// Use Hangfire dashboard and server
 app.UseHangfireDashboard();
 app.UseResponseCaching();
 
@@ -143,6 +171,7 @@ var options = new BackgroundJobServerOptions
 
 app.UseHangfireServer(options);
 
+// Configure Hangfire recurring jobs
 RecurringJob.AddOrUpdate<OrderBackgroundService>(
     "CheckAndProcessOrders",
     x => x.CheckAndProcessOrders(),
@@ -157,6 +186,7 @@ RecurringJob.AddOrUpdate<StockPriceAlertService>(
     queue: "low-priority"
 );
 
+// Map controllers and SignalR hubs
 app.MapControllers();
 app.MapHub<StockPriceHub>("/stockPriceHub");
 

@@ -1170,17 +1170,17 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/8.0.0": {
+      "Microsoft.EntityFrameworkCore.Design/8.0.8": {
         "type": "package",
         "dependencies": {
           "Humanizer.Core": "2.14.1",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.5.0",
-          "Microsoft.EntityFrameworkCore.Relational": "8.0.0",
-          "Microsoft.Extensions.DependencyModel": "8.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "8.0.8",
+          "Microsoft.Extensions.DependencyModel": "8.0.1",
           "Mono.TextTemplating": "2.2.1"
         },
         "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll": {
+          "lib/net8.0/_._": {
             "related": ".xml"
           }
         },
@@ -1190,7 +1190,7 @@
           }
         },
         "build": {
-          "build/net8.0/_._": {}
+          "build/net8.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/8.0.8": {
@@ -4151,18 +4151,19 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/8.0.0": {
-      "sha512": "94reKYu63jg4O75UI3LMJHwOSi8tQ6IfubiZhdnSsWcgtmAuF8OyLfjK/MIxuvaQRJZAF6E747FIuxjOtb8/og==",
+    "Microsoft.EntityFrameworkCore.Design/8.0.8": {
+      "sha512": "MmQAMHdjZR8Iyn/FVQrh9weJQTn0HqtKa3vELS9ffQJat/qXgnTam9M9jqvePphjkYp5Scee+Hy+EJR4nmWmOA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/8.0.0",
+      "path": "microsoft.entityframeworkcore.design/8.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
+        "PACKAGE.md",
         "build/net8.0/Microsoft.EntityFrameworkCore.Design.props",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.8.0.0.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.8.0.8.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
@@ -7068,6 +7069,7 @@
       "MediatR >= 11.1.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.1.0",
       "Microsoft.AspNetCore.SignalR >= 1.1.0",
+      "Microsoft.EntityFrameworkCore.Design >= 8.0.8",
       "Quartz >= 3.13.0",
       "Quartz.Extensions.DependencyInjection >= 3.13.0",
       "Quartz.Extensions.Hosting >= 3.13.0",
@@ -7087,11 +7089,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj",
+      "projectPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj",
       "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\KC\\source\\repos\\StockFlow\\API\\obj\\",
+      "outputPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7109,8 +7111,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {
-              "projectPath": "c:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj"
+            "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj"
             }
           }
         }
@@ -7193,6 +7195,12 @@
           "Microsoft.AspNetCore.SignalR": {
             "target": "Package",
             "version": "[1.1.0, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.0.8, )"
           },
           "Quartz": {
             "target": "Package",

@@ -33,17 +33,19 @@ public class StockApiService : IStockApiService
 
     public async Task<decimal> GetStockPriceAsync(string symbol)
     {
-        var requestUri = $"api/stockprice?symbol={symbol}";
 
-        var response = await _circuitBreakerPolicy.ExecuteAsync(() => _httpClient.GetAsync(requestUri));
 
-        if (!response.IsSuccessStatusCode)
-        {
-            throw new Exception("Failed to fetch stock price.");
-        }
+        //var response = await _circuitBreakerPolicy.ExecuteAsync(() => _httpClient.GetAsync(requestUri));
+        var requestUri = $"quote?symbol={symbol}&token={_apiKey}";
+
+        var response = await _httpClient.GetAsync(requestUri);
+        response.EnsureSuccessStatusCode();
 
         var content = await response.Content.ReadAsStringAsync();
-        return decimal.Parse(content); 
+        var stockData = JsonSerializer.Deserialize<StockApiResponse>(content);
+
+        return stockData?.c ?? 0;
+
     }
 
 

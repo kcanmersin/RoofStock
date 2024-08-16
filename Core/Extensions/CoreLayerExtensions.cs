@@ -15,6 +15,7 @@ using Core.Middlewares.ExceptionHandling;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HealthChecks.Hangfire;
 using Core.Health;
+using Core.Features;
 
 
 namespace Core.Extensions
@@ -77,6 +78,10 @@ namespace Core.Extensions
             services.AddSingleton(jwtSettings);
 
             services.AddScoped<IJwtService, JwtService>();
+
+            services.AddScoped<IBuyService, BuyService>();
+            services.AddScoped<ISellService, SellService>();
+
 
             // MediatR and EmailService
             services.AddMediatR(Assembly.GetExecutingAssembly());

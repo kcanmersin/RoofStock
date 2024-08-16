@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {}
+    "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {}
   },
   "projects": {
-    "c:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {
+    "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "c:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\KC\\source\\repos\\StockFlow\\Core\\obj\\",
+        "outputPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -123,6 +123,12 @@
               "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
