@@ -3,3 +3,6 @@
 *extra
 *.txt
 *.py
+*.env
+.env
+.env

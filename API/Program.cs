@@ -20,10 +20,27 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
 using Prometheus;
+using Serilog.Sinks.Elasticsearch;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Rate Limiting
+// Elasticsearch ve Kibana ile loglama yapılandırması
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://elasticsearch:9200"))
+    {
+        AutoRegisterTemplate = true,
+        IndexFormat = "logstash-{0:yyyy.MM.dd}",
+        NumberOfShards = 2,
+        NumberOfReplicas = 1
+    })
+    .ReadFrom.Configuration(context.Configuration)
+    .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName));
+
+builder.Configuration.AddEnvironmentVariables();
+//read   "DefaultConnection": "%ConnectionStrings__DefaultConnection%" readfrom environment variable
+ var host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? builder.Configuration["Email:Smtp:Host"];
 builder.Services.AddRateLimiter(options =>
 {
     options.AddPolicy("fixed", httpContext =>
@@ -40,31 +57,14 @@ builder.Services.AddRateLimiter(options =>
     );
     options.AddFixedWindowLimiter(policyName: "default", options =>
     {
-        options.PermitLimit = 300; // Number of requests allowed per window
-        options.Window = TimeSpan.FromMinutes(1); // Time window duration
-        options.QueueLimit = 3; // Max requests that can be queued after limit is reached
-        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst; // Queue processing order
-        options.AutoReplenishment = true; // Automatically replenish permits after the window expires
-        options.QueueProcessingOrder = QueueProcessingOrder.NewestFirst; // Can also use OldestFirst based on preference
-    })
-    .RejectionStatusCode = 429; // Status code for rejected requests
-
-
-    options.AddTokenBucketLimiter(policyName: "apiKeyUsage", options =>
-    {
-        options.TokenLimit = 300; // Number of tokens available
-        options.TokensPerPeriod = 10; // Tokens replenished per period
-        options.ReplenishmentPeriod = TimeSpan.FromMinutes(1); // Replenishment period
-        options.QueueLimit = 5; // Queue limit
+        options.PermitLimit = 300; 
+        options.Window = TimeSpan.FromMinutes(1); 
+        options.QueueLimit = 3; 
         options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-    });
+        options.AutoReplenishment = true;
+    })
+    .RejectionStatusCode = 429; 
 });
-
-// Logging configuration
-builder.Host.UseSerilog((context, services, configuration) => configuration
-    .WriteTo.Console()
-    .WriteTo.File("Logs/logfile.log", rollingInterval: RollingInterval.Day)
-    .ReadFrom.Configuration(context.Configuration));
 
 // Load Core Layer
 builder.Services.LoadCoreLayerExtension(builder.Configuration);
@@ -91,7 +91,6 @@ builder.Services.AddScoped<StockPriceMonitorService>();
 builder.Services.AddScoped<StockPriceAlertService>();
 builder.Services.AddMemoryCache();
 
-// Add CORS policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins", builder =>
@@ -104,30 +103,23 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Apply migrations at runtime
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var dbContext = services.GetRequiredService<ApplicationDbContext>();
-
-    // Ensure the database is created and migrations are applied
-    dbContext.Database.Migrate();
-}
-
 // Use Prometheus metric server
 app.UseMetricServer();
 
 // Log requests
 app.UseSerilogRequestLogging();
 
-// Enable Swagger in development
+// Enable Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseSwagger();
-app.UseSwaggerUI();
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // Enable CORS
 app.UseCors("AllowAllOrigins");
@@ -149,7 +141,7 @@ app.UseEndpoints(endpoints =>
     {
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
-    endpoints.MapHealthChecksUI(); // This will add a health checks UI endpoint
+    endpoints.MapHealthChecksUI(); 
 });
 
 // Apply global exception handling middleware

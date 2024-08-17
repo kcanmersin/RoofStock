@@ -5,5 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>API</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\KC\source\repos\StockFlow\API\Properties\PublishProfiles\registry.hub.docker.com_kcanmersin.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

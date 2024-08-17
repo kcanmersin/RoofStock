@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Core.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240816102454_YourMigrationName")]
-    partial class YourMigrationName
+    [Migration("20240816140523_XX")]
+    partial class XX
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -354,21 +354,21 @@ namespace Core.Migrations
                         new
                         {
                             Id = new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"),
-                            ConcurrencyStamp = "a6571fdb-cd1e-4735-a618-ca082e5e0c3a",
+                            ConcurrencyStamp = "29a163d9-e09b-4a91-9b74-b9a1022f51c2",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"),
-                            ConcurrencyStamp = "5f7878ed-0f02-4594-b6d6-8a98b6522b54",
+                            ConcurrencyStamp = "637fb4ab-8a99-4116-961d-27807192284b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"),
-                            ConcurrencyStamp = "5b842c02-bc17-4e81-a4d2-568837581a7e",
+                            ConcurrencyStamp = "fbe9e6b0-0ad3-4bf1-a01d-fc6703b05828",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -498,10 +498,10 @@ namespace Core.Migrations
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
                             Balance = 1000000m,
-                            ConcurrencyStamp = "6b782973-4ce7-4413-ad5a-e4f759d4d52a",
+                            ConcurrencyStamp = "e057e436-ce13-426f-9453-73c4442158ed",
                             Email = "superadmin@gmail.com",
-                            EmailConfirmationSentAt = new DateTime(2024, 8, 16, 10, 24, 54, 49, DateTimeKind.Utc).AddTicks(6793),
-                            EmailConfirmationToken = "2ae83cc9-25ae-4662-88a3-64af261cfdec",
+                            EmailConfirmationSentAt = new DateTime(2024, 8, 16, 14, 5, 22, 574, DateTimeKind.Utc).AddTicks(758),
+                            EmailConfirmationToken = "0eb7d2b6-0614-4e8f-867d-c78d4093adec",
                             EmailConfirmed = true,
                             FirstName = "Can",
                             ImagePath = "API\\deflogo.jpg",
@@ -510,10 +510,10 @@ namespace Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBqAQ6i8hybj2zDMAD3Dm5VqseQN/2ObvsWKlNqWkJ7azCKQXRbtjoKVtO5TJryBPg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG7ojHihygp6y4N6rdVyEYGigZSwNHUbrx04zV2S0ZUFLyyCEwyMCXWh1gPBxCTgEg==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "59e51882-4915-49c8-9731-742d12293cab",
+                            SecurityStamp = "6c9c6ddb-7405-42cd-856b-2a642160001c",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -522,10 +522,10 @@ namespace Core.Migrations
                             Id = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             AccessFailedCount = 0,
                             Balance = 1000000m,
-                            ConcurrencyStamp = "eecb852f-a850-4f20-9227-56e7d279085b",
+                            ConcurrencyStamp = "97c31b3e-dfa8-41b9-b088-ec5238c6a17d",
                             Email = "admin@gmail.com",
-                            EmailConfirmationSentAt = new DateTime(2024, 8, 16, 10, 24, 54, 150, DateTimeKind.Utc).AddTicks(5079),
-                            EmailConfirmationToken = "1c924c70-062a-49d0-b2df-a500479bce77",
+                            EmailConfirmationSentAt = new DateTime(2024, 8, 16, 14, 5, 22, 637, DateTimeKind.Utc).AddTicks(1545),
+                            EmailConfirmationToken = "3be60d51-c173-44a1-bc3a-10e88ecc2c52",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             ImagePath = "API\\deflogo.jpg",
@@ -534,10 +534,10 @@ namespace Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHy8f2UJ6UfMr1oYXY4rN9gFYINM/bm84CepLBa8BywTlenSloYb0BrT4RO3Bo5XYQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ3fedRaTQlhycjBSuFbmT1TjasntrI0YGChOf8Q2PvJcXeF0KAyGYAkySj6d303Pg==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5f6c1179-0815-4580-a508-a6c6f3280435",
+                            SecurityStamp = "9e874201-5882-4637-9065-f47e02e1756b",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });

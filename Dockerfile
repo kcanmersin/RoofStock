@@ -1,24 +1,25 @@
+# Build aşaması
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /src
 
+# Proje dosyalarını kopyala ve restore yap
 COPY ["API/API.csproj", "API/"]
 COPY ["Core/Core.csproj", "Core/"]
 RUN dotnet restore "API/API.csproj"
 
+# Tüm kaynak kodlarını kopyala ve yayınlama için derle
 COPY . .
 WORKDIR /src/API
 RUN dotnet build "API.csproj" -c Release -o /app/build
 RUN dotnet publish "API.csproj" -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+# Runtime aşaması
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build-env /app/publish .
 
-COPY wait-for-it.sh /app/wait-for-it.sh
-RUN chmod +x /app/wait-for-it.sh
-
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
+# Uygulama portunu tanımla
 EXPOSE 80
-ENTRYPOINT ["/app/entrypoint.sh"]
+
+# Uygulamayı başlat
+ENTRYPOINT ["dotnet", "API.dll"]

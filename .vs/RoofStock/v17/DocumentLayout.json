@@ -3,6 +3,38 @@
   "WorkspaceRootPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\extensions\\corelayerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\extensions\\corelayerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\filebeat.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\filebeat.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\service\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\service\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\features\\buyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\features\\buyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\prometheus.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\prometheus.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\controllers\\withdrawalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\withdrawalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Migrations\\20240816094404_XX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Migrations\\20240816094404_XX.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\features\\sellservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\features\\sellservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\features\\buyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\features\\buyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\features\\buystock\\buystockhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,6 +69,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\data\\entity\\stockholding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\data\\entity\\stockholding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\migrations\\20240816140523_xx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\migrations\\20240816140523_xx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -61,12 +89,110 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Service\\Email\\EmailService.cs",
+              "RelativeDocumentMoniker": "Core\\Service\\Email\\EmailService.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Service\\Email\\EmailService.cs",
+              "RelativeToolTip": "Core\\Service\\Email\\EmailService.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAowBIAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T14:35:27.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CoreLayerExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Extensions\\CoreLayerExtensions.cs",
+              "RelativeDocumentMoniker": "Core\\Extensions\\CoreLayerExtensions.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Extensions\\CoreLayerExtensions.cs",
+              "RelativeToolTip": "Core\\Extensions\\CoreLayerExtensions.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAuwB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T14:24:37.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "prometheus.yml",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\prometheus.yml",
+              "RelativeDocumentMoniker": "API\\prometheus.yml",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\prometheus.yml",
+              "RelativeToolTip": "API\\prometheus.yml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2024-08-16T14:25:30.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20240816140523_XX.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Migrations\\20240816140523_XX.cs",
+              "RelativeDocumentMoniker": "Core\\Migrations\\20240816140523_XX.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Migrations\\20240816140523_XX.cs",
+              "RelativeToolTip": "Core\\Migrations\\20240816140523_XX.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T14:05:23.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\appsettings.json",
+              "RelativeDocumentMoniker": "API\\appsettings.json",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\appsettings.json",
+              "RelativeToolTip": "API\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-16T14:03:56.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Program.cs*",
+              "RelativeToolTip": "API\\Program.cs*",
+              "ViewState": "AQIAACEAAAAAAAAAAAAiwC8AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-15T19:30:19.039Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{c9c0ae26-aa77-11d2-b3f0-0000f87570ee}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "filebeat.yml",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\filebeat.yml",
+              "RelativeDocumentMoniker": "API\\filebeat.yml",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\filebeat.yml",
+              "RelativeToolTip": "API\\filebeat.yml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2024-08-16T14:49:13.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WithdrawalController.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Controllers\\WithdrawalController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\WithdrawalController.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Controllers\\WithdrawalController.cs",
+              "RelativeToolTip": "API\\Controllers\\WithdrawalController.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T13:43:25.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "20240816094404_XX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Migrations\\20240816094404_XX.cs",
               "RelativeDocumentMoniker": "Core\\Migrations\\20240816094404_XX.cs",
@@ -74,12 +200,11 @@
               "RelativeToolTip": "Core\\Migrations\\20240816094404_XX.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T09:44:05.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T09:44:05.127Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "20240816080525_XX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Migrations\\20240816080525_XX.cs",
               "RelativeDocumentMoniker": "Core\\Migrations\\20240816080525_XX.cs",
@@ -87,12 +212,11 @@
               "RelativeToolTip": "Core\\Migrations\\20240816080525_XX.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T08:05:25.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T08:05:25.47Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "SellService.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Features\\SellService.cs",
               "RelativeDocumentMoniker": "Core\\Features\\SellService.cs",
@@ -100,12 +224,11 @@
               "RelativeToolTip": "Core\\Features\\SellService.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAowDAAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:25:13.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:25:13.283Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\Order.cs",
               "RelativeDocumentMoniker": "Core\\Data\\Entity\\Order.cs",
@@ -113,12 +236,11 @@
               "RelativeToolTip": "Core\\Data\\Entity\\Order.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:23:49.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:23:49.813Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "StockHolding.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\StockHolding.cs",
               "RelativeDocumentMoniker": "Core\\Data\\Entity\\StockHolding.cs",
@@ -126,12 +248,11 @@
               "RelativeToolTip": "Core\\Data\\Entity\\StockHolding.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:22:52.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:22:52.245Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "OrderProcess.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\OrderProcess.cs",
               "RelativeDocumentMoniker": "Core\\Data\\Entity\\OrderProcess.cs",
@@ -139,12 +260,11 @@
               "RelativeToolTip": "Core\\Data\\Entity\\OrderProcess.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:22:38.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:22:38.405Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "StockHoldingItem.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\StockHoldingItem.cs",
               "RelativeDocumentMoniker": "Core\\Data\\Entity\\StockHoldingItem.cs",
@@ -152,12 +272,11 @@
               "RelativeToolTip": "Core\\Data\\Entity\\StockHoldingItem.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:22:09.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:22:09.422Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BuyService.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Features\\BuyService.cs",
               "RelativeDocumentMoniker": "Core\\Features\\BuyService.cs",
@@ -165,12 +284,11 @@
               "RelativeToolTip": "Core\\Features\\BuyService.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAgwDoAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:18:59.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:18:59.512Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "StockApiService.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Service\\StockApi\\StockApiService.cs",
               "RelativeDocumentMoniker": "Core\\Service\\StockApi\\StockApiService.cs",
@@ -178,12 +296,11 @@
               "RelativeToolTip": "Core\\Service\\StockApi\\StockApiService.cs",
               "ViewState": "AQIAAB8AAAAAAAAAAAAawCgAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:15:10.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:15:10.368Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "BuyStockHandler.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Features\\BuyStock\\BuyStockHandler.cs",
               "RelativeDocumentMoniker": "Core\\Features\\BuyStock\\BuyStockHandler.cs",
@@ -191,21 +308,7 @@
               "RelativeToolTip": "Core\\Features\\BuyStock\\BuyStockHandler.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAgwDEAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:11:59.512Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Program.cs",
-              "RelativeDocumentMoniker": "API\\Program.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Program.cs",
-              "RelativeToolTip": "API\\Program.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAEBVwDYAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T19:30:19.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:11:59.512Z"
             }
           ]
         }

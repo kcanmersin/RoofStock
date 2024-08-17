@@ -17,7 +17,6 @@ using HealthChecks.Hangfire;
 using Core.Health;
 using Core.Features;
 
-
 namespace Core.Extensions
 {
     public static class CoreLayerExtensions
@@ -25,10 +24,22 @@ namespace Core.Extensions
         public static IServiceCollection LoadCoreLayerExtension(this IServiceCollection services, IConfiguration configuration)
         {
             // Connection string'i environment variable'dan çek
-            var defaultConnectionString = configuration.GetConnectionString("DefaultConnection");
+
+            // Connection string'i oluştur
+            var defaultConnectionString =  Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? configuration["ConnectionStrings:DefaultConnection"];
+
+            // E-posta ayarlarını environment variable'lardan veya appsettings'ten çek
+            var emailHost = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? configuration["Email:Smtp:Host"];
+            var emailPortString = Environment.GetEnvironmentVariable("EMAIL_PORT") ?? configuration["Email:Smtp:Port"];
+            var emailUsername = Environment.GetEnvironmentVariable("EMAIL_USERNAME") ?? configuration["Email:Smtp:Username"];
+            var emailPassword = Environment.GetEnvironmentVariable("EMAIL_PASSWORD") ?? configuration["Email:Smtp:Password"];
+            var emailFrom = Environment.GetEnvironmentVariable("EMAIL_FROM") ?? configuration["Email:Smtp:From"];
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
-            //add stock api health check
+
+            // Stock API health check
             services.AddHttpClient<StockApiHealthCheck>();
 
             // Health checks configuration
@@ -37,31 +48,25 @@ namespace Core.Extensions
                     connectionString: defaultConnectionString,
                     name: "PostgreSQL Health Check",
                     failureStatus: HealthStatus.Unhealthy)
-                .AddCheck<StockApiHealthCheck>("Stock API Health Check").
-                AddHangfire(hangfireOptions =>
+                .AddCheck<StockApiHealthCheck>("Stock API Health Check")
+                .AddHangfire(hangfireOptions =>
                 {
                     hangfireOptions.MaximumJobsFailed = 5;
                     hangfireOptions.MinimumAvailableServers = 1;
                 }).AddCheck<QuartzHealthCheck>("Quartz Health Check")
-            .AddSmtpHealthCheck(opt =>
-            {
-                var portString = Environment.GetEnvironmentVariable("EMAIL_PORT") ?? configuration["Email:Smtp:Port"];
-
-                if (!int.TryParse(portString, out int port))
+                .AddSmtpHealthCheck(opt =>
                 {
-                    throw new InvalidOperationException($"Invalid SMTP port number: {portString}");
-                }
+                    var portString = Environment.GetEnvironmentVariable("EMAIL_PORT") ?? configuration["Email:Smtp:Port"];
 
-                opt.Host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? configuration["Email:Smtp:Host"];
-                opt.Port = port;
-            }, name: "SMTP Health Check");
+                    if (!int.TryParse(portString, out int port))
+                    {
+                        throw new InvalidOperationException($"Invalid SMTP port number: {portString}");
+                    }
 
+                    opt.Host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? configuration["Email:Smtp:Host"];
+                    opt.Port = port;
+                }, name: "SMTP Health Check");
 
-            // var host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? _configuration["Email:Smtp:Host"];
-            // var portString = Environment.GetEnvironmentVariable("EMAIL_PORT") ?? _configuration["Email:Smtp:Port"];
-            // var username = Environment.GetEnvironmentVariable("EMAIL_USERNAME") ?? _configuration["Email:Smtp:Username"];
-            // var password = Environment.GetEnvironmentVariable("EMAIL_PASSWORD") ?? _configuration["Email:Smtp:Password"];
-            // var from = Environment.GetEnvironmentVariable("EMAIL_FROM") ?? _configuration["Email:Smtp:From"];
             // Memory cache
             services.AddMemoryCache();
 
@@ -78,10 +83,8 @@ namespace Core.Extensions
             services.AddSingleton(jwtSettings);
 
             services.AddScoped<IJwtService, JwtService>();
-
             services.AddScoped<IBuyService, BuyService>();
             services.AddScoped<ISellService, SellService>();
-
 
             // MediatR and EmailService
             services.AddMediatR(Assembly.GetExecutingAssembly());
