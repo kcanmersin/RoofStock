@@ -48,7 +48,6 @@ namespace Core.Features.BuyStock
                 return Result.Failure<BuyStockResponse>(new Error("UserNotFound", "User not found."));
             }
 
-            // Kullanýcýnýn tüm açýk buy emirlerini hesaba katarak mevcut kullanýlabilir bakiyeyi hesaplayýn
             var totalPendingAmount = await _context.Orders
                 .Where(o => o.UserId == request.UserId && o.OrderType == OrderType.Buy && o.OrderProcess.Status == OrderProcessStatus.Pending)
                 .SumAsync(o => o.Quantity * o.TargetPrice);
@@ -74,7 +73,8 @@ namespace Core.Features.BuyStock
                 NewBalance = user.Balance - totalCost,
                 Message = $"Successfully purchased {request.Quantity} shares of {request.StockSymbol} at {currentPrice:C} per share.",
                 StockSymbol = request.StockSymbol,
-                Quantity = request.Quantity
+                Quantity = request.Quantity,
+                TotalPrice = totalCost,
             });
         }
     }

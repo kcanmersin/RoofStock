@@ -52,7 +52,6 @@ namespace Core.Features.GiveOrder
 
             var stockPrice = await _stockApiService.GetStockPriceAsync(request.StockSymbol);
 
-            // Check pending orders and adjust available balance/holdings
             var pendingBuyOrders = await _context.Orders
                 .Where(o => o.UserId == request.UserId && o.OrderType == OrderType.Buy && o.OrderProcess.Status == OrderProcessStatus.Pending)
                 .ToListAsync();
@@ -101,7 +100,7 @@ namespace Core.Features.GiveOrder
                 {
                     IsSuccess = true,
                     Message = $"Buy order completed: Purchased {request.Quantity} shares of {request.StockSymbol} at {stockPrice:C} per share.",
-                    OrderId = Guid.NewGuid() // Update this with real order id.
+                    OrderId = Guid.NewGuid() 
                 });
             }
             else if (request.OrderType == OrderType.Sell && stockPrice >= request.TargetPrice)
@@ -115,11 +114,10 @@ namespace Core.Features.GiveOrder
                 {
                     IsSuccess = true,
                     Message = $"Sell order completed: Sold {request.Quantity} shares of {request.StockSymbol} at {stockPrice:C} per share.",
-                    OrderId = Guid.NewGuid() // Update this with real order id.
+                    OrderId = Guid.NewGuid() 
                 });
             }
 
-            // Handle pending order case if stock price is not favorable
             var order = new Order
             {
                 StockSymbol = request.StockSymbol,

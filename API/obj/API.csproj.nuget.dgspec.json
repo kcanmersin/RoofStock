@@ -140,9 +140,21 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
+            "Serilog.Enrichers.Context": {
+              "target": "Package",
+              "version": "[4.6.5, )"
+            },
             "Serilog.Extensions.Hosting": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Serilog.Filters.Expressions": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Serilog.Settings.Configuration": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Serilog.Sinks.Elasticsearch": {
               "target": "Package",

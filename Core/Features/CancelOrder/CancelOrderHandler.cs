@@ -36,7 +36,6 @@ namespace Core.Features.CancelOrder
                 return Result.Failure<CancelOrderResponse>(new Error("OrderNotCancellable", "This order cannot be canceled because it is either completed or already canceled."));
             }
 
-            // Ýptal edilen emir alýþ emri ise, rezerv edilen bakiye geri eklenir
             if (order.OrderType == OrderType.Buy)
             {
                 var user = await _context.Users.FindAsync(order.UserId);
@@ -45,7 +44,6 @@ namespace Core.Features.CancelOrder
                     user.Balance += order.Quantity * order.TargetPrice;
                 }
             }
-            // Ýptal edilen emir satýþ emri ise, rezerv edilen hisse miktarý geri eklenir
             else if (order.OrderType == OrderType.Sell)
             {
                 var stockHolding = await _context.StockHoldings

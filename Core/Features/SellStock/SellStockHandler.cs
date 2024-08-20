@@ -49,7 +49,6 @@ namespace Core.Features.SellStock
                 return Result.Failure<SellStockResponse>(new Error("UserNotFound", "User not found."));
             }
 
-            // Kullanýcýnýn tüm açýk sell emirlerini hesaba katarak mevcut kullanýlabilir hisse miktarýný hesaplayýn
             var totalPendingQuantity = await _context.Orders
                 .Where(o => o.UserId == request.UserId
                             && o.OrderType == OrderType.Sell
@@ -57,7 +56,6 @@ namespace Core.Features.SellStock
                             && o.StockSymbol == request.StockSymbol)
                 .SumAsync(o => o.Quantity);
 
-            // StockHoldings koleksiyonunda bu hisse senedinin olup olmadýðýný kontrol edin
             var stockHolding = user.StockHoldings.FirstOrDefault(sh => sh.StockSymbol == request.StockSymbol);
 
             if (stockHolding == null || stockHolding.Quantity < totalPendingQuantity + request.Quantity)
@@ -75,7 +73,7 @@ namespace Core.Features.SellStock
             return Result.Success(new SellStockResponse
             {
                 IsSuccess = true,
-                NewBalance = user.Balance + (request.Quantity * currentPrice),
+                NewBalance = user.Balance ,
                 Message = $"Successfully sold {request.Quantity} shares of {request.StockSymbol} at {currentPrice:C} per share.",
                 StockSymbol = request.StockSymbol,
                 Quantity = request.Quantity,

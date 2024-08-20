@@ -22,25 +22,44 @@ using System.Threading.RateLimiting;
 using Prometheus;
 using Serilog.Sinks.Elasticsearch;
 
-var builder = WebApplication.CreateBuilder(args);
+// Add your additional using statements
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using Serilog.Filters;
 
-// Elasticsearch ve Kibana ile loglama yapılandırması
-builder.Host.UseSerilog((context, services, configuration) => configuration
-    .Enrich.FromLogContext()
-    .WriteTo.Console()
-    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://elasticsearch:9200"))
-    {
-        AutoRegisterTemplate = true,
-        IndexFormat = "logstash-{0:yyyy.MM.dd}",
-        NumberOfShards = 2,
-        NumberOfReplicas = 1
-    })
-    .ReadFrom.Configuration(context.Configuration)
-    .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName));
+var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((context, services, configuration) =>
+{
+    configuration
+        .Enrich.FromLogContext()
+        .WriteTo.Console() 
+        .WriteTo.Logger(lc => lc
+            .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("Middleware")))
+            .WriteTo.File("Logs/middleware-log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", fileSizeLimitBytes: 10485760, retainedFileCountLimit: 7, shared: true))
+        .WriteTo.Logger(lc => lc
+            .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("ActionFilter")))
+            .WriteTo.File("Logs/action-log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", fileSizeLimitBytes: 10485760, retainedFileCountLimit: 7, shared: true))
+        .WriteTo.Logger(lc => lc
+            .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("Logstash")))
+            .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://elasticsearch:9200"))
+            {
+                AutoRegisterTemplate = true,
+                IndexFormat = "logstash-{0:yyyy.MM.dd}",
+                NumberOfShards = 2,
+                NumberOfReplicas = 1
+            }))
+        .ReadFrom.Configuration(context.Configuration)
+        .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName);
+});
+
 
 builder.Configuration.AddEnvironmentVariables();
-//read   "DefaultConnection": "%ConnectionStrings__DefaultConnection%" readfrom environment variable
- var host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? builder.Configuration["Email:Smtp:Host"];
+
+// Read from environment variable
+var host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? builder.Configuration["Email:Smtp:Host"];
+
+// Configure Rate Limiting
 builder.Services.AddRateLimiter(options =>
 {
     options.AddPolicy("fixed", httpContext =>
@@ -83,7 +102,11 @@ builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddSignalR();
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    // Register the LoggingActionFilter globally
+    options.Filters.Add<LoggingActionFilter>();
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -108,6 +131,10 @@ app.UseMetricServer();
 
 // Log requests
 app.UseSerilogRequestLogging();
+
+// Apply the RequestResponseLoggingMiddleware
+app.UseMiddleware<RequestResponseLoggingMiddleware>();
+
 app.UseResponseCaching();
 
 // Enable Swagger

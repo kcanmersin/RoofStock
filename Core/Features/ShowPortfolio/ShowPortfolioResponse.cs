@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Features.ShowPortfolio
 {
@@ -13,6 +10,11 @@ namespace Core.Features.ShowPortfolio
         public List<StockHoldingItemDetail> StockHoldingItems { get; set; } = new List<StockHoldingItemDetail>();
         public decimal TotalPortfolioValue { get; set; }
         public decimal Change { get; set; }
+
+        public decimal TotalBalance { get; set; }
+
+        public decimal AvailableBalance { get; set; }
+
         public class StockHoldingItemDetail
         {
             public string StockSymbol { get; set; } = string.Empty;

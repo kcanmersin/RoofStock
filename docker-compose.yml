@@ -5,38 +5,46 @@ services:
     build: .
     ports:
       - "5000:80"
-    # depends_on:
-    #   - elasticsearch  # Elasticsearch'e bağımlılığı ekleyin
     env_file:
       - .env
     networks:
       - stockflow_network
     logging:
       driver: "json-file"
+    depends_on:
+      - elasticsearch
+      - logstash
 
-  # elasticsearch:
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.0.0
-  #   environment:
-  #     - discovery.type=single-node
-  #     - ES_JAVA_OPTS=-Xms512m -Xmx512m
-  #     - xpack.security.enabled=false
-  #   ports:
-  #     - "9200:9200"
-  #   networks:
-  #     - stockflow_network
-  #   volumes:
-  #     - esdata:/usr/share/elasticsearch/data
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.0
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    networks:
+      - stockflow_network
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
 
-  # kibana:
-  #   image: docker.elastic.co/kibana/kibana:8.0.0
-  #   depends_on:
-  #     - elasticsearch
-  #   ports:
-  #     - "5601:5601"
-  #   networks:
-  #     - stockflow_network
-  #   environment:
-  #     ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.9.0
+    volumes:
+      - ./API/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    networks:
+      - stockflow_network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.9.0
+    ports:
+      - "5601:5601"
+    networks:
+      - stockflow_network
+    depends_on:
+      - elasticsearch
 
 networks:
   stockflow_network:

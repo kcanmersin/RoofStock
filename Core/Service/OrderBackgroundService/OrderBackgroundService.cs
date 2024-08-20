@@ -58,7 +58,6 @@ namespace Core.Service.OrderBackgroundService
             {
                 var totalCost = currentPrice * orderProcess.Order.Quantity;
 
-                // Kullanýcýnýn bekleyen diðer alým emirlerinden kalan bakiyesini hesapla
                 var pendingBuyOrders = await _context.Orders
                     .Where(o => o.UserId == user.Id && o.OrderType == OrderType.Buy && o.OrderProcess.Status == OrderProcessStatus.Pending)
                     .ToListAsync();
@@ -96,7 +95,6 @@ namespace Core.Service.OrderBackgroundService
             }
             else
             {
-                // Kullanýcýnýn bekleyen diðer satýþ emirlerinden kalan hisselerini hesapla
                 var stockHolding = await _context.StockHoldings
                     .FirstOrDefaultAsync(sh => sh.UserId == user.Id && sh.StockSymbol == orderProcess.Order.StockSymbol);
 

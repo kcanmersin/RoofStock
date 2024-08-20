@@ -8,6 +8,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Core.Service.StockApi;
 using System.Collections.Generic;
+using Core.Data.Entity;
 
 namespace Core.Features.ShowPortfolio
 {
@@ -32,6 +33,13 @@ namespace Core.Features.ShowPortfolio
             {
                 return Result.Failure<ShowPortfolioResponse>(new Error("UserNotFound", "User not found."));
             }
+
+            var totalPendingAmount = await _context.Orders
+                .Where(o => o.UserId == request.UserId && o.OrderProcess.Status == OrderProcessStatus.Pending)
+                .SumAsync(o => o.Quantity * o.TargetPrice, cancellationToken);
+
+            var totalBalance = user.Balance;
+            var availableBalance = user.Balance - totalPendingAmount;
 
             var stockSymbols = user.StockHoldings
                 .Select(sh => sh.StockSymbol)
@@ -65,7 +73,7 @@ namespace Core.Features.ShowPortfolio
                 {
                     StockSymbol = stockHolding.StockSymbol,
                     Quantity = stockHolding.Quantity,
-                    UnitPrice = currentPrice 
+                    UnitPrice = currentPrice
                 });
             }
 
@@ -75,7 +83,9 @@ namespace Core.Features.ShowPortfolio
                 Message = "Portfolio retrieved successfully.",
                 StockHoldingItems = stockHoldingItems,
                 Change = totalChange,
-                TotalPortfolioValue = totalPortfolioValue
+                TotalPortfolioValue = totalPortfolioValue,
+                TotalBalance = totalBalance,
+                AvailableBalance = availableBalance
             });
         }
     }
