@@ -17,7 +17,7 @@ namespace Core.Data.Entity
   orderProcessId   uuid [ref: > orderProccess.id]
 }
      */
-    public class StockHoldingItem : EntityBase
+    internal class StockHoldingItem : EntityBase
     {
 
         public string StockSymbol { get; set; }

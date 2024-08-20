@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Core.Features.GiveOrder
 {
-    public class OrderHandler : IRequestHandler<OrderCommand, Result<OrderResponse>>
+    internal class OrderHandler : IRequestHandler<OrderCommand, Result<OrderResponse>>
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Data.Entity.User
 {
-    public class AppUserLogin : IdentityUserLogin<Guid>
+    internal class AppUserLogin : IdentityUserLogin<Guid>
     {
     }
 }

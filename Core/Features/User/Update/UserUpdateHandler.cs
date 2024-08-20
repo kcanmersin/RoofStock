@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Core.Features.User.Update
 {
-    public class UserUpdateHandler : IRequestHandler<UserUpdateCommand, Result<UserUpdateResponse>>
+    internal class UserUpdateHandler : IRequestHandler<UserUpdateCommand, Result<UserUpdateResponse>>
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IValidator<UserUpdateCommand> _validator;

@@ -7,7 +7,7 @@ using Core.Data.Entity.User;
 
 namespace Core.Data.Entity
 {
- public class StockPriceAlert : EntityBase
+ internal class StockPriceAlert : EntityBase
     {
         public Guid UserId { get; set; }
         public virtual AppUser User { get; set; }

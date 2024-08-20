@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Features
 {
-    public class BuyService : IBuyService
+    internal class BuyService : IBuyService
     {
         private readonly ApplicationDbContext _context;
 

@@ -9,7 +9,7 @@ using Quartz;
 namespace Core.Service.DeleteUnconfirmedUsers
 {
 
-    public class DeleteUnconfirmedUsersJob : IJob
+    internal class DeleteUnconfirmedUsersJob : IJob
     {
         private readonly UserManager<AppUser> _userManager;
 

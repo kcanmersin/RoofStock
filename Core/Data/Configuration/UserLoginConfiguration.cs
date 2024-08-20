@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 //isimlendirmeler config ve internal yap
 namespace Core.Data.Configuration
 {
-    public class UserLoginConfiguration : IEntityTypeConfiguration<AppUserLogin>
+    internal class UserLoginConfiguration : IEntityTypeConfiguration<AppUserLogin>
     {
         public void Configure(EntityTypeBuilder<AppUserLogin> builder)
         {

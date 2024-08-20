@@ -4,7 +4,7 @@ using System;
 
 namespace Core.Data.Entity
 {
-    public class Order : EntityBase
+    internal class Order : EntityBase
     {
         public string StockSymbol { get; set; }
         public int Quantity { get; set; }

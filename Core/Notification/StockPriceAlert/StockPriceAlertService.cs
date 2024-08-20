@@ -7,24 +7,21 @@ using Core.Data.Entity;
 using System.ComponentModel;
 using Core.Service.Email;
 
-namespace API.Notification.StockPriceAlert
+namespace Core.Notification.StockPriceAlert
 {
-    public class StockPriceAlertService
+    internal  class StockPriceAlertService
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;
-        private readonly StockPriceMonitorService _stockPriceMonitorService;
         private readonly IEmailService _emailService;
 
         public StockPriceAlertService(
             ApplicationDbContext context,
             IStockApiService stockApiService,
-            StockPriceMonitorService stockPriceMonitorService,
             IEmailService emailService)
         {
             _context = context;
             _stockApiService = stockApiService;
-            _stockPriceMonitorService = stockPriceMonitorService;
             _emailService = emailService;
         }
 
@@ -58,7 +55,6 @@ namespace API.Notification.StockPriceAlert
                     alert.IsTriggered = true;
                     alert.TriggeredDate = DateTime.UtcNow;
 
-                    await _stockPriceMonitorService.SendStockPriceAlertAsync(alert.UserId.ToString(), alert.StockSymbol, currentPrice);
 
                     //var user = alert.User;
                     //if (user != null && !string.IsNullOrEmpty(user.Email))

@@ -10,7 +10,7 @@ using Core.Service.StockApi;
 
 namespace Core.Features.SetPriceAlert
 {
-    public class SetPriceAlertHandler : IRequestHandler<SetPriceAlertCommand, Result<SetPriceAlertResponse>>
+    internal class SetPriceAlertHandler : IRequestHandler<SetPriceAlertCommand, Result<SetPriceAlertResponse>>
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;

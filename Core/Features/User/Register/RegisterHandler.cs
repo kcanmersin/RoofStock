@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Core.Features.User.Register
 {
-    public class RegisterHandler : IRequestHandler<RegisterCommand, Result<RegisterResponse>>
+    internal class RegisterHandler : IRequestHandler<RegisterCommand, Result<RegisterResponse>>
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;

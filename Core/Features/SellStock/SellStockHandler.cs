@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Features.SellStock
 {
-    public class SellStockHandler : IRequestHandler<SellStockCommand, Result<SellStockResponse>>
+    internal class SellStockHandler : IRequestHandler<SellStockCommand, Result<SellStockResponse>>
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;

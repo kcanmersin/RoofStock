@@ -13,7 +13,7 @@ namespace Core.Data.Entity
     result bool
 }
      */
-    public class OrderProcess : EntityBase
+    internal class OrderProcess : EntityBase
     {
         public Guid OrderId { get; set; }
         public Order Order { get; set; }

@@ -4,7 +4,7 @@ using Core.Data.Entity;
 
 namespace Core.Data.Configuration
 {
-    public class StockPriceAlertConfiguration : IEntityTypeConfiguration<StockPriceAlert>
+    internal class StockPriceAlertConfiguration : IEntityTypeConfiguration<StockPriceAlert>
     {
         public void Configure(EntityTypeBuilder<StockPriceAlert> builder)
         {

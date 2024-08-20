@@ -2,7 +2,7 @@
 
 namespace Core.Data.Entity.User
 {
-    public class AppRoleClaim : IdentityRoleClaim<Guid>
+    internal class AppRoleClaim : IdentityRoleClaim<Guid>
     {
     }
 }

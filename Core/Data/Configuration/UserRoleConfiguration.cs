@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace  Core.Data.Configuration
 {
-    public class UserRoleConfiguration : IEntityTypeConfiguration<AppUserRole>
+    internal class UserRoleConfiguration : IEntityTypeConfiguration<AppUserRole>
     {
         public void Configure(EntityTypeBuilder<AppUserRole> builder)
         {

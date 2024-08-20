@@ -51,13 +51,31 @@ namespace API.Controllers
             try
             {
                 var news = await _stockApiService.GetMarketNewsAsync(request.Category, request.MinId);
-                return Ok(news);
+
+                var pagedNews = news
+                    .Skip((request.Page - 1) * request.PageSize)
+                    .Take(request.PageSize)
+                    .ToList();
+
+                var totalRecords = news.Count;
+
+                var response = new
+                {
+                    Data = pagedNews,
+                    TotalRecords = totalRecords,
+                    Page = request.Page,
+                    PageSize = request.PageSize,
+                    TotalPages = (int)Math.Ceiling((double)totalRecords / request.PageSize)
+                };
+
+                return Ok(response);
             }
             catch (HttpRequestException ex)
             {
                 return StatusCode(500, $"Error retrieving market news: {ex.Message}");
             }
         }
+
 
         // GET: api/StockApi/company-news?symbol=AAPL&from=2023-08-15&to=2023-08-20
         [HttpGet("company-news")]

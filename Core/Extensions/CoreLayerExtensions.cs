@@ -16,6 +16,11 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HealthChecks.Hangfire;
 using Core.Health;
 using Core.Features;
+using Core.Data.Entity.User;
+using Microsoft.AspNetCore.Identity;
+using Core.Notification.StockPriceAlert;
+using Core.Service.OrderBackgroundService;
+using Microsoft.AspNetCore.Builder;
 
 namespace Core.Extensions
 {
@@ -23,10 +28,20 @@ namespace Core.Extensions
     {
         public static IServiceCollection LoadCoreLayerExtension(this IServiceCollection services, IConfiguration configuration)
         {
-            // Connection string'i environment variable'dan çek
+            services.AddIdentity<AppUser, AppRole>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequiredLength = 6;
+            })
+            .AddRoleManager<RoleManager<AppRole>>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
 
             // Connection string'i oluştur
-            var defaultConnectionString =  Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? configuration["ConnectionStrings:DefaultConnection"];
+            var defaultConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? configuration["ConnectionStrings:DefaultConnection"];
 
             // E-posta ayarlarını environment variable'lardan veya appsettings'ten çek
             var emailHost = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? configuration["Email:Smtp:Host"];
@@ -35,12 +50,14 @@ namespace Core.Extensions
             var emailPassword = Environment.GetEnvironmentVariable("EMAIL_PASSWORD") ?? configuration["Email:Smtp:Password"];
             var emailFrom = Environment.GetEnvironmentVariable("EMAIL_FROM") ?? configuration["Email:Smtp:From"];
 
+            services.AddScoped<StockPriceAlertService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
 
             // Stock API health check
             services.AddHttpClient<StockApiHealthCheck>();
+            // Configure Hangfire recurring jobs
 
             // Health checks configuration
             services.AddHealthChecks()
@@ -106,15 +123,34 @@ namespace Core.Extensions
                 client.DefaultRequestHeaders.Add("X-Finnhub-Token", Environment.GetEnvironmentVariable("STOCKAPI_APIKEY") ?? configuration["StockApiSettings:ApiKey"]);
             });
 
-            // Hangfire configuration with PostgreSQL storage
             services.AddHangfire(config =>
                 config.UsePostgreSqlStorage(defaultConnectionString));
             services.AddHangfireServer();
 
-            // Add Quartz extension
             services.AddQuartzExtension(configuration);
 
+
+
+
             return services;
+        }
+        public static IApplicationBuilder UseCoreLayerRecurringJobs(this IApplicationBuilder app)
+        {
+            RecurringJob.AddOrUpdate<OrderBackgroundService>(
+                "CheckAndProcessOrders",
+                x => x.CheckAndProcessOrders(),
+                Cron.Minutely,
+                queue: "high-priority"
+            );
+
+            RecurringJob.AddOrUpdate<StockPriceAlertService>(
+                "CheckAndTriggerStockPriceAlerts",
+                x => x.CheckAndTriggerAlertsAsync(),
+                Cron.Minutely,
+                queue: "high-priority"
+            );
+
+            return app;
         }
     }
 }

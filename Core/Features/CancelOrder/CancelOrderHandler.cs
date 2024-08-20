@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Features.CancelOrder
 {
-    public class CancelOrderHandler : IRequestHandler<CancelOrderCommand, Result<CancelOrderResponse>>
+    internal class CancelOrderHandler : IRequestHandler<CancelOrderCommand, Result<CancelOrderResponse>>
     {
         private readonly ApplicationDbContext _context;
 

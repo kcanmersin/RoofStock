@@ -6,7 +6,7 @@ using System;
 
 namespace Core.Data.Configuration
 {
-    public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
+    internal class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {

@@ -12,7 +12,7 @@ using Core.Data.Entity;
 
 namespace Core.Features.ShowPortfolio
 {
-    public class ShowPortfolioHandler : IRequestHandler<ShowPortfolioCommand, Result<ShowPortfolioResponse>>
+    internal class ShowPortfolioHandler : IRequestHandler<ShowPortfolioCommand, Result<ShowPortfolioResponse>>
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;

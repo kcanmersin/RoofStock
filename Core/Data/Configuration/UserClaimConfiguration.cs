@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace  Core.Data.Configuration
 {
-    public class UserClaimConfiguration : IEntityTypeConfiguration<AppUserClaim>
+    internal class UserClaimConfiguration : IEntityTypeConfiguration<AppUserClaim>
     {
         public void Configure(EntityTypeBuilder<AppUserClaim> builder)
         {

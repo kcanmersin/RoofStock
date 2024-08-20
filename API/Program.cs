@@ -11,7 +11,6 @@ using System.Reflection;
 using Hangfire;
 using Core.Service.OrderBackgroundService;
 using API.Hubs;
-using API.Notification.StockPriceAlert;
 using Serilog;
 using API.Middlewares.ExceptionHandling;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -88,17 +87,7 @@ builder.Services.AddRateLimiter(options =>
 // Load Core Layer
 builder.Services.LoadCoreLayerExtension(builder.Configuration);
 
-builder.Services.AddIdentity<AppUser, AppRole>(opt =>
-{
-    opt.Password.RequireNonAlphanumeric = false;
-    opt.Password.RequireLowercase = false;
-    opt.Password.RequireUppercase = false;
-    opt.Password.RequireDigit = false;
-    opt.Password.RequiredLength = 6;
-})
-.AddRoleManager<RoleManager<AppRole>>()
-.AddEntityFrameworkStores<ApplicationDbContext>()
-.AddDefaultTokenProviders();
+
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddSignalR();
@@ -110,8 +99,6 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<StockPriceMonitorService>();
-builder.Services.AddScoped<StockPriceAlertService>();
 builder.Services.AddMemoryCache();
 
 builder.Services.AddCors(options =>
@@ -192,19 +179,6 @@ var options = new BackgroundJobServerOptions
 app.UseHangfireServer(options);
 
 // Configure Hangfire recurring jobs
-RecurringJob.AddOrUpdate<OrderBackgroundService>(
-    "CheckAndProcessOrders",
-    x => x.CheckAndProcessOrders(),
-    Cron.Minutely,
-    queue: "high-priority"
-);
-
-RecurringJob.AddOrUpdate<StockPriceAlertService>(
-    "CheckAndTriggerStockPriceAlerts",
-    x => x.CheckAndTriggerAlertsAsync(),
-    Cron.Minutely,
-    queue: "high-priority"
-);
 
 // Map controllers and SignalR hubs
 app.MapControllers();
