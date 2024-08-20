@@ -1,0 +1,2026 @@
+2024-08-20 16:43:04 [Information] Start installing Hangfire SQL objects...
+2024-08-20 16:43:06 [Information] Hangfire SQL objects installed.
+2024-08-20 16:43:06 [Information] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: roofstock-kcanmersin-7b3a.c.aivencloud.com, DB: defaultdb, Schema: hangfire'
+2024-08-20 16:43:06 [Information] Using the following options for PostgreSQL job storage:
+2024-08-20 16:43:06 [Information]     Queue poll interval: 00:00:15.
+2024-08-20 16:43:06 [Information]     Invisibility timeout: 00:30:00.
+2024-08-20 16:43:06 [Information]     Use sliding invisibility timeout: False.
+2024-08-20 16:43:06 [Information] Using the following options for Hangfire Server:
+    Worker count: 60
+    Listening queues: 'high-priority', 'low-priority'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-08-20 16:43:06 [Information] User profile is available. Using '"C:\Users\KC\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-20 16:43:06 [Information] Server desktop-ihebt3k:25268:47c6bb78 successfully announced in 219,4565 ms
+2024-08-20 16:43:06 [Information] Server desktop-ihebt3k:25268:47c6bb78 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-08-20 16:43:06 [Information] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2024-08-20 16:43:06 [Information] Quartz Scheduler created
+2024-08-20 16:43:06 [Information] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2024-08-20 16:43:06 [Information] RAMJobStore initialized.
+2024-08-20 16:43:06 [Information] Quartz Scheduler 3.13.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2024-08-20 16:43:06 [Information] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2024-08-20 16:43:06 [Information] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2024-08-20 16:43:07 [Information] Server desktop-ihebt3k:25268:47c6bb78 all the dispatchers started
+2024-08-20 16:43:07 [Information] Adding 1 jobs, 1 triggers.
+2024-08-20 16:43:07 [Information] Adding job: DEFAULT.DeleteUnconfirmedUsersJob
+2024-08-20 16:43:07 [Information] Now listening on: "http://localhost:5244"
+2024-08-20 16:43:07 [Information] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: roofstock-kcanmersin-7b3a.c.aivencloud.com, DB: defaultdb, Schema: hangfire'
+2024-08-20 16:43:07 [Information] Using the following options for PostgreSQL job storage:
+2024-08-20 16:43:07 [Information]     Queue poll interval: 00:00:15.
+2024-08-20 16:43:07 [Information]     Invisibility timeout: 00:30:00.
+2024-08-20 16:43:07 [Information]     Use sliding invisibility timeout: False.
+2024-08-20 16:43:07 [Information] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2024-08-20 16:43:07 [Information] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-08-20 16:43:07 [Information] Application started. Press Ctrl+C to shut down.
+2024-08-20 16:43:07 [Information] Hosting environment: "Development"
+2024-08-20 16:43:07 [Information] Content root path: "C:\Users\KC\source\repos\StockFlow\API"
+2024-08-20 16:43:07 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.html""" - null null
+2024-08-20 16:43:07 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.html" with Body: ""
+2024-08-20 16:43:07 [Information] No cached response available for this request.
+2024-08-20 16:43:07 [Information] Server desktop-ihebt3k:25268:cd47a2fc successfully announced in 628,0739 ms
+2024-08-20 16:43:07 [Information] Server desktop-ihebt3k:25268:cd47a2fc is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-08-20 16:43:08 [Information] Server desktop-ihebt3k:25268:cd47a2fc all the dispatchers started
+2024-08-20 16:43:08 [Information] The response could not be cached for this request.
+2024-08-20 16:43:08 [Information] ****Middleware**** Outgoing response: 200 with Body: "<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Swagger UI</title>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./index.css\">
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />
+       
+</head>
+
+<body>
+    <div id=\"swagger-ui\"></div>
+
+    <script src=\"./swagger-ui-bundle.js\" charset=\"utf-8\"></script>
+    <script src=\"./swagger-ui-standalone-preset.js\" charset=\"utf-8\"></script>
+    <script src=\"index.js\" charset=\"utf-8\"></script>
+</body>
+</html>
+"
+2024-08-20 16:43:08 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 640.1760 ms
+2024-08-20 16:43:08 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 805.3573ms
+2024-08-20 16:43:08 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/_framework/aspnetcore-browser-refresh.js""" - null null
+2024-08-20 16:43:08 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/_vs/browserLink""" - null null
+2024-08-20 16:43:08 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.js""" - null null
+2024-08-20 16:43:08 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/_framework/aspnetcore-browser-refresh.js""" - 200 13742 "application/javascript; charset=utf-8" 69.897ms
+2024-08-20 16:43:08 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.js" with Body: ""
+2024-08-20 16:43:08 [Information] No cached response available for this request.
+2024-08-20 16:43:08 [Information] The response could not be cached for this request.
+2024-08-20 16:43:08 [Information] ****Middleware**** Outgoing response: 200 with Body: "/* Source: https://gist.github.com/lamberta/3768814
+ * Parse a string function definition and return a function object. Does not use eval.
+ * @param {string} str
+ * @return {function}
+ *
+ * Example:
+ *  var f = function (x, y) { return x * y; };
+ *  var g = parseFunction(f.toString());
+ *  g(33, 3); //=> 99
+ */
+function parseFunction(str) {
+    if (!str) return void (0);
+
+    var fn_body_idx = str.indexOf('{'),
+        fn_body = str.substring(fn_body_idx + 1, str.lastIndexOf('}')),
+        fn_declare = str.substring(0, fn_body_idx),
+        fn_params = fn_declare.substring(fn_declare.indexOf('(') + 1, fn_declare.lastIndexOf(')')),
+        args = fn_params.split(',');
+
+    args.push(fn_body);
+
+    function Fn() {
+        return Function.apply(this, args);
+    }
+    Fn.prototype = Function.prototype;
+
+    return new Fn();
+}
+
+window.onload = function () {
+    var configObject = JSON.parse('{\"urls\":[{\"url\":\"v1/swagger.json\",\"name\":\"API v1\"}],\"deepLinking\":false,\"persistAuthorization\":false,\"displayOperationId\":false,\"defaultModelsExpandDepth\":1,\"defaultModelExpandDepth\":1,\"defaultModelRendering\":\"example\",\"displayRequestDuration\":false,\"docExpansion\":\"list\",\"showExtensions\":false,\"showCommonExtensions\":false,\"supportedSubmitMethods\":[\"get\",\"put\",\"post\",\"delete\",\"options\",\"head\",\"patch\",\"trace\"],\"tryItOutEnabled\":false}');
+    var oauthConfigObject = JSON.parse('{\"scopeSeparator\":\" \",\"scopes\":[],\"useBasicAuthenticationWithAccessCodeGrant\":false,\"usePkceWithAuthorizationCodeGrant\":false}');
+
+    // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
+    configObject.urls.forEach(function (item) {
+        if (item.url.startsWith(\"http\") || item.url.startsWith(\"/\")) return;
+        item.url = window.location.href.replace(\"index.html\", item.url).split('#')[0];
+    });
+
+    // If validatorUrl is not explicitly provided, disable the feature by setting to null
+    if (!configObject.hasOwnProperty(\"validatorUrl\"))
+        configObject.validatorUrl = null
+
+    // If oauth2RedirectUrl isn't specified, use the built-in default
+    if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))
+        configObject.oauth2RedirectUrl = (new URL(\"oauth2-redirect.html\", window.location.href)).href;
+
+    // Apply mandatory parameters
+    configObject.dom_id = \"#swagger-ui\";
+    configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+    configObject.layout = \"StandaloneLayout\";
+
+    // Parse and add interceptor functions
+    var interceptors = JSON.parse('{}');
+    if (interceptors.RequestInterceptorFunction)
+        configObject.requestInterceptor = parseFunction(interceptors.RequestInterceptorFunction);
+    if (interceptors.ResponseInterceptorFunction)
+        configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
+
+    // Begin Swagger UI call region
+
+    const ui = SwaggerUIBundle(configObject);
+
+    ui.initOAuth(oauthConfigObject);
+
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+"
+2024-08-20 16:43:08 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 56.8487 ms
+2024-08-20 16:43:08 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 209.4821ms
+2024-08-20 16:43:08 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 239.8514ms
+2024-08-20 16:43:09 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/v1/swagger.json""" - null null
+2024-08-20 16:43:09 [Information] ****Middleware**** Incoming request: "GET" "/swagger/v1/swagger.json" with Body: ""
+2024-08-20 16:43:09 [Information] No cached response available for this request.
+2024-08-20 16:43:09 [Information] The response could not be cached for this request.
+2024-08-20 16:43:09 [Information] ****Middleware**** Outgoing response: 200 with Body: "{
+  \"openapi\": \"3.0.1\",
+  \"info\": {
+    \"title\": \"API\",
+    \"version\": \"1.0\"
+  },
+  \"paths\": {
+    \"/api/deposit\": {
+      \"post\": {
+        \"tags\": [
+          \"Deposit\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DepositRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DepositRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DepositRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/orders/cancel\": {
+      \"post\": {
+        \"tags\": [
+          \"Order\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CancelOrderRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CancelOrderRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CancelOrderRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/orders/place\": {
+      \"post\": {
+        \"tags\": [
+          \"Order\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/GiveOrderRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/GiveOrderRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/GiveOrderRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/portfolio\": {
+      \"get\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"UserId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\",
+              \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/sell\": {
+      \"post\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SellStockRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SellStockRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SellStockRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/buy\": {
+      \"post\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/BuyStockRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/BuyStockRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/BuyStockRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/price-alert\": {
+      \"post\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SetPriceAlertRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SetPriceAlertRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SetPriceAlertRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/StockApi/price\": {
+      \"get\": {
+        \"tags\": [
+          \"StockApi\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"symbol\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/StockApi/market-news\": {
+      \"get\": {
+        \"tags\": [
+          \"StockApi\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"Category\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"general\"
+            }
+          },
+          {
+            \"name\": \"MinId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 0
+            }
+          },
+          {
+            \"name\": \"Page\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 1
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 10
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/StockApi/company-news\": {
+      \"get\": {
+        \"tags\": [
+          \"StockApi\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"Symbol\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"AAPL\"
+            }
+          },
+          {
+            \"name\": \"From\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"2021-01-01\"
+            }
+          },
+          {
+            \"name\": \"To\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"2024-01-01\"
+            }
+          },
+          {
+            \"name\": \"Page\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 1
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 10
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/confirm-email\": {
+      \"get\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"email\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          },
+          {
+            \"name\": \"token\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/login\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/register\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/update\": {
+      \"put\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/withdrawal\": {
+      \"post\": {
+        \"tags\": [
+          \"Withdrawal\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/WithdrawalRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/WithdrawalRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/WithdrawalRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    }
+  },
+  \"components\": {
+    \"schemas\": {
+      \"AlertType\": {
+        \"enum\": [
+          0,
+          1
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"BuyStockRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"quantity\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"default\": 1
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CancelOrderRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"orderId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"DepositRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"amount\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 100
+          },
+          \"currency\": {
+            \"type\": \"string\",
+            \"default\": \"TRY\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"GiveOrderRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"quantity\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"default\": 1
+          },
+          \"targetPrice\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 150
+          },
+          \"orderType\": {
+            \"$ref\": \"#/components/schemas/OrderType\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"LoginRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"OrderType\": {
+        \"enum\": [
+          0,
+          1
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"RegisterRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"roleName\": {
+            \"type\": \"string\",
+            \"default\": \"User\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"SellStockRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"quantity\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"default\": 1
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"SetPriceAlertRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"targetPrice\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 100
+          },
+          \"alertType\": {
+            \"$ref\": \"#/components/schemas/AlertType\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UserUpdateRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"657c6705-0728-4dfc-8019-ea59c42f984f\"
+          },
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"imagePath\": {
+            \"type\": \"string\",
+            \"default\": \"/API/defaultlogo.jpg\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"WithdrawalRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"amountInUSD\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 100
+          },
+          \"targetCurrency\": {
+            \"type\": \"string\",
+            \"default\": \"TRY\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      }
+    }
+  }
+}"
+2024-08-20 16:43:09 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 328.2652 ms
+2024-08-20 16:43:09 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 374.6964ms
+2024-08-20 16:43:13 [Information] Executed DbCommand ("88"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:43:13 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:43:13 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:43:14 [Information] Received HTTP response headers after 373.0313ms - 200
+2024-08-20 16:43:14 [Information] End processing HTTP request after 385.1065ms - 200
+2024-08-20 16:43:15 [Information] Execution Worker recovered from the Faulted state after 00:00:07.9814605 and is in the Running state now
+2024-08-20 16:43:27 [Information] Execution RecurringJobScheduler recovered from the Faulted state after 00:00:19.3482845 and is in the Running state now
+2024-08-20 16:43:47 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5244""""/api/deposit""" - "application/json" 92
+2024-08-20 16:43:47 [Information] ****Middleware**** Incoming request: "POST" "/api/deposit" with Body: "{
+  \"userId\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+  \"amount\": 100,
+  \"currency\": \"TRY\"
+}"
+2024-08-20 16:43:47 [Information] CORS policy execution successful.
+2024-08-20 16:43:47 [Information] Executing endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:43:47 [Information] Route matched with "{action = \"Deposit\", controller = \"Deposit\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(Core.Features.Deposit.DepositRequest)" on controller "Core.Features.User.Deposit.DepositController" ("API").
+2024-08-20 16:43:47 [Information] ****ActionFilter**** Request for "POST" "/api/deposit" from "::1" with data [("request": DepositRequest { UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Amount: 100, Currency: "TRY" })]
+2024-08-20 16:43:47 [Information] Start processing HTTP request "GET" "https://api.frankfurter.app/latest?amount=100&from=TRY&to=USD"
+2024-08-20 16:43:48 [Information] Sending HTTP request "GET" "https://api.frankfurter.app/latest?amount=100&from=TRY&to=USD"
+2024-08-20 16:43:48 [Information] Received HTTP response headers after 217.3522ms - 200
+2024-08-20 16:43:48 [Information] End processing HTTP request after 223.9367ms - 200
+2024-08-20 16:43:48 [Information] Executed DbCommand ("59"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT a.\"Id\", a.\"AccessFailedCount\", a.\"Balance\", a.\"ConcurrencyStamp\", a.\"Email\", a.\"EmailConfirmationSentAt\", a.\"EmailConfirmationToken\", a.\"EmailConfirmed\", a.\"FirstName\", a.\"ImagePath\", a.\"IsEmailConfirmed\", a.\"LastName\", a.\"LockoutEnabled\", a.\"LockoutEnd\", a.\"NormalizedEmail\", a.\"NormalizedUserName\", a.\"PasswordHash\", a.\"PhoneNumber\", a.\"PhoneNumberConfirmed\", a.\"SecurityStamp\", a.\"TwoFactorEnabled\", a.\"UserName\"
+FROM \"AspNetUsers\" AS a
+WHERE a.\"Id\" = @__get_Item_0
+LIMIT 1"
+2024-08-20 16:43:48 [Information] Executed DbCommand ("63"ms) [Parameters=["@p1='?' (DbType = Guid), @p0='?' (DbType = Decimal), @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?', @p6='?' (DbType = DateTime), @p7='?', @p8='?' (DbType = DateTime), @p9='?', @p10='?' (DbType = Boolean), @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Guid), @p14='?' (DbType = Int32), @p15='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"AspNetUsers\" SET \"Balance\" = @p0
+WHERE \"Id\" = @p1 AND \"ConcurrencyStamp\" = @p2;
+INSERT INTO \"Transactions\" (\"Id\", \"Amount\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"Description\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"StockHoldingItemId\", \"Type\", \"UserId\")
+VALUES (@p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);"
+2024-08-20 16:43:48 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: DepositResponse { IsSuccess: True, NewBalance: 999604.4647, Message: "Deposit successful.", USDConvertedAmount: 2.9647 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-08-20 16:43:48 [Information] Executing "OkObjectResult", writing value of type '"Core.Features.Deposit.DepositResponse"'.
+2024-08-20 16:43:48 [Information] Executed action "Core.Features.User.Deposit.DepositController.Deposit (API)" in 911.0932ms
+2024-08-20 16:43:48 [Information] Executed endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:43:48 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"isSuccess\":true,\"newBalance\":999604.4647,\"message\":\"Deposit successful.\",\"usdConvertedAmount\":2.9647}"
+2024-08-20 16:43:48 [Information] HTTP "POST" "/api/deposit" responded 200 in 974.9843 ms
+2024-08-20 16:43:48 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5244""""/api/deposit""" - 200 null "application/json; charset=utf-8" 982.2575ms
+2024-08-20 16:43:53 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/api/stocks/portfolio""?UserId=3aa42229-1c0f-4630-8c1a-db879ecd0427" - null null
+2024-08-20 16:43:53 [Information] ****Middleware**** Incoming request: "GET" "/api/stocks/portfolio" with Body: ""
+2024-08-20 16:43:53 [Information] No cached response available for this request.
+2024-08-20 16:43:53 [Information] Executing endpoint '"API.Controllers.StockController.ShowPortfolio (API)"'
+2024-08-20 16:43:53 [Information] Route matched with "{action = \"ShowPortfolio\", controller = \"Stock\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ShowPortfolio(Core.Features.ShowPortfolio.ShowPortfolioRequest)" on controller "API.Controllers.StockController" ("API").
+2024-08-20 16:43:53 [Information] ****ActionFilter**** Request for "GET" "/api/stocks/portfolio" from "::1" with data [("request": ShowPortfolioRequest { UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427 })]
+2024-08-20 16:43:54 [Information] Executed DbCommand ("58"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT t.\"Id\", t.\"AccessFailedCount\", t.\"Balance\", t.\"ConcurrencyStamp\", t.\"Email\", t.\"EmailConfirmationSentAt\", t.\"EmailConfirmationToken\", t.\"EmailConfirmed\", t.\"FirstName\", t.\"ImagePath\", t.\"IsEmailConfirmed\", t.\"LastName\", t.\"LockoutEnabled\", t.\"LockoutEnd\", t.\"NormalizedEmail\", t.\"NormalizedUserName\", t.\"PasswordHash\", t.\"PhoneNumber\", t.\"PhoneNumberConfirmed\", t.\"SecurityStamp\", t.\"TwoFactorEnabled\", t.\"UserName\", s.\"Id\", s.\"CreatedBy\", s.\"CreatedDate\", s.\"DeletedBy\", s.\"DeletedDate\", s.\"IsDeleted\", s.\"ModifiedBy\", s.\"ModifiedDate\", s.\"Quantity\", s.\"StockSymbol\", s.\"TotalPurchasePrice\", s.\"UserId\"
+FROM (
+    SELECT a.\"Id\", a.\"AccessFailedCount\", a.\"Balance\", a.\"ConcurrencyStamp\", a.\"Email\", a.\"EmailConfirmationSentAt\", a.\"EmailConfirmationToken\", a.\"EmailConfirmed\", a.\"FirstName\", a.\"ImagePath\", a.\"IsEmailConfirmed\", a.\"LastName\", a.\"LockoutEnabled\", a.\"LockoutEnd\", a.\"NormalizedEmail\", a.\"NormalizedUserName\", a.\"PasswordHash\", a.\"PhoneNumber\", a.\"PhoneNumberConfirmed\", a.\"SecurityStamp\", a.\"TwoFactorEnabled\", a.\"UserName\"
+    FROM \"AspNetUsers\" AS a
+    WHERE a.\"Id\" = @__request_UserId_0
+    LIMIT 1
+) AS t
+LEFT JOIN \"StockHoldings\" AS s ON t.\"Id\" = s.\"UserId\"
+ORDER BY t.\"Id\""
+2024-08-20 16:43:54 [Information] Executed DbCommand ("60"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COALESCE(sum(o.\"Quantity\"::numeric * o.\"TargetPrice\"), 0.0)
+FROM \"Orders\" AS o
+LEFT JOIN \"OrderProcesses\" AS o0 ON o.\"Id\" = o0.\"OrderId\"
+WHERE o.\"UserId\" = @__request_UserId_0 AND o0.\"Status\" = 0"
+2024-08-20 16:43:54 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:43:54 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:43:54 [Information] Received HTTP response headers after 331.3166ms - 200
+2024-08-20 16:43:54 [Information] End processing HTTP request after 335.9304ms - 200
+2024-08-20 16:43:54 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: ShowPortfolioResponse { IsSuccess: True, Message: "Portfolio retrieved successfully.", StockHoldingItems: [StockHoldingItemDetail { StockSymbol: "AAPL", Quantity: 2, UnitPrice: 226.44 }], TotalPortfolioValue: 452.88, Change: 1.10, TotalBalance: 999604.46, AvailableBalance: 999454.46 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-08-20 16:43:54 [Information] Executing "OkObjectResult", writing value of type '"Core.Features.ShowPortfolio.ShowPortfolioResponse"'.
+2024-08-20 16:43:54 [Information] Executed action "API.Controllers.StockController.ShowPortfolio (API)" in 638.8172ms
+2024-08-20 16:43:54 [Information] Executed endpoint '"API.Controllers.StockController.ShowPortfolio (API)"'
+2024-08-20 16:43:54 [Information] The response could not be cached for this request.
+2024-08-20 16:43:54 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"isSuccess\":true,\"message\":\"Portfolio retrieved successfully.\",\"stockHoldingItems\":[{\"stockSymbol\":\"AAPL\",\"quantity\":2,\"unitPrice\":226.44}],\"totalPortfolioValue\":452.88,\"change\":1.10,\"totalBalance\":999604.46,\"availableBalance\":999454.46}"
+2024-08-20 16:43:54 [Information] HTTP "GET" "/api/stocks/portfolio" responded 200 in 658.0322 ms
+2024-08-20 16:43:54 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/api/stocks/portfolio""?UserId=3aa42229-1c0f-4630-8c1a-db879ecd0427" - 200 null "application/json; charset=utf-8" 663.3685ms
+2024-08-20 16:44:14 [Information] Executed DbCommand ("57"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:44:14 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:44:14 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:44:14 [Information] Received HTTP response headers after 303.1044ms - 200
+2024-08-20 16:44:14 [Information] End processing HTTP request after 306.3814ms - 200
+2024-08-20 16:44:15 [Information] Execution Worker recovered from the Faulted state after 00:00:50.9318286 and is in the Running state now
+2024-08-20 16:45:02 [Information] Executed DbCommand ("60"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:45:02 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:45:02 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:45:02 [Information] Received HTTP response headers after 350.0564ms - 200
+2024-08-20 16:45:02 [Information] End processing HTTP request after 353.9721ms - 200
+2024-08-20 16:46:05 [Information] Executed DbCommand ("59"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:46:05 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:46:05 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:46:06 [Information] Received HTTP response headers after 1155.85ms - 200
+2024-08-20 16:46:06 [Information] End processing HTTP request after 1159.5786ms - 200
+2024-08-20 16:47:08 [Information] Executed DbCommand ("58"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:47:08 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:47:08 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:47:08 [Information] Received HTTP response headers after 332.7471ms - 200
+2024-08-20 16:47:08 [Information] End processing HTTP request after 339.4253ms - 200
+2024-08-20 16:48:06 [Information] 2 servers were removed due to timeout
+2024-08-20 16:48:11 [Information] Executed DbCommand ("59"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:48:11 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:48:11 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:48:12 [Information] Received HTTP response headers after 1202.6493ms - 200
+2024-08-20 16:48:12 [Information] End processing HTTP request after 1207.5024ms - 200
+2024-08-20 16:49:13 [Information] Executed DbCommand ("61"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:49:13 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:49:13 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:49:15 [Information] Received HTTP response headers after 1114.1333ms - 200
+2024-08-20 16:49:15 [Information] End processing HTTP request after 1120.5891ms - 200
+2024-08-20 16:50:02 [Information] Executed DbCommand ("58"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:50:02 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:50:02 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:50:02 [Information] Received HTTP response headers after 307.7043ms - 200
+2024-08-20 16:50:02 [Information] End processing HTTP request after 310.4282ms - 200
+2024-08-20 16:51:03 [Information] Executed DbCommand ("59"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:51:03 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:51:03 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:51:03 [Information] Received HTTP response headers after 386.1621ms - 200
+2024-08-20 16:51:03 [Information] End processing HTTP request after 389.9344ms - 200
+2024-08-20 16:52:06 [Information] Executed DbCommand ("59"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:52:06 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:52:06 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:52:06 [Information] Received HTTP response headers after 300.2478ms - 200
+2024-08-20 16:52:06 [Information] End processing HTTP request after 303.5909ms - 200
+2024-08-20 16:53:08 [Information] Executed DbCommand ("60"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT o.\"Id\", o.\"CreatedBy\", o.\"CreatedDate\", o.\"DeletedBy\", o.\"DeletedDate\", o.\"IsDeleted\", o.\"ModifiedBy\", o.\"ModifiedDate\", o.\"OrderId\", o.\"Status\", o0.\"Id\", o0.\"CreatedBy\", o0.\"CreatedDate\", o0.\"DeletedBy\", o0.\"DeletedDate\", o0.\"IsDeleted\", o0.\"ModifiedBy\", o0.\"ModifiedDate\", o0.\"OrderType\", o0.\"Quantity\", o0.\"StockSymbol\", o0.\"TargetPrice\", o0.\"UserId\"
+FROM \"OrderProcesses\" AS o
+INNER JOIN \"Orders\" AS o0 ON o.\"OrderId\" = o0.\"Id\"
+WHERE o.\"Status\" = 0"
+2024-08-20 16:53:08 [Information] Start processing HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:53:08 [Information] Sending HTTP request "GET" "https://finnhub.io/api/v1/quote?symbol=AAPL&token=cqosfapr01qqj5dme8e0cqosfapr01qqj5dme8eg"
+2024-08-20 16:53:09 [Information] Received HTTP response headers after 324.3979ms - 200
+2024-08-20 16:53:09 [Information] End processing HTTP request after 328.808ms - 200
+2024-08-20 16:53:39 [Information] Start installing Hangfire SQL objects...
+2024-08-20 16:53:40 [Information] Hangfire SQL objects installed.
+2024-08-20 16:53:40 [Information] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: roofstock-kcanmersin-7b3a.c.aivencloud.com, DB: defaultdb, Schema: hangfire'
+2024-08-20 16:53:40 [Information] Using the following options for PostgreSQL job storage:
+2024-08-20 16:53:40 [Information]     Queue poll interval: 00:00:15.
+2024-08-20 16:53:40 [Information]     Invisibility timeout: 00:30:00.
+2024-08-20 16:53:40 [Information]     Use sliding invisibility timeout: False.
+2024-08-20 16:53:40 [Information] Using the following options for Hangfire Server:
+    Worker count: 60
+    Listening queues: 'high-priority', 'low-priority'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-08-20 16:53:40 [Information] User profile is available. Using '"C:\Users\KC\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-20 16:53:40 [Information] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2024-08-20 16:53:40 [Information] Quartz Scheduler created
+2024-08-20 16:53:40 [Information] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2024-08-20 16:53:40 [Information] RAMJobStore initialized.
+2024-08-20 16:53:40 [Information] Quartz Scheduler 3.13.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2024-08-20 16:53:40 [Information] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2024-08-20 16:53:40 [Information] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2024-08-20 16:53:40 [Information] Adding 1 jobs, 1 triggers.
+2024-08-20 16:53:40 [Information] Adding job: DEFAULT.DeleteUnconfirmedUsersJob
+2024-08-20 16:53:40 [Information] Server desktop-ihebt3k:20340:5bc486b3 successfully announced in 135,8455 ms
+2024-08-20 16:53:40 [Information] Server desktop-ihebt3k:20340:5bc486b3 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-08-20 16:53:40 [Information] Server desktop-ihebt3k:20340:5bc486b3 all the dispatchers started
+2024-08-20 16:53:40 [Information] Now listening on: "http://localhost:5244"
+2024-08-20 16:53:40 [Information] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: roofstock-kcanmersin-7b3a.c.aivencloud.com, DB: defaultdb, Schema: hangfire'
+2024-08-20 16:53:40 [Information] Using the following options for PostgreSQL job storage:
+2024-08-20 16:53:40 [Information]     Queue poll interval: 00:00:15.
+2024-08-20 16:53:40 [Information]     Invisibility timeout: 00:30:00.
+2024-08-20 16:53:40 [Information] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2024-08-20 16:53:40 [Information]     Use sliding invisibility timeout: False.
+2024-08-20 16:53:40 [Information] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-08-20 16:53:40 [Information] Application started. Press Ctrl+C to shut down.
+2024-08-20 16:53:40 [Information] Hosting environment: "Development"
+2024-08-20 16:53:40 [Information] Content root path: "C:\Users\KC\source\repos\StockFlow\API"
+2024-08-20 16:53:41 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.html""" - null null
+2024-08-20 16:53:41 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.html" with Body: ""
+2024-08-20 16:53:41 [Information] No cached response available for this request.
+2024-08-20 16:53:41 [Information] The response could not be cached for this request.
+2024-08-20 16:53:41 [Information] ****Middleware**** Outgoing response: 200 with Body: "<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Swagger UI</title>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"./index.css\">
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />
+    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />
+       
+</head>
+
+<body>
+    <div id=\"swagger-ui\"></div>
+
+    <script src=\"./swagger-ui-bundle.js\" charset=\"utf-8\"></script>
+    <script src=\"./swagger-ui-standalone-preset.js\" charset=\"utf-8\"></script>
+    <script src=\"index.js\" charset=\"utf-8\"></script>
+</body>
+</html>
+"
+2024-08-20 16:53:41 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 123.4396 ms
+2024-08-20 16:53:41 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 233.9644ms
+2024-08-20 16:53:41 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/_framework/aspnetcore-browser-refresh.js""" - null null
+2024-08-20 16:53:41 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/_vs/browserLink""" - null null
+2024-08-20 16:53:41 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.js""" - null null
+2024-08-20 16:53:41 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/_framework/aspnetcore-browser-refresh.js""" - 200 13742 "application/javascript; charset=utf-8" 5.8452ms
+2024-08-20 16:53:41 [Information] ****Middleware**** Incoming request: "GET" "/swagger/index.js" with Body: ""
+2024-08-20 16:53:41 [Information] Server desktop-ihebt3k:20340:1b1ad0ae successfully announced in 778,9919 ms
+2024-08-20 16:53:41 [Information] No cached response available for this request.
+2024-08-20 16:53:41 [Information] Server desktop-ihebt3k:20340:1b1ad0ae is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-08-20 16:53:41 [Information] The response could not be cached for this request.
+2024-08-20 16:53:41 [Information] ****Middleware**** Outgoing response: 200 with Body: "/* Source: https://gist.github.com/lamberta/3768814
+ * Parse a string function definition and return a function object. Does not use eval.
+ * @param {string} str
+ * @return {function}
+ *
+ * Example:
+ *  var f = function (x, y) { return x * y; };
+ *  var g = parseFunction(f.toString());
+ *  g(33, 3); //=> 99
+ */
+function parseFunction(str) {
+    if (!str) return void (0);
+
+    var fn_body_idx = str.indexOf('{'),
+        fn_body = str.substring(fn_body_idx + 1, str.lastIndexOf('}')),
+        fn_declare = str.substring(0, fn_body_idx),
+        fn_params = fn_declare.substring(fn_declare.indexOf('(') + 1, fn_declare.lastIndexOf(')')),
+        args = fn_params.split(',');
+
+    args.push(fn_body);
+
+    function Fn() {
+        return Function.apply(this, args);
+    }
+    Fn.prototype = Function.prototype;
+
+    return new Fn();
+}
+
+window.onload = function () {
+    var configObject = JSON.parse('{\"urls\":[{\"url\":\"v1/swagger.json\",\"name\":\"API v1\"}],\"deepLinking\":false,\"persistAuthorization\":false,\"displayOperationId\":false,\"defaultModelsExpandDepth\":1,\"defaultModelExpandDepth\":1,\"defaultModelRendering\":\"example\",\"displayRequestDuration\":false,\"docExpansion\":\"list\",\"showExtensions\":false,\"showCommonExtensions\":false,\"supportedSubmitMethods\":[\"get\",\"put\",\"post\",\"delete\",\"options\",\"head\",\"patch\",\"trace\"],\"tryItOutEnabled\":false}');
+    var oauthConfigObject = JSON.parse('{\"scopeSeparator\":\" \",\"scopes\":[],\"useBasicAuthenticationWithAccessCodeGrant\":false,\"usePkceWithAuthorizationCodeGrant\":false}');
+
+    // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
+    configObject.urls.forEach(function (item) {
+        if (item.url.startsWith(\"http\") || item.url.startsWith(\"/\")) return;
+        item.url = window.location.href.replace(\"index.html\", item.url).split('#')[0];
+    });
+
+    // If validatorUrl is not explicitly provided, disable the feature by setting to null
+    if (!configObject.hasOwnProperty(\"validatorUrl\"))
+        configObject.validatorUrl = null
+
+    // If oauth2RedirectUrl isn't specified, use the built-in default
+    if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))
+        configObject.oauth2RedirectUrl = (new URL(\"oauth2-redirect.html\", window.location.href)).href;
+
+    // Apply mandatory parameters
+    configObject.dom_id = \"#swagger-ui\";
+    configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+    configObject.layout = \"StandaloneLayout\";
+
+    // Parse and add interceptor functions
+    var interceptors = JSON.parse('{}');
+    if (interceptors.RequestInterceptorFunction)
+        configObject.requestInterceptor = parseFunction(interceptors.RequestInterceptorFunction);
+    if (interceptors.ResponseInterceptorFunction)
+        configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
+
+    // Begin Swagger UI call region
+
+    const ui = SwaggerUIBundle(configObject);
+
+    ui.initOAuth(oauthConfigObject);
+
+    // End Swagger UI call region
+
+    window.ui = ui
+}
+"
+2024-08-20 16:53:41 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 85.7740 ms
+2024-08-20 16:53:41 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 132.9007ms
+2024-08-20 16:53:41 [Information] Server desktop-ihebt3k:20340:1b1ad0ae all the dispatchers started
+2024-08-20 16:53:41 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 235.7348ms
+2024-08-20 16:53:42 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/v1/swagger.json""" - null null
+2024-08-20 16:53:42 [Information] ****Middleware**** Incoming request: "GET" "/swagger/v1/swagger.json" with Body: ""
+2024-08-20 16:53:42 [Information] No cached response available for this request.
+2024-08-20 16:53:42 [Information] The response could not be cached for this request.
+2024-08-20 16:53:42 [Information] ****Middleware**** Outgoing response: 200 with Body: "{
+  \"openapi\": \"3.0.1\",
+  \"info\": {
+    \"title\": \"API\",
+    \"version\": \"1.0\"
+  },
+  \"paths\": {
+    \"/api/deposit\": {
+      \"post\": {
+        \"tags\": [
+          \"Deposit\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DepositRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DepositRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/DepositRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/orders/cancel\": {
+      \"post\": {
+        \"tags\": [
+          \"Order\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CancelOrderRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CancelOrderRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/CancelOrderRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/orders/place\": {
+      \"post\": {
+        \"tags\": [
+          \"Order\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/GiveOrderRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/GiveOrderRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/GiveOrderRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/portfolio\": {
+      \"get\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"UserId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"format\": \"uuid\",
+              \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/sell\": {
+      \"post\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SellStockRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SellStockRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SellStockRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/buy\": {
+      \"post\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/BuyStockRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/BuyStockRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/BuyStockRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/stocks/price-alert\": {
+      \"post\": {
+        \"tags\": [
+          \"Stock\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SetPriceAlertRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SetPriceAlertRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/SetPriceAlertRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/StockApi/price\": {
+      \"get\": {
+        \"tags\": [
+          \"StockApi\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"symbol\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/StockApi/market-news\": {
+      \"get\": {
+        \"tags\": [
+          \"StockApi\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"Category\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"general\"
+            }
+          },
+          {
+            \"name\": \"MinId\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 0
+            }
+          },
+          {
+            \"name\": \"Page\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 1
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 10
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/StockApi/company-news\": {
+      \"get\": {
+        \"tags\": [
+          \"StockApi\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"Symbol\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"AAPL\"
+            }
+          },
+          {
+            \"name\": \"From\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"2021-01-01\"
+            }
+          },
+          {
+            \"name\": \"To\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\",
+              \"default\": \"2024-01-01\"
+            }
+          },
+          {
+            \"name\": \"Page\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 1
+            }
+          },
+          {
+            \"name\": \"PageSize\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"integer\",
+              \"format\": \"int32\",
+              \"default\": 10
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/confirm-email\": {
+      \"get\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"parameters\": [
+          {
+            \"name\": \"email\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          },
+          {
+            \"name\": \"token\",
+            \"in\": \"query\",
+            \"schema\": {
+              \"type\": \"string\"
+            }
+          }
+        ],
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/login\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/LoginRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/register\": {
+      \"post\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/RegisterRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/users/update\": {
+      \"put\": {
+        \"tags\": [
+          \"User\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/UserUpdateRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    },
+    \"/api/withdrawal\": {
+      \"post\": {
+        \"tags\": [
+          \"Withdrawal\"
+        ],
+        \"requestBody\": {
+          \"content\": {
+            \"application/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/WithdrawalRequest\"
+              }
+            },
+            \"text/json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/WithdrawalRequest\"
+              }
+            },
+            \"application/*+json\": {
+              \"schema\": {
+                \"$ref\": \"#/components/schemas/WithdrawalRequest\"
+              }
+            }
+          }
+        },
+        \"responses\": {
+          \"200\": {
+            \"description\": \"OK\"
+          }
+        }
+      }
+    }
+  },
+  \"components\": {
+    \"schemas\": {
+      \"AlertType\": {
+        \"enum\": [
+          0,
+          1
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"BuyStockRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"quantity\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"default\": 1
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"CancelOrderRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"orderId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\"
+          },
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"DepositRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"amount\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 100
+          },
+          \"currency\": {
+            \"type\": \"string\",
+            \"default\": \"TRY\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"GiveOrderRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"quantity\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"default\": 1
+          },
+          \"targetPrice\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 150
+          },
+          \"orderType\": {
+            \"$ref\": \"#/components/schemas/OrderType\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"LoginRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"OrderType\": {
+        \"enum\": [
+          0,
+          1
+        ],
+        \"type\": \"integer\",
+        \"format\": \"int32\"
+      },
+      \"RegisterRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"password\": {
+            \"type\": \"string\",
+            \"default\": \"19071907\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"roleName\": {
+            \"type\": \"string\",
+            \"default\": \"User\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"SellStockRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"quantity\": {
+            \"type\": \"integer\",
+            \"format\": \"int32\",
+            \"default\": 1
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"SetPriceAlertRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"stockSymbol\": {
+            \"type\": \"string\",
+            \"default\": \"AAPL\",
+            \"nullable\": true
+          },
+          \"targetPrice\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 100
+          },
+          \"alertType\": {
+            \"$ref\": \"#/components/schemas/AlertType\"
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"UserUpdateRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"657c6705-0728-4dfc-8019-ea59c42f984f\"
+          },
+          \"email\": {
+            \"type\": \"string\",
+            \"default\": \"kerimcanmersin@gmail.com\",
+            \"nullable\": true
+          },
+          \"firstName\": {
+            \"type\": \"string\",
+            \"default\": \"Can\",
+            \"nullable\": true
+          },
+          \"lastName\": {
+            \"type\": \"string\",
+            \"default\": \"Mersin\",
+            \"nullable\": true
+          },
+          \"phoneNumber\": {
+            \"type\": \"string\",
+            \"default\": \"+1234567890\",
+            \"nullable\": true
+          },
+          \"imagePath\": {
+            \"type\": \"string\",
+            \"default\": \"/API/defaultlogo.jpg\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      },
+      \"WithdrawalRequest\": {
+        \"type\": \"object\",
+        \"properties\": {
+          \"userId\": {
+            \"type\": \"string\",
+            \"format\": \"uuid\",
+            \"default\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\"
+          },
+          \"amountInUSD\": {
+            \"type\": \"number\",
+            \"format\": \"double\",
+            \"default\": 100
+          },
+          \"targetCurrency\": {
+            \"type\": \"string\",
+            \"default\": \"TRY\",
+            \"nullable\": true
+          }
+        },
+        \"additionalProperties\": false
+      }
+    }
+  }
+}"
+2024-08-20 16:53:42 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 183.8812 ms
+2024-08-20 16:53:42 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:5244""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 191.1665ms
+2024-08-20 16:53:45 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:5244""""/api/deposit""" - "application/json" 92
+2024-08-20 16:53:45 [Information] ****Middleware**** Incoming request: "POST" "/api/deposit" with Body: "{
+  \"userId\": \"3aa42229-1c0f-4630-8c1a-db879ecd0427\",
+  \"amount\": 100,
+  \"currency\": \"TRY\"
+}"
+2024-08-20 16:53:45 [Information] CORS policy execution successful.
+2024-08-20 16:53:45 [Information] Executing endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:53:45 [Information] Route matched with "{action = \"Deposit\", controller = \"Deposit\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(Core.Features.Deposit.DepositRequest)" on controller "Core.Features.User.Deposit.DepositController" ("API").
+2024-08-20 16:53:45 [Information] ****ActionFilter**** Request for "POST" "/api/deposit" from "::1" with data [("request": DepositRequest { UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Amount: 100, Currency: "TRY" })]
+2024-08-20 16:53:45 [Information] Start processing HTTP request "GET" "https://api.frankfurter.app/latest?amount=100&from=TRY&to=USD"
+2024-08-20 16:53:45 [Information] Sending HTTP request "GET" "https://api.frankfurter.app/latest?amount=100&from=TRY&to=USD"
+2024-08-20 16:53:45 [Information] Received HTTP response headers after 132.392ms - 200
+2024-08-20 16:53:45 [Information] End processing HTTP request after 144.2215ms - 200
+2024-08-20 16:53:46 [Information] Executed DbCommand ("63"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT a.\"Id\", a.\"AccessFailedCount\", a.\"Balance\", a.\"ConcurrencyStamp\", a.\"Email\", a.\"EmailConfirmationSentAt\", a.\"EmailConfirmationToken\", a.\"EmailConfirmed\", a.\"FirstName\", a.\"ImagePath\", a.\"IsEmailConfirmed\", a.\"LastName\", a.\"LockoutEnabled\", a.\"LockoutEnd\", a.\"NormalizedEmail\", a.\"NormalizedUserName\", a.\"PasswordHash\", a.\"PhoneNumber\", a.\"PhoneNumberConfirmed\", a.\"SecurityStamp\", a.\"TwoFactorEnabled\", a.\"UserName\"
+FROM \"AspNetUsers\" AS a
+WHERE a.\"Id\" = @__get_Item_0
+LIMIT 1"
+2024-08-20 16:53:46 [Information] Executed DbCommand ("63"ms) [Parameters=["@p1='?' (DbType = Guid), @p0='?' (DbType = Decimal), @p2='?', @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?', @p6='?' (DbType = DateTime), @p7='?', @p8='?' (DbType = DateTime), @p9='?', @p10='?' (DbType = Boolean), @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Guid), @p14='?' (DbType = Int32), @p15='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"AspNetUsers\" SET \"Balance\" = @p0
+WHERE \"Id\" = @p1 AND \"ConcurrencyStamp\" = @p2;
+INSERT INTO \"Transactions\" (\"Id\", \"Amount\", \"CreatedBy\", \"CreatedDate\", \"DeletedBy\", \"DeletedDate\", \"Description\", \"IsDeleted\", \"ModifiedBy\", \"ModifiedDate\", \"StockHoldingItemId\", \"Type\", \"UserId\")
+VALUES (@p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);"
+2024-08-20 16:53:46 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: DepositResponse { IsSuccess: True, NewBalance: 999607.4247, Message: "Deposit successful.", USDConvertedAmount: 2.9647 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }
+2024-08-20 16:53:47 [Information] Executing "OkObjectResult", writing value of type '"Core.Features.Deposit.DepositResponse"'.
+2024-08-20 16:53:47 [Information] Executed action "Core.Features.User.Deposit.DepositController.Deposit (API)" in 1923.6541ms
+2024-08-20 16:53:47 [Information] Executed endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:53:47 [Information] ****Middleware**** Outgoing response: 200 with Body: "{\"isSuccess\":true,\"newBalance\":999607.4247,\"message\":\"Deposit successful.\",\"usdConvertedAmount\":2.9647}"
+2024-08-20 16:53:47 [Information] HTTP "POST" "/api/deposit" responded 200 in 1987.9603 ms
+2024-08-20 16:53:47 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:5244""""/api/deposit""" - 200 null "application/json; charset=utf-8" 2002.6983ms
+2024-08-20 16:53:58 [Information] Execution DelayedJobScheduler recovered from the Faulted state after 00:00:16.7514758 and is in the Running state now
+2024-08-20 16:53:58 [Information] Execution RecurringJobScheduler recovered from the Faulted state after 00:00:16.7513803 and is in the Running state now

@@ -3,20 +3,27 @@
   "WorkspaceRootPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\helper\\log\\requestresponseloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\helper\\log\\requestresponseloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KC\\AppData\\Local\\SourceServer\\d5c08cb97798334925aa641a29885889f90f2bdb3c74c7d522a73dc09df2b438\\API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\controllers\\stockapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\stockapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\helper\\log\\loggingactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\helper\\log\\loggingactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\helper\\log\\requestresponseloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\helper\\log\\requestresponseloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\helper\\log\\loggingactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\helper\\log\\loggingactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\extensions\\queryableextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,14 +48,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\shared\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\shared\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\logstash.conf||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\logstash.conf||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\filebeat.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\filebeat.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\prometheus.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -203,10 +202,6 @@
       "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\service\\jwt\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|c:\\users\\kc\\source\\repos\\stockflow\\api\\controllers\\withdrawalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\withdrawalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -230,7 +225,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -243,19 +238,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\AppData\\Local\\SourceServer\\d5c08cb97798334925aa641a29885889f90f2bdb3c74c7d522a73dc09df2b438\\API\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\SourceServer\\d5c08cb97798334925aa641a29885889f90f2bdb3c74c7d522a73dc09df2b438\\API\\Program.cs",
+              "ToolTip": "C:\\Users\\KC\\AppData\\Local\\SourceServer\\d5c08cb97798334925aa641a29885889f90f2bdb3c74c7d522a73dc09df2b438\\API\\Program.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\SourceServer\\d5c08cb97798334925aa641a29885889f90f2bdb3c74c7d522a73dc09df2b438\\API\\Program.cs [Read Only]",
+              "ViewState": "AQIAALYAAAAAAAAAAAAowLgAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T12:48:26.215Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "StockApiController.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Controllers\\StockApiController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\StockApiController.cs",
               "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Controllers\\StockApiController.cs",
               "RelativeToolTip": "API\\Controllers\\StockApiController.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAowD4AAAArAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAwwEIAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:08:08.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T10:08:08.962Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "PaginationParams.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Shared\\PaginationParams.cs",
               "RelativeDocumentMoniker": "Core\\Shared\\PaginationParams.cs",
@@ -263,21 +270,7 @@
               "RelativeToolTip": "Core\\Shared\\PaginationParams.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:01:05.415Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "logstash.conf",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\logstash.conf",
-              "RelativeDocumentMoniker": "API\\logstash.conf",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\logstash.conf",
-              "RelativeToolTip": "API\\logstash.conf",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-20T09:55:42.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T10:01:05.415Z"
             },
             {
               "$type": "Document",
@@ -289,8 +282,7 @@
               "RelativeToolTip": "API\\Hubs\\StockPriceHub.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:55:25.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:55:25.111Z"
             },
             {
               "$type": "Document",
@@ -302,8 +294,7 @@
               "RelativeToolTip": "Core\\Health\\QuartzHealthCheck.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:55:11.093Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:55:11.093Z"
             },
             {
               "$type": "Document",
@@ -315,12 +306,11 @@
               "RelativeToolTip": "Core\\Health\\StockApiHealthCheck.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:55:07.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:55:07.475Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "CoreLayerExtensions.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Extensions\\CoreLayerExtensions.cs",
               "RelativeDocumentMoniker": "Core\\Extensions\\CoreLayerExtensions.cs",
@@ -328,12 +318,11 @@
               "RelativeToolTip": "Core\\Extensions\\CoreLayerExtensions.cs",
               "ViewState": "AQIAAHQAAAAAAAAAAAAAwIIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T14:24:37.828Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T14:24:37.828Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "JwtExtensions.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Extensions\\JwtExtensions.cs",
               "RelativeDocumentMoniker": "Core\\Extensions\\JwtExtensions.cs",
@@ -346,20 +335,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Program.cs",
               "RelativeDocumentMoniker": "API\\Program.cs",
               "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Program.cs",
               "RelativeToolTip": "API\\Program.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAowCQAAABYAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAIwDsAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-15T19:30:19.039Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "PagedResult.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Shared\\PagedResult.cs",
               "RelativeDocumentMoniker": "Core\\Shared\\PagedResult.cs",
@@ -367,12 +356,11 @@
               "RelativeToolTip": "Core\\Shared\\PagedResult.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:01:09.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T10:01:09.703Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "QueryableExtensions.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Extensions\\QueryableExtensions.cs",
               "RelativeDocumentMoniker": "Core\\Extensions\\QueryableExtensions.cs",
@@ -380,12 +368,11 @@
               "RelativeToolTip": "Core\\Extensions\\QueryableExtensions.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:01:17.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T10:01:17.764Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Result.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Shared\\Result.cs",
               "RelativeDocumentMoniker": "Core\\Shared\\Result.cs",
@@ -393,12 +380,11 @@
               "RelativeToolTip": "Core\\Shared\\Result.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:07:23.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T10:07:23.313Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "LoggingActionFilter.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Helper\\Log\\LoggingActionFilter.cs",
               "RelativeDocumentMoniker": "API\\Helper\\Log\\LoggingActionFilter.cs",
@@ -406,12 +392,11 @@
               "RelativeToolTip": "API\\Helper\\Log\\LoggingActionFilter.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:39:35.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:39:35.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "RequestResponseLoggingMiddleware.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Helper\\Log\\RequestResponseLoggingMiddleware.cs",
               "RelativeDocumentMoniker": "API\\Helper\\Log\\RequestResponseLoggingMiddleware.cs",
@@ -419,8 +404,7 @@
               "RelativeToolTip": "API\\Helper\\Log\\RequestResponseLoggingMiddleware.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAQwB8AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:39:52.143Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:39:52.143Z"
             },
             {
               "$type": "Document",
@@ -432,21 +416,7 @@
               "RelativeToolTip": "API\\prometheus.yml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-08-16T14:25:30.238Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "filebeat.yml",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\filebeat.yml",
-              "RelativeDocumentMoniker": "API\\filebeat.yml",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\filebeat.yml",
-              "RelativeToolTip": "API\\filebeat.yml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-08-16T14:49:13.294Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T14:25:30.238Z"
             },
             {
               "$type": "Document",
@@ -458,8 +428,7 @@
               "RelativeToolTip": "Core\\Features\\Withdrawal\\WithdrawalValidator.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:54:58.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:54:58.719Z"
             },
             {
               "$type": "Document",
@@ -471,8 +440,7 @@
               "RelativeToolTip": "Core\\Features\\Withdrawal\\WithdrawalResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:54:56.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:54:56.667Z"
             },
             {
               "$type": "Document",
@@ -484,8 +452,7 @@
               "RelativeToolTip": "Core\\Features\\Withdrawal\\WithdrawalCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:54:55.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:54:55.51Z"
             },
             {
               "$type": "Document",
@@ -497,8 +464,7 @@
               "RelativeToolTip": "Core\\Notification\\StockPriceAlert\\StockPriceAlertService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:38:06.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:38:06.423Z"
             },
             {
               "$type": "Document",
@@ -510,8 +476,7 @@
               "RelativeToolTip": "Core\\Features\\Deposit\\DepositHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:37:00.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:37:00.054Z"
             },
             {
               "$type": "Document",
@@ -536,8 +501,7 @@
               "RelativeToolTip": "Core\\Features\\SellService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAlwAoAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:25:13.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:25:13.283Z"
             },
             {
               "$type": "Document",
@@ -549,8 +513,7 @@
               "RelativeToolTip": "Core\\Features\\SellStock\\SellStockResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:46:21.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:46:21.625Z"
             },
             {
               "$type": "Document",
@@ -562,8 +525,7 @@
               "RelativeToolTip": "Core\\Features\\CancelOrder\\CancelOrderHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:22:21.791Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:22:21.791Z"
             },
             {
               "$type": "Document",
@@ -575,8 +537,7 @@
               "RelativeToolTip": "Core\\Service\\OrderBackgroundService\\OrderBackgroundService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAlwAwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:14:02.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:14:02.925Z"
             },
             {
               "$type": "Document",
@@ -588,8 +549,7 @@
               "RelativeToolTip": "Core\\Data\\Entity\\Order.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAYwAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:23:49.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:23:49.813Z"
             },
             {
               "$type": "Document",
@@ -601,8 +561,7 @@
               "RelativeToolTip": "Core\\Features\\BuyStock\\BuyStockHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:11:59.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:11:59.512Z"
             },
             {
               "$type": "Document",
@@ -614,8 +573,7 @@
               "RelativeToolTip": "Core\\Features\\GiveOrder\\OrderHandler.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAlwA4AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:19:08.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:19:08.266Z"
             },
             {
               "$type": "Document",
@@ -627,8 +585,7 @@
               "RelativeToolTip": "Core\\Features\\ISellService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:36:31.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:36:31.796Z"
             },
             {
               "$type": "Document",
@@ -640,8 +597,7 @@
               "RelativeToolTip": "Core\\Features\\IBuyService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:36:24.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:36:24.317Z"
             },
             {
               "$type": "Document",
@@ -653,8 +609,7 @@
               "RelativeToolTip": "Core\\Features\\SetPriceAlert\\SetPriceAlertHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:05:32.953Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:05:32.953Z"
             },
             {
               "$type": "Document",
@@ -666,8 +621,7 @@
               "RelativeToolTip": "Core\\Features\\Withdrawal\\WithdrawalHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwBEAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:36:19.909Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:36:19.909Z"
             },
             {
               "$type": "Document",
@@ -679,8 +633,7 @@
               "RelativeToolTip": "Core\\Features\\SellStock\\SellStockHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:18:58.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:18:58.579Z"
             },
             {
               "$type": "Document",
@@ -692,8 +645,7 @@
               "RelativeToolTip": "Core\\Features\\ShowPortfolio\\ShowPortfolioHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAlwA4AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:46:10.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:46:10.833Z"
             },
             {
               "$type": "Document",
@@ -705,8 +657,7 @@
               "RelativeToolTip": "Core\\Features\\User\\Login\\LoginHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:36:11.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:36:11.006Z"
             },
             {
               "$type": "Document",
@@ -718,8 +669,7 @@
               "RelativeToolTip": "Core\\Features\\User\\ConfirmEmail\\ConfirmEmailHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:36:07.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:36:07.688Z"
             },
             {
               "$type": "Document",
@@ -731,8 +681,7 @@
               "RelativeToolTip": "Core\\Features\\User\\Update\\UserUpdateHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:35:29.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:35:29.318Z"
             },
             {
               "$type": "Document",
@@ -744,8 +693,7 @@
               "RelativeToolTip": "Core\\Data\\ApplicationDbContext.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAtwAwAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T09:35:21.583Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T09:35:21.583Z"
             },
             {
               "$type": "Document",
@@ -757,8 +705,7 @@
               "RelativeToolTip": "Core\\Features\\BuyService.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAvwAwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:18:59.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:18:59.512Z"
             },
             {
               "$type": "Document",
@@ -770,8 +717,7 @@
               "RelativeToolTip": "Core\\Data\\Entity\\StockHolding.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAUwB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:22:52.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:22:52.245Z"
             },
             {
               "$type": "Document",
@@ -796,8 +742,7 @@
               "RelativeToolTip": "Core\\Data\\Entity\\StockPriceAlert.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:54:47.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:54:47.118Z"
             },
             {
               "$type": "Document",
@@ -820,8 +765,7 @@
               "RelativeToolTip": "Core\\Data\\Entity\\OrderProcess.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAiwCEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:22:38.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:22:38.405Z"
             },
             {
               "$type": "Document",
@@ -833,8 +777,7 @@
               "RelativeToolTip": "Core\\Features\\ShowPortfolio\\ShowPortfolioResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:46:12.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:46:12.435Z"
             },
             {
               "$type": "Document",
@@ -846,8 +789,7 @@
               "RelativeToolTip": "Core\\Service\\Email\\EmailService.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAQwCYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T14:35:27.482Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T14:35:27.482Z"
             },
             {
               "$type": "Document",
@@ -859,8 +801,7 @@
               "RelativeToolTip": "Core\\Features\\SetPriceAlert\\SetPriceAlertCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T06:05:33.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:05:33.777Z"
             },
             {
               "$type": "Document",
@@ -872,8 +813,7 @@
               "RelativeToolTip": "Core\\Service\\StockApi\\StockApiService.cs",
               "ViewState": "AQIAAI0AAAAAAAAAAAA0wKUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:15:10.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:15:10.368Z"
             },
             {
               "$type": "Document",
@@ -890,20 +830,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\appsettings.json",
               "RelativeDocumentMoniker": "API\\appsettings.json",
               "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\appsettings.json",
               "RelativeToolTip": "API\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAADAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAIAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-08-16T14:03:56.962Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 50,
               "Title": "WithdrawalController.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\Controllers\\WithdrawalController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\WithdrawalController.cs",
@@ -911,12 +851,11 @@
               "RelativeToolTip": "API\\Controllers\\WithdrawalController.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAAowAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T13:43:25.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T13:43:25.286Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 51,
               "Title": "20240816094404_XX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Migrations\\20240816094404_XX.cs",
               "RelativeDocumentMoniker": "Core\\Migrations\\20240816094404_XX.cs",
@@ -927,7 +866,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 52,
               "Title": "20240816080525_XX.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Migrations\\20240816080525_XX.cs",
               "RelativeDocumentMoniker": "Core\\Migrations\\20240816080525_XX.cs",
@@ -938,7 +877,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 53,
               "Title": "StockHoldingItem.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\StockHoldingItem.cs",
               "RelativeDocumentMoniker": "Core\\Data\\Entity\\StockHoldingItem.cs",
@@ -946,8 +885,7 @@
               "RelativeToolTip": "Core\\Data\\Entity\\StockHoldingItem.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T20:22:09.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T20:22:09.422Z"
             }
           ]
         }

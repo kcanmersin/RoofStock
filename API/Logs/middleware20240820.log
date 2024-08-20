@@ -1,0 +1,29 @@
+2024-08-20 16:43:07 [Information] No cached response available for this request.
+2024-08-20 16:43:08 [Information] The response could not be cached for this request.
+2024-08-20 16:43:08 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 640.1760 ms
+2024-08-20 16:43:08 [Information] No cached response available for this request.
+2024-08-20 16:43:08 [Information] The response could not be cached for this request.
+2024-08-20 16:43:08 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 56.8487 ms
+2024-08-20 16:43:09 [Information] No cached response available for this request.
+2024-08-20 16:43:09 [Information] The response could not be cached for this request.
+2024-08-20 16:43:09 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 328.2652 ms
+2024-08-20 16:43:47 [Information] Executing endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:43:48 [Information] Executed endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:43:48 [Information] HTTP "POST" "/api/deposit" responded 200 in 974.9843 ms
+2024-08-20 16:43:53 [Information] No cached response available for this request.
+2024-08-20 16:43:53 [Information] Executing endpoint '"API.Controllers.StockController.ShowPortfolio (API)"'
+2024-08-20 16:43:54 [Information] Executed endpoint '"API.Controllers.StockController.ShowPortfolio (API)"'
+2024-08-20 16:43:54 [Information] The response could not be cached for this request.
+2024-08-20 16:43:54 [Information] HTTP "GET" "/api/stocks/portfolio" responded 200 in 658.0322 ms
+2024-08-20 16:53:41 [Information] No cached response available for this request.
+2024-08-20 16:53:41 [Information] The response could not be cached for this request.
+2024-08-20 16:53:41 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 123.4396 ms
+2024-08-20 16:53:41 [Information] No cached response available for this request.
+2024-08-20 16:53:41 [Information] The response could not be cached for this request.
+2024-08-20 16:53:41 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 85.7740 ms
+2024-08-20 16:53:42 [Information] No cached response available for this request.
+2024-08-20 16:53:42 [Information] The response could not be cached for this request.
+2024-08-20 16:53:42 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 183.8812 ms
+2024-08-20 16:53:45 [Information] Executing endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:53:47 [Information] Executed endpoint '"Core.Features.User.Deposit.DepositController.Deposit (API)"'
+2024-08-20 16:53:47 [Information] HTTP "POST" "/api/deposit" responded 200 in 1987.9603 ms

@@ -28,26 +28,43 @@ using Microsoft.Extensions.Hosting;
 using Serilog.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Host.UseSerilog((context, services, configuration) =>
 {
     configuration
         .Enrich.FromLogContext()
-        .WriteTo.Console() 
+        .WriteTo.Console()  // Console output for local debugging
+        
+        // Middleware logs
         .WriteTo.Logger(lc => lc
             .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("Middleware")))
-            .WriteTo.File("Logs/middleware-log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", fileSizeLimitBytes: 10485760, retainedFileCountLimit: 7, shared: true))
+            .Enrich.WithProperty("LogType", "Middleware")  
+            .WriteTo.File("Logs/middleware.log", 
+                          rollingInterval: RollingInterval.Day,
+                          outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}",
+                          fileSizeLimitBytes: 10485760, 
+                          retainedFileCountLimit: 7, 
+                          shared: true))
+
         .WriteTo.Logger(lc => lc
             .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("ActionFilter")))
-            .WriteTo.File("Logs/action-log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}", fileSizeLimitBytes: 10485760, retainedFileCountLimit: 7, shared: true))
+            .Enrich.WithProperty("LogType", "ActionFilter") 
+            .WriteTo.File("Logs/action.log", 
+                          rollingInterval: RollingInterval.Day,
+                          outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}",
+                          fileSizeLimitBytes: 10485760, 
+                          retainedFileCountLimit: 7, 
+                          shared: true))
+
         .WriteTo.Logger(lc => lc
-            .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("Logstash")))
-            .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://elasticsearch:9200"))
-            {
-                AutoRegisterTemplate = true,
-                IndexFormat = "logstash-{0:yyyy.MM.dd}",
-                NumberOfShards = 2,
-                NumberOfReplicas = 1
-            }))
+            .Enrich.WithProperty("LogType", "General") 
+            .WriteTo.File("Logs/logfile.log", 
+                          rollingInterval: RollingInterval.Day,
+                          outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}",
+                          fileSizeLimitBytes: 10485760, 
+                          retainedFileCountLimit: 7, 
+                          shared: true))
+
         .ReadFrom.Configuration(context.Configuration)
         .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName);
 });
@@ -75,13 +92,13 @@ builder.Services.AddRateLimiter(options =>
     );
     options.AddFixedWindowLimiter(policyName: "default", options =>
     {
-        options.PermitLimit = 300; 
-        options.Window = TimeSpan.FromMinutes(1); 
-        options.QueueLimit = 3; 
+        options.PermitLimit = 300;
+        options.Window = TimeSpan.FromMinutes(1);
+        options.QueueLimit = 3;
         options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
         options.AutoReplenishment = true;
     })
-    .RejectionStatusCode = 429; 
+    .RejectionStatusCode = 429;
 });
 
 // Load Core Layer
@@ -156,7 +173,7 @@ app.UseEndpoints(endpoints =>
     {
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
-    endpoints.MapHealthChecksUI(); 
+    endpoints.MapHealthChecksUI();
 });
 
 // Apply global exception handling middleware
@@ -168,7 +185,6 @@ app.UseStaticFiles();
 
 // Use Hangfire dashboard and server
 app.UseHangfireDashboard();
-app.UseResponseCaching();
 
 var options = new BackgroundJobServerOptions
 {
