@@ -56,14 +56,31 @@ namespace Core.Service.OrderBackgroundService
             }
             else
             {
-                var result = await _buyService.BuyStockAsync(user, orderProcess.Order.StockSymbol, orderProcess.Order.Quantity, currentPrice);
-                if (!result.IsSuccess)
+                var totalCost = currentPrice * orderProcess.Order.Quantity;
+
+                // Kullanýcýnýn bekleyen diðer alým emirlerinden kalan bakiyesini hesapla
+                var pendingBuyOrders = await _context.Orders
+                    .Where(o => o.UserId == user.Id && o.OrderType == OrderType.Buy && o.OrderProcess.Status == OrderProcessStatus.Pending)
+                    .ToListAsync();
+
+                var reservedBalance = pendingBuyOrders.Sum(o => o.Quantity * o.TargetPrice);
+                var availableBalance = user.Balance - reservedBalance;
+
+                if (availableBalance >= totalCost)
                 {
-                    orderProcess.Status = OrderProcessStatus.Failed;
+                    var result = await _buyService.BuyStockAsync(user, orderProcess.Order.StockSymbol, orderProcess.Order.Quantity, currentPrice);
+                    if (!result.IsSuccess)
+                    {
+                        orderProcess.Status = OrderProcessStatus.Failed;
+                    }
+                    else
+                    {
+                        orderProcess.Status = OrderProcessStatus.Completed;
+                    }
                 }
                 else
                 {
-                    orderProcess.Status = OrderProcessStatus.Completed;
+                    orderProcess.Status = OrderProcessStatus.Failed;
                 }
             }
 
@@ -79,14 +96,32 @@ namespace Core.Service.OrderBackgroundService
             }
             else
             {
-                var result = await _sellService.SellStockAsync(user, orderProcess.Order.StockSymbol, orderProcess.Order.Quantity, currentPrice);
-                if (!result.IsSuccess)
+                // Kullanýcýnýn bekleyen diðer satýþ emirlerinden kalan hisselerini hesapla
+                var stockHolding = await _context.StockHoldings
+                    .FirstOrDefaultAsync(sh => sh.UserId == user.Id && sh.StockSymbol == orderProcess.Order.StockSymbol);
+
+                var pendingSellOrders = await _context.Orders
+                    .Where(o => o.UserId == user.Id && o.OrderType == OrderType.Sell && o.OrderProcess.Status == OrderProcessStatus.Pending)
+                    .ToListAsync();
+
+                var reservedHoldings = pendingSellOrders.Sum(o => o.Quantity);
+                var availableHoldings = stockHolding != null ? stockHolding.Quantity - reservedHoldings : 0;
+
+                if (availableHoldings >= orderProcess.Order.Quantity)
                 {
-                    orderProcess.Status = OrderProcessStatus.Failed;
+                    var result = await _sellService.SellStockAsync(user, orderProcess.Order.StockSymbol, orderProcess.Order.Quantity, currentPrice);
+                    if (!result.IsSuccess)
+                    {
+                        orderProcess.Status = OrderProcessStatus.Failed;
+                    }
+                    else
+                    {
+                        orderProcess.Status = OrderProcessStatus.Completed;
+                    }
                 }
                 else
                 {
-                    orderProcess.Status = OrderProcessStatus.Completed;
+                    orderProcess.Status = OrderProcessStatus.Failed;
                 }
             }
 

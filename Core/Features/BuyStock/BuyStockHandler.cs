@@ -4,6 +4,8 @@ using FluentValidation;
 using Core.Data;
 using Core.Features;
 using Core.Service.StockApi;
+using Microsoft.EntityFrameworkCore;
+using Core.Data.Entity;
 
 namespace Core.Features.BuyStock
 {
@@ -12,7 +14,6 @@ namespace Core.Features.BuyStock
         private readonly IBuyService _buyService;
         private readonly IStockApiService _stockApiService;
         private readonly IValidator<BuyStockCommand> _validator;
-
         private readonly ApplicationDbContext _context;
 
         public BuyStockHandler(
@@ -47,6 +48,19 @@ namespace Core.Features.BuyStock
                 return Result.Failure<BuyStockResponse>(new Error("UserNotFound", "User not found."));
             }
 
+            // Kullanýcýnýn tüm açýk buy emirlerini hesaba katarak mevcut kullanýlabilir bakiyeyi hesaplayýn
+            var totalPendingAmount = await _context.Orders
+                .Where(o => o.UserId == request.UserId && o.OrderType == OrderType.Buy && o.OrderProcess.Status == OrderProcessStatus.Pending)
+                .SumAsync(o => o.Quantity * o.TargetPrice);
+
+            var availableBalance = user.Balance - totalPendingAmount;
+            var totalCost = currentPrice * request.Quantity;
+
+            if (availableBalance < totalCost)
+            {
+                return Result.Failure<BuyStockResponse>(new Error("InsufficientFunds", "User does not have sufficient available balance."));
+            }
+
             var result = await _buyService.BuyStockAsync(user, request.StockSymbol, request.Quantity, currentPrice);
 
             if (!result.IsSuccess)
@@ -57,7 +71,7 @@ namespace Core.Features.BuyStock
             return Result.Success(new BuyStockResponse
             {
                 IsSuccess = true,
-                NewBalance = user.Balance,
+                NewBalance = user.Balance - totalCost,
                 Message = $"Successfully purchased {request.Quantity} shares of {request.StockSymbol} at {currentPrice:C} per share.",
                 StockSymbol = request.StockSymbol,
                 Quantity = request.Quantity

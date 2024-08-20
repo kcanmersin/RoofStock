@@ -346,9 +346,9 @@ namespace Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"), "29a163d9-e09b-4a91-9b74-b9a1022f51c2", "Superadmin", "SUPERADMIN" },
-                    { new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"), "637fb4ab-8a99-4116-961d-27807192284b", "Admin", "ADMIN" },
-                    { new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"), "fbe9e6b0-0ad3-4bf1-a01d-fc6703b05828", "User", "USER" }
+                    { new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"), "f78282a4-69fa-439d-b6ef-fce29e3c9d39", "Superadmin", "SUPERADMIN" },
+                    { new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"), "c52b8ac3-2763-4a6b-a1a2-96be57d74d53", "Admin", "ADMIN" },
+                    { new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"), "705fb0b8-658b-41eb-95cc-51e68e13134e", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -356,8 +356,8 @@ namespace Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Balance", "ConcurrencyStamp", "Email", "EmailConfirmationSentAt", "EmailConfirmationToken", "EmailConfirmed", "FirstName", "ImagePath", "IsEmailConfirmed", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"), 0, 1000000m, "97c31b3e-dfa8-41b9-b088-ec5238c6a17d", "admin@gmail.com", new DateTime(2024, 8, 16, 14, 5, 22, 637, DateTimeKind.Utc).AddTicks(1545), "3be60d51-c173-44a1-bc3a-10e88ecc2c52", false, "Admin", "API\\deflogo.jpg", false, "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEJ3fedRaTQlhycjBSuFbmT1TjasntrI0YGChOf8Q2PvJcXeF0KAyGYAkySj6d303Pg==", "+905439999988", false, "9e874201-5882-4637-9065-f47e02e1756b", false, "admin@gmail.com" },
-                    { new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"), 0, 1000000m, "e057e436-ce13-426f-9453-73c4442158ed", "superadmin@gmail.com", new DateTime(2024, 8, 16, 14, 5, 22, 574, DateTimeKind.Utc).AddTicks(758), "0eb7d2b6-0614-4e8f-867d-c78d4093adec", true, "Can", "API\\deflogo.jpg", false, "Mersin", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEG7ojHihygp6y4N6rdVyEYGigZSwNHUbrx04zV2S0ZUFLyyCEwyMCXWh1gPBxCTgEg==", "+905439999999", true, "6c9c6ddb-7405-42cd-856b-2a642160001c", false, "superadmin@gmail.com" }
+                    { new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"), 0, 1000000m, "3dfbb9e5-a22a-4764-899f-1fd836d649c4", "admin@gmail.com", new DateTime(2024, 8, 20, 6, 39, 1, 220, DateTimeKind.Utc).AddTicks(1193), "f5c77a4d-1604-464a-b022-03f1f0cd59c6", false, "Admin", "API\\deflogo.jpg", false, "User", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAECKdfGwytSoZSfwWkPPabccbtAYAgHsT3a3G3XaNdMDe/Oil1m8fxFggdswlsIWy+Q==", "+905439999988", false, "2fb4a392-1d6f-4429-be51-4c49febf9fbf", false, "admin@gmail.com" },
+                    { new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"), 0, 1000000m, "47dc6f05-a636-4975-9269-45008f0f67f8", "superadmin@gmail.com", new DateTime(2024, 8, 20, 6, 39, 1, 153, DateTimeKind.Utc).AddTicks(5555), "f821e400-c8b8-467a-bd37-23bd991ad7d8", true, "Can", "API\\deflogo.jpg", false, "Mersin", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEO2n3NPD4TA+WhlwK8l6xE9AbkkQAc2PMHmYaQq8jo9veO5Fo4QdFAZF7ooUrf90XQ==", "+905439999999", true, "1fe735b8-b132-4b83-a78e-dec95fbfd4ee", false, "superadmin@gmail.com" }
                 });
 
             migrationBuilder.InsertData(

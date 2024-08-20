@@ -5,6 +5,7 @@ using Core.Service.StockApi;
 using Core.Shared;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace Core.Features.GiveOrder
 
         public async Task<Result<OrderResponse>> Handle(OrderCommand request, CancellationToken cancellationToken)
         {
+            // Validation
             var validationResult = await _validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
@@ -50,6 +52,44 @@ namespace Core.Features.GiveOrder
 
             var stockPrice = await _stockApiService.GetStockPriceAsync(request.StockSymbol);
 
+            // Check pending orders and adjust available balance/holdings
+            var pendingBuyOrders = await _context.Orders
+                .Where(o => o.UserId == request.UserId && o.OrderType == OrderType.Buy && o.OrderProcess.Status == OrderProcessStatus.Pending)
+                .ToListAsync();
+
+            var reservedBalance = pendingBuyOrders.Sum(o => o.Quantity * o.TargetPrice);
+            var availableBalance = user.Balance - reservedBalance;
+
+            var pendingSellOrders = await _context.Orders
+                .Where(o => o.UserId == request.UserId && o.OrderType == OrderType.Sell && o.OrderProcess.Status == OrderProcessStatus.Pending)
+                .ToListAsync();
+
+            var reservedHoldings = pendingSellOrders
+                .Where(o => o.StockSymbol == request.StockSymbol)
+                .Sum(o => o.Quantity);
+
+            var stockHolding = await _context.StockHoldings
+                .FirstOrDefaultAsync(sh => sh.UserId == request.UserId && sh.StockSymbol == request.StockSymbol);
+
+            var availableHoldings = stockHolding != null ? stockHolding.Quantity - reservedHoldings : 0;
+
+            if (request.OrderType == OrderType.Buy)
+            {
+                var totalCost = request.Quantity * stockPrice;
+                if (totalCost > availableBalance)
+                {
+                    return Result.Failure<OrderResponse>(new Error("InsufficientFunds", "Insufficient funds: You do not have enough available balance to place this order."));
+                }
+            }
+            else if (request.OrderType == OrderType.Sell)
+            {
+                if (request.Quantity > availableHoldings)
+                {
+                    return Result.Failure<OrderResponse>(new Error("InsufficientHoldings", "Insufficient holdings: You do not have enough available shares to place this order."));
+                }
+            }
+
+            // If the price conditions are met, execute the order immediately
             if (request.OrderType == OrderType.Buy && stockPrice <= request.TargetPrice)
             {
                 var result = await _buyService.BuyStockAsync(user, request.StockSymbol, request.Quantity, stockPrice);

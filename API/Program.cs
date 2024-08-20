@@ -108,6 +108,7 @@ app.UseMetricServer();
 
 // Log requests
 app.UseSerilogRequestLogging();
+app.UseResponseCaching();
 
 // Enable Swagger
 if (app.Environment.IsDevelopment())
@@ -175,7 +176,7 @@ RecurringJob.AddOrUpdate<StockPriceAlertService>(
     "CheckAndTriggerStockPriceAlerts",
     x => x.CheckAndTriggerAlertsAsync(),
     Cron.Minutely,
-    queue: "low-priority"
+    queue: "high-priority"
 );
 
 // Map controllers and SignalR hubs

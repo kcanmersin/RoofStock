@@ -1,10 +1,10 @@
 using MediatR;
 using Core.Shared;
 using FluentValidation;
-using Core.Data.Entity;
 using Core.Data;
+using Core.Data.Entity;
 using Core.Service.StockApi;
-using Core.Features;
+using Microsoft.EntityFrameworkCore;
 
 namespace Core.Features.SellStock
 {
@@ -29,28 +29,42 @@ namespace Core.Features.SellStock
 
         public async Task<Result<SellStockResponse>> Handle(SellStockCommand request, CancellationToken cancellationToken)
         {
-            // Validate the request
             var validationResult = await _validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Result.Failure<SellStockResponse>(new Error("ValidationFailed", validationResult.Errors.First().ErrorMessage));
             }
 
-            // Get the current stock price
             var currentPrice = await _stockApiService.GetStockPriceAsync(request.StockSymbol);
             if (currentPrice <= 0)
             {
                 return Result.Failure<SellStockResponse>(new Error("InvalidStockPrice", "Could not retrieve a valid stock price."));
             }
 
-            // Find the user
-            var user = await _context.Users.FindAsync(request.UserId);
+            var user = await _context.Users.Include(u => u.StockHoldings)
+                                           .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
+
             if (user == null)
             {
                 return Result.Failure<SellStockResponse>(new Error("UserNotFound", "User not found."));
             }
 
-            // Use SellService to perform the selling operation
+            // Kullanýcýnýn tüm açýk sell emirlerini hesaba katarak mevcut kullanýlabilir hisse miktarýný hesaplayýn
+            var totalPendingQuantity = await _context.Orders
+                .Where(o => o.UserId == request.UserId
+                            && o.OrderType == OrderType.Sell
+                            && o.OrderProcess.Status == OrderProcessStatus.Pending
+                            && o.StockSymbol == request.StockSymbol)
+                .SumAsync(o => o.Quantity);
+
+            // StockHoldings koleksiyonunda bu hisse senedinin olup olmadýðýný kontrol edin
+            var stockHolding = user.StockHoldings.FirstOrDefault(sh => sh.StockSymbol == request.StockSymbol);
+
+            if (stockHolding == null || stockHolding.Quantity < totalPendingQuantity + request.Quantity)
+            {
+                return Result.Failure<SellStockResponse>(new Error("InsufficientHoldings", "User does not have sufficient available stock holdings."));
+            }
+
             var result = await _sellService.SellStockAsync(user, request.StockSymbol, request.Quantity, currentPrice);
 
             if (!result.IsSuccess)
@@ -61,8 +75,8 @@ namespace Core.Features.SellStock
             return Result.Success(new SellStockResponse
             {
                 IsSuccess = true,
-                NewBalance = user.Balance,
-                Message = $"Successfully sold {request.Quantity} shares of {request.StockSymbol} at {currentPrice} per share.",
+                NewBalance = user.Balance + (request.Quantity * currentPrice),
+                Message = $"Successfully sold {request.Quantity} shares of {request.StockSymbol} at {currentPrice:C} per share.",
                 StockSymbol = request.StockSymbol,
                 Quantity = request.Quantity,
                 TotalProceeds = currentPrice * request.Quantity

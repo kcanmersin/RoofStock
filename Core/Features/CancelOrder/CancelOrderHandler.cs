@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Data;
@@ -22,7 +21,7 @@ namespace Core.Features.CancelOrder
         public async Task<Result<CancelOrderResponse>> Handle(CancelOrderCommand request, CancellationToken cancellationToken)
         {
             var order = await _context.Orders
-                .Include(o => o.OrderProcess) 
+                .Include(o => o.OrderProcess)
                 .FirstOrDefaultAsync(o => o.Id == request.OrderId && o.UserId == request.UserId, cancellationToken);
 
             if (order == null)
@@ -37,15 +36,35 @@ namespace Core.Features.CancelOrder
                 return Result.Failure<CancelOrderResponse>(new Error("OrderNotCancellable", "This order cannot be canceled because it is either completed or already canceled."));
             }
 
+            // Ýptal edilen emir alýþ emri ise, rezerv edilen bakiye geri eklenir
+            if (order.OrderType == OrderType.Buy)
+            {
+                var user = await _context.Users.FindAsync(order.UserId);
+                if (user != null)
+                {
+                    user.Balance += order.Quantity * order.TargetPrice;
+                }
+            }
+            // Ýptal edilen emir satýþ emri ise, rezerv edilen hisse miktarý geri eklenir
+            else if (order.OrderType == OrderType.Sell)
+            {
+                var stockHolding = await _context.StockHoldings
+                    .FirstOrDefaultAsync(sh => sh.UserId == order.UserId && sh.StockSymbol == order.StockSymbol, cancellationToken);
+
+                if (stockHolding != null)
+                {
+                    stockHolding.Quantity += order.Quantity;
+                }
+            }
+
             orderProcess.Status = OrderProcessStatus.Canceled;
             await _context.SaveChangesAsync(cancellationToken);
 
             return Result.Success(new CancelOrderResponse
             {
                 IsSuccess = true,
-                Message = $"Order {order.Id} has been successfully canceled."
+                Message = $"Order {order.Id} has been successfully canceled and the resources have been restored."
             });
         }
     }
-
 }
