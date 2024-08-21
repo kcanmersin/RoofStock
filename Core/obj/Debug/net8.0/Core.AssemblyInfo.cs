@@ -9,17 +9,14 @@
 
 using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02aeb746a2527b953d6feb541f37ee60859bcb38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+535661ee398ee411d924206139ad06c2856d78c6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
-[assembly: InternalsVisibleTo("RoofStockTest")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 // MSBuild WriteCodeFragment sınıfı tarafından oluşturuldu.
 

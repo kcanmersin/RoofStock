@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PW5h4GbtKQU=",
+  "dgSpecHash": "QuC7gcvaSgc=",
   "success": true,
   "projectFilePath": "C:\\Users\\KC\\source\\repos\\StockFlow\\RoofStockTest\\RoofStockTest.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,7 @@
     "C:\\Users\\KC\\.nuget\\packages\\aspnetcore.healthchecks.ui.core\\8.0.0\\aspnetcore.healthchecks.ui.core.8.0.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\aspnetcore.healthchecks.ui.data\\8.0.0\\aspnetcore.healthchecks.ui.data.8.0.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
-    "C:\\Users\\KC\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
+    "C:\\Users\\KC\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\fluentassertions\\6.12.0\\fluentassertions.6.12.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
