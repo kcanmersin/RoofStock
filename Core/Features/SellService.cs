@@ -27,27 +27,21 @@ namespace Core.Features
                 return Result.Failure(new Error("InsufficientHoldings", "User does not have enough stock holdings to sell."));
             }
 
-            // Calculate the average price per share
             var averagePricePerShare = stockHolding.TotalPurchasePrice / stockHolding.Quantity;
 
-            // Calculate the total purchase price corresponding to the quantity being sold
             var reductionInPurchasePrice = averagePricePerShare * quantity;
 
-            // Reduce the quantity and adjust the total purchase price
             stockHolding.Quantity -= quantity;
             stockHolding.TotalPurchasePrice -= reductionInPurchasePrice;
 
-            // Remove the stock holding if the quantity is now zero
             if (stockHolding.Quantity == 0)
             {
                 _context.StockHoldings.Remove(stockHolding);
             }
 
-            // Increase the user's balance by the total proceeds
             var totalProceeds = price * quantity;
             user.Balance += totalProceeds;
 
-            // Record the stock holding item (a record of the sale)
             var stockHoldingItem = new StockHoldingItem
             {
                 StockSymbol = stockSymbol,
@@ -58,7 +52,6 @@ namespace Core.Features
             };
             _context.StockHoldingItems.Add(stockHoldingItem);
 
-            // Record the transaction
             var transaction = new Transaction
             {
                 UserId = user.Id,

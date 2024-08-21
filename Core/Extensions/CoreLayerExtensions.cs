@@ -21,6 +21,8 @@ using Microsoft.AspNetCore.Identity;
 using Core.Notification.StockPriceAlert;
 using Core.Service.OrderBackgroundService;
 using Microsoft.AspNetCore.Builder;
+using Core.Service.RabbitMQEmailService;
+using RabbitMQ.Client;
 
 namespace Core.Extensions
 {
@@ -40,24 +42,38 @@ namespace Core.Extensions
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
-            // Connection string'i oluştur
-            var defaultConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? configuration["ConnectionStrings:DefaultConnection"];
+            // Register RabbitMQ components as singletons
+            services.AddSingleton(sp =>
+            {
+                var factory = new ConnectionFactory
+                {
+                    HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost",
+                    UserName = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME") ?? "guest",
+                    Password = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "guest"
+                };
+                return factory.CreateConnection();
+            });
 
-            // E-posta ayarlarını environment variable'lardan veya appsettings'ten çek
-            var emailHost = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? configuration["Email:Smtp:Host"];
-            var emailPortString = Environment.GetEnvironmentVariable("EMAIL_PORT") ?? configuration["Email:Smtp:Port"];
-            var emailUsername = Environment.GetEnvironmentVariable("EMAIL_USERNAME") ?? configuration["Email:Smtp:Username"];
-            var emailPassword = Environment.GetEnvironmentVariable("EMAIL_PASSWORD") ?? configuration["Email:Smtp:Password"];
-            var emailFrom = Environment.GetEnvironmentVariable("EMAIL_FROM") ?? configuration["Email:Smtp:From"];
+            services.AddSingleton(sp =>
+            {
+                var connection = sp.GetRequiredService<IConnection>();
+                return connection.CreateModel();
+            });
 
+            services.AddSingleton<EmailConsumerService>(); // EmailConsumerService should be a singleton
+
+            // Register scoped services
             services.AddScoped<StockPriceAlertService>();
+            services.AddScoped<IEmailService, EmailService>();
+
+            // Connection string
+            var defaultConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? configuration["ConnectionStrings:DefaultConnection"];
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
 
             // Stock API health check
             services.AddHttpClient<StockApiHealthCheck>();
-            // Configure Hangfire recurring jobs
 
             // Health checks configuration
             services.AddHealthChecks()
@@ -105,7 +121,6 @@ namespace Core.Extensions
 
             // MediatR and EmailService
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddScoped<IEmailService, EmailService>();
 
             // Currency Conversion Service
             services.AddHttpClient<CurrencyConversionService>();
@@ -128,27 +143,32 @@ namespace Core.Extensions
             services.AddHangfireServer();
 
             services.AddQuartzExtension(configuration);
-
-
-
-
             return services;
         }
+
         public static IApplicationBuilder UseCoreLayerRecurringJobs(this IApplicationBuilder app)
         {
-            RecurringJob.AddOrUpdate<OrderBackgroundService>(
+            var recurringJobManager = app.ApplicationServices.GetRequiredService<IRecurringJobManager>();
+
+            recurringJobManager.AddOrUpdate<OrderBackgroundService>(
                 "CheckAndProcessOrders",
                 x => x.CheckAndProcessOrders(),
                 Cron.Minutely,
-                queue: "high-priority"
+                TimeZoneInfo.Local,
+                "high-priority"
             );
 
-            RecurringJob.AddOrUpdate<StockPriceAlertService>(
+            recurringJobManager.AddOrUpdate<StockPriceAlertService>(
                 "CheckAndTriggerStockPriceAlerts",
                 x => x.CheckAndTriggerAlertsAsync(),
                 Cron.Minutely,
-                queue: "high-priority"
+                TimeZoneInfo.Local,
+                "high-priority"
             );
+
+            // Start the EmailConsumerService to process messages from RabbitMQ
+            var emailConsumerService = app.ApplicationServices.GetRequiredService<EmailConsumerService>();
+            Task.Run(() => emailConsumerService.Start());
 
             return app;
         }

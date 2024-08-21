@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zwauRnU7H1w=",
+  "dgSpecHash": "SKhMiVav8dE=",
   "success": true,
   "projectFilePath": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -113,6 +113,7 @@
     "C:\\Users\\KC\\.nuget\\packages\\quartz\\3.13.0\\quartz.3.13.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\quartz.extensions.dependencyinjection\\3.13.0\\quartz.extensions.dependencyinjection.3.13.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\quartz.extensions.hosting\\3.13.0\\quartz.extensions.hosting.3.13.0.nupkg.sha512",
+    "C:\\Users\\KC\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\serilog\\4.0.1\\serilog.4.0.1.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\serilog.aspnetcore\\8.0.2\\serilog.aspnetcore.8.0.2.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\serilog.enrichers.context\\4.6.5\\serilog.enrichers.context.4.6.5.nupkg.sha512",
@@ -147,6 +148,7 @@
     "C:\\Users\\KC\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.0.1\\system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
+    "C:\\Users\\KC\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\system.net.websockets.websocketprotocol\\4.5.1\\system.net.websockets.websocketprotocol.4.5.1.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",

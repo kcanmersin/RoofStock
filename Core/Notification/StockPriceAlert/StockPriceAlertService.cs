@@ -5,24 +5,23 @@ using Core.Data;
 using Core.Service.StockApi;
 using Core.Data.Entity;
 using System.ComponentModel;
-using Core.Service.Email;
+using RabbitMQ.Client;
+using System.Text.Json;
+using System.Text;
 
 namespace Core.Notification.StockPriceAlert
 {
-    internal  class StockPriceAlertService
+    internal class StockPriceAlertService
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;
-        private readonly IEmailService _emailService;
 
         public StockPriceAlertService(
             ApplicationDbContext context,
-            IStockApiService stockApiService,
-            IEmailService emailService)
+            IStockApiService stockApiService)
         {
             _context = context;
             _stockApiService = stockApiService;
-            _emailService = emailService;
         }
 
         [DisplayName("Check and Trigger Stock Price Alerts")]
@@ -35,8 +34,6 @@ namespace Core.Notification.StockPriceAlert
 
             foreach (var alert in pendingAlerts)
             {
-                await Task.Delay(5000); 
-
                 var currentPrice = await _stockApiService.GetStockPriceAsync(alert.StockSymbol);
 
                 bool shouldTrigger = false;
@@ -55,21 +52,50 @@ namespace Core.Notification.StockPriceAlert
                     alert.IsTriggered = true;
                     alert.TriggeredDate = DateTime.UtcNow;
 
-
-                    //var user = alert.User;
-                    //if (user != null && !string.IsNullOrEmpty(user.Email))
-                    //{
-                     //   var subject = $"Stock Price Alert: {alert.StockSymbol}";
-                     //   var message = $"Dear {user.FirstName},\n\nThe stock {alert.StockSymbol} has {alert.AlertType.ToString().ToLower()}d to your target price of {alert.TargetPrice}. The current price is {currentPrice}.\n\n";
-
-                      //  await _emailService.SendEmailAsync(user.Email, subject, message);
-                    //}
+                    PublishAlertToQueue(alert, currentPrice);
 
                     _context.StockPriceAlerts.Update(alert);
                 }
             }
 
             await _context.SaveChangesAsync();
+        }
+
+        private void PublishAlertToQueue(Core.Data.Entity.StockPriceAlert alert, decimal currentPrice)
+        {
+            var factory = new ConnectionFactory()
+            {
+                HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost",
+                UserName = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME") ?? "guest",
+                Password = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "guest"
+            };
+
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
+
+            string queueName = Environment.GetEnvironmentVariable("RABBITMQ_QUEUENAME") ?? "email_queue";
+
+            channel.QueueDeclare(queue: queueName,
+                                 durable: true,
+                                 exclusive: false,
+                                 autoDelete: false,
+                                 arguments: null);
+
+            var message = new
+            {
+                //Email = alert.User.Email,
+                Email ="kcanmersin@gmail.com",
+                Subject = $"Stock Price Alert: {alert.StockSymbol}",
+                Body = $"Dear {alert.User.FirstName},\n\nThe stock {alert.StockSymbol} has {alert.AlertType.ToString().ToLower()}d to your target price of {alert.TargetPrice}. The current price is {currentPrice}.\n\n"
+            };
+
+            var messageBody = JsonSerializer.Serialize(message);
+            var body = Encoding.UTF8.GetBytes(messageBody);
+
+            channel.BasicPublish(exchange: "",
+                                 routingKey: queueName,
+                                 basicProperties: null,
+                                 body: body);
         }
     }
 }

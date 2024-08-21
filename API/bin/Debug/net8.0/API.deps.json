@@ -1182,6 +1182,18 @@
           }
         }
       },
+      "RabbitMQ.Client/6.8.1": {
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "8.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.8.1.0"
+          }
+        }
+      },
       "Serilog/4.0.1": {
         "runtime": {
           "lib/net8.0/Serilog.dll": {
@@ -1519,6 +1531,7 @@
         }
       },
       "System.IO.Pipelines/6.0.3": {},
+      "System.Memory/4.5.5": {},
       "System.Net.WebSockets.WebSocketProtocol/4.5.1": {
         "runtime": {
           "lib/netcoreapp2.1/System.Net.WebSockets.WebSocketProtocol.dll": {
@@ -1638,6 +1651,7 @@
           "Quartz": "3.13.0",
           "Quartz.Extensions.DependencyInjection": "3.13.0",
           "Quartz.Extensions.Hosting": "3.13.0",
+          "RabbitMQ.Client": "6.8.1",
           "Swashbuckle.AspNetCore": "6.7.0",
           "Swashbuckle.AspNetCore.Swagger": "6.7.0",
           "Swashbuckle.AspNetCore.SwaggerGen": "6.7.0",
@@ -2418,6 +2432,13 @@
       "path": "quartz.extensions.hosting/3.13.0",
       "hashPath": "quartz.extensions.hosting.3.13.0.nupkg.sha512"
     },
+    "RabbitMQ.Client/6.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jNsmGgmCNw2S/NzskeN2ijtGywtH4Sk/G6jWUTD5sY9SrC27Xz6BsLIiB8hdsfjeyWCa4j4GvCIGkpE8wrjU1Q==",
+      "path": "rabbitmq.client/6.8.1",
+      "hashPath": "rabbitmq.client.6.8.1.nupkg.sha512"
+    },
     "Serilog/4.0.1": {
       "type": "package",
       "serviceable": true,
@@ -2655,6 +2676,13 @@
       "sha512": "sha512-ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ//Dpks6HdL/Txgw==",
       "path": "system.io.pipelines/6.0.3",
       "hashPath": "system.io.pipelines.6.0.3.nupkg.sha512"
+    },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
     },
     "System.Net.WebSockets.WebSocketProtocol/4.5.1": {
       "type": "package",

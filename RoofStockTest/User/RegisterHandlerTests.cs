@@ -42,7 +42,7 @@ public class RegisterHandlerTests
     public async Task Handle_ShouldReturnFailure_WhenValidationFails()
     {
         // Arrange
-        var command = new RegisterCommand(); // You can set properties as needed
+        var command = new RegisterCommand(); 
         _validatorMock.Setup(v => v.ValidateAsync(command, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new FluentValidation.Results.ValidationResult
             {

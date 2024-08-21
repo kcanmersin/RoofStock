@@ -21,7 +21,6 @@ using System.Threading.RateLimiting;
 using Prometheus;
 using Serilog.Sinks.Elasticsearch;
 
-// Add your additional using statements
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
@@ -70,10 +69,8 @@ builder.Host.UseSerilog((context, services, configuration) =>
 
 builder.Configuration.AddEnvironmentVariables();
 
-// Read from environment variable
 var host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? builder.Configuration["Email:Smtp:Host"];
 
-// Configure Rate Limiting
 builder.Services.AddRateLimiter(options =>
 {
     options.AddPolicy("fixed", httpContext =>
@@ -99,7 +96,6 @@ builder.Services.AddRateLimiter(options =>
     .RejectionStatusCode = 429;
 });
 
-// Load Core Layer
 builder.Services.LoadCoreLayerExtension(builder.Configuration);
 
 
@@ -108,7 +104,6 @@ builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddSignalR();
 builder.Services.AddControllers(options =>
 {
-    // Register the LoggingActionFilter globally
     options.Filters.Add<LoggingActionFilter>();
 });
 builder.Services.AddEndpointsApiExplorer();
@@ -128,18 +123,14 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Use Prometheus metric server
 app.UseMetricServer();
 
-// Log requests
 app.UseSerilogRequestLogging();
 
-// Apply the RequestResponseLoggingMiddleware
 app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
 app.UseResponseCaching();
 
-// Enable Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -151,20 +142,17 @@ else
     app.UseSwaggerUI();
 }
 
-// Enable CORS
 app.UseCors("AllowAllOrigins");
+app.UseCoreLayerRecurringJobs(); 
 
-// Routing middleware
 app.UseRouting();
 
-// Apply rate limiting middleware before routing
 app.UseRateLimiter();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers().RequireRateLimiting("default");
 });
 
-// Health check endpoints
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHealthChecks("/h", new HealthCheckOptions
@@ -174,14 +162,12 @@ app.UseEndpoints(endpoints =>
     endpoints.MapHealthChecksUI();
 });
 
-// Apply global exception handling middleware
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthorization();
 
 app.UseStaticFiles();
 
-// Use Hangfire dashboard and server
 app.UseHangfireDashboard();
 
 var options = new BackgroundJobServerOptions
@@ -192,9 +178,6 @@ var options = new BackgroundJobServerOptions
 
 app.UseHangfireServer(options);
 
-// Configure Hangfire recurring jobs
-
-// Map controllers and SignalR hubs
 app.MapControllers();
 app.MapHub<StockPriceHub>("/stockPriceHub");
 
