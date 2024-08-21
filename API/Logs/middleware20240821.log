@@ -1,0 +1,62 @@
+2024-08-21 09:20:08 [Information] No cached response available for this request.
+2024-08-21 09:20:09 [Information] The response could not be cached for this request.
+2024-08-21 09:20:09 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 192.2619 ms
+2024-08-21 09:20:09 [Information] No cached response available for this request.
+2024-08-21 09:20:09 [Information] The response could not be cached for this request.
+2024-08-21 09:20:09 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 27.1151 ms
+2024-08-21 09:20:09 [Information] No cached response available for this request.
+2024-08-21 09:20:09 [Information] The response could not be cached for this request.
+2024-08-21 09:20:09 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 371.9171 ms
+2024-08-21 09:20:16 [Information] No cached response available for this request.
+2024-08-21 09:20:16 [Information] Executing endpoint '"API.Controllers.UserController.ConfirmEmail (API)"'
+2024-08-21 09:20:17 [Information] Executed endpoint '"API.Controllers.UserController.ConfirmEmail (API)"'
+2024-08-21 09:20:17 [Information] The response could not be cached for this request.
+2024-08-21 09:20:17 [Information] HTTP "GET" "/api/users/confirm-email" responded 302 in 860.0053 ms
+2024-08-21 09:20:17 [Information] No cached response available for this request.
+2024-08-21 09:20:17 [Information] Sending file. Request path: '"/welcome.html"'. Physical path: '"C:\Users\KC\source\repos\StockFlow\API\wwwroot\welcome.html"'
+2024-08-21 09:20:17 [Information] The response could not be cached for this request.
+2024-08-21 09:20:17 [Information] HTTP "GET" "/welcome.html" responded 200 in 87.9931 ms
+2024-08-21 09:20:17 [Information] No cached response available for this request.
+2024-08-21 09:20:17 [Information] Sending file. Request path: '"/defaultlogo.jpg"'. Physical path: '"C:\Users\KC\source\repos\StockFlow\API\wwwroot\defaultlogo.jpg"'
+2024-08-21 09:20:17 [Information] The response could not be cached for this request.
+2024-08-21 09:20:17 [Information] HTTP "GET" "/defaultlogo.jpg" responded 200 in 88.3235 ms
+2024-08-21 09:20:17 [Information] No cached response available for this request.
+2024-08-21 09:20:17 [Information] The response could not be cached for this request.
+2024-08-21 09:20:17 [Information] HTTP "GET" "/favicon.ico" responded 404 in 9.4882 ms
+2024-08-21 09:21:21 [Information] No cached response available for this request.
+2024-08-21 09:21:21 [Information] Sending file. Request path: '"/welcome.html"'. Physical path: '"C:\Users\KC\source\repos\StockFlow\API\wwwroot\welcome.html"'
+2024-08-21 09:21:21 [Information] The response could not be cached for this request.
+2024-08-21 09:21:21 [Information] HTTP "GET" "/welcome.html" responded 200 in 27.0428 ms
+2024-08-21 09:21:33 [Information] No cached response available for this request.
+2024-08-21 09:21:33 [Information] Sending file. Request path: '"/welcome.html"'. Physical path: '"C:\Users\KC\source\repos\StockFlow\API\wwwroot\welcome.html"'
+2024-08-21 09:21:33 [Information] The response could not be cached for this request.
+2024-08-21 09:21:33 [Information] HTTP "GET" "/welcome.html" responded 200 in 11.7884 ms
+2024-08-21 09:21:50 [Information] No cached response available for this request.
+2024-08-21 09:21:50 [Information] Sending file. Request path: '"/welcome.html"'. Physical path: '"C:\Users\KC\source\repos\StockFlow\API\wwwroot\welcome.html"'
+2024-08-21 09:21:50 [Information] The response could not be cached for this request.
+2024-08-21 09:21:50 [Information] HTTP "GET" "/welcome.html" responded 200 in 8.6020 ms
+2024-08-21 09:23:14 [Information] No cached response available for this request.
+2024-08-21 09:23:14 [Information] No cached response available for this request.
+2024-08-21 09:23:14 [Information] Sending file. Request path: '"/welcome.html"'. Physical path: '"C:\Users\KC\source\repos\StockFlow\API\wwwroot\welcome.html"'
+2024-08-21 09:23:14 [Information] The response could not be cached for this request.
+2024-08-21 09:23:14 [Information] The response could not be cached for this request.
+2024-08-21 09:23:14 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 180.7767 ms
+2024-08-21 09:23:14 [Information] HTTP "GET" "/welcome.html" responded 200 in 231.6027 ms
+2024-08-21 09:23:14 [Information] No cached response available for this request.
+2024-08-21 09:23:14 [Information] The response could not be cached for this request.
+2024-08-21 09:23:14 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 21.9242 ms
+2024-08-21 09:23:15 [Information] No cached response available for this request.
+2024-08-21 09:23:15 [Information] The response could not be cached for this request.
+2024-08-21 09:23:15 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 252.5733 ms
+2024-08-21 09:23:19 [Information] No cached response available for this request.
+2024-08-21 09:23:19 [Information] The response could not be cached for this request.
+2024-08-21 09:23:19 [Information] HTTP "GET" "/" responded 404 in 5.2730 ms
+2024-08-21 09:25:47 [Information] No cached response available for this request.
+2024-08-21 09:25:47 [Information] The response could not be cached for this request.
+2024-08-21 09:25:47 [Information] HTTP "GET" "/swagger/index.html" responded 200 in 127.2358 ms
+2024-08-21 09:25:47 [Information] No cached response available for this request.
+2024-08-21 09:25:47 [Information] The response could not be cached for this request.
+2024-08-21 09:25:47 [Information] HTTP "GET" "/swagger/index.js" responded 200 in 30.3902 ms
+2024-08-21 09:25:47 [Information] No cached response available for this request.
+2024-08-21 09:25:47 [Information] The response could not be cached for this request.
+2024-08-21 09:25:47 [Information] HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 201.4825 ms

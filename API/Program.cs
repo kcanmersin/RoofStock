@@ -33,9 +33,7 @@ builder.Host.UseSerilog((context, services, configuration) =>
 {
     configuration
         .Enrich.FromLogContext()
-        .WriteTo.Console()  // Console output for local debugging
-        
-        // Middleware logs
+        .WriteTo.Console()  
         .WriteTo.Logger(lc => lc
             .Filter.ByIncludingOnly(Matching.WithProperty<string>("SourceContext", v => v.Contains("Middleware")))
             .Enrich.WithProperty("LogType", "Middleware")  

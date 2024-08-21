@@ -4,6 +4,8 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<InternalsVisibleTo>RoofStockTest</InternalsVisibleTo>
+		<InternalsVisibleTo>DynamicProxyGenAssembly2</InternalsVisibleTo>
 	</PropertyGroup>
 
 	<ItemGroup>
