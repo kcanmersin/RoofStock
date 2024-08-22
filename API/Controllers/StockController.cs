@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Contracts;
 using Core.Features.BuyStock;
 using Core.Features.GivePriceAlert;
 using Core.Features.SellStock;
 using Core.Features.ShowPortfolio;
+using Core.Service.KafkaService;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.RateLimiting;
 
 namespace API.Controllers
 {
@@ -19,10 +16,12 @@ namespace API.Controllers
     public class StockController : ControllerBase
     {
         private readonly ISender _sender;
+        private readonly UserActivityService _userActivityService;
 
-        public StockController(ISender sender)
+        public StockController(ISender sender, UserActivityService userActivityService)
         {
             _sender = sender;
+            _userActivityService = userActivityService;
         }
 
         [HttpGet("portfolio")]
@@ -33,6 +32,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
+                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "ViewPortfolio");
                 return Ok(result.Value);
             }
 
@@ -51,6 +51,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
+                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "SellStock", new { StockSymbol = request.StockSymbol, Quantity = request.Quantity });
                 return Ok(result.Value);
             }
 
@@ -69,6 +70,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
+                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "BuyStock", new { StockSymbol = request.StockSymbol, Quantity = request.Quantity });
                 return Ok(result.Value);
             }
 
@@ -87,6 +89,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
+                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "SetPriceAlert", new { StockSymbol = request.StockSymbol, TargetPrice = request.TargetPrice });
                 return Ok(result.Value);
             }
 

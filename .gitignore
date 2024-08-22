@@ -8,3 +8,11 @@
 .env
 .env
 .env
+*.dll
+*.dll
+/API/bin/Debug/net8.0
+/API/bin/Debug
+/API/bin
+API/bin/Debug/net8.0/Core.dll
+/Core/obj/Debug/net8.0/refint
+/Core/obj/Debug/net8.0
