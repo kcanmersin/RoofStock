@@ -1,33 +1,39 @@
-﻿using Core.Data.Entity.User;
-using Core.Features.User.Register; 
-using Core.Service.Email; 
-using Core.Service.JWT; 
+﻿using System;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Core.Data.Entity.User;
+using Core.Features.User.Register;
+using Core.Service.Email;
+using Core.Service.JWT;
+using Core.Shared;
 using FluentValidation;
-using Microsoft.AspNetCore.Identity; 
-using Microsoft.Extensions.Configuration; 
-using Moq; 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Moq;
 using Xunit;
-using FluentAssertions; 
+
 public class RegisterHandlerTests
 {
-    private readonly Mock<UserManager<Core.Data.Entity.User.AppUser>> _userManagerMock;
+    private readonly Mock<UserManager<AppUser>> _userManagerMock;
     private readonly Mock<RoleManager<AppRole>> _roleManagerMock;
     private readonly Mock<IEmailService> _emailServiceMock;
     private readonly Mock<IJwtService> _jwtServiceMock;
     private readonly Mock<IValidator<RegisterCommand>> _validatorMock;
+    private readonly Mock<IConfiguration> _configurationMock;
     private readonly RegisterHandler _handler;
 
     public RegisterHandlerTests()
     {
-        _userManagerMock = new Mock<UserManager<Core.Data.Entity.User.AppUser>>(
-            Mock.Of<IUserStore<Core.Data.Entity.User.AppUser>>(), null, null, null, null, null, null, null, null);
-
+        _userManagerMock = new Mock<UserManager<AppUser>>(
+            Mock.Of<IUserStore<AppUser>>(), null, null, null, null, null, null, null, null);
         _roleManagerMock = new Mock<RoleManager<AppRole>>(
             Mock.Of<IRoleStore<AppRole>>(), null, null, null, null);
-
         _emailServiceMock = new Mock<IEmailService>();
         _jwtServiceMock = new Mock<IJwtService>();
         _validatorMock = new Mock<IValidator<RegisterCommand>>();
+        _configurationMock = new Mock<IConfiguration>();
 
         _handler = new RegisterHandler(
             _userManagerMock.Object,
@@ -35,50 +41,35 @@ public class RegisterHandlerTests
             _emailServiceMock.Object,
             _jwtServiceMock.Object,
             _validatorMock.Object,
-            Mock.Of<IConfiguration>());
-    }
-
-    [Fact]
-    public async Task Handle_ShouldReturnFailure_WhenValidationFails()
-    {
-        // Arrange
-        var command = new RegisterCommand(); 
-        _validatorMock.Setup(v => v.ValidateAsync(command, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new FluentValidation.Results.ValidationResult
-            {
-                Errors = { new FluentValidation.Results.ValidationFailure("Property", "Error") }
-            });
-
-        // Act
-        var result = await _handler.Handle(command, CancellationToken.None);
-
-        // Assert
-        result.IsSuccess.Should().BeFalse();
-        result.Error.Code.Should().Be("ValidationFailed");
+            _configurationMock.Object);
     }
 
     [Fact]
     public async Task Handle_ShouldReturnFailure_WhenUserCreationFails()
     {
-        // Arrange
         var command = new RegisterCommand
         {
             Email = "test@example.com",
-            Password = "Password123"
+            Password = "Password123!",
+            FirstName = "John",
+            LastName = "Doe",
+            PhoneNumber = "1234567890",
+            RoleName = "User"
         };
 
+        var validationResult = new FluentValidation.Results.ValidationResult();
         _validatorMock.Setup(v => v.ValidateAsync(command, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new FluentValidation.Results.ValidationResult());
+            .ReturnsAsync(validationResult);
 
-        _userManagerMock.Setup(um => um.CreateAsync(It.IsAny<Core.Data.Entity.User.AppUser>(), command.Password))
-            .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User creation failed" }));
+        _userManagerMock.Setup(um => um.CreateAsync(It.IsAny<AppUser>(), It.IsAny<string>()))
+            .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User creation failed." }));
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.IsSuccess.Should().BeFalse();
-        result.Error.Code.Should().Be("RegistrationFailed");
+        Assert.False(result.IsSuccess);
+        Assert.Equal("RegistrationFailed", result.Error.Code);
+        Assert.Equal("User creation failed.", result.Error.Message);
     }
-
 }

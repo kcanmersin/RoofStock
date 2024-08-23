@@ -4,8 +4,9 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<!-- <InternalsVisibleTo>RoofStockTest</InternalsVisibleTo> -->
+		 <InternalsVisibleTo>RoofStockTest</InternalsVisibleTo> 
 		<!-- <InternalsVisibleTo>DynamicProxyGenAssembly2</InternalsVisibleTo> -->
+
 	</PropertyGroup>
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
@@ -16,11 +17,14 @@
 
 		<PackageReference Include="AspNetCore.HealthChecks.Hangfire" Version="8.0.0" />
 
+		<PackageReference Include="AspNetCore.HealthChecks.Kafka" Version="8.0.1" />
+
 		<PackageReference Include="AspNetCore.HealthChecks.Network" Version="8.0.0" />
 
 		<PackageReference Include="AspNetCore.HealthChecks.Npgsql" Version="8.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="8.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.0" />
+		<PackageReference Include="Confluent.Kafka" Version="2.5.2" />
 		<PackageReference Include="FluentValidation" Version="11.9.2" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
@@ -46,12 +50,17 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.0.1" />
 		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1" />
+		<PackageReference Include="Microsoft.ML" Version="3.0.1" />
+		<PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.19.1" />
+		<PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.19.1" />
+		<PackageReference Include="Microsoft.ML.Recommender" Version="0.21.1" />
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
 		<PackageReference Include="Polly" Version="8.4.1" />
 		<PackageReference Include="Quartz" Version="3.13.0" />
 		<PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.13.0" />
 		<PackageReference Include="Quartz.Extensions.Hosting" Version="3.13.0" />
 		<PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+		<PackageReference Include="SciSharp.TensorFlow.Redist" Version="2.3.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.7.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.7.0" />

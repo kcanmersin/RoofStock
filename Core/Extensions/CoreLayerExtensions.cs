@@ -23,6 +23,9 @@ using Core.Service.OrderBackgroundService;
 using Microsoft.AspNetCore.Builder;
 using Core.Service.RabbitMQEmailService;
 using RabbitMQ.Client;
+using Core.Service.KafkaService;
+using HealthChecks.Kafka;
+using Core.Service.StockRecommendationService;
 
 namespace Core.Extensions
 {
@@ -60,7 +63,7 @@ namespace Core.Extensions
                 return connection.CreateModel();
             });
 
-            services.AddSingleton<EmailConsumerService>(); // EmailConsumerService should be a singleton
+            services.AddSingleton<EmailConsumerService>(); 
 
             // Register scoped services
             services.AddScoped<StockPriceAlertService>();
@@ -98,8 +101,11 @@ namespace Core.Extensions
 
                     opt.Host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? configuration["Email:Smtp:Host"];
                     opt.Port = port;
-                }, name: "SMTP Health Check");
-
+                }, name: "SMTP Health Check")//;
+                    .AddKafka(opt =>
+                    {
+                        opt.BootstrapServers = "localhost:9092";
+                    }, name: "Kafka Health Check");
             // Memory cache
             services.AddMemoryCache();
 
@@ -143,6 +149,12 @@ namespace Core.Extensions
             services.AddHangfireServer();
 
             services.AddQuartzExtension(configuration);
+
+            services.AddSingleton(new KafkaProducerService("localhost:9092", "user-activity-topic"));
+            services.AddSingleton(sp => new KafkaConsumerService("localhost:9092", "user-activity-topic", "user-activity-group"));
+            services.AddScoped<UserActivityService>();
+
+            services.AddScoped<StockRecommendationService>();
             return services;
         }
 
@@ -169,6 +181,9 @@ namespace Core.Extensions
             // Start the EmailConsumerService to process messages from RabbitMQ
             var emailConsumerService = app.ApplicationServices.GetRequiredService<EmailConsumerService>();
             Task.Run(() => emailConsumerService.Start());
+            var kafkaConsumerService = app.ApplicationServices.GetRequiredService<KafkaConsumerService>();
+            var cts = new CancellationTokenSource();
+            Task.Run(() => kafkaConsumerService.StartConsuming(cts.Token));
 
             return app;
         }

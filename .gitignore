@@ -16,3 +16,9 @@
 API/bin/Debug/net8.0/Core.dll
 /Core/obj/Debug/net8.0/refint
 /Core/obj/Debug/net8.0
+/Core/obj/Debug
+/Core/bin
+/Core/bin/Debug/net6.0
+/.vs/RoofStock/v17
+*.log
+*.dll
