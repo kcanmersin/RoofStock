@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Core.Notification.StockPriceAlert
 {
-    internal class StockPriceAlertService
+    public class StockPriceAlertService
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;

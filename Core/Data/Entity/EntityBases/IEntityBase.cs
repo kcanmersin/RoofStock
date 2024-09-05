@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Data.Entity.EntityBases
 {
-    internal interface IEntityBase
+    public interface IEntityBase
     {
     }
 }

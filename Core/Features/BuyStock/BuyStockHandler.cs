@@ -9,7 +9,7 @@ using Core.Data.Entity;
 
 namespace Core.Features.BuyStock
 {
-    internal class BuyStockHandler : IRequestHandler<BuyStockCommand, Result<BuyStockResponse>>
+    public class BuyStockHandler : IRequestHandler<BuyStockCommand, Result<BuyStockResponse>>
     {
         private readonly IBuyService _buyService;
         private readonly IStockApiService _stockApiService;

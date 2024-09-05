@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace Core.Features.User.ConfirmEmail
 {
-    internal class ConfirmEmailHandler : IRequestHandler<ConfirmEmailCommand, Result<ConfirmEmailResponse>>
+    public class ConfirmEmailHandler : IRequestHandler<ConfirmEmailCommand, Result<ConfirmEmailResponse>>
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IJwtService _jwtService;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Data.Entity.EntityBases
 {
-  internal abstract class EntityBase : IEntityBase
+  public abstract class EntityBase : IEntityBase
     {
         public virtual Guid Id { get; set; } = Guid.NewGuid();
 

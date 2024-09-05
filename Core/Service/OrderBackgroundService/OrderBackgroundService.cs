@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Service.OrderBackgroundService
 {
-    internal class OrderBackgroundService
+    public class OrderBackgroundService
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;

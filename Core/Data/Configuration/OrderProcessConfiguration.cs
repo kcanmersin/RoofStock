@@ -4,7 +4,7 @@ using Core.Data.Entity;
 
 namespace Core.Data.Configuration
 {
-    internal class OrderProcessConfiguration : IEntityTypeConfiguration<OrderProcess>
+    public class OrderProcessConfiguration : IEntityTypeConfiguration<OrderProcess>
     {
         public void Configure(EntityTypeBuilder<OrderProcess> builder)
         {

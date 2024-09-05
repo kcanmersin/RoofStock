@@ -16,7 +16,7 @@ namespace Core.Data.Entity
   quantity int
   total_purchase_price decimal
 }*/
-    internal class StockHolding : EntityBase
+    public class StockHolding : EntityBase
     {
         public Guid UserId { get; set; }
         public virtual AppUser User { get; set; }

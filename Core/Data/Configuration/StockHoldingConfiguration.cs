@@ -4,7 +4,7 @@ using Core.Data.Entity;
 
 namespace Core.Data.Configuration
 {
-    internal class StockHoldingConfiguration : IEntityTypeConfiguration<StockHolding>
+    public class StockHoldingConfiguration : IEntityTypeConfiguration<StockHolding>
     {
         public void Configure(EntityTypeBuilder<StockHolding> builder)
         {

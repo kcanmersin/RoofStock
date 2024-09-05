@@ -7,7 +7,7 @@ using Core.Shared;
 
 namespace Core.Features
 {
-    internal interface IBuyService
+    public interface IBuyService
     {
         Task<Result> BuyStockAsync(AppUser user, string stockSymbol, int quantity, decimal price, Guid orderProcessId = default);
     }

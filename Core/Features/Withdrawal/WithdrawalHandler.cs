@@ -9,7 +9,7 @@ using Core.Data.Entity;
 
 namespace Core.Features.Withdrawal
 {
-    internal class WithdrawalHandler : IRequestHandler<WithdrawalCommand, Result<WithdrawalResponse>>
+    public class WithdrawalHandler : IRequestHandler<WithdrawalCommand, Result<WithdrawalResponse>>
     {
         private readonly ApplicationDbContext _context;
         private readonly CurrencyConversionService _currencyConversionService;

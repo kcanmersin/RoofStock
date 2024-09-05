@@ -4,7 +4,7 @@ using Core.Data.Entity;
 
 namespace Core.Data.Configuration
 {
-    internal class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
+    public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
     {
         public void Configure(EntityTypeBuilder<Transaction> builder)
         {

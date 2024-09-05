@@ -19,7 +19,7 @@ Table transactions {
   //ref ekle stockholdinge
 }
      */
-    internal class Transaction : EntityBase
+    public class Transaction : EntityBase
     {
         public Guid UserId { get; set; }
         public virtual AppUser User { get; set; }

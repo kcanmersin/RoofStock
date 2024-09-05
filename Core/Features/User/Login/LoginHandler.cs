@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Core.Features.User.Login
 {
-    internal class LoginHandler : IRequestHandler<LoginCommand, Result<LoginResponse>>
+    public class LoginHandler : IRequestHandler<LoginCommand, Result<LoginResponse>>
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;

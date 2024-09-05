@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Data.Entity.User
 {
-    internal class AppUser : IdentityUser<Guid>, IEntityBase
+    public class AppUser : IdentityUser<Guid>, IEntityBase
     {
         public override string UserName { get; set; }
         public string FirstName { get; set; }

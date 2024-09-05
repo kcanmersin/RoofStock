@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Features
 {
-    internal class SellService : ISellService
+    public class SellService : ISellService
     {
         private readonly ApplicationDbContext _context;
 

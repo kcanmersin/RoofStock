@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Features.GetStockRecommendations
 {
-    internal class GetStockRecommendationsHandler : IRequestHandler<GetStockRecommendationsCommand, List<StockRecommendationResponse>>
+    public class GetStockRecommendationsHandler : IRequestHandler<GetStockRecommendationsCommand, List<StockRecommendationResponse>>
     {
         private readonly StockRecommendationService _stockRecommendationService;
 

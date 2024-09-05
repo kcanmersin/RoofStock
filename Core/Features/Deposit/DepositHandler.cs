@@ -7,7 +7,7 @@ using FluentValidation;
 using System.Threading;
 using System.Threading.Tasks;
 
-internal class DepositHandler : IRequestHandler<DepositCommand, Result<DepositResponse>>
+public class DepositHandler : IRequestHandler<DepositCommand, Result<DepositResponse>>
 {
     private readonly ApplicationDbContext _context;
     private readonly CurrencyConversionService _currencyConversionService;

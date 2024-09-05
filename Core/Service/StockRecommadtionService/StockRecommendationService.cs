@@ -11,7 +11,7 @@ using Core.Data;
 
 namespace Core.Service.StockRecommendationService
 {
-    internal class StockRecommendationService
+    public class StockRecommendationService
     {
         private readonly ApplicationDbContext _context;
         private readonly InferenceSession _session;

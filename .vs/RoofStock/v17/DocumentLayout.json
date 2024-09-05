@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{86317464-1849-435F-946D-1481A3DA191E}|RoofStockTest\\RoofStockTest.csproj|solutionrelative:roofstocktest\\user\\registerhandlertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\data\\entity\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\data\\entity\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\features\\user\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\features\\user\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -18,15 +26,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EntityBase.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "RelativeDocumentMoniker": "Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "RelativeToolTip": "Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T21:19:50.106Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\Transaction.cs",
+              "RelativeDocumentMoniker": "Core\\Data\\Entity\\Transaction.cs",
+              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\Transaction.cs",
+              "RelativeToolTip": "Core\\Data\\Entity\\Transaction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T21:19:48.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RegisterHandler.cs",
               "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Features\\User\\Register\\RegisterHandler.cs",
               "RelativeDocumentMoniker": "Core\\Features\\User\\Register\\RegisterHandler.cs",
@@ -34,8 +68,7 @@
               "RelativeToolTip": "Core\\Features\\User\\Register\\RegisterHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T13:13:15.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T13:13:15.621Z"
             },
             {
               "$type": "Document",
@@ -45,7 +78,7 @@
               "RelativeDocumentMoniker": "RoofStockTest\\User\\RegisterHandlerTests.cs",
               "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\RoofStockTest\\User\\RegisterHandlerTests.cs",
               "RelativeToolTip": "RoofStockTest\\User\\RegisterHandlerTests.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAADEAAAASAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAgwC8AAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-22T09:56:50.335Z",
               "EditorCaption": ""
