@@ -17,3 +17,10 @@ spec:
         image: kcanmersin/roofstock-api:latest
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"           # Memory limit
+            ephemeral-storage: "1Gi"   # Storage limit
+          requests:
+            memory: "256Mi"           # Memory request
+            ephemeral-storage: "500Mi" # Storage request

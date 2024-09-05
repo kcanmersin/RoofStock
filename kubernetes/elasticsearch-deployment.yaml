@@ -12,6 +12,7 @@ spec:
       labels:
         app: elasticsearch
     spec:
+      automountServiceAccountToken: false  # Disabling token mount for better security
       containers:
       - name: elasticsearch
         image: docker.elastic.co/elasticsearch/elasticsearch:6.0.1
@@ -21,3 +22,10 @@ spec:
         env:
         - name: "discovery.type"
           value: "single-node"
+        resources:
+          limits:
+            memory: "2Gi"              # Memory limit
+            ephemeral-storage: "5Gi"    # Storage limit
+          requests:
+            memory: "1Gi"              # Memory request
+            ephemeral-storage: "2Gi"    # Storage request
