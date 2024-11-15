@@ -11,14 +11,20 @@ namespace Core.Extensions
     {
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            // Environment variables'dan değerleri al
-            var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? configuration["JwtSettings:Secret"];
-            var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? configuration["JwtSettings:Issuer"];
-            var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? configuration["JwtSettings:Audience"];
+            // Configure and bind JwtSettings from environment variables or configuration
+            var jwtSettings = new JwtSettings
+            {
+                Secret = configuration["JwtSettings:Secret"],
+                Issuer = configuration["JwtSettings:Issuer"],
+                Audience = configuration["JwtSettings:Audience"],
+                ExpiryMinutes = int.Parse(configuration["JwtSettings:ExpiryMinutes"])
+            };
 
-            // JWT ayarlarını yapılandır
-            var key = Encoding.UTF8.GetBytes(jwtSecret);
+            // Register JwtSettings as a singleton service for dependency injection
+            services.AddSingleton(jwtSettings);
 
+            // Configure the JWT authentication scheme
+            var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme;
@@ -32,11 +38,14 @@ namespace Core.Extensions
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = jwtIssuer,
-                    ValidAudience = jwtAudience,
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
                     ClockSkew = TimeSpan.Zero
                 };
             });
+
+            // Register IJwtService implementation as a singleton for dependency injection
+            services.AddSingleton<IJwtService, JwtService>();
 
             return services;
         }

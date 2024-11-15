@@ -30,7 +30,13 @@ namespace API.Controllers
 
             try
             {
-                var price = await _stockApiService.GetStockPriceAsync(symbol);
+                var priceNullable = await _stockApiService.GetStockPriceAsync(symbol);
+                if (priceNullable == null)
+                {
+                    return NotFound($"No price data found for symbol: {symbol}");
+                }
+
+                var price = (decimal)priceNullable; // Convert double? to decimal
                 return Ok(new { Symbol = symbol, Price = price });
             }
             catch (HttpRequestException ex)
@@ -50,11 +56,13 @@ namespace API.Controllers
 
             try
             {
-                var news = await _stockApiService.GetMarketNewsAsync(request.Category, request.MinId);
+                // Default `MinId` to 0 if null, ensuring non-null value
+                var news = await _stockApiService.GetMarketNewsAsync(request.Category, request.MinId ?? 0);
 
+                // Apply pagination
                 var pagedNews = news
-                    .Skip((request.Page - 1) * request.PageSize)
-                    .Take(request.PageSize)
+                    .Skip((request.Page.GetValueOrDefault(1) - 1) * request.PageSize.GetValueOrDefault(10))
+                    .Take(request.PageSize.GetValueOrDefault(10))
                     .ToList();
 
                 var totalRecords = news.Count;
@@ -63,9 +71,9 @@ namespace API.Controllers
                 {
                     Data = pagedNews,
                     TotalRecords = totalRecords,
-                    Page = request.Page,
-                    PageSize = request.PageSize,
-                    TotalPages = (int)Math.Ceiling((double)totalRecords / request.PageSize)
+                    Page = request.Page ?? 1,
+                    PageSize = request.PageSize ?? 10,
+                    TotalPages = (int)Math.Ceiling((double)totalRecords / (request.PageSize ?? 10))
                 };
 
                 return Ok(response);
@@ -75,7 +83,6 @@ namespace API.Controllers
                 return StatusCode(500, $"Error retrieving market news: {ex.Message}");
             }
         }
-
 
         // GET: api/StockApi/company-news?symbol=AAPL&from=2023-08-15&to=2023-08-20
         [HttpGet("company-news")]
@@ -90,7 +97,25 @@ namespace API.Controllers
             try
             {
                 var news = await _stockApiService.GetCompanyNewsAsync(request.Symbol, request.From, request.To);
-                return Ok(news);
+
+                // Apply pagination
+                var pagedNews = news
+                    .Skip((request.Page.GetValueOrDefault(1) - 1) * request.PageSize.GetValueOrDefault(10))
+                    .Take(request.PageSize.GetValueOrDefault(10))
+                    .ToList();
+
+                var totalRecords = news.Count;
+
+                var response = new
+                {
+                    Data = pagedNews,
+                    TotalRecords = totalRecords,
+                    Page = request.Page ?? 1,
+                    PageSize = request.PageSize ?? 10,
+                    TotalPages = (int)Math.Ceiling((double)totalRecords / (request.PageSize ?? 10))
+                };
+
+                return Ok(response);
             }
             catch (HttpRequestException ex)
             {

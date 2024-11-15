@@ -17,14 +17,15 @@ namespace Core.Service.JWT
         public string GenerateToken(string email, Guid userId)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            // Use HS512 instead of HS256
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
 
             var claims = new[]
             {
-                new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub, email),
-                new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, userId.ToString())
-            };
+        new Claim(JwtRegisteredClaimNames.Sub, email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.NameIdentifier, userId.ToString())
+    };
 
             var token = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
@@ -36,6 +37,7 @@ namespace Core.Service.JWT
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
         public ClaimsPrincipal? ValidateToken(string token)
         {

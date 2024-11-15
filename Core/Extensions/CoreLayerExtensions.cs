@@ -26,6 +26,7 @@ using RabbitMQ.Client;
 using Core.Service.KafkaService;
 using HealthChecks.Kafka;
 using Core.Service.StockRecommendationService;
+using Core.Service.PredictionService;
 
 namespace Core.Extensions
 {
@@ -69,8 +70,16 @@ namespace Core.Extensions
             services.AddScoped<StockPriceAlertService>();
             services.AddScoped<IEmailService, EmailService>();
 
+            //prediction service
+            services.AddHttpClient<IPredictService, PredictService>(client =>
+            {
+                client.BaseAddress = new Uri("http://127.0.0.1:5000");
+            });
+
+
+
             // Connection string
-            var defaultConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? configuration["ConnectionStrings:DefaultConnection"];
+            var defaultConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnectionROOF") ?? configuration["ConnectionStrings:DefaultConnection"];
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnectionString));
@@ -109,19 +118,23 @@ namespace Core.Extensions
             // Memory cache
             services.AddMemoryCache();
 
-            // JWT settings configuration
-            var jwtSettings = new JwtSettings
-            {
-                Secret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? configuration["JwtSettings:Secret"],
-                Issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? configuration["JwtSettings:Issuer"],
-                Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? configuration["JwtSettings:Audience"],
-                ExpiryMinutes = int.TryParse(Environment.GetEnvironmentVariable("JWT_EXPIRYMINUTES"), out var expiryMinutes)
-                                ? expiryMinutes
-                                : int.Parse(configuration["JwtSettings:ExpiryMinutes"])
-            };
-            services.AddSingleton(jwtSettings);
+            //// JWT settings configuration
+            //var jwtSettings = new JwtSettings
+            //{
+            //    Secret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? configuration["JwtSettings:Secret"],
+            //    Issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? configuration["JwtSettings:Issuer"],
+            //    Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? configuration["JwtSettings:Audience"],
+            //    ExpiryMinutes = int.TryParse(Environment.GetEnvironmentVariable("JWT_EXPIRYMINUTES"), out var expiryMinutes)
+            //                    ? expiryMinutes
+            //                    : int.Parse(configuration["JwtSettings:ExpiryMinutes"])
+            //};
+            //services.AddSingleton(jwtSettings);
 
-            services.AddScoped<IJwtService, JwtService>();
+            //services.AddScoped<IJwtService, JwtService>();
+
+            //AddJwtAuthentication add this
+            services.AddJwtAuthentication(configuration);
+
             services.AddScoped<IBuyService, BuyService>();
             services.AddScoped<ISellService, SellService>();
 

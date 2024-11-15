@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FclGMa3AoF8=",
+  "dgSpecHash": "HZlOTAltu78=",
   "success": true,
-  "projectFilePath": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj",
+  "projectFilePath": "D:\\code\\RoofStock\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KC\\.nuget\\packages\\aspnetcore.healthchecks.hangfire\\8.0.0\\aspnetcore.healthchecks.hangfire.8.0.0.nupkg.sha512",
     "C:\\Users\\KC\\.nuget\\packages\\aspnetcore.healthchecks.kafka\\8.0.1\\aspnetcore.healthchecks.kafka.8.0.1.nupkg.sha512",

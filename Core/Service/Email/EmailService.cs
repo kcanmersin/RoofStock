@@ -5,28 +5,31 @@ using System;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Core.Service.Email
 {
     public class EmailService : IEmailService
     {
         private readonly IConfiguration _configuration;
+        private readonly ILogger<EmailService> _logger;
         private readonly IAsyncPolicy _retryPolicy;
         private readonly IAsyncPolicy _timeoutPolicy;
 
-        public EmailService(IConfiguration configuration)
+        public EmailService(IConfiguration configuration, ILogger<EmailService> logger)
         {
             _configuration = configuration;
+            _logger = logger;
 
             _retryPolicy = Policy
                 .Handle<SmtpException>()
                 .Or<TimeoutRejectedException>()
                 .WaitAndRetryAsync(
-                    retryCount: 3, 
+                    retryCount: 3,
                     sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
-                    onRetry: (exception, timeSpan, retryCount, context) => 
+                    onRetry: (exception, timeSpan, retryCount, context) =>
                     {
-                        Console.WriteLine($"Retry {retryCount} after {timeSpan.Seconds} seconds due to {exception.GetType().Name}");
+                        _logger.LogWarning($"Retry {retryCount} after {timeSpan.Seconds} seconds due to {exception.GetType().Name}: {exception.Message}");
                     });
 
             _timeoutPolicy = Policy.TimeoutAsync(TimeSpan.FromSeconds(10));
@@ -34,6 +37,8 @@ namespace Core.Service.Email
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {
+            _logger.LogInformation("Starting to send email to {Email}", email);
+
             var host = Environment.GetEnvironmentVariable("EMAIL_HOST") ?? _configuration["Email:Smtp:Host"];
             var portString = Environment.GetEnvironmentVariable("EMAIL_PORT") ?? _configuration["Email:Smtp:Port"];
             var username = Environment.GetEnvironmentVariable("EMAIL_USERNAME") ?? _configuration["Email:Smtp:Username"];
@@ -42,6 +47,7 @@ namespace Core.Service.Email
 
             if (!int.TryParse(portString, out int port))
             {
+                _logger.LogError("Invalid SMTP port number: {Port}", portString);
                 throw new Exception($"Invalid SMTP port number: {portString}");
             }
 
@@ -62,22 +68,28 @@ namespace Core.Service.Email
 
                 try
                 {
-                    // Combine the timeout and retry policies
+                    _logger.LogDebug("Sending email to {Email}", email);
+
                     await _retryPolicy.ExecuteAsync(() =>
-                        _timeoutPolicy.ExecuteAsync(async () => 
+                        _timeoutPolicy.ExecuteAsync(async () =>
                             await client.SendMailAsync(mailMessage)));
+
+                    _logger.LogInformation("Email sent successfully to {Email}", email);
                 }
                 catch (SmtpException ex)
                 {
-                    throw new Exception("SMTP error occurred while sending email.", ex);
+                    _logger.LogError(ex, "SMTP error occurred while sending email to {Email}", email);
+                    throw;
                 }
                 catch (TimeoutRejectedException ex)
                 {
-                    throw new Exception("Timeout error occurred while sending email.", ex);
+                    _logger.LogError(ex, "Timeout occurred while sending email to {Email}", email);
+                    throw;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Failed to send email.", ex);
+                    _logger.LogError(ex, "Unexpected error occurred while sending email to {Email}", email);
+                    throw;
                 }
             }
         }

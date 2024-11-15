@@ -10,7 +10,7 @@ namespace Core.Features.BuyStock
     {
 
         [DefaultValue("3aa42229-1c0f-4630-8c1a-db879ecd0427")]
-        public Guid? UserId { get; set; }
+        public Guid UserId { get; set; }
         [DefaultValue("AAPL")]
         public string? StockSymbol { get; set; }
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj": {}
+    "D:\\code\\RoofStock\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj": {
+    "D:\\code\\RoofStock\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj",
+        "projectUniqueName": "D:\\code\\RoofStock\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\API.csproj",
+        "projectPath": "D:\\code\\RoofStock\\API\\API.csproj",
         "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\API\\obj\\",
+        "outputPath": "D:\\code\\RoofStock\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj"
+              "D:\\code\\RoofStock\\Core\\Core.csproj": {
+                "projectPath": "D:\\code\\RoofStock\\Core\\Core.csproj"
               }
             }
           }
@@ -208,18 +208,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj": {
+    "D:\\code\\RoofStock\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj",
+        "projectUniqueName": "D:\\code\\RoofStock\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Core.csproj",
+        "projectPath": "D:\\code\\RoofStock\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\KC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\obj\\",
+        "outputPath": "D:\\code\\RoofStock\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -435,7 +435,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

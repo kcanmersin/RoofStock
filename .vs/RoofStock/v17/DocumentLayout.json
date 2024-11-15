@@ -1,22 +1,142 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\KC\\source\\repos\\StockFlow\\",
+  "WorkspaceRootPath": "D:\\code\\RoofStock\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{86317464-1849-435F-946D-1481A3DA191E}|RoofStockTest\\RoofStockTest.csproj|c:\\users\\kc\\source\\repos\\stockflow\\roofstocktest\\user\\registerhandlertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86317464-1849-435F-946D-1481A3DA191E}|RoofStockTest\\RoofStockTest.csproj|solutionrelative:roofstocktest\\user\\registerhandlertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\extensions\\corelayerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\extensions\\corelayerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\service\\predictionservice\\predictservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\service\\predictionservice\\predictservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\service\\predictionservice\\ipredictservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\service\\predictionservice\\ipredictservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\predictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\predictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\stockapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\stockapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\recommendationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\recommendationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\features\\user\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\features\\user\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\service\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\service\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\logs\\middleware20241112.log||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\logs\\middleware20241112.log||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\service\\jwt\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\service\\jwt\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\extensions\\jwtextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\extensions\\jwtextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\marketnewsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\marketnewsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\companynewsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\companynewsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\withdrawalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\withdrawalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\controllers\\depositcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\controllers\\depositcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\withdrawalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\withdrawalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\userupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\userupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\showportfoliorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\showportfoliorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\setpricealertrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\setpricealertrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\sellstockrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\sellstockrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\recommendationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\recommendationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\giveorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\giveorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\depositrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\depositrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\cancelorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\cancelorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|d:\\code\\roofstock\\api\\contracts\\buystockrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0529736D-6635-48A2-8D0F-CCB2CECA4049}|API\\API.csproj|solutionrelative:api\\contracts\\buystockrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\data\\entity\\entitybases\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\data\\entity\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|d:\\code\\roofstock\\core\\data\\entity\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\data\\entity\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|c:\\users\\kc\\source\\repos\\stockflow\\core\\features\\user\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D5DFF8E-C842-4061-BD04-65991FB1A067}|Core\\Core.csproj|solutionrelative:core\\features\\user\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,62 +146,430 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EntityBase.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "RelativeDocumentMoniker": "Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "RelativeToolTip": "Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T21:19:50.106Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Transaction.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\Transaction.cs",
-              "RelativeDocumentMoniker": "Core\\Data\\Entity\\Transaction.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Data\\Entity\\Transaction.cs",
-              "RelativeToolTip": "Core\\Data\\Entity\\Transaction.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAApAAAA",
+              "DocumentIndex": 16,
+              "Title": "CompanyNewsRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\CompanyNewsRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\CompanyNewsRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\CompanyNewsRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\CompanyNewsRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T21:19:48.074Z",
+              "WhenOpened": "2024-11-12T11:03:15.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RegisterHandler.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Features\\User\\Register\\RegisterHandler.cs",
+              "RelativeDocumentMoniker": "Core\\Features\\User\\Register\\RegisterHandler.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Features\\User\\Register\\RegisterHandler.cs",
+              "RelativeToolTip": "Core\\Features\\User\\Register\\RegisterHandler.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T13:13:15.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Service\\Email\\EmailService.cs",
+              "RelativeDocumentMoniker": "Core\\Service\\Email\\EmailService.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Service\\Email\\EmailService.cs",
+              "RelativeToolTip": "Core\\Service\\Email\\EmailService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwCkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:40:30.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Service\\JWT\\JwtService.cs",
+              "RelativeDocumentMoniker": "Core\\Service\\JWT\\JwtService.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Service\\JWT\\JwtService.cs",
+              "RelativeToolTip": "Core\\Service\\JWT\\JwtService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:10:23.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "JwtExtensions.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Extensions\\JwtExtensions.cs",
+              "RelativeDocumentMoniker": "Core\\Extensions\\JwtExtensions.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Extensions\\JwtExtensions.cs",
+              "RelativeToolTip": "Core\\Extensions\\JwtExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:10:23.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RecommendationController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\RecommendationController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\RecommendationController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\RecommendationController.cs",
+              "RelativeToolTip": "API\\Controllers\\RecommendationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:50.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StockApiController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\StockApiController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\StockApiController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\StockApiController.cs",
+              "RelativeToolTip": "API\\Controllers\\StockApiController.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAH4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:02:56.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CoreLayerExtensions.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Extensions\\CoreLayerExtensions.cs",
+              "RelativeDocumentMoniker": "Core\\Extensions\\CoreLayerExtensions.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Extensions\\CoreLayerExtensions.cs",
+              "RelativeToolTip": "Core\\Extensions\\CoreLayerExtensions.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAAwK0AAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:01:48.902Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "RegisterHandler.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Features\\User\\Register\\RegisterHandler.cs",
-              "RelativeDocumentMoniker": "Core\\Features\\User\\Register\\RegisterHandler.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\Core\\Features\\User\\Register\\RegisterHandler.cs",
-              "RelativeToolTip": "Core\\Features\\User\\Register\\RegisterHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "PredictionController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\PredictionController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\PredictionController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\PredictionController.cs*",
+              "RelativeToolTip": "API\\Controllers\\PredictionController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T13:13:15.621Z"
+              "WhenOpened": "2024-11-15T13:06:05.122Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RegisterHandlerTests.cs",
-              "DocumentMoniker": "C:\\Users\\KC\\source\\repos\\StockFlow\\RoofStockTest\\User\\RegisterHandlerTests.cs",
-              "RelativeDocumentMoniker": "RoofStockTest\\User\\RegisterHandlerTests.cs",
-              "ToolTip": "C:\\Users\\KC\\source\\repos\\StockFlow\\RoofStockTest\\User\\RegisterHandlerTests.cs",
-              "RelativeToolTip": "RoofStockTest\\User\\RegisterHandlerTests.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAgwC8AAABIAAAA",
+              "DocumentIndex": 1,
+              "Title": "PredictService.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Service\\PredictionService\\PredictService.cs",
+              "RelativeDocumentMoniker": "Core\\Service\\PredictionService\\PredictService.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Service\\PredictionService\\PredictService.cs",
+              "RelativeToolTip": "Core\\Service\\PredictionService\\PredictService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAzwDcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T09:56:50.335Z",
+              "WhenOpened": "2024-11-15T14:19:44.373Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IPredictService.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Service\\PredictionService\\IPredictService.cs",
+              "RelativeDocumentMoniker": "Core\\Service\\PredictionService\\IPredictService.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Service\\PredictionService\\IPredictService.cs",
+              "RelativeToolTip": "Core\\Service\\PredictionService\\IPredictService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T14:19:30.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "StockController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\StockController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\StockController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\StockController.cs",
+              "RelativeToolTip": "API\\Controllers\\StockController.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAgwFsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:58.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAWwHsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:29:23.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "API\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:47.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAEAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:05:19.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\appsettings.json",
+              "RelativeDocumentMoniker": "API\\appsettings.json",
+              "ToolTip": "D:\\code\\RoofStock\\API\\appsettings.json",
+              "RelativeToolTip": "API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-12T11:01:36.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "middleware20241112.log",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Logs\\middleware20241112.log",
+              "RelativeDocumentMoniker": "API\\Logs\\middleware20241112.log",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Logs\\middleware20241112.log",
+              "RelativeToolTip": "API\\Logs\\middleware20241112.log",
+              "ViewState": "AgIAAMADAAAAAAAAAAAAAPMDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-11-12T11:26:30.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MarketNewsRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\MarketNewsRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\MarketNewsRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\MarketNewsRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\MarketNewsRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:03:46.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "WithdrawalController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\WithdrawalController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\WithdrawalController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\WithdrawalController.cs",
+              "RelativeToolTip": "API\\Controllers\\WithdrawalController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:05:22.893Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DepositController.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Controllers\\DepositController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\DepositController.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Controllers\\DepositController.cs",
+              "RelativeToolTip": "API\\Controllers\\DepositController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:45.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "WithdrawalRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\WithdrawalRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\WithdrawalRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\WithdrawalRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\WithdrawalRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:33.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserUpdateRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\UserUpdateRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\UserUpdateRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\UserUpdateRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\UserUpdateRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:24.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ShowPortfolioRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\ShowPortfolioRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\ShowPortfolioRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\ShowPortfolioRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\ShowPortfolioRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:21.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "SetPriceAlertRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\SetPriceAlertRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\SetPriceAlertRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\SetPriceAlertRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\SetPriceAlertRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:13.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "SellStockRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\SellStockRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\SellStockRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\SellStockRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\SellStockRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:04.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\RegisterRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\RegisterRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:03:54.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "RecommendationRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\RecommendationRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\RecommendationRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\RecommendationRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\RecommendationRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:03:51.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\LoginRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\LoginRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:03:40.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "DepositRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\DepositRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\DepositRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\DepositRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\DepositRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:03:21.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CancelOrderRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\CancelOrderRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\CancelOrderRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\CancelOrderRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\CancelOrderRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:03:09.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "BuyStockRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\BuyStockRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\BuyStockRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\BuyStockRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\BuyStockRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:03:03.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "GiveOrderRequest.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\API\\Contracts\\GiveOrderRequest.cs",
+              "RelativeDocumentMoniker": "API\\Contracts\\GiveOrderRequest.cs",
+              "ToolTip": "D:\\code\\RoofStock\\API\\Contracts\\GiveOrderRequest.cs",
+              "RelativeToolTip": "API\\Contracts\\GiveOrderRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAD4vxgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:02:03.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "EntityBase.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "RelativeDocumentMoniker": "Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "RelativeToolTip": "Core\\Data\\Entity\\EntityBases\\EntityBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T21:19:50.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "D:\\code\\RoofStock\\Core\\Data\\Entity\\Transaction.cs",
+              "RelativeDocumentMoniker": "Core\\Data\\Entity\\Transaction.cs",
+              "ToolTip": "D:\\code\\RoofStock\\Core\\Data\\Entity\\Transaction.cs",
+              "RelativeToolTip": "Core\\Data\\Entity\\Transaction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T21:19:48.074Z"
             }
           ]
         }

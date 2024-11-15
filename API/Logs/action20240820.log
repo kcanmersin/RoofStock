@@ -1,2 +1,0 @@
-2024-08-20 17:20:13 [Information] ****ActionFilter**** Request for "POST" "/api/deposit" from "::1" with data [("request": DepositRequest { UserId: 3aa42229-1c0f-4630-8c1a-db879ecd0427, Amount: 100, Currency: "TRY" })]
-2024-08-20 17:20:14 [Information] ****ActionFilter**** Response from 200 with data OkObjectResult { Value: DepositResponse { IsSuccess: True, NewBalance: 999616.3047, Message: "Deposit successful.", USDConvertedAmount: 2.9647 }, Formatters: [], ContentTypes: [], DeclaredType: null, StatusCode: 200 }

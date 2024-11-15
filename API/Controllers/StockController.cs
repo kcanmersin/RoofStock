@@ -32,7 +32,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
-                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "ViewPortfolio");
+            //    await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "ViewPortfolio");
                 return Ok(result.Value);
             }
 
@@ -51,7 +51,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
-                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "SellStock", new { StockSymbol = request.StockSymbol, Quantity = request.Quantity });
+             //   await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "SellStock", new { StockSymbol = request.StockSymbol, Quantity = request.Quantity });
                 return Ok(result.Value);
             }
 
@@ -70,7 +70,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
-                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "BuyStock", new { StockSymbol = request.StockSymbol, Quantity = request.Quantity });
+              //  await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "BuyStock", new { StockSymbol = request.StockSymbol, Quantity = request.Quantity });
                 return Ok(result.Value);
             }
 
@@ -89,7 +89,7 @@ namespace API.Controllers
 
             if (result.IsSuccess)
             {
-                await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "SetPriceAlert", new { StockSymbol = request.StockSymbol, TargetPrice = request.TargetPrice });
+             //   await _userActivityService.TrackUserActivityAsync(request.UserId.ToString(), "SetPriceAlert", new { StockSymbol = request.StockSymbol, TargetPrice = request.TargetPrice });
                 return Ok(result.Value);
             }
 

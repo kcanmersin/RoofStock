@@ -9,8 +9,8 @@ namespace Core.Features.User.Login
     public class LoginRequest
     {
         [DefaultValue("kerimcanmersin@gmail.com")]
-        public string? Email { get; set; } 
+        public string Email { get; set; } 
         [DefaultValue("19071907")]
-        public string? Password { get; set; } 
+        public string Password { get; set; } 
     }
 }
