@@ -6,37 +6,37 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Core.Service.StockApi;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
 using Polly;
 
 public class StockApiService : IStockApiService
 {
     private readonly HttpClient _httpClient;
-    private readonly string _apiKey;
     private readonly IMemoryCache _memoryCache;
     private readonly IAsyncPolicy<HttpResponseMessage> _circuitBreakerPolicy;
-    public StockApiService(HttpClient httpClient, IConfiguration configuration, IMemoryCache memoryCache)
+
+    // API Base URL sabit, API Key env'den okunuyor
+    private readonly string _apiBaseUrl = "https://finnhub.io/api/v1/";
+    private readonly string _apiKey;
+
+    public StockApiService(HttpClient httpClient, IMemoryCache memoryCache)
     {
         _httpClient = httpClient;
-        _apiKey = Environment.GetEnvironmentVariable("STOCKAPI_APIKEY")
-                  ?? configuration["StockApiSettings:ApiKey"];
         _memoryCache = memoryCache;
+
+        _apiKey = Environment.GetEnvironmentVariable("STOCKAPI_APIKEY")
+                  ?? throw new InvalidOperationException("API key not found in environment variables.");
 
         _circuitBreakerPolicy = Policy
         .Handle<HttpRequestException>()
         .OrResult<HttpResponseMessage>(r => !r.IsSuccessStatusCode)
         .CircuitBreakerAsync(
-         handledEventsAllowedBeforeBreaking: 3,
-         durationOfBreak: TimeSpan.FromMinutes(1));
-
+            handledEventsAllowedBeforeBreaking: 3,
+            durationOfBreak: TimeSpan.FromMinutes(1));
     }
 
     public async Task<decimal> GetStockPriceAsync(string symbol)
     {
-
-
-        //var response = await _circuitBreakerPolicy.ExecuteAsync(() => _httpClient.GetAsync(requestUri));
-        var requestUri = $"quote?symbol={symbol}&token={_apiKey}";
+        var requestUri = $"{_apiBaseUrl}quote?symbol={symbol}&token={_apiKey}";
 
         var response = await _httpClient.GetAsync(requestUri);
         response.EnsureSuccessStatusCode();
@@ -45,9 +45,7 @@ public class StockApiService : IStockApiService
         var stockData = JsonSerializer.Deserialize<StockApiResponse>(content);
 
         return stockData?.c ?? 0;
-
     }
-
 
     public async Task<List<MarketNewsResponse>> GetMarketNewsAsync(string category, int? minId = null)
     {
@@ -58,7 +56,7 @@ public class StockApiService : IStockApiService
             return cachedNews;
         }
 
-        var requestUri = $"news?category={category}&token={_apiKey}";
+        var requestUri = $"{_apiBaseUrl}news?category={category}&token={_apiKey}";
 
         if (minId.HasValue)
         {
@@ -78,9 +76,10 @@ public class StockApiService : IStockApiService
 
         return newsData ?? new List<MarketNewsResponse>();
     }
+
     public async Task<List<CompanyNewsResponse>> GetCompanyNewsAsync(string symbol, string fromDate, string toDate)
     {
-        var requestUri = $"company-news?symbol={symbol}&from={fromDate}&to={toDate}&token={_apiKey}";
+        var requestUri = $"{_apiBaseUrl}company-news?symbol={symbol}&from={fromDate}&to={toDate}&token={_apiKey}";
 
         var response = await _httpClient.GetAsync(requestUri);
         response.EnsureSuccessStatusCode();
@@ -153,6 +152,7 @@ public class CompanyNewsResponse
     [JsonPropertyName("url")]
     public string Url { get; set; }
 }
+
 public class StockApiResponse
 {
     public decimal c { get; set; } // Current price

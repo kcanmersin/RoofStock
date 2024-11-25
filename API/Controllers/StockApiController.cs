@@ -21,7 +21,7 @@ namespace API.Controllers
 
         // GET: api/StockApi/price?symbol=AAPL
         [HttpGet("price")]
-        public async Task<IActionResult> GetStockPrice(string symbol)
+        public async Task<IActionResult> GetStockPrice(string symbol = "AAPL")
         {
             if (string.IsNullOrEmpty(symbol))
             {

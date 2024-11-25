@@ -147,6 +147,8 @@ namespace Core.Extensions
             // FluentValidation setup
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
+
+
             // StockApiService setup
             services.AddScoped<IStockApiService, StockApiService>();
             services.AddHttpClient<IStockApiService, StockApiService>(client =>
@@ -183,13 +185,13 @@ namespace Core.Extensions
                 "high-priority"
             );
 
-            recurringJobManager.AddOrUpdate<StockPriceAlertService>(
-                "CheckAndTriggerStockPriceAlerts",
-                x => x.CheckAndTriggerAlertsAsync(),
-                Cron.Minutely,
-                TimeZoneInfo.Local,
-                "high-priority"
-            );
+            //recurringJobManager.AddOrUpdate<StockPriceAlertService>(
+            //    "CheckAndTriggerStockPriceAlerts",
+            //    x => x.CheckAndTriggerAlertsAsync(),
+            //    Cron.Minutely,
+            //    TimeZoneInfo.Local,
+            //    "high-priority"
+            //);
 
             // Start the EmailConsumerService to process messages from RabbitMQ
             var emailConsumerService = app.ApplicationServices.GetRequiredService<EmailConsumerService>();

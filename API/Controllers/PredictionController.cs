@@ -86,4 +86,48 @@ public class PredictionController : ControllerBase
             return BadRequest(new { message = "Prediction failed", error = ex.Message });
         }
     }
+    [HttpPost("train-multiple-tickers")]
+    public async Task<IActionResult> TrainMultipleTickers([FromBody] TrainMultipleTickersRequest request)
+    {
+        try
+        {
+            // Assign default values if not provided
+            request.DaysBack = request.DaysBack > 0 ? request.DaysBack : 500;
+            request.Epochs = request.Epochs > 0 ? request.Epochs : 100;
+            request.BatchSize = request.BatchSize > 0 ? request.BatchSize : 32;
+            request.SeqLen = request.SeqLen > 0 ? request.SeqLen : 60;
+            request.ValidationSplit = request.ValidationSplit > 0 ? request.ValidationSplit : 0.1f;
+            request.LearningRate = request.LearningRate > 0 ? request.LearningRate : 0.001f;
+            request.DropoutRate = request.DropoutRate > 0 ? request.DropoutRate : 0.2f;
+
+            var result = await _predictService.TrainMultipleTickersAsync(
+                request.FileList,
+                request.DaysBack,
+                request.Epochs,
+                request.BatchSize,
+                request.SeqLen,
+                request.ValidationSplit,
+                request.LearningRate,
+                request.DropoutRate
+            );
+            return Ok(JsonConvert.DeserializeObject(result));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = "Training multiple tickers failed", error = ex.Message });
+        }
+    }
+
+}
+
+public class TrainMultipleTickersRequest
+{
+    public List<string> FileList { get; set; }
+    public int DaysBack { get; set; }
+    public int Epochs { get; set; }
+    public int BatchSize { get; set; }
+    public int SeqLen { get; set; }
+    public float ValidationSplit { get; set; }
+    public float LearningRate { get; set; }
+    public float DropoutRate { get; set; }
 }

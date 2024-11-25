@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoofStockTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7b7a20e5a96e40a33e6787a06df46046dfeac13")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b40427746691ba623656ef26686bed4d8d9c6bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoofStockTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoofStockTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

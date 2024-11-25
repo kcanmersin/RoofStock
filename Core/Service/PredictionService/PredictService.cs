@@ -1,4 +1,6 @@
-﻿namespace Core.Service.PredictionService
+﻿using System.Net.Http.Json;
+
+namespace Core.Service.PredictionService
 {
     public class PredictService : IPredictService
     {
@@ -38,7 +40,30 @@
             var url = $"/predict_lstm_model?ticker={ticker}&predict_days={predictDays}&seq_len={seqLen}";
             return await SendRequestAsync(url);
         }
+        public async Task<string> TrainMultipleTickersAsync(List<string> fileList, int daysBack, int epochs, int batchSize, int seqLen, float validationSplit, float learningRate, float dropoutRate)
+        {
+            var payload = new
+            {
+                file_list = fileList,
+                days_back = daysBack,
+                epochs,
+                batch_size = batchSize,
+                seq_len = seqLen,
+                validation_split = validationSplit,
+                learning_rate = learningRate,
+                dropout_rate = dropoutRate
+            };
 
+            var response = await _httpClient.PostAsJsonAsync("/train_multiple_tickers", payload);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Request to Flask API failed: {response.StatusCode}, {error}");
+            }
+
+            return await response.Content.ReadAsStringAsync();
+        }
         private async Task<string> SendRequestAsync(string url)
         {
             var response = await _httpClient.GetAsync(url);

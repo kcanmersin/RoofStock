@@ -208,6 +208,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PredictionController",
+    "Method": "TrainMultipleTickers",
+    "RelativePath": "api/Prediction/train-multiple-tickers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "TrainMultipleTickersRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.RecommendationController",
     "Method": "GetRecommendations",
     "RelativePath": "api/recommendations/{userId}",
