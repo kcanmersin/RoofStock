@@ -1,0 +1,113 @@
+/* src/FormStyles.css */
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Genel stil */
+.h-screen {
+  height: 100vh;
+}
+
+.bg-neutral-100 {
+  background-color: #f7fafc;
+}
+
+.bg-gray-900 {
+  background-color: #1a202c;
+}
+
+.text-gray-700 {
+  color: #4a5568;
+}
+
+.text-gray-800 {
+  color: #2d3748;
+}
+
+.text-white {
+  color: white;
+}
+
+.dark .text-gray-200 {
+  color: #edf2f7;
+}
+
+/* Diğer stil düzenlemeleri */
+.bg-white {
+  background-color: white;
+}
+
+.dark .bg-gray-800 {
+  background-color: #2d3748;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.space-y-4 {
+  margin-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.focus\:ring-2 {
+  ring-width: 2px;
+}
+
+.focus\:ring-blue-500 {
+  --ring-opacity: 1;
+  --ring-color: #4299e1;
+}
+
+.dark .focus\:ring-blue-500 {
+  --ring-opacity: 1;
+  --ring-color: #63b3ed;
+}
+
+.dark\:bg-gray-700 {
+  background-color: #4a5568;
+}
+
+.dark\:text-white {
+  color: #fff;
+}
+
+.dark\:border-gray-600 {
+  border-color: #2d3748;
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: #2b6cb0;
+}
+
+/* Styling for error message */
+.text-red-500 {
+  color: #f56565;
+}
