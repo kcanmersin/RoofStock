@@ -7,13 +7,10 @@ using MediatR;
 using System.Reflection;
 using FluentValidation;
 using Core.Service.StockApi;
-using Hangfire;
 using Quartz;
-using Hangfire.PostgreSql;
 using Core.Service.Email;
 using Core.Middlewares.ExceptionHandling;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using HealthChecks.Hangfire;
 using Core.Health;
 using Core.Features;
 using Core.Data.Entity.User;
@@ -21,10 +18,6 @@ using Microsoft.AspNetCore.Identity;
 using Core.Notification.StockPriceAlert;
 using Core.Service.OrderBackgroundService;
 using Microsoft.AspNetCore.Builder;
-using Core.Service.RabbitMQEmailService;
-using RabbitMQ.Client;
-using Core.Service.KafkaService;
-using HealthChecks.Kafka;
 using Core.Service.StockRecommendationService;
 using Core.Service.PredictionService;
 
@@ -46,23 +39,6 @@ namespace Core.Extensions
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
-            // Register RabbitMQ components as singletons
-            //services.AddSingleton(sp =>
-            //{
-            //    var factory = new ConnectionFactory
-            //    {
-            //        HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost",
-            //        UserName = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME") ?? "guest",
-            //        Password = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "guest"
-            //    };
-            //    return factory.CreateConnection();
-            //});
-
-            services.AddSingleton(sp =>
-            {
-                var connection = sp.GetRequiredService<IConnection>();
-                return connection.CreateModel();
-            });
 
             //services.AddSingleton<EmailConsumerService>(); 
 
@@ -94,11 +70,7 @@ namespace Core.Extensions
                     name: "PostgreSQL Health Check",
                     failureStatus: HealthStatus.Unhealthy)
                 .AddCheck<StockApiHealthCheck>("Stock API Health Check")
-                .AddHangfire(hangfireOptions =>
-                {
-                    hangfireOptions.MaximumJobsFailed = 5;
-                    hangfireOptions.MinimumAvailableServers = 1;
-                }).AddCheck<QuartzHealthCheck>("Quartz Health Check")
+                .AddCheck<QuartzHealthCheck>("Quartz Health Check")
                 .AddSmtpHealthCheck(opt =>
                 {
                     var portString = Environment.GetEnvironmentVariable("EMAIL_PORT") ?? configuration["Email:Smtp:Port"];
@@ -115,22 +87,8 @@ namespace Core.Extensions
                     {
                         opt.BootstrapServers = "localhost:9092";
                     }, name: "Kafka Health Check");
-            // Memory cache
             services.AddMemoryCache();
 
-            //// JWT settings configuration
-            //var jwtSettings = new JwtSettings
-            //{
-            //    Secret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? configuration["JwtSettings:Secret"],
-            //    Issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? configuration["JwtSettings:Issuer"],
-            //    Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? configuration["JwtSettings:Audience"],
-            //    ExpiryMinutes = int.TryParse(Environment.GetEnvironmentVariable("JWT_EXPIRYMINUTES"), out var expiryMinutes)
-            //                    ? expiryMinutes
-            //                    : int.Parse(configuration["JwtSettings:ExpiryMinutes"])
-            //};
-            //services.AddSingleton(jwtSettings);
-
-            //services.AddScoped<IJwtService, JwtService>();
 
             //AddJwtAuthentication add this
             services.AddJwtAuthentication(configuration);
@@ -159,15 +117,9 @@ namespace Core.Extensions
                 client.DefaultRequestHeaders.Add("X-Finnhub-Token", Environment.GetEnvironmentVariable("STOCKAPI_APIKEY") ?? configuration["StockApiSettings:ApiKey"]);
             });
 
-            services.AddHangfire(config =>
-                config.UsePostgreSqlStorage(defaultConnectionString));
-            services.AddHangfireServer();
 
             services.AddQuartzExtension(configuration);
 
-            services.AddSingleton(new KafkaProducerService("localhost:9092", "user-activity-topic"));
-            services.AddSingleton(sp => new KafkaConsumerService("localhost:9092", "user-activity-topic", "user-activity-group"));
-            services.AddScoped<UserActivityService>();
 
             services.AddScoped<StockRecommendationService>();
             return services;
@@ -175,15 +127,14 @@ namespace Core.Extensions
 
         public static IApplicationBuilder UseCoreLayerRecurringJobs(this IApplicationBuilder app)
         {
-            var recurringJobManager = app.ApplicationServices.GetRequiredService<IRecurringJobManager>();
 
-            recurringJobManager.AddOrUpdate<OrderBackgroundService>(
-                "CheckAndProcessOrders",
-                x => x.CheckAndProcessOrders(),
-                Cron.Minutely,
-                TimeZoneInfo.Local,
-                "high-priority"
-            );
+            //recurringJobManager.AddOrUpdate<OrderBackgroundService>(
+            //    "CheckAndProcessOrders",
+            //    x => x.CheckAndProcessOrders(),
+            //    Cron.Minutely,
+            //    TimeZoneInfo.Local,
+            //    "high-priority"
+            //);
 
             //recurringJobManager.AddOrUpdate<StockPriceAlertService>(
             //    "CheckAndTriggerStockPriceAlerts",
@@ -192,13 +143,6 @@ namespace Core.Extensions
             //    TimeZoneInfo.Local,
             //    "high-priority"
             //);
-
-            // Start the EmailConsumerService to process messages from RabbitMQ
-            //var emailConsumerService = app.ApplicationServices.GetRequiredService<EmailConsumerService>();
-            //Task.Run(() => emailConsumerService.Start());
-            //var kafkaConsumerService = app.ApplicationServices.GetRequiredService<KafkaConsumerService>();
-            //var cts = new CancellationTokenSource();
-            //Task.Run(() => kafkaConsumerService.StartConsuming(cts.Token));
 
             return app;
         }

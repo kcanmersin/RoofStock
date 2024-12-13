@@ -3,12 +3,11 @@ import React, { useEffect, useState } from "react";
 const Notification = ({ message, type, onClose }) => {
   const [isVisible, setIsVisible] = useState(true);
 
-  // Notification'ı belli bir süre sonra kaybolmasını sağlıyoruz.
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       onClose();
-    }, 4000); // 4 saniye sonra kaybolacak
+    }, 4000); // Dismiss after 4 seconds
 
     return () => clearTimeout(timer);
   }, [onClose]);

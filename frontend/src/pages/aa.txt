@@ -1,0 +1,237 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import BuyModal from '../components/BuyModal';
+import SellModal from '../components/SellModal';
+import { useAuth } from '../context/AuthContext';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+const PortfolioPage = () => {
+  const { user } = useAuth();
+  const [portfolio, setPortfolio] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showOrders, setShowOrders] = useState(false);
+  const [showTransactions, setShowTransactions] = useState(false);
+  const [showBuyModal, setShowBuyModal] = useState(false);
+  const [showSellModal, setShowSellModal] = useState(false);
+  const [selectedStock, setSelectedStock] = useState(null);
+
+  const effectiveUserId = user?.userId || '1e33ce27-d2a6-412a-8789-73b5640fa4e1';
+
+  const fetchPortfolio = async () => {
+    try {
+      const response = await axios.get('http://localhost:5244/api/stocks/portfolio', {
+        params: { userId: effectiveUserId },
+      });
+      setPortfolio(response.data);
+      setLoading(false);
+    } catch (err) {
+      setError('Error fetching portfolio data.');
+      setLoading(false);
+    }
+  };
+
+  const getOrderTypeLabel = (orderType) => {
+    return orderType === 0 ? 'Buy' : orderType === 1 ? 'Sell' : 'Unknown';
+  };
+
+  const getOrderStatusLabel = (status) => {
+    switch (status) {
+      case 0:
+        return 'Pending';
+      case 1:
+        return 'Completed';
+      case 2:
+        return 'Failed';
+      case 3:
+        return 'Canceled';
+      case 4:
+        return 'In Progress';
+      default:
+        return 'Unknown';
+    }
+  };
+
+  useEffect(() => {
+    fetchPortfolio();
+  }, [effectiveUserId]);
+
+  if (loading) return <div className="text-center mt-10">Loading...</div>;
+  if (error) return <div className="text-center mt-10 text-red-500">{error}</div>;
+
+  const {
+    orders = [],
+    transactions = [],
+    stockHoldingItems = [],
+    totalPortfolioValue,
+    change,
+    totalBalance,
+    availableBalance,
+  } = portfolio || {};
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'right',
+        labels: {
+          color: '#000',
+        },
+      },
+    },
+    maintainAspectRatio: false,
+  };
+
+  const stockSymbols = stockHoldingItems.map((item) => item.stockSymbol);
+  const holdingValues = stockHoldingItems.map((item) => item.holdingValue);
+
+  const pieData = {
+    labels: stockSymbols,
+    datasets: [
+      {
+        data: holdingValues,
+        backgroundColor: ['#34D399', '#60A5FA', '#FBBF24', '#F87171', '#A78BFA', '#F472B6', '#818CF8'],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const handleBuySellSubmit = () => {
+    fetchPortfolio();
+  };
+
+  return (
+    <div className="container mx-auto p-6 bg-white text-gray-900">
+      <h2 className="text-3xl mb-6 font-bold text-center">Portfolio Overview</h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10 bg-gray-100 p-6 rounded-lg shadow">
+        <div className="flex flex-col items-center">
+          <span className="text-lg font-semibold">Total Portfolio Value</span>
+          <span className="text-2xl font-bold">${totalPortfolioValue?.toFixed(2)}</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-lg font-semibold">Change</span>
+          <span className={`text-2xl font-bold ${change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+            ${change?.toFixed(2)}
+          </span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-lg font-semibold">Total Balance</span>
+          <span className="text-2xl font-bold">${totalBalance?.toFixed(2)}</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-lg font-semibold">Available Balance</span>
+          <span className="text-2xl font-bold">${availableBalance?.toFixed(2)}</span>
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <button
+          onClick={() => setShowOrders(!showOrders)}
+          className="w-full text-left px-4 py-2 rounded-md bg-gray-100 text-gray-900 focus:outline-none"
+        >
+          <span className="text-2xl font-semibold">Orders</span>
+        </button>
+        <div
+          className={`transition-max-height duration-500 overflow-hidden ${showOrders ? 'max-h-screen' : 'max-h-0'}`}
+        >
+          {showOrders && (
+            <div className="mt-4 p-4 rounded-lg shadow bg-white">
+              {orders.length > 0 ? (
+                <table className="min-w-full table-auto text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="py-2 px-4 text-left font-medium">Order ID</th>
+                      <th className="py-2 px-4 text-left font-medium">Stock Symbol</th>
+                      <th className="py-2 px-4 text-left font-medium">Type</th>
+                      <th className="py-2 px-4 text-left font-medium">Status</th>
+                      <th className="py-2 px-4 text-left font-medium">Quantity</th>
+                      <th className="py-2 px-4 text-left font-medium">Target Price</th>
+                      <th className="py-2 px-4 text-left font-medium">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {orders.map((order) => (
+                      <tr key={order.orderId} className="border-b hover:bg-gray-200">
+                        <td className="py-2 px-4">{order.orderId}</td>
+                        <td className="py-2 px-4">{order.stockSymbol || 'N/A'}</td>
+                        <td className="py-2 px-4">{getOrderTypeLabel(order.orderType)}</td>
+                        <td className="py-2 px-4">{getOrderStatusLabel(order.status)}</td>
+                        <td className="py-2 px-4">{order.quantity || 0}</td>
+                        <td className="py-2 px-4">${order.targetPrice?.toFixed(2) || 'N/A'}</td>
+                        <td className="py-2 px-4">{new Date(order.createdDate).toLocaleString() || 'N/A'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-center">No orders available.</p>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <button
+          onClick={() => setShowTransactions(!showTransactions)}
+          className="w-full text-left px-4 py-2 rounded-md bg-gray-100 text-gray-900 focus:outline-none"
+        >
+          <span className="text-2xl font-semibold">Transactions</span>
+        </button>
+        <div
+          className={`transition-max-height duration-500 overflow-hidden ${showTransactions ? 'max-h-screen' : 'max-h-0'}`}
+        >
+          {showTransactions && (
+            <div className="mt-4 p-4 rounded-lg shadow bg-white">
+              {transactions.length > 0 ? (
+                <table className="min-w-full table-auto text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="py-2 px-4 text-left font-medium">Transaction ID</th>
+                      <th className="py-2 px-4 text-left font-medium">Description</th>
+                      <th className="py-2 px-4 text-left font-medium">Amount</th>
+                      <th className="py-2 px-4 text-left font-medium">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {transactions.map((transaction) => (
+                      <tr key={transaction.id} className="border-b hover:bg-gray-200">
+                        <td className="py-2 px-4">{transaction.id}</td>
+                        <td className="py-2 px-4">{transaction.description || 'N/A'}</td>
+                        <td className="py-2 px-4">${transaction.amount?.toFixed(2) || 'N/A'}</td>
+                        <td className="py-2 px-4">{new Date(transaction.createdDate).toLocaleString() || 'N/A'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-center">No transactions available.</p>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {showBuyModal && (
+        <BuyModal
+          selectedStock={selectedStock}
+          onClose={() => setShowBuyModal(false)}
+          onSubmit={handleBuySellSubmit}
+        />
+      )}
+      {showSellModal && (
+        <SellModal
+          selectedStock={selectedStock}
+          onClose={() => setShowSellModal(false)}
+          onSubmit={handleBuySellSubmit}
+        />
+      )}
+    </div>
+  );
+};
+
+export default PortfolioPage;

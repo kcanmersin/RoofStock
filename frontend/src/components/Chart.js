@@ -1,28 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import ChartFilter from "./ChartFilter";
 import Card from "./Card";
-import {
-  Area,
-  XAxis,
-  YAxis,
-  ResponsiveContainer,
-  AreaChart,
-  Tooltip,
-} from "recharts";
-import ThemeContext from "../context/ThemeContext";
+import { Area, XAxis, YAxis, ResponsiveContainer, AreaChart, Tooltip } from "recharts";
 import StockContext from "../context/StockContext";
 import { fetchHistoricalData } from "../utils/api/stock-api";
-import {
-  createDate,
-  convertDateToUnixTimestamp,
-  convertUnixTimestampToDate,
-} from "../utils/helpers/date-helper";
+import { createDate, convertDateToUnixTimestamp, convertUnixTimestampToDate } from "../utils/helpers/date-helper";
 import { chartConfig } from "../constants/config";
 
 const Chart = () => {
   const [filter, setFilter] = useState("1W");
-
-  const { darkMode } = useContext(ThemeContext);
   const { stockSymbol } = useContext(StockContext);
   const [data, setData] = useState([]);
 
@@ -36,27 +22,18 @@ const Chart = () => {
       const dateStr = item.Datetime || item.Date;
       if (!dateStr) {
         console.warn(`Missing Datetime or Date field in item at index ${index}: ${JSON.stringify(item)}`);
-        return {
-          value: item.Close.toFixed(2),
-          date: "Invalid Date",
-        };
+        return { value: item.Close.toFixed(2), date: "Invalid Date" };
       }
 
       const dateObj = new Date(dateStr);
       if (isNaN(dateObj.getTime())) {
         console.warn(`Invalid Date format for item at index ${index}: ${JSON.stringify(item)}`);
-        return {
-          value: item.Close.toFixed(2),
-          date: "Invalid Date",
-        };
+        return { value: item.Close.toFixed(2), date: "Invalid Date" };
       }
 
       const unixTimestamp = Math.floor(dateObj.getTime() / 1000);
       const formattedDate = convertUnixTimestampToDate(unixTimestamp);
-      return {
-        value: item.Close.toFixed(2),
-        date: formattedDate,
-      };
+      return { value: item.Close.toFixed(2), date: formattedDate };
     });
   };
 
@@ -76,12 +53,7 @@ const Chart = () => {
       try {
         const { startTimestampUnix, endTimestampUnix } = getDateRange();
         const resolution = chartConfig[filter].resolution;
-        const result = await fetchHistoricalData(
-          stockSymbol,
-          resolution,
-          startTimestampUnix,
-          endTimestampUnix
-        );
+        const result = await fetchHistoricalData(stockSymbol, resolution, startTimestampUnix, endTimestampUnix);
         console.log("API Response:", result);
         setData(formatData(result));
       } catch (error) {
@@ -112,30 +84,12 @@ const Chart = () => {
         <AreaChart data={data}>
           <defs>
             <linearGradient id="chartColor" x1="0" y1="0" x2="0" y2="1">
-              <stop
-                offset="5%"
-                stopColor={darkMode ? "#312e81" : "rgb(199 210 254)"}
-                stopOpacity={0.8}
-              />
-              <stop
-                offset="95%"
-                stopColor={darkMode ? "#312e81" : "rgb(199 210 254)"}
-                stopOpacity={0}
-              />
+              <stop offset="5%" stopColor="rgb(199 210 254)" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="rgb(199 210 254)" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <Tooltip
-            contentStyle={darkMode ? { backgroundColor: "#111827" } : null}
-            itemStyle={darkMode ? { color: "#818cf8" } : null}
-          />
-          <Area
-            type="monotone"
-            dataKey="value"
-            stroke="#312e81"
-            fill="url(#chartColor)"
-            fillOpacity={1}
-            strokeWidth={0.5}
-          />
+          <Tooltip contentStyle={{ backgroundColor: "#111827" }} itemStyle={{ color: "#818cf8" }} />
+          <Area type="monotone" dataKey="value" stroke="#312e81" fill="url(#chartColor)" fillOpacity={1} strokeWidth={0.5} />
           <XAxis dataKey="date" />
           <YAxis domain={["dataMin", "dataMax"]} />
         </AreaChart>

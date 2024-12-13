@@ -1,24 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import ThemeContext from '../context/ThemeContext';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const NewsPage = () => {
-  const { darkMode } = useContext(ThemeContext);
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [newsType, setNewsType] = useState('company');
-  const [symbol, setSymbol] = useState('AAPL'); 
+  const [newsType, setNewsType] = useState("company");
+  const [symbol, setSymbol] = useState("AAPL");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'NVDA', 'META'];
+  const stockSymbols = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META"];
 
   const today = new Date();
-  const twoYearsAgo = new Date();
-  twoYearsAgo.setFullYear(today.getFullYear() - 2);
-  const fromDate = twoYearsAgo.toISOString().split('T')[0];
-  const toDate = today.toISOString().split('T')[0];
+  const twoYearsAgo = new Date(today.setFullYear(today.getFullYear() - 2));
+  const fromDate = twoYearsAgo.toISOString().split("T")[0];
+  const toDate = new Date().toISOString().split("T")[0];
 
   const fetchCompanyNews = async (symbol) => {
     const companyRequest = {
@@ -26,118 +23,135 @@ const NewsPage = () => {
       From: fromDate,
       To: toDate,
       Page: page,
-      PageSize: 9
+      PageSize: 9,
     };
 
     try {
-      const response = await axios.get('http://localhost:5244/api/StockApi/company-news', { params: companyRequest });
+      const response = await axios.get("http://localhost:5244/api/StockApi/company-news", {
+        params: companyRequest,
+      });
       setNewsData(response.data.data);
       setTotalPages(response.data.totalPages);
       setLoading(false);
     } catch (err) {
-      setError('Error fetching company news.');
+      setError("Error fetching company news.");
       setLoading(false);
     }
   };
 
   const fetchMarketNews = async () => {
     const marketRequest = {
-      Category: 'general',
+      Category: "general",
       MinId: 0,
       Page: page,
-      PageSize: 9
+      PageSize: 9,
     };
 
     try {
-      const response = await axios.get('http://localhost:5244/api/StockApi/market-news', { params: marketRequest });
+      const response = await axios.get("http://localhost:5244/api/StockApi/market-news", {
+        params: marketRequest,
+      });
       setNewsData(response.data.data);
       setTotalPages(response.data.totalPages);
       setLoading(false);
     } catch (err) {
-      setError('Error fetching market news.');
+      setError("Error fetching market news.");
       setLoading(false);
     }
   };
 
-  // Fetch news when the component loads or when news type, page, or symbol changes
   useEffect(() => {
     setLoading(true);
-    if (newsType === 'company') {
-      // Fetch company news for a random symbol
+    if (newsType === "company") {
       const randomSymbol = stockSymbols[Math.floor(Math.random() * stockSymbols.length)];
-      setSymbol(randomSymbol); // Update the symbol state
+      setSymbol(randomSymbol);
       fetchCompanyNews(randomSymbol);
-    } else if (newsType === 'market') {
+    } else if (newsType === "market") {
       fetchMarketNews();
     }
-  }, [newsType, page]); // Track newsType and page for triggering the fetch
+  }, [newsType, page]);
 
   const handleNewsTypeChange = (type) => {
     setNewsType(type);
-    setPage(1); // Reset to first page when changing news type
+    setPage(1);
   };
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <div className="text-center mt-10">Loading...</div>;
+  if (error) return <div className="text-center text-red-500 mt-10">{error}</div>;
 
   return (
-    <div className={`container mx-auto p-6 ${darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white text-gray-900'}`}>
-      <h2 className="text-3xl mb-6">News Feed</h2>
+    <div className="container mx-auto p-6 bg-gray-50 text-gray-900">
+      {/* Header */}
+      <h2 className="text-3xl font-bold mb-6 text-center">News</h2>
 
-      {/* Toggle buttons for news type */}
-      <div className="mb-6">
+      {/* Toggle Buttons with Pagination */}
+      <div className="flex justify-center items-center mb-6 space-x-4">
         <button
-          className={`px-6 py-2 mr-4 rounded-full ${newsType === 'company' ? 'bg-blue-600 text-white' : 'bg-gray-300'}`}
-          onClick={() => handleNewsTypeChange('company')}
+          onClick={() => handlePageChange(page > 1 ? page - 1 : page)}
+          disabled={page <= 1 || loading}
+          className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Previous
+        </button>
+
+        <button
+          className={`px-6 py-2 rounded-full ${
+            newsType === "company" ? "bg-blue-600 text-white" : "bg-gray-300"
+          }`}
+          onClick={() => handleNewsTypeChange("company")}
         >
           Company News
         </button>
         <button
-          className={`px-6 py-2 rounded-full ${newsType === 'market' ? 'bg-blue-600 text-white' : 'bg-gray-300'}`}
-          onClick={() => handleNewsTypeChange('market')}
+          className={`px-6 py-2 rounded-full ${
+            newsType === "market" ? "bg-blue-600 text-white" : "bg-gray-300"
+          }`}
+          onClick={() => handleNewsTypeChange("market")}
         >
           Market News
         </button>
+
+        <button
+          onClick={() => handlePageChange(page < totalPages ? page + 1 : page)}
+          disabled={page >= totalPages || loading}
+          className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Next
+        </button>
       </div>
 
-      {/* Display news articles */}
+      {/* News Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {newsData.length > 0 ? (
           newsData.map((newsItem, index) => (
-            <div key={index} className="p-4 border rounded-lg shadow-lg bg-white dark:bg-gray-800">
+            <div
+              key={index}
+              className="p-4 border rounded-lg shadow-lg bg-white transition-transform transform hover:scale-105"
+            >
               <h3 className="text-xl font-semibold mb-2">{newsItem.headline || newsItem.title}</h3>
-              <p className="text-sm mb-2">{newsItem.summary}</p>
-              <a href={newsItem.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+              <p className="text-sm mb-2 text-gray-700">{newsItem.summary}</p>
+              <a
+                href={newsItem.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 font-medium"
+              >
                 Read More
               </a>
             </div>
           ))
         ) : (
-          <div>No news found for this category.</div>
+          <div className="col-span-full text-center text-gray-500">No news found for this category.</div>
         )}
       </div>
 
-      {/* Pagination */}
-      <div className="mt-6 flex justify-between items-center">
-        <button
-          onClick={() => handlePageChange(page > 1 ? page - 1 : page)}
-          disabled={page <= 1}
-          className="px-4 py-2 bg-gray-300 rounded-lg"
-        >
-          Previous
-        </button>
-        <span className="px-4 py-2">{`Page ${page} of ${totalPages}`}</span>
-        <button
-          onClick={() => handlePageChange(page < totalPages ? page + 1 : page)}
-          disabled={page >= totalPages}
-          className="px-4 py-2 bg-gray-300 rounded-lg"
-        >
-          Next
-        </button>
+      {/* Page Info */}
+      <div className="mt-4 text-center">
+        <span>{`Page ${page} of ${totalPages}`}</span>
       </div>
     </div>
   );

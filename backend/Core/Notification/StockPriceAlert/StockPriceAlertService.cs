@@ -5,9 +5,9 @@ using Core.Data;
 using Core.Service.StockApi;
 using Core.Data.Entity;
 using System.ComponentModel;
-using RabbitMQ.Client;
 using System.Text.Json;
 using System.Text;
+using Core.Service.Email; 
 
 namespace Core.Notification.StockPriceAlert
 {
@@ -15,13 +15,16 @@ namespace Core.Notification.StockPriceAlert
     {
         private readonly ApplicationDbContext _context;
         private readonly IStockApiService _stockApiService;
+        private readonly IEmailService _emailService; 
 
         public StockPriceAlertService(
             ApplicationDbContext context,
-            IStockApiService stockApiService)
+            IStockApiService stockApiService,
+            IEmailService emailService) 
         {
             _context = context;
             _stockApiService = stockApiService;
+            _emailService = emailService; 
         }
 
         [DisplayName("Check and Trigger Stock Price Alerts")]
@@ -52,7 +55,7 @@ namespace Core.Notification.StockPriceAlert
                     alert.IsTriggered = true;
                     alert.TriggeredDate = DateTime.UtcNow;
 
-                    PublishAlertToQueue(alert, currentPrice);
+                    await SendAlertEmailAsync(alert, currentPrice);
 
                     _context.StockPriceAlerts.Update(alert);
                 }
@@ -61,41 +64,21 @@ namespace Core.Notification.StockPriceAlert
             await _context.SaveChangesAsync();
         }
 
-        private void PublishAlertToQueue(Core.Data.Entity.StockPriceAlert alert, decimal currentPrice)
+        private async Task SendAlertEmailAsync(Core.Data.Entity.StockPriceAlert alert, decimal currentPrice)
         {
-            var factory = new ConnectionFactory()
+            var subject = $"Stock Price Alert: {alert.StockSymbol}";
+            var body = $"Dear {alert.User.FirstName},\n\n" +
+                       $"The stock {alert.StockSymbol} has {alert.AlertType.ToString().ToLower()}d to your target price of {alert.TargetPrice}. " +
+                       $"The current price is {currentPrice}.\n\n";
+
+            try
             {
-                HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost",
-                UserName = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME") ?? "guest",
-                Password = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "guest"
-            };
-
-            using var connection = factory.CreateConnection();
-            using var channel = connection.CreateModel();
-
-            string queueName = Environment.GetEnvironmentVariable("RABBITMQ_QUEUENAME") ?? "email_queue";
-
-            channel.QueueDeclare(queue: queueName,
-                                 durable: true,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: null);
-
-            var message = new
+                await _emailService.SendEmailAsync(alert.User.Email, subject, body);
+            }
+            catch (Exception ex)
             {
-                //Email = alert.User.Email,
-                Email ="kcanmersin@gmail.com",
-                Subject = $"Stock Price Alert: {alert.StockSymbol}",
-                Body = $"Dear {alert.User.FirstName},\n\nThe stock {alert.StockSymbol} has {alert.AlertType.ToString().ToLower()}d to your target price of {alert.TargetPrice}. The current price is {currentPrice}.\n\n"
-            };
-
-            var messageBody = JsonSerializer.Serialize(message);
-            var body = Encoding.UTF8.GetBytes(messageBody);
-
-            channel.BasicPublish(exchange: "",
-                                 routingKey: queueName,
-                                 basicProperties: null,
-                                 body: body);
+                Console.WriteLine($"Failed to send email for alert {alert.Id}: {ex.Message}");
+            }
         }
     }
 }

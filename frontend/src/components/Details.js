@@ -1,10 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import ThemeContext from "../context/ThemeContext";
 
 const Details = ({ details, currentPrice, ticker }) => {
-  const { darkMode } = useContext(ThemeContext);
-
   const detailsList = {
     name: "Name",
     country: "Country",
@@ -14,8 +11,7 @@ const Details = ({ details, currentPrice, ticker }) => {
     marketCapitalization: "Market Capitalization",
     finnhubIndustry: "Industry",
   };
-  
-  // Function to convert market capitalization from million to billion
+
   const convertMillionToBillion = (number) => {
     return (number / 1000).toFixed(2);
   };
@@ -51,49 +47,67 @@ const Details = ({ details, currentPrice, ticker }) => {
 
   return (
     <Card>
-      <ul className={`w-full h-full flex flex-col justify-between divide-y-1 ${darkMode ? "divide-gray-800" : ""}`}>
-        {Object.keys(detailsList).map((item) => (
-          <li key={item} className="flex-1 flex justify-between items-center">
-            <span>{detailsList[item]}</span>
-            <span className="font-bold">
-              {item === "marketCapitalization"
-                ? `${convertMillionToBillion(details[item])}B`
-                : details[item]}
-            </span>
-          </li>
-        ))}
-        <div className="mt-4">
-          <h3 className="text-lg font-semibold mb-2">Predictions</h3>
+      <div className="w-full h-full p-4">
+        {/* Details Section */}
+        <h3 className="text-xl font-semibold mb-4">Details</h3>
+        <table className="w-full text-sm">
+          <tbody>
+            {Object.keys(detailsList).map((item) => (
+              <tr key={item} className="border-b hover:bg-gray-100 transition-colors duration-200">
+                <td className="py-2 px-4 text-gray-500 font-medium">{detailsList[item]}</td>
+                <td className="py-2 px-4 text-gray-900 font-bold">
+                  {item === "marketCapitalization"
+                    ? `${convertMillionToBillion(details[item])}B`
+                    : details[item]}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Predictions Section */}
+        <div className="mt-6">
+          <h3 className="text-xl font-semibold mb-4">Predictions</h3>
           {predictions.length > 0 ? (
-            <div className="space-y-2">
-              {[7, 15, 30].map((day) => {
-                const prediction = predictions[day - 1];
-                if (!prediction) return null;
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="py-2 px-4 text-left font-medium">Days</th>
+                  <th className="py-2 px-4 text-left font-medium">Predicted Price</th>
+                  <th className="py-2 px-4 text-left font-medium">Change (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[7, 15, 30].map((day) => {
+                  const prediction = predictions[day - 1];
+                  if (!prediction) return null;
 
-                const predictedPrice = parseFloat(prediction.Predicted_Price.toFixed(2));
-                const percentageChange = calculatePercentageChange(predictedPrice);
-                const priceColor = getPriceColor(predictedPrice);
+                  const predictedPrice = parseFloat(prediction.Predicted_Price.toFixed(2));
+                  const percentageChange = calculatePercentageChange(predictedPrice);
+                  const priceColor = getPriceColor(predictedPrice);
 
-                return (
-                  <div
-                    key={day}
-                    className={`flex justify-between items-center p-2 rounded-md ${darkMode ? "bg-gray-800" : "bg-gray-100"}`}
-                  >
-                    <span>{day}-Day Prediction</span>
-                    <span className={`font-bold ${priceColor}`}>
-                      ${predictedPrice} ({percentageChange}%)
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+                  return (
+                    <tr
+                      key={day}
+                      className="border-b hover:bg-gray-100 transition-colors duration-200"
+                    >
+                      <td className="py-2 px-4">{day}-Day</td>
+                      <td className="py-2 px-4">${predictedPrice}</td>
+                      <td className={`py-2 px-4 font-bold ${priceColor}`}>
+                        {percentageChange}%
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           ) : error ? (
             <p className="text-red-500 text-sm">{error}</p>
           ) : (
-            <p>Loading predictions...</p>
+            <p className="text-gray-500 text-sm">Loading predictions...</p>
           )}
         </div>
-      </ul>
+      </div>
     </Card>
   );
 };

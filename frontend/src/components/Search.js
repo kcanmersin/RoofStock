@@ -1,24 +1,40 @@
-import React, { useContext, useState } from "react";
-import ThemeContext from "../context/ThemeContext";
-import { searchSymbol } from "../utils/api/stock-api";
-import SearchResults from "./SearchResults";
+import React, { useState, useEffect } from "react";
 import { SearchIcon, XIcon } from "@heroicons/react/solid";
+import SearchResults from "./SearchResults";
+import nasdaqTxt from "./nasdaq.txt";
 
 const Search = () => {
-  const { darkMode } = useContext(ThemeContext);
   const [input, setInput] = useState("");
+  const [nasdaqSymbols, setNasdaqSymbols] = useState([]);
   const [bestMatches, setBestMatches] = useState([]);
 
-  const updateBestMatches = async () => {
-    try {
-      if (input) {
-        const searchResults = await searchSymbol(input);
-        const result = searchResults.result;
-        setBestMatches(result);
-      }
-    } catch (error) {
+  // NASDAQ sembollerini dosyadan yükle
+  useEffect(() => {
+    const loadNasdaqSymbols = async () => {
+      const response = await fetch(nasdaqTxt);
+      const textData = await response.text();
+      const symbols = textData.split("\n").map((line) => line.trim());
+      setNasdaqSymbols(symbols);
+    };
+
+    loadNasdaqSymbols();
+  }, []);
+
+  const updateBestMatches = () => {
+    if (input) {
+      // Girdi ile eşleşen sembolleri filtrele
+      const filteredResults = nasdaqSymbols.filter((symbol) =>
+        symbol.toLowerCase().startsWith(input.toLowerCase())
+      );
+
+      const formattedResults = filteredResults.map((symbol) => ({
+        symbol,
+        displaySymbol: symbol,
+      }));
+
+      setBestMatches(formattedResults);
+    } else {
       setBestMatches([]);
-      console.log(error);
     }
   };
 
@@ -28,37 +44,38 @@ const Search = () => {
   };
 
   return (
-    <div
-      className={`flex items-center my-4 border-2 rounded-md relative z-50 w-96 ${
-        darkMode ? "bg-gray-900 border-gray-800" : "bg-white border-neutral-200"
-      }`}
-    >
-      <input
-        type="text"
-        value={input}
-        className={`w-full px-4 py-2 focus:outline-none rounded-md ${darkMode ? "bg-gray-900" : null}`}
-        placeholder="Search stock..."
-        onChange={(event) => setInput(event.target.value)}
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            updateBestMatches();
-          }
-        }}
-      />
-      {input && (
-        <button onClick={clear} className="m-1">
-          <XIcon className="h-4 w-4 fill-gray-500" />
+    <div className="relative w-full max-w-lg mx-auto">
+      <div className="flex items-center border-2 border-gray-300 rounded-lg shadow-md bg-white">
+        <input
+          type="text"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              updateBestMatches();
+            }
+          }}
+          placeholder="Search stocks..."
+          className="w-full px-4 py-2 text-gray-700 focus:outline-none rounded-l-lg"
+        />
+        {input && (
+          <button
+            onClick={clear}
+            className="p-2 bg-gray-200 hover:bg-gray-300 rounded-full transition duration-200"
+          >
+            <XIcon className="h-5 w-5 text-gray-500" />
+          </button>
+        )}
+        <button
+          onClick={updateBestMatches}
+          className="p-2 bg-indigo-600 hover:bg-indigo-700 rounded-r-lg transition duration-200"
+        >
+          <SearchIcon className="h-5 w-5 text-white" />
         </button>
+      </div>
+      {input && bestMatches.length > 0 && (
+        <SearchResults results={bestMatches} onClear={clear} />
       )}
-      <button
-        onClick={updateBestMatches}
-        className="h-8 w-8 bg-indigo-600 rounded-md flex justify-center items-center m-1 p-2 transition duration-300 hover:ring-2 ring-indigo-400"
-      >
-        <SearchIcon className="h-4 w-4 fill-gray-100" />
-      </button>
-      {input && bestMatches.length > 0 ? (
-        <SearchResults results={bestMatches} />
-      ) : null}
     </div>
   );
 };

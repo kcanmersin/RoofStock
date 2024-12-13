@@ -1,4 +1,6 @@
+using Core.Notification.StockPriceAlert;
 using Core.Service.DeleteUnconfirmedUsers;
+using Core.Service.OrderBackgroundService;
 using Core.Service.StockTrainingJobService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,18 @@ namespace Core.Extensions
             services.AddQuartz(q =>
             {
                 q.UseMicrosoftDependencyInjectionJobFactory();
+
+                q.AddJob<CheckAndProcessOrdersJob>(opts => opts.WithIdentity("CheckAndProcessOrdersJob"));
+                q.AddTrigger(opts => opts
+                    .ForJob("CheckAndProcessOrdersJob")
+                    .WithIdentity("CheckAndProcessOrdersTrigger")
+                    .WithCronSchedule("0 * * * * ?")); 
+
+                q.AddJob<CheckAndTriggerStockPriceAlertsJob>(opts => opts.WithIdentity("CheckAndTriggerStockPriceAlertsJob"));
+                q.AddTrigger(opts => opts
+                    .ForJob("CheckAndTriggerStockPriceAlertsJob")
+                    .WithIdentity("CheckAndTriggerStockPriceAlertsTrigger")
+                    .WithCronSchedule("0 * * * * ?")); 
 
                 // Add DeleteUnconfirmedUsersJob
                 q.AddJob<DeleteUnconfirmedUsersJob>(opts => opts.WithIdentity("DeleteUnconfirmedUsersJob"));
@@ -56,6 +70,11 @@ namespace Core.Extensions
             });
 
             services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+            services.AddScoped<OrderBackgroundService>();
+            //stockrpicealertservice
+            services.AddScoped<StockPriceAlertService>();
+            services.AddScoped<CheckAndProcessOrdersJob>();
+            services.AddScoped<CheckAndTriggerStockPriceAlertsJob>();
 
             services.AddScoped<DeleteUnconfirmedUsersJob>();
             services.AddScoped<StockTrainingJob>();

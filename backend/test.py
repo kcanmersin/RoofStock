@@ -2,16 +2,12 @@ from flask import Flask, request, jsonify
 from langchain_community.chatgroq import ChatGroq
 import requests
 
-# Define Flask app
 app = Flask(__name__)
 
-# Backend API base URL
 STOCKFLOW_BACKEND_URL = "http://localhost:5244/api"
 
-# Initialize ChatGroq
 chatgroq = ChatGroq(model="gpt-3.5-turbo")
 
-# Backend API utility functions
 def fetch_portfolio(user_id):
     url = f"{STOCKFLOW_BACKEND_URL}/portfolio/{user_id}"
     response = requests.get(url)
@@ -28,9 +24,7 @@ def process_buy_request(user_id, ticker, quantity):
     response = requests.post(url, json=payload)
     return response.json() if response.status_code == 200 else {"error": response.text}
 
-# Process user intent
 def process_user_request(prompt, user_id):
-    # Define prompt
     system_prompt = """
     You are an assistant for the StockFlow system. Users can ask to:
     - View their portfolio.
@@ -45,7 +39,6 @@ def process_user_request(prompt, user_id):
     - "buy_stock": Requires {"user_id": "string", "ticker": "string", "quantity": "int"}
     """
 
-    # Get response from ChatGroq
     response = chatgroq.run(system_prompt + f"\nUser request: {prompt}")
 
     try:
@@ -56,7 +49,6 @@ def process_user_request(prompt, user_id):
     action = parsed_response.get("action")
     params = parsed_response.get("params", {})
 
-    # Call appropriate backend endpoint
     if action == "show_portfolio":
         return fetch_portfolio(params.get("user_id"))
     elif action == "get_ticker_price":
@@ -66,7 +58,6 @@ def process_user_request(prompt, user_id):
     else:
         return {"error": "Invalid action or missing parameters."}
 
-# Flask route
 @app.route("/process", methods=["POST"])
 def process_request():
     data = request.json
@@ -79,6 +70,5 @@ def process_request():
     result = process_user_request(prompt, user_id)
     return jsonify(result)
 
-# Run Flask app
 if __name__ == "__main__":
     app.run(debug=True, port=8000)

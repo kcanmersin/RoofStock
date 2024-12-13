@@ -1,18 +1,22 @@
-// src/components/AlertModal.js
-import React, { useState, useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
-import setPriceAlertRequest from './SetPriceAlertRequest';
-import { useAuth } from '../context/AuthContext'; // AuthContext'ten user bilgisini almak için import
+import React, { useState, useEffect } from "react";
+import setPriceAlertRequest from "./SetPriceAlertRequest";
+import { useAuth } from "../context/AuthContext";
 
-const AlertModal = ({ isOpen, onClose, stockSymbol }) => {
-  const { darkMode } = useContext(ThemeContext);
-  const { user } = useAuth(); // user objesini AuthContext'ten al
+const AlertModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
+  const { user } = useAuth();
   const [targetPrice, setTargetPrice] = useState(100.0);
-  const [alertType, setAlertType] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [alertType, setAlertType] = useState(null); // alertType is dynamically set
 
-  if (!isOpen) return null;
+  // Automatically set the alertType based on targetPrice and currentPrice
+  useEffect(() => {
+    if (targetPrice > currentPrice) {
+      setAlertType(1); // Rise
+    } else if (targetPrice < currentPrice) {
+      setAlertType(0); // Fall
+    }
+  }, [targetPrice, currentPrice]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,62 +24,85 @@ const AlertModal = ({ isOpen, onClose, stockSymbol }) => {
     setError(null);
 
     try {
-      const userId = user?.userId; // AuthContext'ten gelen user objesinden userId al
+      const userId = user?.userId;
       if (!userId) {
         throw new Error('User is not logged in or userId not found.');
       }
 
       const response = await setPriceAlertRequest(userId, stockSymbol, targetPrice, alertType);
       console.log('Alert Set Success:', response);
+
+      // Success Notification
+      if (Notification.permission === 'granted') {
+        new Notification('Price Alert Set', {
+          body: `Your price alert for ${stockSymbol} at $${targetPrice} has been successfully set.`,
+          icon: '/icon.png', // Optionally add an icon
+        });
+      }
+
       onClose();
     } catch (err) {
       console.error('Alert Error:', err);
       setError('An error occurred while setting the alert.');
+
+      // Error Notification
+      if (Notification.permission === 'granted') {
+        new Notification('Error', {
+          body: 'An error occurred while setting the price alert. Please try again.',
+          icon: '/icon.png', // Optionally add an icon
+        });
+      }
     } finally {
       setLoading(false);
     }
   };
 
+  // Request Notification Permission if not granted yet
+  useEffect(() => {
+    if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+      Notification.requestPermission();
+    }
+  }, []);
+
+  if (!isOpen) return null;
+
   return (
-    <div className={`fixed inset-0 bg-black bg-opacity-50 z-50 ${darkMode ? 'text-white' : 'text-black'}`}>
-      <div className={`max-w-md mx-auto p-6 rounded-lg mt-20 ${darkMode ? 'bg-gray-800 border-gray-600' : 'bg-white border-gray-300'}`}>
-        <h2 className="text-2xl mb-4">Set Price Alert</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+      <div className="max-w-md w-full p-6 rounded-lg bg-white shadow-lg">
+        <h2 className="text-2xl font-bold mb-6 text-center">Set Price Alert</h2>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="targetPrice" className={`block ${darkMode ? 'text-white' : 'text-black'}`}>Target Price</label>
+          {/* Target Price */}
+          <div className="mb-6">
+            <label htmlFor="targetPrice" className="block text-lg font-medium mb-2 text-gray-800">
+              Target Price
+            </label>
             <input
               id="targetPrice"
               type="number"
               value={targetPrice}
-              onChange={(e) => setTargetPrice(e.target.value)}
-              className={`w-full p-2 mb-4 border rounded-md ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-100 border-gray-300'}`}
+              onChange={(e) => setTargetPrice(parseFloat(e.target.value))}
+              className="w-full p-3 border rounded-md bg-gray-50 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             />
           </div>
-          <div>
-            <label htmlFor="alertType" className={`block ${darkMode ? 'text-white' : 'text-black'}`}>Alert Type</label>
-            <select
-              id="alertType"
-              value={alertType}
-              onChange={(e) => setAlertType(Number(e.target.value))}
-              className={`w-full p-2 mb-4 border rounded-md ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-100 border-gray-300'}`}
-            >
-              <option value={1}>Rise</option>
-              <option value={0}>Fall</option>
-            </select>
-          </div>
+
+          {/* Error Message */}
           {error && <p className="text-red-500 mb-4">{error}</p>}
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full p-2 rounded-md ${darkMode ? 'bg-blue-600' : 'bg-blue-500'} text-white`}
+            className="w-full p-3 rounded-md bg-blue-500 hover:bg-blue-400 text-white font-medium"
             disabled={loading}
           >
-            {loading ? 'Setting Alert...' : 'Set Alert'}
+            {loading ? "Setting Alert..." : "Set Alert"}
           </button>
         </form>
+
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className={`mt-4 w-full p-2 ${darkMode ? 'bg-gray-500' : 'bg-gray-500'} text-white rounded-md`}
+          className="mt-4 w-full p-3 bg-gray-500 hover:bg-gray-400 text-white rounded-md font-medium"
         >
           Close
         </button>

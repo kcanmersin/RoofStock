@@ -1,7 +1,6 @@
 using API.Hubs;
 using API.Middlewares.ExceptionHandling;
 using Core.Extensions;
-using Hangfire;
 using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -146,14 +145,6 @@ app.UseAuthorization();
 
 app.UseStaticFiles();
 
-app.UseHangfireDashboard();
-
-var options = new BackgroundJobServerOptions
-{
-    Queues = new[] { "high-priority", "low-priority" },
-    WorkerCount = Environment.ProcessorCount * 5
-};
-app.UseHangfireServer(options);
 
 app.MapControllers();
 app.MapHub<StockPriceHub>("/stockPriceHub");

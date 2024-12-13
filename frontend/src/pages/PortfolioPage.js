@@ -1,5 +1,5 @@
 // src/pages/PortfolioPage.js
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Pie } from 'react-chartjs-2';
 import {
@@ -8,10 +8,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import ThemeContext from '../context/ThemeContext';
 import BuyModal from '../components/BuyModal';
 import SellModal from '../components/SellModal';
-import { useAuth } from '../context/AuthContext'; // AuthContext'i ekleyin
+import { useAuth } from '../context/AuthContext';
 
 ChartJS.register(
   ArcElement,
@@ -20,8 +19,7 @@ ChartJS.register(
 );
 
 const PortfolioPage = () => {
-  const { darkMode } = useContext(ThemeContext);
-  const { user } = useAuth(); // AuthContext'ten kullanıcı bilgisi alın
+  const { user } = useAuth();
   const [portfolio, setPortfolio] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -31,8 +29,9 @@ const PortfolioPage = () => {
   const [showOrders, setShowOrders] = useState(false);
   const [showAlerts, setShowAlerts] = useState(false);
   const [showTransactions, setShowTransactions] = useState(false);
+  const [predictions, setPredictions] = useState({});
 
-  const effectiveUserId = user?.userId || '1e33ce27-d2a6-412a-8789-73b5640fa4e1'; // Kullanıcı ID'sini AuthContext'ten al veya varsayılanı kullan
+  const effectiveUserId = user?.userId || '1e33ce27-d2a6-412a-8789-73b5640fa4e1';
 
   const fetchPortfolio = async () => {
     try {
@@ -47,9 +46,42 @@ const PortfolioPage = () => {
     }
   };
 
+  const fetchPredictions = async (stockSymbol) => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:5000/take_predict_dashboard?ticker=${stockSymbol}`);
+      return response.data.predictions;
+    } catch {
+      return null;
+    }
+  };
+
+  const fetchAllPredictions = async () => {
+    if (!portfolio || !portfolio.stockHoldingItems) return;
+
+    const predictionPromises = portfolio.stockHoldingItems.map((item) =>
+      fetchPredictions(item.stockSymbol).then((predictions) => ({
+        stockSymbol: item.stockSymbol,
+        predictions,
+      }))
+    );
+
+    const results = await Promise.all(predictionPromises);
+    const predictionsBySymbol = results.reduce((acc, { stockSymbol, predictions }) => {
+      acc[stockSymbol] = predictions;
+      return acc;
+    }, {});
+    setPredictions(predictionsBySymbol);
+  };
+
   useEffect(() => {
     fetchPortfolio();
   }, [effectiveUserId]);
+
+  useEffect(() => {
+    if (portfolio) {
+      fetchAllPredictions();
+    }
+  }, [portfolio]);
 
   if (loading) return <div className="text-center mt-10">Loading...</div>;
   if (error) return <div className="text-center mt-10 text-red-500">{error}</div>;
@@ -71,24 +103,23 @@ const PortfolioPage = () => {
       legend: {
         position: 'right',
         labels: {
-          color: darkMode ? '#fff' : '#000'
+          color: '#000',
         }
       },
       title: {
         display: false,
         text: '',
-        color: darkMode ? '#fff' : '#000'
+        color: '#000',
       }
     },
     maintainAspectRatio: false,
   };
 
   const handleCancelOrder = async (orderId) => {
-    console.log('handleCancelOrder called with:', { userId: effectiveUserId, orderId });
     try {
-      await axios.post('http://localhost:5244/api/orders/cancel', { 
-        orderId, 
-        userId: effectiveUserId 
+      await axios.post('http://localhost:5244/api/orders/cancel', {
+        orderId,
+        userId: effectiveUserId
       });
       fetchPortfolio();
     } catch (err) {
@@ -97,7 +128,6 @@ const PortfolioPage = () => {
   };
 
   const handleDeletePriceAlert = async (alertId) => {
-    console.log('handleDeletePriceAlert called with:', { userId: effectiveUserId, alertId });
     if (!alertId) {
       setError('Alert ID is missing.');
       return;
@@ -133,19 +163,39 @@ const PortfolioPage = () => {
   };
 
   const activePriceAlerts = stockPriceAlerts.filter(alert => !alert.isTriggered);
-  const activeOrders = orders.filter(order => order.status === 0);
-  const activeTransactions = transactions;
 
   const handleBuySellSubmit = () => {
     fetchPortfolio();
   };
 
+
+  const getOrderTypeLabel = (orderType) => {
+    return orderType === 0 ? 'Buy' : orderType === 1 ? 'Sell' : 'Unknown';
+  };
+
+  const getOrderStatusLabel = (status) => {
+    switch (status) {
+      case 0:
+        return 'Pending';
+      case 1:
+        return 'Completed';
+      case 2:
+        return 'Failed';
+      case 3:
+        return 'Canceled';
+      case 4:
+        return 'In Progress';
+      default:
+        return 'Unknown';
+    }
+  };
+
+
   return (
-    <div className={`container mx-auto p-6 ${darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white text-gray-900'}`}>
+    <div className="container mx-auto p-6 bg-white text-gray-900">
       <h2 className="text-3xl mb-6 font-bold text-center">Portfolio Overview</h2>
 
-      {/* Summary Card */}
-      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} p-6 rounded-lg shadow`}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10 bg-gray-100 p-6 rounded-lg shadow">
         <div className="flex flex-col items-center">
           <span className="text-lg font-semibold">Total Portfolio Value</span>
           <span className="text-2xl font-bold">${totalPortfolioValue?.toFixed(2)}</span>
@@ -166,9 +216,8 @@ const PortfolioPage = () => {
         </div>
       </div>
 
-      {/* Charts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
-        <div className={`p-4 rounded-lg shadow ${darkMode ? 'bg-gray-800' : 'bg-white'} transition-all duration-300`}>
+        <div className="p-4 rounded-lg shadow bg-white">
           <h3 className="text-2xl font-semibold mb-4">Portfolio Distribution</h3>
           {stockHoldingItems.length > 0 ? (
             <div className="w-full h-48">
@@ -178,111 +227,177 @@ const PortfolioPage = () => {
             <p className="text-center">No holdings to display.</p>
           )}
         </div>
-      </div>
 
-      {/* Active Orders */}
-      <div className="mb-6">
-        <button
-          onClick={() => setShowOrders(!showOrders)}
-          className={`w-full text-left px-4 py-2 rounded-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'} focus:outline-none`}
-        >
-          <span className="text-2xl font-semibold">Active Orders</span>
-        </button>
-        <div className={`transition-max-height duration-500 overflow-hidden ${showOrders ? 'max-h-screen' : 'max-h-0'}`}>
-          {showOrders && (
-            <div className={`mt-4 p-4 rounded-lg shadow ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-              {activeOrders.length > 0 ? (
-                <table className="min-w-full table-auto text-sm">
-                  <thead>
-                    <tr className="border-b">
-                      <th className="py-2 px-4 text-left font-medium">Stock Symbol</th>
-                      <th className="py-2 px-4 text-left font-medium">Target Price</th>
-                      <th className="py-2 px-4 text-left font-medium">Status</th>
-                      <th className="py-2 px-4 text-left font-medium">Created Date</th>
-                      <th className="py-2 px-4 text-left font-medium">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {activeOrders.map((order, idx) => (
-                      <tr key={order.orderId} className={`border-b hover:bg-gray-200 ${idx % 2 === 0 ? '' : 'bg-gray-50'}`}>
-                        <td className="py-2 px-4">{order.stockSymbol}</td>
-                        <td className="py-2 px-4">${order.targetPrice.toFixed(2)}</td>
-                        <td className="py-2 px-4 text-yellow-500 font-bold">Pending</td>
-                        <td className="py-2 px-4">{new Date(order.createdDate).toLocaleString()}</td>
-                        <td className="py-2 px-4">
-                          <button
-                            onClick={() => handleCancelOrder(order.orderId)}
-                            className={`px-3 py-1 rounded-md bg-red-500 hover:bg-red-400 text-white`}
-                          >
-                            Cancel
-                          </button>
+        <div className="p-4 rounded-lg shadow bg-white">
+          <h3 className="text-2xl font-semibold mb-4">Predictions</h3>
+          {stockHoldingItems.length > 0 ? (
+            <div className="overflow-x-auto">
+              <table className="min-w-full border-collapse table-auto text-sm">
+                <thead>
+                  <tr className="border-b bg-gray-50">
+                    <th className="py-2 px-4 text-left font-medium">Stock Name</th>
+                    <th className="py-2 px-4 text-left font-medium">7-Day</th>
+                    <th className="py-2 px-4 text-left font-medium">15-Day</th>
+                    <th className="py-2 px-4 text-left font-medium">30-Day</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {stockHoldingItems.map((item) => {
+                    const stockPredictions = predictions[item.stockSymbol];
+                    if (!stockPredictions) return null;
+
+                    const prediction7 = stockPredictions[6]?.Predicted_Price.toFixed(2) || "N/A";
+                    const prediction15 = stockPredictions[14]?.Predicted_Price.toFixed(2) || "N/A";
+                    const prediction30 = stockPredictions[29]?.Predicted_Price.toFixed(2) || "N/A";
+
+                    return (
+                      <tr key={item.stockSymbol} className="border-b hover:bg-gray-100">
+                        <td className="py-2 px-4 font-bold">{item.stockSymbol}</td>
+                        <td className={`py-2 px-4 ${prediction7 >= item.unitPrice ? 'text-green-500' : 'text-red-500'}`}>
+                          ${prediction7}
+                        </td>
+                        <td className={`py-2 px-4 ${prediction15 >= item.unitPrice ? 'text-green-500' : 'text-red-500'}`}>
+                          ${prediction15}
+                        </td>
+                        <td className={`py-2 px-4 ${prediction30 >= item.unitPrice ? 'text-green-500' : 'text-red-500'}`}>
+                          ${prediction30}
                         </td>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : (
-                <p className="text-center">No active orders.</p>
-              )}
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
+          ) : (
+            <p className="text-center text-gray-500">No predictions available.</p>
           )}
         </div>
+
       </div>
 
-      {/* Active Price Alerts */}
+      <div className="mb-6">
+  <h3 className="text-2xl font-semibold mb-4">Stock Holdings</h3>
+  {stockHoldingItems.length > 0 ? (
+    <div className="overflow-x-auto">
+      <table className="min-w-full border-collapse table-auto text-sm">
+        <thead>
+          <tr className="border-b bg-gray-50">
+            <th className="py-2 px-4 text-left font-medium">Stock Symbol</th>
+            <th className="py-2 px-4 text-left font-medium">Quantity</th>
+            <th className="py-2 px-4 text-left font-medium">Unit Price</th>
+            <th className="py-2 px-4 text-left font-medium">Holding Value</th>
+            <th className="py-2 px-4 text-left font-medium">Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stockHoldingItems.map((item) => (
+            <tr key={item.stockSymbol} className="border-b hover:bg-gray-100">
+              <td className="py-2 px-4 font-bold">{item.stockSymbol}</td>
+              <td className="py-2 px-4">{item.quantity}</td>
+              <td className="py-2 px-4">${item.unitPrice.toFixed(2)}</td>
+              <td className="py-2 px-4">${item.holdingValue.toFixed(2)}</td>
+              <td className={`py-2 px-4 ${item.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>${item.change.toFixed(2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <p className="text-center text-gray-500">No holdings available.</p>
+  )}
+</div>
+
+
+<div className="mb-6">
+  <button
+    onClick={() => setShowOrders(!showOrders)}
+    className="w-full text-left px-4 py-2 rounded-md bg-gray-100 text-gray-900 focus:outline-none"
+  >
+    <span className="text-2xl font-semibold">Orders</span>
+  </button>
+  <div
+    className={`transition-max-height duration-500 overflow-hidden ${showOrders ? 'max-h-screen' : 'max-h-0'}`}
+  >
+    {showOrders && (
+      <div className="mt-4 p-4 rounded-lg shadow bg-white">
+        {orders.length > 0 ? (
+          <table className="min-w-full table-auto text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="py-2 px-4 text-left font-medium">Stock Symbol</th>
+                <th className="py-2 px-4 text-left font-medium">Type</th>
+                <th className="py-2 px-4 text-left font-medium">Status</th>
+                <th className="py-2 px-4 text-left font-medium">Quantity</th>
+                <th className="py-2 px-4 text-left font-medium">Target Price</th>
+                <th className="py-2 px-4 text-left font-medium">Date</th>
+                <th className="py-2 px-4 text-left font-medium">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order.orderId} className="border-b hover:bg-gray-200">
+                  <td className="py-2 px-4">{order.stockSymbol || 'N/A'}</td>
+                  <td className="py-2 px-4">{getOrderTypeLabel(order.orderType)}</td>
+                  <td className="py-2 px-4">{getOrderStatusLabel(order.status)}</td>
+                  <td className="py-2 px-4">{order.quantity || 0}</td>
+                  <td className="py-2 px-4">${order.targetPrice?.toFixed(2) || 'N/A'}</td>
+                  <td className="py-2 px-4">{new Date(order.createdDate).toLocaleString() || 'N/A'}</td>
+                  <td className="py-2 px-4">
+                    <button
+                      onClick={() => handleCancelOrder(order.orderId)}
+                      className="px-3 py-1 rounded-md bg-red-500 hover:bg-red-400 text-white"
+                    >
+                      Cancel
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p className="text-center">No orders available.</p>
+        )}
+      </div>
+    )}
+  </div>
+</div>
+
+
+
       <div className="mb-6">
         <button
           onClick={() => setShowAlerts(!showAlerts)}
-          className={`w-full text-left px-4 py-2 rounded-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'} focus:outline-none`}
+          className="w-full text-left px-4 py-2 rounded-md bg-gray-100 text-gray-900 focus:outline-none"
         >
           <span className="text-2xl font-semibold">Active Price Alerts</span>
         </button>
         <div className={`transition-max-height duration-500 overflow-hidden ${showAlerts ? 'max-h-screen' : 'max-h-0'}`}>
           {showAlerts && (
-            <div className={`mt-4 p-4 rounded-lg shadow ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+            <div className="mt-4 p-4 rounded-lg shadow bg-white">
               {activePriceAlerts.length > 0 ? (
                 <table className="min-w-full table-auto text-sm">
                   <thead>
                     <tr className="border-b">
                       <th className="py-2 px-4 text-left font-medium">Stock Symbol</th>
-                      <th className="py-2 px-4 text-left font-medium">Alert Price</th>
-                      <th className="py-2 px-4 text-left font-medium">Alert Type</th>
-                      <th className="py-2 px-4 text-left font-medium">Status</th>
-                      <th className="py-2 px-4 text-left font-medium">Created Date</th>
+                      <th className="py-2 px-4 text-left font-medium">Target Price</th>
                       <th className="py-2 px-4 text-left font-medium">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {activePriceAlerts.map((alert, idx) => {
-                      const alertTypeMap = {
-                        0: 'Fall',
-                        1: 'Rise'
-                      };
-                      const alertStatus = alert.isTriggered ? 'Triggered' : 'Pending';
-
-                      return (
-                        <tr
-                          key={alert.alertId}
-                          className={`border-b hover:bg-gray-200 ${idx % 2 === 0 ? '' : 'bg-gray-50'}`}
-                        >
-                          <td className="py-2 px-4">{alert.stockSymbol}</td>
-                          <td className="py-2 px-4">${alert.targetPrice}</td>
-                          <td className="py-2 px-4">{alertTypeMap[alert.alertType]}</td>
-                          <td className={`py-2 px-4 ${alert.isTriggered ? 'text-green-500' : 'text-yellow-500'}`}>
-                            {alertStatus}
-                          </td>
-                          <td className="py-2 px-4">{new Date(alert.createdDate).toLocaleString()}</td>
-                          <td className="py-2 px-4">
-                            <button
-                              onClick={() => handleDeletePriceAlert(alert.alertId)}
-                              className={`px-3 py-1 rounded-md bg-red-500 hover:bg-red-400 text-white`}
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {activePriceAlerts.map((alert) => (
+                      <tr key={alert.alertId} className="border-b hover:bg-gray-200">
+                        <td className="py-2 px-4">{alert.stockSymbol}</td>
+                        <td className="py-2 px-4">${alert.targetPrice.toFixed(2)}</td>
+                        <td className="py-2 px-4">
+                          <button
+                            onClick={() => handleDeletePriceAlert(alert.alertId)}
+                            className="px-3 py-1 rounded-md bg-red-500 hover:bg-red-400 text-white"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               ) : (
@@ -293,122 +408,57 @@ const PortfolioPage = () => {
         </div>
       </div>
 
-      {/* Transaction History */}
       <div className="mb-6">
         <button
           onClick={() => setShowTransactions(!showTransactions)}
-          className={`w-full text-left px-4 py-2 rounded-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'} focus:outline-none`}
+          className="w-full text-left px-4 py-2 rounded-md bg-gray-100 text-gray-900 focus:outline-none"
         >
-          <span className="text-2xl font-semibold">Transaction History</span>
+          <span className="text-2xl font-semibold">Transactions</span>
         </button>
-        <div className={`transition-max-height duration-500 overflow-hidden ${showTransactions ? 'max-h-screen' : 'max-h-0'}`}>
+        <div
+          className={`transition-max-height duration-500 overflow-hidden ${showTransactions ? 'max-h-screen' : 'max-h-0'}`}
+        >
           {showTransactions && (
-            <div className={`mt-4 p-4 rounded-lg shadow ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-              {activeTransactions.length > 0 ? (
+            <div className="mt-4 p-4 rounded-lg shadow bg-white">
+              {transactions.length > 0 ? (
                 <table className="min-w-full table-auto text-sm">
                   <thead>
                     <tr className="border-b">
-                      <th className="py-2 px-4 text-left font-medium">ID</th>
-                      <th className="py-2 px-4 text-left font-medium">Amount</th>
-                      <th className="py-2 px-4 text-left font-medium">Type</th>
                       <th className="py-2 px-4 text-left font-medium">Description</th>
-                      <th className="py-2 px-4 text-left font-medium">Created Date</th>
+                      <th className="py-2 px-4 text-left font-medium">Amount</th>
+                      <th className="py-2 px-4 text-left font-medium">Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {activeTransactions.map((transaction, idx) => (
-                      <tr key={transaction.id} className={`border-b hover:bg-gray-200 ${idx % 2 === 0 ? '' : 'bg-gray-50'}`}>
-                        <td className="py-2 px-4">{transaction.id}</td>
-                        <td className={`py-2 px-4 ${transaction.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>
-                          ${transaction.amount}
-                        </td>
-                        <td className="py-2 px-4">{transaction.type}</td>
-                        <td className="py-2 px-4">{transaction.description}</td>
-                        <td className="py-2 px-4">{new Date(transaction.createdDate).toLocaleString()}</td>
+                    {transactions.map((transaction) => (
+                      <tr key={transaction.id} className="border-b hover:bg-gray-200">
+                        <td className="py-2 px-4">{transaction.description || 'N/A'}</td>
+                        <td className="py-2 px-4">${transaction.amount?.toFixed(2) || 'N/A'}</td>
+                        <td className="py-2 px-4">{new Date(transaction.createdDate).toLocaleString() || 'N/A'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               ) : (
-                <p className="text-center">No transactions found.</p>
+                <p className="text-center">No transactions available.</p>
               )}
             </div>
           )}
         </div>
       </div>
 
-      {/* Stock Holdings */}
-      <div className={`overflow-x-auto shadow-lg rounded-lg p-4 mb-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-        <h3 className="text-2xl mb-4 font-semibold">Stock Holdings</h3>
-        <table className="min-w-full table-auto text-sm">
-          <thead>
-            <tr className="border-b">
-              <th className="py-2 px-4 text-left font-medium">Stock Symbol</th>
-              <th className="py-2 px-4 text-left font-medium">Quantity</th>
-              <th className="py-2 px-4 text-left font-medium">Current Price</th>
-              <th className="py-2 px-4 text-left font-medium">Change</th>
-              <th className="py-2 px-4 text-left font-medium">Holding Value</th>
-              <th className="py-2 px-4 text-left font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stockHoldingItems.map((item, idx) => (
-              <tr key={item.stockSymbol} className={`border-b hover:bg-gray-200 ${idx % 2 === 0 ? '' : 'bg-gray-50'}`}>
-                <td className="py-2 px-4">{item.stockSymbol}</td>
-                <td className="py-2 px-4">{item.quantity}</td>
-                <td className="py-2 px-4">${item.unitPrice}</td>
-                <td className={`py-2 px-4 ${item.change < 0 ? 'text-red-500' : 'text-green-500'}`}>
-                  {item.change >= 0 ? `+${item.change}%` : `${item.change}%`}
-                </td>
-                <td className="py-2 px-4">${item.holdingValue.toFixed(2)}</td>
-                <td className="py-2 px-4">
-                  <button
-                    onClick={() => {
-                      console.log('Buy button clicked for:', item);
-                      setSelectedStock(item);
-                      setShowBuyModal(true);
-                    }}
-                    className={`px-3 py-1 rounded-md bg-green-500 hover:bg-green-400 text-white mr-2`}
-                  >
-                    Buy
-                  </button>
-                  <button
-                    onClick={() => {
-                      console.log('Sell button clicked for:', item);
-                      setSelectedStock(item);
-                      setShowSellModal(true);
-                    }}
-                    className={`px-3 py-1 rounded-md bg-red-500 hover:bg-red-400 text-white`}
-                  >
-                    Sell
-                  </button>
-                </td>
-              </tr>
-            ))}
-            {stockHoldingItems.length === 0 && (
-              <tr>
-                <td colSpan={6} className="py-2 px-4 text-center">No stock holdings found.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Modals */}
       {showBuyModal && (
         <BuyModal
-          isOpen={showBuyModal}
+          selectedStock={selectedStock}
           onClose={() => setShowBuyModal(false)}
           onSubmit={handleBuySellSubmit}
-          stockSymbol={selectedStock.stockSymbol}
         />
       )}
       {showSellModal && (
         <SellModal
-          isOpen={showSellModal}
+          selectedStock={selectedStock}
           onClose={() => setShowSellModal(false)}
           onSubmit={handleBuySellSubmit}
-          stockSymbol={selectedStock.stockSymbol}
         />
       )}
     </div>

@@ -1,13 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import BuyModal from "./BuyModal";
 import SellModal from "./SellModal";
 import OrderModal from "./OrderModal";
 import AlertModal from "./AlertModal";
-import ThemeContext from "../context/ThemeContext";
 
 const Overview = ({ symbol, price, change, changePercent, currency }) => {
-  const { darkMode } = useContext(ThemeContext);
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
   const [isSellModalOpen, setIsSellModalOpen] = useState(false);
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
@@ -84,33 +82,41 @@ const Overview = ({ symbol, price, change, changePercent, currency }) => {
             {change} <span>({changePercent}%)</span>
           </span>
         </div>
-        <div className="mt-4 flex justify-between">
+        <div className="mt-4 flex justify-between space-x-2">
+          {/* Buy Button */}
           <button
             onClick={handleBuyModalOpen}
-            className={`p-2 w-1/4 ${darkMode ? 'bg-green-700 hover:bg-green-600' : 'bg-green-500 hover:bg-green-400'} text-white rounded-md transition-colors`}
+            className="w-1/4 py-3 px-5 bg-gradient-to-r from-green-400 to-green-600 text-white rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:from-green-500 hover:to-green-700 focus:outline-none"
           >
             Buy
           </button>
+
+          {/* Sell Button */}
           <button
             onClick={handleSellModalOpen}
-            className={`p-2 w-1/4 ${darkMode ? 'bg-red-700 hover:bg-red-600' : 'bg-red-500 hover:bg-red-400'} text-white rounded-md transition-colors`}
+            className="w-1/4 py-3 px-5 bg-gradient-to-r from-red-400 to-red-600 text-white rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:from-red-500 hover:to-red-700 focus:outline-none"
           >
             Sell
           </button>
+
+          {/* Place Order Button */}
           <button
             onClick={handleOrderModalOpen}
-            className={`p-2 w-1/4 ${darkMode ? 'bg-yellow-700 hover:bg-yellow-600' : 'bg-yellow-500 hover:bg-yellow-400'} text-white rounded-md transition-colors`}
+            className="w-1/4 py-3 px-5 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:from-yellow-500 hover:to-yellow-700 focus:outline-none"
           >
             Place Order
           </button>
+
+          {/* Set Alert Button */}
           <button
             onClick={handleAlertModalOpen}
-            className={`p-2 w-1/4 ${darkMode ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-500 hover:bg-blue-400'} text-white rounded-md transition-colors`}
+            className="w-1/4 py-3 px-5 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-700 focus:outline-none"
           >
             Set Alert
           </button>
         </div>
       </Card>
+
       <BuyModal
         isOpen={isBuyModalOpen}
         onClose={handleModalClose}
@@ -128,25 +134,26 @@ const Overview = ({ symbol, price, change, changePercent, currency }) => {
         onClose={handleModalClose}
         onSubmit={handleOrderSubmit}
         stockSymbol={symbol}
+        currentPrice={price} 
       />
       <AlertModal
-        isOpen={isAlertModalOpen}
-        onClose={handleModalClose}
-        onSubmit={handleAlertSubmit}
-        stockSymbol={symbol}
-      />
+  isOpen={isAlertModalOpen}
+  onClose={handleModalClose}
+  onSubmit={handleAlertSubmit}
+  stockSymbol={symbol}
+  currentPrice={price} 
+/>
+
       <div className="fixed bottom-4 right-4 space-y-2 z-50">
-  {notifications.map((n) => (
-    <div
-      key={n.id}
-      className={`transition-opacity duration-1000 p-8 rounded-lg font-semibold text-center shadow-lg ${n.backgroundColor} ${n.visible ? 'opacity-100' : 'opacity-0'} text-2xl`}
-    >
-      {n.message}
-    </div>
-  ))}
-</div>
-
-
+        {notifications.map((n) => (
+          <div
+            key={n.id}
+            className={`transition-opacity duration-1000 p-8 rounded-lg font-semibold text-center shadow-lg ${n.backgroundColor} ${n.visible ? 'opacity-100' : 'opacity-0'} text-2xl`}
+          >
+            {n.message}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
