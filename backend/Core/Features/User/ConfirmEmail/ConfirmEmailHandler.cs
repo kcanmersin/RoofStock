@@ -6,7 +6,7 @@ using Core.Service.JWT;
 using System.Security.Claims;
 using System.Web;
 using System.Text;
-using Microsoft.AspNetCore.WebUtilities; 
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace Core.Features.User.ConfirmEmail
 {
@@ -23,6 +23,17 @@ namespace Core.Features.User.ConfirmEmail
 
         public async Task<Result<ConfirmEmailResponse>> Handle(ConfirmEmailCommand request, CancellationToken cancellationToken)
         {
+            var user = await _userManager.FindByEmailAsync(request.Email);
+            if (user == null)
+            {
+                return Result.Failure<ConfirmEmailResponse>(new Error("UserNotFound", "User not found."));
+            }
+
+            if (user.IsEmailConfirmed)
+            {
+                return Result.Success(new ConfirmEmailResponse { IsSuccess = true });
+            }
+
             var decodedToken = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(request.Token));
 
             var principal = _jwtService.ValidateToken(decodedToken);
@@ -37,15 +48,9 @@ namespace Core.Features.User.ConfirmEmail
                 return Result.Failure<ConfirmEmailResponse>(new Error("InvalidToken", "Token does not match the email."));
             }
 
-            var user = await _userManager.FindByEmailAsync(request.Email);
-            if (user == null)
-            {
-                return Result.Failure<ConfirmEmailResponse>(new Error("UserNotFound", "User not found."));
-            }
-
             user.IsEmailConfirmed = true;
-            user.EmailConfirmationToken = null; 
-            user.EmailConfirmationSentAt = null; 
+            user.EmailConfirmationToken = null;
+            user.EmailConfirmationSentAt = null;
 
             var updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
@@ -55,6 +60,5 @@ namespace Core.Features.User.ConfirmEmail
 
             return Result.Success(new ConfirmEmailResponse { IsSuccess = true });
         }
-
     }
 }

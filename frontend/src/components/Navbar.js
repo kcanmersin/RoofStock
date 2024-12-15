@@ -32,7 +32,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    fetchNavbarBalance();
+    if (user) {
+      fetchNavbarBalance();
+    }
   }, [user]);
 
   const handleLogout = () => {
@@ -63,11 +65,13 @@ const Navbar = () => {
                 Dashboard
               </Link>
             </li>
-            <li>
-              <Link to={`/portfolio/${user?.userId}`} className="text-white hover:text-gray-300 transition-colors duration-200">
-                Portfolio
-              </Link>
-            </li>
+            {user && (
+              <li>
+                <Link to={`/portfolio/${user?.userId}`} className="text-white hover:text-gray-300 transition-colors duration-200">
+                  Portfolio
+                </Link>
+              </li>
+            )}
             <li>
               <Link to="/news" className="text-white hover:text-gray-300 transition-colors duration-200">
                 News

@@ -83,7 +83,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
     env_file:
-      - ./frontend/.env 
+      - ./.env 
     depends_on:
       - ai-service
       - backend
@@ -97,4 +97,4 @@ services:
     volumes:
       - ./backend:/src
     env_file:
-      - ./backend/.env  
+      - ./.env  

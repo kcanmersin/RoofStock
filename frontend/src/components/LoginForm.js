@@ -6,12 +6,37 @@ import './FormStyles.css';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState([]);
   const { setUser, setToken } = useAuth();
   const navigate = useNavigate();
 
+  const validateInputs = () => {
+    const validationErrors = [];
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      validationErrors.push('Invalid email format. Please enter a valid email address.');
+    }
+
+    // Password validation
+    if (password.length < 6) {
+      validationErrors.push('Password must be at least 6 characters long.');
+    }
+
+    return validationErrors;
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    const validationErrors = validateInputs();
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors([]); // Clear previous errors
 
     const loginData = { email, password };
 
@@ -25,7 +50,7 @@ const LoginForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Login failed');
+        throw new Error('Login failed. Please check your credentials.');
       }
 
       const data = await response.json();
@@ -39,7 +64,7 @@ const LoginForm = () => {
 
       navigate('/dashboard');
     } catch (error) {
-      setError(error.message);
+      setErrors([error.message]);
     }
   };
 
@@ -70,7 +95,13 @@ const LoginForm = () => {
               required
             />
           </div>
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          {errors.length > 0 && (
+            <div className="text-red-500 text-sm mt-2 space-y-1">
+              {errors.map((error, index) => (
+                <p key={index}>{error}</p>
+              ))}
+            </div>
+          )}
           <button
             type="submit"
             className="w-full py-2 mt-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
