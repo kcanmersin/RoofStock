@@ -56,7 +56,7 @@ namespace Core.Extensions
             services.AddScoped<CheckAndProcessOrdersJob>();
             services.AddScoped<CheckAndTriggerStockPriceAlertsJob>();
             services.AddScoped<DeleteUnconfirmedUsersJob>();
-            services.AddScoped<StockTrainingJob>(); // StockTrainingJob'u burada da ekliyoruz
+            services.AddScoped<StockTrainingJob>(); 
 
             return services;
         }
