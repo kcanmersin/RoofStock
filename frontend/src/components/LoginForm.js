@@ -13,13 +13,11 @@ const LoginForm = () => {
   const validateInputs = () => {
     const validationErrors = [];
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       validationErrors.push('Invalid email format. Please enter a valid email address.');
     }
 
-    // Password validation
     if (password.length < 6) {
       validationErrors.push('Password must be at least 6 characters long.');
     }
@@ -36,7 +34,7 @@ const LoginForm = () => {
       return;
     }
 
-    setErrors([]); // Clear previous errors
+    setErrors([]); 
 
     const loginData = { email, password };
 

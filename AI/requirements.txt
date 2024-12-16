@@ -1,5 +1,4 @@
-Flask==2.3.0  # or a newer compatible version
-
+Flask==2.3.0 
 Flask-Cors==3.0.10
 pandas==1.5.3
 numpy==1.23.5

@@ -10,7 +10,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [loading, setLoading] = useState(true); // Yüklenme durumunu takip eden state
+  const [loading, setLoading] = useState(true);  
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       }
     }
 
-    setLoading(false); // Bilgiler yüklendi, loading tamam
+    setLoading(false); 
   }, []);
 
   const value = { user, token, setUser, setToken, loading };

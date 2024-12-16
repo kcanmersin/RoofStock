@@ -17,7 +17,6 @@ public class PredictionController : ControllerBase
     [HttpGet("fetch-data")]
     public async Task<IActionResult> FetchData(string ticker, int daysBack = 500)
     {
-        var a = "selam";
         try
         {
             var result = await _predictService.FetchDataAsync(ticker, daysBack);

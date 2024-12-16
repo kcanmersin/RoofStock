@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
-const BuyModal = ({ isOpen, onClose, onSubmit, stockSymbol }) => {
+const BuyModal = ({ isOpen, onClose, onSubmit, stockSymbol, refreshNavbar }) => {
   const { user } = useAuth();
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -21,15 +21,26 @@ const BuyModal = ({ isOpen, onClose, onSubmit, stockSymbol }) => {
         throw new Error('User is not logged in or userId not found.');
       }
 
-      await axios.post('http://localhost:5244/api/stocks/buy', {
+      const response = await axios.post('http://localhost:5244/api/stocks/buy', {
         UserId: userId,
         StockSymbol: stockSymbol,
         Quantity: quantity,
       });
 
-      onSubmit(); // Navbar'ı güncellemek için tetikleme
-      onClose();
+      const { isSuccess, newBalance, message } = response.data;
+
+      if (isSuccess) {
+        if (refreshNavbar) {
+          refreshNavbar(); // Navbar'ı güncellemek için tetikleme
+        }
+
+        onSubmit();
+        onClose();
+      } else {
+        throw new Error(message || 'Stock purchase failed.');
+      }
     } catch (err) {
+      console.error('Buy Error:', err);
       setError('An error occurred while buying the stock.');
     } finally {
       setLoading(false);

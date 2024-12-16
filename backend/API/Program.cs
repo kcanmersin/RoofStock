@@ -1,4 +1,3 @@
-using API.Hubs;
 using API.Middlewares.ExceptionHandling;
 using Core.Extensions;
 using HealthChecks.UI.Client;
@@ -130,14 +129,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers().RequireRateLimiting("default");
 });
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHealthChecks("/h", new HealthCheckOptions
-    {
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    });
-    endpoints.MapHealthChecksUI();
-});
+
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
@@ -147,6 +139,5 @@ app.UseStaticFiles();
 
 
 app.MapControllers();
-app.MapHub<StockPriceHub>("/stockPriceHub");
 
 app.Run();

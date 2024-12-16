@@ -7,12 +7,10 @@ const PrivateRoute = ({ element }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    // Veriler hala yükleniyor, bekleyin
     return <div>Loading...</div>;
   }
 
   if (!user) {
-    // Kullanıcı giriş yapmamışsa login sayfasına yönlendir
     return <Navigate to="/login" />;
   }
 

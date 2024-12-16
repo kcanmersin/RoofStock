@@ -8,7 +8,6 @@ const Search = () => {
   const [nasdaqSymbols, setNasdaqSymbols] = useState([]);
   const [bestMatches, setBestMatches] = useState([]);
 
-  // NASDAQ sembollerini dosyadan yükle
   useEffect(() => {
     const loadNasdaqSymbols = async () => {
       const response = await fetch(nasdaqTxt);
@@ -22,7 +21,6 @@ const Search = () => {
 
   const updateBestMatches = () => {
     if (input) {
-      // Girdi ile eşleşen sembolleri filtrele
       const filteredResults = nasdaqSymbols.filter((symbol) =>
         symbol.toLowerCase().startsWith(input.toLowerCase())
       );

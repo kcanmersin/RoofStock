@@ -7,9 +7,8 @@ const AlertModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
   const [targetPrice, setTargetPrice] = useState(100.0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [alertType, setAlertType] = useState(null); // alertType is dynamically set
+  const [alertType, setAlertType] = useState(null);
 
-  // Automatically set the alertType based on targetPrice and currentPrice
   useEffect(() => {
     if (targetPrice > currentPrice) {
       setAlertType(1); // Rise
@@ -32,11 +31,10 @@ const AlertModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
       const response = await setPriceAlertRequest(userId, stockSymbol, targetPrice, alertType);
       console.log('Alert Set Success:', response);
 
-      // Success Notification
       if (Notification.permission === 'granted') {
         new Notification('Price Alert Set', {
           body: `Your price alert for ${stockSymbol} at $${targetPrice} has been successfully set.`,
-          icon: '/icon.png', // Optionally add an icon
+          icon: '/icon.png',
         });
       }
 
@@ -45,11 +43,10 @@ const AlertModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
       console.error('Alert Error:', err);
       setError('An error occurred while setting the alert.');
 
-      // Error Notification
       if (Notification.permission === 'granted') {
         new Notification('Error', {
           body: 'An error occurred while setting the price alert. Please try again.',
-          icon: '/icon.png', // Optionally add an icon
+          icon: '/icon.png',
         });
       }
     } finally {
@@ -57,7 +54,6 @@ const AlertModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
     }
   };
 
-  // Request Notification Permission if not granted yet
   useEffect(() => {
     if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
       Notification.requestPermission();

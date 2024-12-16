@@ -14,10 +14,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build-env /app/publish .
 
-# Swagger için 5244 portunu expose et
 EXPOSE 5244
 
-# ASP.NET Core'ı 5244 portunda başlat
 ENV ASPNETCORE_URLS=http://0.0.0.0:5244
 
 ENTRYPOINT ["dotnet", "API.dll"]

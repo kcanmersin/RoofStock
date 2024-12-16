@@ -33,7 +33,6 @@ namespace Core.Service.StockTrainingJobService
                 _logger.LogInformation("Executing StockTrainingJob with FileName={FileName}, DaysBack={DaysBack}, Epochs={Epochs}, BatchSize={BatchSize}, SeqLen={SeqLen}, ValidationSplit={ValidationSplit}, LearningRate={LearningRate}, DropoutRate={DropoutRate}",
                     fileName, daysBack, epochs, batchSize, seqLen, validationSplit, learningRate, dropoutRate);
 
-                // Call PredictService
                 var fileList = new List<string> { fileName };
                 var result = await _predictService.TrainMultipleTickersAsync(fileList, daysBack, epochs, batchSize, seqLen, validationSplit, learningRate, dropoutRate);
 

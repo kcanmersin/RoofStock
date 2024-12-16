@@ -14,7 +14,6 @@ public class StockApiService : IStockApiService
     private readonly IMemoryCache _memoryCache;
     private readonly IAsyncPolicy<HttpResponseMessage> _circuitBreakerPolicy;
 
-    // API Base URL sabit, API Key env'den okunuyor
     private readonly string _apiBaseUrl = "https://finnhub.io/api/v1/";
     private readonly string _apiKey;
 

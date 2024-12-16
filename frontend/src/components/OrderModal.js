@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { giveOrderRequest } from './GiveOrderRequest';
+import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
 const OrderModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
@@ -11,7 +11,6 @@ const OrderModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Update targetPrice when currentPrice changes
     setTargetPrice(currentPrice);
   }, [currentPrice]);
 
@@ -22,15 +21,28 @@ const OrderModal = ({ isOpen, onClose, stockSymbol, currentPrice }) => {
     setLoading(true);
     setError(null);
 
+    if (orderType === 'Sell' && targetPrice < currentPrice) {
+      setError(`You cannot sell at a price lower than the current price of ${currentPrice}.`);
+      setLoading(false);
+      return;
+    }
+
     try {
       const userId = user?.userId;
       if (!userId) {
         throw new Error('User is not logged in or userId not found.');
       }
 
-      const response = await giveOrderRequest(userId, stockSymbol, quantity, targetPrice, orderType);
-      console.log('Order Success:', response);
-      onClose();
+      const response = await axios.post('http://localhost:5244/api/orders/place', {
+        userId,               
+        stockSymbol,            
+        quantity,              
+        targetPrice,         
+        orderType: orderType === 'Buy' ? 0 : 1,  
+      });
+
+      console.log('Order Success:', response.data);
+      onClose();  
     } catch (err) {
       console.error('Order Error:', err);
       setError('An error occurred while placing the order.');
