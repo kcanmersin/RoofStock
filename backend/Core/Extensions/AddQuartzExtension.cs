@@ -20,13 +20,16 @@ namespace Core.Extensions
                 q.AddTrigger(opts => opts
                     .ForJob("CheckAndProcessOrdersJob")
                     .WithIdentity("CheckAndProcessOrdersTrigger")
-                    .WithCronSchedule("0 * * * * ?"));
+                    .WithCronSchedule("0 */43 * * * ?")); 
 
                 q.AddJob<CheckAndTriggerStockPriceAlertsJob>(opts => opts.WithIdentity("CheckAndTriggerStockPriceAlertsJob"));
                 q.AddTrigger(opts => opts
                     .ForJob("CheckAndTriggerStockPriceAlertsJob")
                     .WithIdentity("CheckAndTriggerStockPriceAlertsTrigger")
-                    .WithCronSchedule("0 * * * * ?"));
+                    .WithCronSchedule("0 */33 * * * ?"));  
+
+
+
 
                 q.AddJob<DeleteUnconfirmedUsersJob>(opts => opts.WithIdentity("DeleteUnconfirmedUsersJob"));
                 q.AddTrigger(opts => opts
